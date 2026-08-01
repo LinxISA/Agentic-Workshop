@@ -1,132 +1,145 @@
 {
-  "generatedAt": "2026-08-01T08:28:45.329Z",
+  "generatedAt": "2026-08-01T20:48:40.295Z",
   "viewport": [
     1920,
     1080
   ],
-  "base": "http://127.0.0.1:4173",
+  "base": "http://127.0.0.1:4174",
   "decks": [
     {
       "id": "session-1",
-      "count": 28,
+      "count": 21,
       "remoteRequests": [],
       "slides": [
         {
           "number": 1,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 2,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 27.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 3,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 4,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 27.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 5,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 6,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 24.7,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 7,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 8,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 9,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 27.4,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 10,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 11,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 12,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 13,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 14,
@@ -135,176 +148,125 @@
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 15,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 19.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 16,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 17,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 18,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 19,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 20,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 35.2,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 21,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 22,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 23,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 24,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 25,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 27.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 26,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 27,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 28,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 27.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         }
       ]
     },
     {
       "id": "session-2",
-      "count": 31,
+      "count": 21,
       "remoteRequests": [],
       "slides": [
         {
           "number": 1,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 2,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 3,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 4,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 5,
@@ -313,70 +275,78 @@
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 6,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 27.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 7,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 19.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 8,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 31,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 9,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 10,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 11,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 12,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 31,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 13,
@@ -385,169 +355,88 @@
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 14,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 31,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 15,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 16,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 27.4,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 17,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 31.7,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 18,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 19,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 20,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 34.4,
+          "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         },
         {
           "number": 21,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 22,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 23,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 17.6,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 24,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 25,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 26,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 27,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 28,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 29,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 30,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
-        },
-        {
-          "number": 31,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 34.4,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false
+          "titleWrapped": false,
+          "overlapIssues": []
         }
       ]
     }

@@ -1,980 +1,410 @@
 ---
 theme: default
-title: Agent 时代的体系结构研究方法学 · 第一课
-info: PTO executable architecture spec、NDF、pyCircuit 与可审计证据
-transition: slide-left
+title: 体系结构研究的第一性原理 · 第一课
+info: 从 Roofline、存储层级到加速器数据流
+transition: fade-out
 colorSchema: dark
 mdc: true
-background: /generated/session-1-hero.png
-class: imagegen-cover
-favicon: /generated/session-1-hero.png
+favicon: /generated/slides/s01-architecture-first.png
 fonts:
-  sans: "Inter, PingFang SC, Microsoft YaHei, sans-serif"
+  sans: "MiSans, Noto Sans SC, Microsoft YaHei, sans-serif"
   mono: "SFMono-Regular, Menlo, monospace"
   provider: none
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 算力不是答案，体系结构才是
 
-# 先建立一条**不会自欺**的研究闭环
-
-PTO executable architecture spec → 课程 NDF 投影 → pyCircuit 行动空间 → 可审计证据
-
-<div class="visual-frame" style="margin-top:3rem;padding:2rem">
-  <div class="flow">
-    <span class="flow-node">规范事实</span><span class="flow-arrow">→</span>
-    <span class="flow-node">设计承诺</span><span class="flow-arrow">→</span>
-    <span class="flow-node">可执行变体</span><span class="flow-arrow">→</span>
-    <span class="flow-node">独立裁判</span>
-  </div>
-</div>
-
-<p class="muted" style="margin-top:1.5rem">第一课 · 60 分钟 · 面向体系结构研究者与研究生</p>
+<FullBleedStage background="/generated/slides/s01-architecture-first.png" title="算力不是答案，体系结构才是" claim="先问数据在哪里、何时到达、由谁等待，再问 Agent 能做什么。" eyebrow="SESSION 01 · ARCHITECTURE FIRST" slide-id="S01">
+  <template #diagram><div class="diagram-dock"><ArchitectureZoom level="system" :active-path="['package','chip','core']" /></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-001, NDF-SRC-001
-Learning objective: 建立本课的研究闭环与证据优先心智模型。
-Duration: 1 min
-Visual intent: class: hero；用四节点闭环代替传统“目录页”。
-Evidence: docs/NDF.md; materials/SOURCES.yaml
-Interaction: 请听众记住一个词：裁判。
-Caveat: 本课讲研究方法，不把任何案例实现冒充 PTO 规范。
-[Sources]
-- docs/GOAL_PROMPT.md
-- materials/SOURCES.yaml
+Slide-ID: S01
+Objective: 把课程重心明确放在处理器体系结构，而不是工具教学。
+Timing: 1 min
+Visual: 从系统、封装、芯片、核心逐层放大的处理器爆炸图；前景只保留尺度导航。
+Interaction: 开场提问：看到“432 TFLOPS”时，你最先追问哪个结构参数？
+Sources: source-deck; agenda
+Boundary: 课程定位，不声称任何具体芯片结构。
+Narrative: 先建立共同语言：性能来自计算、数据移动、并发、队列与控制的共同作用。Agentic Circuit 只负责把这些假设变成可执行模型和可审计证据。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 432 TFLOPS 为什么跑不满
 
-# Agent 放大的首先是**歧义**，不是生产力
-
-当自然语言、代码、波形和性能数字彼此矛盾时，Agent 会更快地产生更多“看似合理”的版本。
-
-<div class="split" style="height:270px">
-  <div>
-    <h2>传统风险</h2>
-    <p>一个人误解一个接口。</p>
-    <p>错误传播速度有限。</p>
-  </div>
-  <div class="visual-frame" style="padding:1.6rem">
-    <h2>Agent 时代风险</h2>
-    <div class="flow">
-      <span class="flow-node">模糊主张</span><span class="flow-arrow">×</span>
-      <span class="flow-node">高吞吐修改</span><span class="flow-arrow">=</span>
-      <span class="flow-node">系统性漂移</span>
-    </div>
-  </div>
-</div>
-
-> 第一原则：先让主张可判定，再让 Agent 可行动。
+<FullBleedStage background="/generated/slides/s02-peak-gap.png" title="432 TFLOPS 为什么跑不满" claim="峰值算力与实测性能之间的缺口，就是体系结构研究空间。" eyebrow="PROBLEM" slide-id="S02">
+  <template #diagram><div class="diagram-dock evidence-strip"><span>Peak<b class="compute">432</b></span><span>Measured<b class="bottleneck">96</b></span><span>Utilization<b>22%</b></span><span>Question<b>谁在等？</b></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-002, NDF-MTH-003
-Learning objective: 解释为何 Agent 需要比人工流程更强的主张分类与独立裁判。
-Duration: 1.5 min
-Visual intent: class: compare；左右对比风险传播速度。
-Evidence: experiments/artifacts/07/expected_failure.json
-Interaction: 举手投票：你最近一次返工源于“写错”还是“理解错”？
-Caveat: Agent 不是错误的唯一来源；它改变的是扩散速度与规模。
-[Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
+Slide-ID: S02
+Objective: 用峰值—实测差距引出体系结构瓶颈，而不是把低利用率归咎于“代码没优化”。
+Timing: 3 min
+Visual: 大部分熄灭的计算阵列与遥远存储体；四个前景数字按 Peak、Measured、Utilization、Question 逐步出现。
+Interaction: 四选一投票：算力、带宽、局部性还是并发度；先记录判断，课末再复盘。
+Sources: source-deck; course-model
+Boundary: 432 TFLOPS 与 96 TFLOPS 是教学场景参数，不代表未公开产品实测。
+Narrative: 峰值只描述所有执行单元都持续得到正确数据时的上限。真实系统会在访存、依赖、队列满、前端供给和同步上损失周期，因此研究问题是找出第一个限制吞吐的结构环节。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 工作负载 = 计算 + 数据移动
 
-# 今天只练**四个判断动作**
-
-1. 判断一条话属于规范、实现、观察还是假设。
-2. 把规范条款投影成可追踪的 NDF 设计承诺。
-3. 在 pyCircuit 中定义有限、合法、可回滚的动作。
-4. 用独立证据决定接受、拒绝或继续探索。
-
-<div class="visual-frame" style="padding:1.25rem 2rem;margin-top:1.5rem">
-  <div class="flow">
-    <span class="flow-node">分类</span><span class="flow-arrow">→</span>
-    <span class="flow-node">投影</span><span class="flow-arrow">→</span>
-    <span class="flow-node">行动</span><span class="flow-arrow">→</span>
-    <span class="flow-node">裁决</span>
-  </div>
-</div>
+<FullBleedStage background="/generated/slides/s03-workload-data-movement.png" title="工作负载 = 计算 + 数据移动" claim="任何算子都同时要求运算次数、搬运字节数和可利用的复用。" eyebrow="WORKLOAD MODEL" slide-id="S03">
+  <template #diagram><div class="diagram-dock architecture-chain"><span class="compute">FLOPs</span><i>÷</i><span class="data">Bytes</span><i>=</i><span class="memory">Reuse / AI</span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-LRN-102
-Learning objective: 说明本课结束时可观察、可检验的学习结果。
-Duration: 2 min
-Visual intent: class: architecture；四个动词构成学习路径。
-Evidence: docs/NDF.md
-Interaction: 邀请听众选一个最不熟悉的动作，课末回看。
-Caveat: 第一课不会完整展开 PPA 优化和 Pareto 搜索；第二课继续。
-[Sources]
-- docs/NDF.md
+Slide-ID: S03
+Objective: 把工作负载拆成计算量、数据量和复用机会，为 Roofline 建模准备变量。
+Timing: 2 min
+Visual: 张量块从存储流向计算阵列；前景公式只呈现 FLOPs、Bytes 与 Arithmetic Intensity 的关系。
+Interaction: 让学生口算一次矩阵乘：一个输出元素需要多少乘加、至少读取多少输入数据。
+Sources: roofline-paper; course-model
+Boundary: 使用简化矩阵乘模型，忽略索引、控制和缓存元数据开销。
+Narrative: 算法并不直接“拥有性能”，它只提出计算与数据移动需求。体系结构决定这些需求如何映射到本地存储、片上网络、执行阵列和调度窗口。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Roofline 的两根轴
 
-# 一项研究只有闭环，才配得上“可复现”
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">PTO 规范</span><span class="flow-arrow">→</span>
-    <span class="flow-node">NDF</span><span class="flow-arrow">→</span>
-    <span class="flow-node">微架构</span><span class="flow-arrow">→</span>
-    <span class="flow-node">验证 / trace</span><span class="flow-arrow">→</span>
-    <span class="flow-node">测量</span><span class="flow-arrow">→</span>
-    <span class="flow-node">Agent</span><span class="flow-arrow">→</span>
-    <span class="flow-node">决策写回</span>
-  </div>
-</div>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem">
-  <blockquote>前半环回答：<strong>什么不能变？</strong></blockquote>
-  <blockquote>后半环回答：<strong>什么值得变？</strong></blockquote>
-</div>
+<FullBleedStage background="/generated/slides/s04-roofline-axes.png" title="Roofline 的两根轴" claim="横轴是每字节计算量，纵轴是每秒完成的计算量。" eyebrow="MACRO MODEL" slide-id="S04">
+  <template #diagram><div class="diagram-dock"><div class="claim-callout"><b>P = min(P<sub>peak</sub>, AI × BW)</b><br><span class="muted">斜坡由带宽决定，平台由计算峰值决定。</span></div></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-001
-Learning objective: 能复述“规范→NDF→微架构→验证→测量→Agent→决策”的完整闭环。
-Duration: 3 min
-Visual intent: class: architecture；展示课程的单一总图，并强调决策写回。
-Evidence: docs/NDF.md; experiments/artifacts/summary.json
-Interaction: 顺时针点读闭环；让听众指出“写代码”位于哪一段。
-Caveat: 环中每个箭头都需要明确输入输出；图本身不是证据。
-[Sources]
-- docs/NDF.md
-- docs/GOAL_PROMPT.md
+Slide-ID: S04
+Objective: 从两个独立上界推导 Roofline，而不是让学生死记图形。
+Timing: 2 min
+Visual: 斜坡进入平顶屋顶的工业景观；前景用一行公式标记带宽上界和计算上界。
+Interaction: 分两步 reveal：先画 AI×BW，再加 Ppeak，最后取二者最小值。
+Sources: roofline-paper
+Boundary: Roofline 是吞吐上界模型，不是周期级预测，也不描述尾延迟。
+Narrative: 左侧工作点每做一次计算需要大量外部字节，因此沿带宽斜坡；越过 ridge point 后，数据供给足够，执行单元数量成为上限。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 交互 Roofline
 
-# 先给每句话贴上**证据类型**，争论会立刻变短
-
-| 类型 | 典型句式 | 谁能推翻它 |
-|---|---|---|
-| 规范事实 | “实现 **MUST** 保持……” | 固定版本规范 |
-| 实现事实 | “当前模块把状态放在……” | 当前源码 / elaboration |
-| 实验观察 | “这个版本在该配置下……” | 同协议复现实验 |
-| 研究假设 | “增加队列深度可能……” | 新实验或反例 |
-
-<div class="visual-frame" style="padding:1rem 1.5rem;margin-top:1rem">
-  <div class="flow"><span class="flow-node">句子</span><span class="flow-arrow">→</span><span class="flow-node">类型</span><span class="flow-arrow">→</span><span class="flow-node">裁判</span></div>
-</div>
+<FullBleedStage background="/generated/slides/s05-interactive-roofline.png" title="交互 Roofline" claim="架构参数移动屋顶，算法复用移动工作点。" eyebrow="LIVE MODEL" slide-id="S05">
+  <template #diagram><InteractiveRoofline /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-003
-Learning objective: 能把研究陈述分类，并为每一类指定可接受的反证来源。
-Duration: 2 min
-Visual intent: class: evidence；用“句子→类型→裁判”强化分类动作。
-Evidence: docs/NDF.md
-Interaction: 快问快答：“双发射少 3 个周期”属于哪一类？
-Caveat: 同一句话可能混合多类主张，必要时拆句。
-[Sources]
-- docs/NDF.md
-- materials/SOURCES.yaml
+Slide-ID: S05
+Objective: 让学生亲手区分“提高屋顶”和“移动工作点”两类优化。
+Timing: 5 min
+Visual: 真实处理器与透明 Roofline 装置；前景 SVG 根据 Peak、BW、AI 三个滑杆实时更新。
+Interaction: 先只加算力观察无效，再加带宽，最后提高 AI；要求学生解释瓶颈为何切换。
+Sources: roofline-paper; course-model
+Boundary: 交互数值由本仓简化模型计算，不是 LinxCore 或商业芯片测量。
+Narrative: 如果工作点仍在斜坡，加倍矩阵单元可能完全无效；如果工作点已经在平台，继续增加带宽也不会提升性能。优化必须针对当前限制项。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Arithmetic Intensity 不是常数
 
-# 可执行规范让语义进入**机器检查**
-
-<div class="split">
-  <div>
-    <p>PTO executable architecture spec 在本课中承担唯一角色：提供固定版本的规范事实。</p>
-    <div class="flow" style="justify-content:flex-start;margin-top:1rem">
-      <span class="flow-node">输入：Tile / GlobalTensor</span><span class="flow-arrow">→</span>
-      <span class="flow-node">转换：TLOAD / TADD</span><span class="flow-arrow">→</span>
-      <span class="flow-node">结果：Tile / Memory</span>
-    </div>
-    <blockquote style="margin-top:1.2rem">固定提交：<code>PTO-ISA/pto-spec@9574f029…</code></blockquote>
-  </div>
-  <img src="/generated/spec-to-circuit.png" alt="可执行规范经课程 NDF 投影走向微架构的概念图" class="visual-frame" style="width:100%;max-height:390px;object-fit:cover" />
-</div>
+<FullBleedStage background="/generated/slides/s06-arithmetic-intensity.png" title="Arithmetic Intensity 不是常数" claim="同一算子在不同分块、缓存命中率和数据布局下，会落在不同工作点。" eyebrow="LOCALITY" slide-id="S06">
+  <template #diagram><div class="diagram-dock evidence-strip"><span>Naive<b>2 FLOP/B</b></span><span>Tiled<b>16 FLOP/B</b></span><span>Fused<b>48 FLOP/B</b></span><span>Effect<b class="memory">少搬数据</b></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-SRC-001
-Learning objective: 说明 executable architecture spec 在研究闭环中的责任边界。
-Duration: 2.5 min
-Visual intent: class: architecture；用输入—转换—结果的确定性标签配合本地 ImageGen 概念图，说明规范到实现的方向但不伪造精确连线。
-Evidence: materials/SOURCES.yaml
-Interaction: 请听众区分“操作结果”与“实现需要几个周期”。
-Caveat: 本页不声称规范固定任何特定微架构、时延或资源绑定。
-[Sources]
-- https://github.com/PTO-ISA/pto-spec/tree/9574f0293929bf692517dd29de11a8354440c7dc
-- materials/SOURCES.yaml
+Slide-ID: S06
+Objective: 说明 AI 是算法与存储体系结构共同产生的运行属性。
+Timing: 3 min
+Visual: 一侧反复远距离取数，另一侧形成短复用环；前景对比 naive、tiled、fused 三个工作点。
+Interaction: 点击或口头切换三种映射，判断工作点向右移动还是屋顶上移。
+Sources: roofline-paper; course-model
+Boundary: 三组 AI 为教学示例，只表达数量级与趋势。
+Narrative: 算法 FLOPs 可能不变，但 DRAM 字节数会因 tile 大小、cache 容量、替换行为和融合机会而改变。体系结构研究必须显式建模这些条件。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 局部性就是避免昂贵搬运
 
-# 五个操作就能形成第一条**端到端证据链**
-
-```text
-TALLOC  →  TLOAD A  →  TLOAD B  →  TADD  →  TSTORE
-```
-
-<div class="visual-frame" style="padding:1.2rem;margin-top:1rem">
-  <div class="flow">
-    <span class="flow-node">GM [1,2,3,4]</span><span class="flow-arrow">→</span>
-    <span class="flow-node">Tile A + Tile B</span><span class="flow-arrow">→</span>
-    <span class="flow-node">GM [11,22,33,44]</span>
-  </div>
-</div>
-
-<p class="muted">这里展示的是操作序列，不是 PTO-AS 语法教程。</p>
+<FullBleedStage background="/generated/slides/s07-locality.png" title="局部性就是避免昂贵搬运" claim="时间复用、空间复用和生产者—消费者复用，最终都减少远端字节。" eyebrow="DATA MOVEMENT" slide-id="S07">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#17d9ff">寄存器复用<small>1–2 cycles</small></span><span style="--layer:#ffbe00">片上 SRAM 复用<small>几到几十 cycles</small></span><span style="--layer:#b9ff33">片外内存<small>高延迟 / 高能耗</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-SRC-001, NDF-MTH-001
-Learning objective: 用最小 PTO 操作链识别输入、状态变化与可观察输出。
-Duration: 2.5 min
-Visual intent: class: experiment；把实验 01 的操作序列与结果数组对齐。
-Evidence: experiments/artifacts/01/pto_trace.json
-Interaction: 逐步预测每个操作之后哪些值应当可见。
-Caveat: 文本是教学用语义链，不宣称为可直接汇编的 PTO-AS 源码。
-[Sources]
-- experiments/tests/test_smoke.py
-- https://github.com/PTO-ISA/pto-spec/tree/9574f0293929bf692517dd29de11a8354440c7dc
+Slide-ID: S07
+Objective: 把抽象“局部性”翻译成逐级存储结构与数据生命周期。
+Timing: 2 min
+Visual: 以计算阵列为中心的同心存储环；颜色从寄存器、SRAM 延伸到 DRAM。
+Interaction: 指定一个矩阵块，让学生决定它应停留在哪一级、被复用多少次后才淘汰。
+Sources: course-model; source-deck
+Boundary: 延迟范围是教学级概括，不代表 PTO 或 LinxCore 固定参数。
+Narrative: 局部性不是缓存命中率的同义词，而是数据在离消费者更近的位置被再次使用。硬件提供容量、端口和带宽，软件决定块形状和访问顺序。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 把存储延迟换算成“天”
 
-# NDF 把研究承诺**钉在规范上**
-
-<script setup lang="ts">
-import NdfTraceability from '../../components/NdfTraceability.vue'
-</script>
-
-<NdfTraceability />
-
-<p class="muted" style="margin-top:.55rem">NDF 提供结构、ID、关系和覆盖；它不替规范发明语义。</p>
+<FullBleedStage background="/generated/slides/s08-memory-latency-days.png" title="把存储延迟换算成“天”" claim="核心尺度上的几个周期，与片外访问的几百周期，是完全不同的时间世界。" eyebrow="LATENCY INTUITION" slide-id="S08">
+  <template #diagram><div class="diagram-dock evidence-strip"><span>Register<b>今天</b></span><span>L1<b>本周</b></span><span>L2/L3<b>下月</b></span><span>DRAM<b class="bottleneck">明年</b></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-MTH-001
-Learning objective: 解释 NDF 投影与原始规范之间的非替代关系。
-Duration: 3 min
-Visual intent: class: evidence；使用共享组件 NdfTraceability 展示条款、要求与验证的有向关系。
-Evidence: experiments/artifacts/02/ndf_projection.json
-Interaction: 点击或高亮一条链，口头读出“来源—承诺—裁判”。
-Caveat: 课程 NDF 是教学投影，不属于 PTO 规范。
-[Sources]
-- docs/NDF.md
-- experiments/artifacts/02/ndf_projection.json
-- https://github.com/hengliao1972/normative_language/blob/main/normative_language.md
+Slide-ID: S08
+Objective: 建立学生对存储延迟数量级的直觉，并说明为何需要并发隐藏延迟。
+Timing: 2 min
+Visual: 从核心向外扩展的时间距离地形；前景用“今天—明年”类比替代精确产品数字。
+Interaction: 假设一次 DRAM 访问为 220 cycles，问需要多少独立 miss 才能填满返回带宽。
+Sources: source-deck; course-model
+Boundary: 日历类比只表达数量级，不是物理时间换算或特定芯片参数。
+Narrative: 延迟不能被带宽数字抹去。即使内存接口很宽，单个依赖链仍然必须等待；体系结构依靠缓存、预取、乱序窗口和多线程形成足够并发。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 存储层级：容量、延迟、带宽三角
 
-# 好的追踪链必须允许你**反向找到责任人**
-
-<div class="visual-frame" style="padding:1.3rem">
-  <div class="flow">
-    <span class="flow-node">NDF-LRN-102</span><span class="flow-arrow">→</span>
-    <span class="flow-node">Slide 17</span><span class="flow-arrow">→</span>
-    <span class="flow-node">TraceComparator</span><span class="flow-arrow">→</span>
-    <span class="flow-node">Exp 04</span><span class="flow-arrow">→</span>
-    <span class="flow-node">comparison.json</span>
-  </div>
-</div>
-
-任何一个节点变化，都应该让追踪检查失败，而不是静默漂移。
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
-  <blockquote><strong>正向：</strong>要求有没有被教、被演示、被验证？</blockquote>
-  <blockquote><strong>反向：</strong>一个图、实验或数字为何存在？</blockquote>
-</div>
+<FullBleedStage background="/generated/slides/s09-memory-hierarchy.png" title="存储层级：容量、延迟、带宽三角" claim="每一级都在用有限容量换取更低平均延迟和更少片外流量。" eyebrow="HIERARCHY" slide-id="S09">
+  <template #diagram><MemoryHierarchyExplorer /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-VIS-001, NDF-LRN-102
-Learning objective: 能构造 requirement→slide→component→experiment→artifact 的双向追踪链。
-Duration: 2.5 min
-Visual intent: class: evidence；用一条真实课程链展示追踪粒度。
-Evidence: docs/NDF.md; experiments/artifacts/04/comparison.json
-Interaction: 隐去一个节点，让听众判断审计时最先出现什么告警。
-Caveat: 文件存在不等于证据有效；还需检查 schema、版本和生成命令。
-[Sources]
-- docs/NDF.md
-- scripts/check-content.mjs
+Slide-ID: S09
+Objective: 用可调命中率把存储层级连接到平均访问延迟和片外流量。
+Timing: 4 min
+Visual: 阶梯式 L1、L2、DRAM 切面；前景组件实时显示命中分布、平均 cycles 与 reuse。
+Interaction: 分别降低 L1 hit 和 L2 hit，观察哪一个对 off-chip traffic 与平均延迟影响更大。
+Sources: course-model; source-deck
+Boundary: 层级延迟和概率为课程模型，未声称对应 LinxCore 实现参数。
+Narrative: 平均延迟是一种加权结果，但性能还取决于 miss 能否重叠、端口是否冲突、队列是否容纳未完成请求。下一步从概率模型走向并发结构。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 并发度把延迟变成吞吐
 
-# 分层不是增加文档，而是限制每层**可以说什么**
-
-```mermaid
-flowchart LR
-  L0[来源与术语] --> L1[架构要求]
-  L1 --> L2[微架构机制]
-  L2 --> L3[实现与验证]
-  L3 -.证据回写.-> L1
-```
-
-| 层 | 合法问题 |
-|---|---|
-| L1 | 系统必须保持什么可观察行为？ |
-| L2 | 哪种机制满足它？ |
-| L3 | 当前实现与测试是否真的满足？ |
+<FullBleedStage background="/generated/slides/s10-concurrency.png" title="并发度把延迟变成吞吐" claim="足够多的独立请求可以隐藏延迟，但队列、端口和返回带宽会先饱和。" eyebrow="MEMORY-LEVEL PARALLELISM" slide-id="S10">
+  <template #diagram><div class="diagram-dock evidence-strip"><span>Latency<b>220 cyc</b></span><span>Outstanding<b>32</b></span><span>Return BW<b>4/cyc</b></span><span>Limiter<b class="bottleneck">MSHR / Queue</b></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-101
-Learning objective: 能把架构要求、微架构机制和实现证据放入正确层级。
-Duration: 2 min
-Visual intent: class: architecture；用 L0–L3 精炼链表现约束逐层收紧。
-Evidence: experiments/artifacts/02/ndf_projection.json
-Interaction: 给出“队列深度为 32”，请听众判断它通常位于哪一层。
-Caveat: 层级编号是课程采用的投影方式，不宣称为 PTO 规范内部层级。
-[Sources]
-- https://github.com/hengliao1972/normative_language/blob/main/normative_language.md
-- vendor/LinxCore/docs/spec/ndf.yaml
--->
-
----
-background: /generated/modular-processor.png
-class: imagegen-content
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# LinxCore 是模块化案例，**不是 PTO 官方实现**
-
-<div class="split">
-  <div class="visual-frame" style="padding:1.5rem">
-    <h2>本课借它观察</h2>
-    <ul>
-      <li>模块边界与状态所有权</li>
-      <li>typed interface 与 backpressure</li>
-      <li>trace、验证和替换证据</li>
-    </ul>
-  </div>
-  <div>
-    <h2>本课绝不声称</h2>
-    <p>❌ LinxCore 定义 PTO 语义</p>
-    <p>❌ LinxCore 是 PTO 参考实现</p>
-    <p>❌ 案例参数等于规范要求</p>
-  </div>
-</div>
-
-<!--
-NDF-ID: NDF-SRC-003
-Learning objective: 明确 PTO 规范事实源与 LinxCore 案例的边界。
-Duration: 1 min
-Visual intent: class: compare；用“可借用 / 不可声称”双栏建立边界。
-Evidence: materials/SOURCES.yaml; docs/NDF.md
-Interaction: 全班复述边界句：“案例提供机制，不提供 PTO 规范权威。”
-Caveat: LinxCore 自身的 Linx 语义应由其 ISA 与稳定条款定义。
-[Sources]
-- materials/SOURCES.yaml
-- https://github.com/LinxISA/LinxCore
+Slide-ID: S10
+Objective: 区分单请求延迟和多请求吞吐，理解 MLP 需要硬件状态承载。
+Timing: 3 min
+Visual: 单车道与多车道访问并列；前景给出 latency、outstanding、return bandwidth 和结构限制。
+Interaction: 逐步增加 outstanding requests，预测吞吐何时线性增长、何时平台化。
+Sources: course-model; source-deck
+Boundary: 数值仅用于教学推导；真实上限还受地址相关、bank、协议与调度影响。
+Narrative: 并发并不是免费的。每个未完成请求都占用队列项、标签、重放状态和返回路径。窗口太小无法隐藏延迟，窗口过大又可能增加面积、功耗和临界路径。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 一座处理器城市
 
-# 模块化的关键是**唯一状态所有者**
-
-<script setup lang="ts">
-import LinxCoreModuleExplorer from '../../components/LinxCoreModuleExplorer.vue'
-</script>
-
-<div style="transform:scale(.78);transform-origin:top left;width:128%;height:330px">
-  <LinxCoreModuleExplorer />
-</div>
-
-<p class="muted">点击模块时，问的不是“它叫什么”，而是“它拥有什么状态、接受什么事务、输出什么证据”。</p>
+<FullBleedStage background="/generated/slides/s11-processor-city.png" title="一座处理器城市" claim="计算单元是工厂，存储是仓库，NoC 是道路，调度器决定货物流向。" eyebrow="SYSTEM VIEW" slide-id="S11">
+  <template #diagram><div class="diagram-dock"><ArchitectureZoom level="chip" :active-path="['cluster','core','queue']" /></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-SRC-003, NDF-LRN-101
-Learning objective: 用状态所有权而非文件目录解释模块边界。
-Duration: 2 min
-Visual intent: class: architecture；使用共享组件 LinxCoreModuleExplorer 逐模块查看处理路径。
-Evidence: vendor/LinxCore/docs/spec/10-architecture/ownership.md
-Interaction: 点击 OOO / BROB；让听众指出 commit 与 recovery 的唯一所有者。
-Caveat: 组件是教学简化图；精确接口以固定版本源码和清单为准。
-[Sources]
-- vendor/LinxCore/docs/spec/00-charter/scope.md
-- vendor/LinxCore/docs/spec/10-architecture/ownership.md
+Slide-ID: S11
+Objective: 把前十页的计算、存储、互连和调度统一到一张芯片级架构图。
+Timing: 2 min
+Visual: 顶视角处理器城市；前景尺度条从 chip 继续放大到 queue。
+Interaction: 让学生在图上指出一次 cache miss 穿过的“道路”和占用的“停车位”。
+Sources: source-deck; course-synthesis
+Boundary: 城市隐喻帮助理解连接关系，不对应具体物理布局。
+Narrative: 体系结构不是模块清单，而是资源通过数据和控制路径组成的动态系统。性能问题通常发生在模块之间：带宽不匹配、队列传播、仲裁冲突和反馈延迟。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 封装本身也是存储体系结构
 
-# pyCircuit 把“改设计”压缩成**结构化行动空间**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">模块</span><span class="flow-node">端口</span>
-    <span class="flow-node">CycleAwareSignal</span><span class="flow-node">队列</span>
-    <span class="flow-node">参数</span><span class="flow-node">层次边界</span>
-  </div>
-</div>
-
-Agent 不应“随便改 RTL”；它应从受约束动作中选择：
-
-- 改参数，但保持接口 schema；
-- 替换模块，但保持状态所有权；
-- 调整流水深度，但保持架构观察等价；
-- 新增 trace 点，但不让观察者阻塞提交。
+<FullBleedStage background="/generated/slides/s12-package-memory.png" title="封装本身也是存储体系结构" claim="HBM、interposer、chiplet 与引脚共同决定可见带宽、延迟和能耗。" eyebrow="PACKAGE" slide-id="S12">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#ffbe00">Compute die<small>执行与片上缓存</small></span><span style="--layer:#17d9ff">Interposer / links<small>通道与拓扑</small></span><span style="--layer:#b9ff33">HBM stacks<small>容量与并行 bank</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-MTH-002
-Learning objective: 把 pyCircuit 理解为可约束、可枚举的微架构行动空间。
-Duration: 2.5 min
-Visual intent: class: circuit-focus；以六类结构化对象代替自由文本修改。
-Evidence: experiments/artifacts/03/pipeline_summary.json
-Interaction: 请听众把一个“加深流水”的想法改写成参数、边界和不变量。
-Caveat: pyCircuit 的 Python 包导入名是 `pycircuit`；行动空间仍需项目约束定义。
-[Sources]
-- https://github.com/LinxISA/pyCircuit
-- /Users/zhoubot/Documents/janus_top_level_documents/pyCircuit_checkout/docs/PyCircuit_V5_Spec.md
+Slide-ID: S12
+Objective: 把“内存带宽”拆到封装、通道和 bank，而不是视作单个标量。
+Timing: 3 min
+Visual: 2.5D 封装切面，计算 die 与 HBM stack 通过 interposer 互连；前景标出三层职责。
+Interaction: 假设总带宽不变，讨论更多窄通道与更少宽通道对并发和冲突的影响。
+Sources: source-deck; course-synthesis
+Boundary: 图片为通用 2.5D 架构概念，不影射具体厂商封装。
+Narrative: 软件看到一个大内存空间，硬件实际面对多个通道、伪通道、bank 和物理链路。地址映射决定请求是否均衡，封装拓扑决定每字节代价。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# NoC：带宽不是均匀水池
 
-# 编译链不是后端细节，而是每次行动的**可审计路径**
-
-<script setup lang="ts">
-import PipelineStepper from '../../components/PipelineStepper.vue'
-</script>
-
-<PipelineStepper />
-
-<div class="flow" style="margin-top:.8rem">
-  <span class="flow-node">Python DSL</span><span class="flow-arrow">→</span>
-  <span class="flow-node">Circuit IR / MLIR</span><span class="flow-arrow">→</span>
-  <span class="flow-node">RTL</span><span class="flow-arrow">→</span>
-  <span class="flow-node">测量</span>
-</div>
+<FullBleedStage background="/generated/slides/s13-noc-congestion.png" title="NoC：带宽不是均匀水池" claim="局部热点、路由重叠和回压，会让总带宽充足的网络仍然拥塞。" eyebrow="ON-CHIP NETWORK" slide-id="S13">
+  <template #diagram><QueuePressure /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-MTH-001
-Learning objective: 识别一次 pyCircuit 修改在 Python、IR、RTL 和测量端的证据落点。
-Duration: 2 min
-Visual intent: class: circuit-focus；使用共享组件 PipelineStepper 演示逐级下降。
-Evidence: experiments/artifacts/03/pipeline_summary.json
-Interaction: Step/Play/Pause/Reset；每到一层说出应保存的工件。
-Caveat: 组件展示通用课程链；具体后端命令与版本由项目环境固定。
-[Sources]
-- https://github.com/LinxISA/pyCircuit
-- /Users/zhoubot/Documents/janus_top_level_documents/pyCircuit_checkout/docs/PyCircuit_V5_Spec.md
+Slide-ID: S13
+Objective: 说明 NoC 吞吐由拓扑、流量分布和缓冲共同决定。
+Timing: 3 min
+Visual: mesh NoC 中央出现洋红热点；前景队列模型通过 arrival 与 service 速率显示拥塞形成。
+Interaction: 提高 arrival 或降低 service，观察占用率达到 100% 后 backpressure 如何产生。
+Sources: course-model; source-deck
+Boundary: QueuePressure 是单队列教学抽象，不等同于完整 NoC 路由器模型。
+Narrative: 全芯片带宽求和可能很大，但热点链路仍会先饱和。下游 credit 消耗后，压力沿路由反向传播，最终让上游核心或 DMA 停顿。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 计算阵列周围的本地复用
 
-# 队列把并发设计变成一个**局部可判定契约**
-
-<script setup lang="ts">
-import CircuitDataflow from '../../components/CircuitDataflow.vue'
-</script>
-
-<CircuitDataflow />
+<FullBleedStage background="/generated/slides/s14-tile-cube.png" title="计算阵列周围的本地复用" claim="高吞吐来自操作数在阵列附近循环，而不是每次乘加都访问远端。" eyebrow="ACCELERATOR DATAFLOW" slide-id="S14">
+  <template #diagram><div class="diagram-dock architecture-chain"><span class="data">Left tile</span><i>→</i><span class="compute">Matrix array</span><i>↔</i><span class="memory">ACC tile</span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-102
-Learning objective: 用 valid/ready/fire 定义局部传输与 backpressure 观察点。
-Duration: 2 min
-Visual intent: class: circuit-focus；使用共享组件 CircuitDataflow 动态追踪队列传输。
-Evidence: experiments/artifacts/05/queue_summary.json
-Interaction: Play 后暂停；指出 blocked 周期中必须保持稳定的 payload。
-Caveat: 并非所有项目接口都采用同一命名，但传输条件必须可判定。
-[Sources]
-- experiments/tests/test_smoke.py
-- vendor/LinxCore/docs/spec/20-behavior/ifu.md
+Slide-ID: S14
+Objective: 用矩阵阵列展示本地 operand buffer 与 accumulator 如何提高复用。
+Timing: 3 min
+Visual: 中央矩阵计算立方体与三组本地存储；短复用回路清晰可见。
+Interaction: 选择 Left、Right 或 ACC，要求学生描述其生命周期、读取次数和写回时机。
+Sources: pto-spec; course-synthesis
+Boundary: Left、Right、ACC 是教学映射，不宣称 PTO 规定物理缓冲结构。
+Narrative: 虚拟 ISA 可以描述矩阵效果，但性能取决于实现如何分块、预取、双缓冲并累加。这里开始把软件可见操作映射为硬件数据流问题。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Tile 是软硬件共同选择
 
-# 观察点应贴近**架构承诺**，而不是贴满内部信号
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-  <div class="visual-frame" style="padding:1.3rem">
-    <h2>优先观察</h2>
-    <p>接受 / 拒绝、提交、异常、恢复、内存副作用</p>
-  </div>
-  <div class="visual-frame" style="padding:1.3rem">
-    <h2>谨慎观察</h2>
-    <p>私有队列索引、临时 tag、实现特定 stage 名称</p>
-  </div>
-</div>
-
-<div class="flow" style="margin-top:1.5rem">
-  <span class="flow-node">输入事务</span><span class="flow-arrow">→</span>
-  <span class="flow-node">架构事件</span><span class="flow-arrow">→</span>
-  <span class="flow-node">最终状态</span>
-</div>
+<FullBleedStage background="/generated/slides/s15-tload-tstore.png" title="Tile 是软硬件共同选择" claim="Tile 太小浪费复用，太大挤爆容量和端口；最优点来自共同约束。" eyebrow="HW/SW CO-DESIGN" slide-id="S15">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#17d9ff">Tensor shape<small>M × N × K</small></span><span style="--layer:#b9ff33">Scratchpad<small>capacity × banks × ports</small></span><span style="--layer:#ffbe00">Compute array<small>lanes × issue rate</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-102, NDF-MTH-003
-Learning objective: 为流水线变体选择跨实现稳定的架构观察点。
-Duration: 2 min
-Visual intent: class: evidence；比较架构观察点与易漂移内部信号。
-Evidence: experiments/artifacts/04/comparison.json
-Interaction: 给出 `iq_head=7` 与 `commit pc=...`，让听众选择等价判据。
-Caveat: 内部信号对调试仍有价值，但不应默认成为跨实现等价定义。
-[Sources]
-- vendor/LinxCore/docs/trace/linxtrace_v1.md
-- vendor/LinxCore/docs/spec/50-verification/contract-spine.md
+Slide-ID: S15
+Objective: 把 tiling 定义为算法形状、存储容量和执行阵列之间的联合设计。
+Timing: 3 min
+Visual: 三维 tensor 被规则切片，经 load engine 进入 banked scratchpad 和计算阵列。
+Interaction: 给定 128 KB scratchpad，让学生判断增大 M、N、K 三个 tile 维度分别改变什么。
+Sources: pto-spec; course-model
+Boundary: Tile 参数和容量为课程示例；PTO 定义语义而非唯一微架构映射。
+Narrative: 软件调度选择块形状，硬件决定块能否驻留、多少 bank 可并行访问以及阵列每周期消费多少元素。任何一侧单独优化都可能把压力转移到另一侧。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 双缓冲：用容量换重叠
 
-# 等价允许时序不同，但**承诺必须一致**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">Scalar：8 cycles</span>
-    <span class="flow-arrow">≠ 时序</span>
-    <span class="flow-node">Dual issue：5 cycles</span>
-    <span class="flow-arrow">= 架构结果</span>
-    <span class="flow-node">MATCH</span>
-  </div>
-</div>
-
-等价判据至少要写清：
-
-- 对齐键：指令 UID、提交序号或事务身份；
-- 比较域：结果、异常、内存副作用、最终状态；
-- 容许差异：周期、内部路径、暂态占用；
-- 终止条件：首个反例还是完整运行。
+<FullBleedStage background="/generated/slides/s16-double-buffer.png" title="双缓冲：用容量换重叠" claim="一块 buffer 服务计算，另一块 buffer 同时搬运下一 tile。" eyebrow="OVERLAP" slide-id="S16">
+  <template #diagram><div class="diagram-dock evidence-strip"><span>Phase A<b class="data">Fill B</b></span><span>Phase B<b class="compute">Compute A</b></span><span>Swap<b>1 boundary</b></span><span>Goal<b class="memory">Hide DMA</b></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-102
-Learning objective: 编写一个允许微架构时序差异的架构等价判据。
-Duration: 2.5 min
-Visual intent: class: compare；把周期数差异与架构匹配放在同一视觉句中。
-Evidence: experiments/artifacts/04/comparison.json
-Interaction: 让听众补全一个等价判据中的“对齐键”。
-Caveat: 架构匹配不自动证明 PPA、活性或公平性满足要求。
-[Sources]
-- experiments/tests/test_smoke.py
-- vendor/LinxCore/docs/trace/uid_contract.md
+Slide-ID: S16
+Objective: 展示双缓冲如何把数据搬运和计算重叠，并指出容量与同步代价。
+Timing: 3 min
+Visual: 两个相邻 buffer，一个填充、一个供给计算；路径颜色区分 DMA 与 compute。
+Interaction: 让学生推导稳定态吞吐是 max(Tload,Tcompute)，并找出启动与收尾气泡。
+Sources: course-model; source-deck
+Boundary: 忽略 DMA setup、bank 冲突和尾块不规则性，作为一阶模型。
+Narrative: 双缓冲不是“自动变快”，它要求两个阶段并行、容量加倍、边界同步正确，而且慢的一侧仍决定稳态节拍。模型应显式保留这些条件。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Bank conflict 与地址 swizzle
 
-# Trace 对比先做**身份对齐**，再谈差异
-
-<script setup lang="ts">
-import TraceComparator from '../../components/TraceComparator.vue'
-</script>
-
-<TraceComparator />
+<FullBleedStage background="/generated/slides/s17-bank-swizzle.png" title="Bank conflict 与地址 swizzle" claim="总容量相同，地址映射不同，瞬时带宽可以相差数倍。" eyebrow="SCRATCHPAD" slide-id="S17">
+  <template #diagram><BankConflictExplorer /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-102, NDF-MTH-003
-Learning objective: 解释两份不同节拍 trace 的标准化、对齐与差异报告流程。
-Duration: 2.5 min
-Visual intent: class: code-trace；使用共享组件 TraceComparator 高亮首个架构分歧。
-Evidence: experiments/artifacts/04/comparison.json; experiments/artifacts/06/crosscheck.json
-Interaction: 切换 scalar / dual-issue trace，定位第一个未对齐事件。
-Caveat: 如果身份在源头复用或丢失，后处理无法可靠恢复因果关系。
-[Sources]
-- vendor/LinxCore/docs/trace/uid_contract.md
-- vendor/LinxCore/docs/trace/linxtrace_v1.md
-- experiments/tests/test_smoke.py
+Slide-ID: S17
+Objective: 让学生看到 bank 映射是可建模、可验证的架构参数。
+Timing: 4 min
+Visual: 左侧所有请求撞向一个 bank，右侧经过 swizzle 均匀分散；前景柱状图可切换映射。
+Interaction: 点击 Naive stride / Swizzled，对比每个 bank 的请求数和理论服务周期。
+Sources: course-model; source-deck
+Boundary: 映射器只演示最简单顺序分布，未覆盖真实地址 XOR、端口与仲裁策略。
+Narrative: 平均带宽无法揭示瞬时结构冲突。一个小的地址变换可能无需增加容量或总线，就让全部 bank 同时工作，这是典型软硬件协同机会。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 三层调度看同一件事
 
-# 故意失败，证明**裁判独立**
-
-<div class="visual-frame" style="padding:1.4rem">
-  <div class="flow">
-    <span class="flow-node">Agent 修改候选</span><span class="flow-arrow">→</span>
-    <span class="flow-node">独立不变量检查</span><span class="flow-arrow">→</span>
-    <span class="flow-node warm">exit code 2</span><span class="flow-arrow">→</span>
-    <span class="flow-node">拒绝 + 保存反例</span>
-  </div>
-</div>
-
-<p style="margin-top:1.5rem"><strong>红灯成功条件：</strong>错误版本必须失败，而且失败原因必须是预期不变量。</p>
+<FullBleedStage background="/generated/slides/s18-scheduling-levels.png" title="三层调度看同一件事" claim="Task、Tile、Micro-op 分别管理全局依赖、本地复用和周期资源。" eyebrow="SCHEDULING" slide-id="S18">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#17d9ff">Task level<small>跨核 / 跨算子依赖</small></span><span style="--layer:#ffbe00">Tile level<small>容量、复用、DMA</small></span><span style="--layer:#b9ff33">Micro-op level<small>端口、队列、周期</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-002
-Learning objective: 说明 intentional failure 如何验证裁判没有被候选实现同化。
-Duration: 2 min
-Visual intent: class: experiment；把非零退出码呈现为测试系统的正向证据。
-Evidence: experiments/artifacts/07/expected_failure.json
-Interaction: 先让听众预测退出码与 stderr，再揭示证据。
-Caveat: “任何失败”都不算成功；必须命中预期违反项。
-[Sources]
-- experiments/tests/test_smoke.py
-- docs/NDF.md
+Slide-ID: S18
+Objective: 分离三个调度尺度，避免用单一“scheduler”解释所有性能行为。
+Timing: 3 min
+Visual: 三层透明调度平面悬浮于物理处理器；每层连接不同粒度的硬件队列。
+Interaction: 给出一次矩阵乘停顿，让学生判断原因属于 task、tile 还是 micro-op 层。
+Sources: course-synthesis; pto-spec; linxcore
+Boundary: 三层是课程分析框架，不是 PTO 或 LinxCore 的规范术语集合。
+Narrative: Task 层决定哪些大工作可并行，Tile 层决定数据驻留与搬运，Micro-op 层处理端口和依赖。跨层因果链必须保持可追踪，Agent 才不会在错误层修问题。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 从工作负载到利用率的因果链
 
-# 优化者与裁判共享代码，就会共享**盲点**
-
-```mermaid
-flowchart LR
-  A[Agent / optimizer] -->|propose patch| C[Candidate]
-  C --> J[Independent judge]
-  R[Fixed reference + invariants] --> J
-  J -->|accept / reject + evidence| M[Decision memory]
-  M --> A
-```
-
-三条隔离线：固定事实源、只读裁判、不可覆盖的失败工件。
+<FullBleedStage background="/generated/slides/s19-performance-causality.png" title="从工作负载到利用率的因果链" claim="不要直接从代码跳到性能数字；先追踪每一级结构状态。" eyebrow="CAUSAL MODEL" slide-id="S19">
+  <template #diagram><div class="diagram-dock architecture-chain"><span>Workload</span><i>→</i><span>Locality</span><i>→</i><span>Memory</span><i>→</i><span>Queues</span><i>→</i><span>Compute</span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-002
-Learning objective: 画出候选生成器、参考模型与独立裁判的权限边界。
-Duration: 1.5 min
-Visual intent: class: architecture；用单向权限图解释为何裁判不能被优化 Agent 修改。
-Evidence: experiments/artifacts/07/expected_failure.json
-Interaction: 让听众指出图中最危险的一条反向写边。
-Caveat: 进程隔离不是充分条件；还需版本固定、权限和产物校验。
-[Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
+Slide-ID: S19
+Objective: 建立后续 Agentic Circuit 模型必须保留的端到端因果结构。
+Timing: 3 min
+Visual: 工作负载几何依次转化为局部性、层级流量、队列占用、调度和计算利用率。
+Interaction: 从“利用率只有 22%”反向追问，每一级需要什么证据才能排除。
+Sources: course-synthesis; course-model
+Boundary: 因果链是分析顺序；真实系统存在反馈与并行路径，不是严格单向流水。
+Narrative: 一个可信模型应能解释数值从何而来：工作集决定复用，复用决定层级流量，流量决定队列压力，压力决定供给节拍，最终才形成利用率。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Agentic Circuit：让架构假设可执行
 
-# 可审计证据不是一张图，而是一份**可重放包**
-
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
-  <div class="visual-frame" style="padding:1rem"><h2>Provenance</h2><p>commit<br>配置<br>工具版本</p></div>
-  <div class="visual-frame" style="padding:1rem"><h2>Execution</h2><p>命令<br>stdout/stderr<br>退出码</p></div>
-  <div class="visual-frame" style="padding:1rem"><h2>Result</h2><p>JSON/CSV<br>hash<br>判定</p></div>
-</div>
-
-<p style="margin-top:1.5rem">最小问题：<strong>另一个人能否在不知道结论的前提下，重放并得到同一字节结果？</strong></p>
+<FullBleedStage background="/generated/slides/s20-agentic-circuit-map.png" title="Agentic Circuit：让架构假设可执行" claim="Agent 负责提出和修改模型；独立实验负责裁判。" eyebrow="MODELING INSTRUMENT" slide-id="S20">
+  <template #diagram><div class="diagram-dock model-map"><div class="architecture-chain"><span>Physical idea</span><i>→</i><span>NDF graph</span><i>→</i><span>pyCircuit</span><i>→</i><span>Evidence</span></div><ArchitectureZoom level="queue" :active-path="['core','queue','cycle']" /></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-003, NDF-OFF-001
-Learning objective: 列出可重放证据包的来源、执行和结果三类必需信息。
-Duration: 2 min
-Visual intent: class: evidence；三列展示证据包而非孤立截图。
-Evidence: experiments/artifacts/summary.json
-Interaction: 请听众指出自己项目的证据包还缺哪一列。
-Caveat: 字节级确定性适合本课微型实验；含随机性实验需记录种子与容差协议。
-[Sources]
-- experiments/tests/test_smoke.py
-- docs/GOAL_PROMPT.md
+Slide-ID: S20
+Objective: 在完成体系结构铺垫后，准确定位 NDF、pyCircuit 与 Agent 的工具角色。
+Timing: 3 min
+Visual: 物理处理器投影为 module、queue、link 图；前景展示 idea→NDF→pyCircuit→evidence。
+Interaction: 选中一个物理队列，口述其 NDF 节点、pyCircuit 状态和需要记录的证据。
+Sources: ndf; pycircuit; course-synthesis
+Boundary: NDF 图是课程设计投影；除明确引用外不冒充 PTO 规范或 LinxCore RTL。
+Narrative: Agentic Circuit 不是新体系结构，而是一套把架构主张写成可运行模型的工作方法。Agent 可以探索设计空间，但每个变体必须带边界、来源和独立可重放实验。
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 第一课挑战：你会改哪一层
 
-# 主张写成六格卡片，Agent 才知道**何时停手**
-
-| 字段 | 示例 |
-|---|---|
-| Claim | 双发射不改变架构结果 |
-| Scope | 4 条指令、固定初始状态 |
-| Oracle | 归一化提交 trace |
-| Metric | cycles；architectural_match |
-| Threshold | match=true 且 cycles 更少 |
-| Stop | 首个不匹配立即拒绝 |
-
-<div class="visual-frame" style="padding:.55rem 1rem;margin-top:.45rem">
-  <div class="flow"><span class="flow-node">Claim</span><span class="flow-arrow">+</span><span class="flow-node">Oracle</span><span class="flow-arrow">+</span><span class="flow-node">Stop</span><span class="flow-arrow">=</span><span class="flow-node">可执行研究任务</span></div>
-</div>
+<FullBleedStage background="/generated/slides/s21-design-challenge.png" title="第一课挑战：你会改哪一层" claim="给定同一工作负载，选择一个改动，并预测它会改变哪条证据链。" eyebrow="DESIGN CHALLENGE" slide-id="S21">
+  <template #diagram><ExperimentPanel /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-003, NDF-LRN-102
-Learning objective: 将模糊研究主张改写成含范围、裁判、阈值和停止条件的实验契约。
-Duration: 2 min
-Visual intent: class: evidence；六格主张模板对应实验 04 的真实字段。
-Evidence: experiments/artifacts/04/comparison.json
-Interaction: 30 秒改写：“这个设计应该更快。”
-Caveat: 阈值应在看结果前确定，避免事后移动球门。
-[Sources]
-- experiments/artifacts/04/comparison.json
-- docs/NDF.md
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# 每轮实验只改变一个**可解释维度**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">固定基线</span><span class="flow-arrow">→</span>
-    <span class="flow-node">单一动作</span><span class="flow-arrow">→</span>
-    <span class="flow-node">正确性门</span><span class="flow-arrow">→</span>
-    <span class="flow-node">性能测量</span><span class="flow-arrow">→</span>
-    <span class="flow-node">写回决策</span>
-  </div>
-</div>
-
-- 先过正确性，再看性能；
-- 保存失败候选，不只保存赢家；
-- 每轮生成机器可读记录；
-- 下一轮只能读取已接受的设计记忆。
-
-<!--
-NDF-ID: NDF-MTH-001, NDF-MTH-002
-Learning objective: 设计一个单变量、先正确性后性能的实验循环。
-Duration: 2 min
-Visual intent: class: experiment；线性门控流程强调失败不会进入测量与记忆。
-Evidence: experiments/artifacts/summary.json
-Interaction: 让听众指出“同时改队列深度和发射宽度”的归因问题。
-Caveat: 真实设计常有交互项；先建立单变量基线，再显式设计因子实验。
-[Sources]
-- experiments/tests/test_smoke.py
-- docs/GOAL_PROMPT.md
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# Agent 的边界是**五件事**，不是一条 prompt
-
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem">
-  <div class="visual-frame" style="padding:.8rem"><h2>动作</h2><p>可改什么</p></div>
-  <div class="visual-frame" style="padding:.8rem"><h2>传感器</h2><p>能看什么</p></div>
-  <div class="visual-frame" style="padding:.8rem"><h2>裁判</h2><p>谁判对错</p></div>
-  <div class="visual-frame" style="padding:.8rem"><h2>记忆</h2><p>保留什么</p></div>
-  <div class="visual-frame" style="padding:.8rem"><h2>接受规则</h2><p>何时写回</p></div>
-</div>
-
-<p style="margin-top:1.5rem">缺少任何一项，Agent 都会把探索退化成“反复改代码”。</p>
-
-<!--
-NDF-ID: NDF-MTH-002, NDF-LRN-102
-Learning objective: 定义体系结构 Agent 的动作、传感器、裁判、记忆和接受规则。
-Duration: 2 min
-Visual intent: class: architecture；五栏能力契约为第二课 Agent 闭环埋点。
-Evidence: experiments/artifacts/07/expected_failure.json; experiments/artifacts/08/design_points.csv
-Interaction: 让听众为“加深 issue queue”各填一个字段。
-Caveat: 本课只定义框架；完整设计空间与 Pareto 探索在第二课展开。
-[Sources]
-- docs/NDF.md
-- docs/GOAL_PROMPT.md
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# 接受一个设计，需要同时回答**对、好、懂**
-
-<div class="visual-frame" style="padding:1.3rem">
-  <div class="flow">
-    <span class="flow-node">对：架构等价</span><span class="flow-arrow">∧</span>
-    <span class="flow-node">好：指标过线</span><span class="flow-arrow">∧</span>
-    <span class="flow-node">懂：差异可解释</span><span class="flow-arrow">=</span>
-    <span class="flow-node">ACCEPT</span>
-  </div>
-</div>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
-  <blockquote><strong>Reject：</strong>任何硬约束失败。</blockquote>
-  <blockquote><strong>Continue：</strong>正确但证据不足或收益不稳定。</blockquote>
-</div>
-
-<!--
-NDF-ID: NDF-MTH-001, NDF-MTH-003
-Learning objective: 区分接受、拒绝和继续探索三种决策。
-Duration: 2 min
-Visual intent: class: evidence；以三项合取门展示接受条件。
-Evidence: experiments/artifacts/04/comparison.json; experiments/artifacts/08/design_points.csv
-Interaction: 给出“更快但 trace 不匹配”，全班同时做 ACCEPT/REJECT 手势。
-Caveat: “可解释”不是要求机制简单，而是要求因果链可追踪。
-[Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# 练习：把“做一个更快流水线”改写成**可审计任务**
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-  <div class="visual-frame" style="padding:1.2rem">
-    <h2>输入</h2>
-    <p>一个 4 级标量流水线</p>
-    <p>候选动作：增加第二发射槽</p>
-    <p>现有证据：输入 / 提交 trace</p>
-  </div>
-  <div class="visual-frame" style="padding:1.2rem">
-    <h2>小组产出</h2>
-    <ol>
-      <li>1 条 NDF 要求</li>
-      <li>3 个架构观察点</li>
-      <li>1 个 intentional failure</li>
-      <li>接受 / 拒绝 / 停止条件</li>
-    </ol>
-  </div>
-</div>
-
-<p class="muted" style="margin-top:1rem">两人一组：2 分钟设计，1 分钟交换审计，1 分钟全班收敛。</p>
-
-<!--
-NDF-ID: NDF-LRN-101, NDF-LRN-102
-Learning objective: 综合运用分层、NDF、观察点、独立裁判和停止条件。
-Duration: 4 min
-Visual intent: class: quiz；输入与交付物双栏，方便现场计时和巡视。
-Evidence: experiments/artifacts/03/pipeline_summary.json; experiments/artifacts/04/comparison.json; experiments/artifacts/07/expected_failure.json
-Interaction: 2 人小组练习；讲师在 2:00 时要求交换审计。
-Caveat: 练习答案不唯一，但必须能被另一组执行和否证。
-[Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# 一个合格答案，必须让陌生人**不用猜**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">要求：提交序列不变</span><span class="flow-arrow">→</span>
-    <span class="flow-node">观察：UID / result / exception</span><span class="flow-arrow">→</span>
-    <span class="flow-node">反例：交换两条依赖提交</span><span class="flow-arrow">→</span>
-    <span class="flow-node">门：match=true</span>
-  </div>
-</div>
-
-复核四问：
-
-1. 主张能否被反例推翻？
-2. 观察点是否跨微架构稳定？
-3. 裁判是否独立于候选修改？
-4. 证据能否从固定输入重放？
-
-<!--
-NDF-ID: NDF-LRN-101, NDF-LRN-102, NDF-MTH-002
-Learning objective: 用四问清单审计小组练习答案。
-Duration: 2 min
-Visual intent: class: evidence；给出一条可执行参考链并配审计清单。
-Evidence: experiments/artifacts/04/comparison.json; experiments/artifacts/07/expected_failure.json
-Interaction: 邀请一组用 20 秒读出自己的完整链，另一组只提一个反例。
-Caveat: 参考答案展示方法，不规定唯一微架构方案。
-[Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# 证据最终要写回**设计记忆**
-
-<div class="visual-frame" style="padding:1.4rem">
-  <div class="flow">
-    <span class="flow-node">固定规范事实</span><span class="flow-arrow">→</span>
-    <span class="flow-node">可追踪 NDF</span><span class="flow-arrow">→</span>
-    <span class="flow-node">受约束 pyCircuit 行动</span><span class="flow-arrow">→</span>
-    <span class="flow-node">独立证据</span><span class="flow-arrow">→</span>
-    <span class="flow-node">决策记录</span>
-  </div>
-</div>
-
-> 下一课：把这套方法放进 LinxCore 小模块，连接软件 trace、硬件 trace 与设计空间探索。
-
-<p class="lede" style="margin-top:1.5rem"><strong>带走一句话：</strong>Agent 可以扩展行动，但不能替你定义真相。</p>
-
-<!--
-NDF-ID: NDF-MTH-001, NDF-MTH-002, NDF-MTH-003, NDF-SRC-003
-Learning objective: 汇总第一课方法，并为第二课的 LinxCore 与 Agent 设计探索建立接口。
-Duration: 2 min
-Visual intent: class: hero；回到开场闭环，以“决策记录”而非“代码”收束。
-Evidence: experiments/artifacts/summary.json; docs/NDF.md
-Interaction: 回看第 3 页自己选择的最陌生动作；用一句话说出现在的答案。
-Caveat: LinxCore 在下一课仍只作为模块化处理器案例，不是 PTO 官方实现。
-[Sources]
-- docs/NDF.md
-- materials/SOURCES.yaml
-- docs/GOAL_PROMPT.md
+Slide-ID: S21
+Objective: 让学生用本课模型提出一个受约束的体系结构假设，并为第二课微架构验证做铺垫。
+Timing: 5 min
+Visual: 一个处理器分叉为计算、带宽、缓存、队列多个设计；前景可切换 Baseline、2×BW、2×Cache、Balanced。
+Interaction: 小组选择一个变体，写下预测：Roofline 工作点、片外流量、队列压力各如何变化。
+Sources: course-model; course-synthesis
+Boundary: 面板结果是定性教学模型，第二课再用周期模型检查哪些预测站得住。
+Narrative: 好的设计假设必须写出不变量、可控变量、预期指标和失败条件。下一课进入 LinxCore，把宏观判断逐级落实到前端、ROB、issue、执行和 LSU。
 -->

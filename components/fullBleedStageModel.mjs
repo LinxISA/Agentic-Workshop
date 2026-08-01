@@ -1,11 +1,12 @@
 const slideAssetPattern = /^\/generated\/slides\/s\d{2}-[a-z0-9-]+\.png$/
 
-export function buildStageStyle(background, position = 'center') {
+export function buildStageStyle(background, position = 'center', base = '/') {
   if (!slideAssetPattern.test(background)) {
     throw new Error('background must be a local generated slide asset')
   }
+  const prefix = base === '/' ? '' : `/${base.replace(/^\/+|\/+$/g, '')}`
   return {
-    backgroundImage: `url('${background}')`,
+    backgroundImage: `url('${prefix}${background}')`,
     backgroundPosition: position,
     backgroundSize: 'cover',
   }

@@ -13,7 +13,7 @@ const props = defineProps({
   overlayTone: { type: String, default: 'cyan' },
 })
 
-const stageStyle = computed(() => buildStageStyle(props.background, props.position))
+const stageStyle = computed(() => buildStageStyle(props.background, props.position, import.meta.env.BASE_URL))
 const scrimStyle = computed(() => buildScrimStyle(props.focus))
 </script>
 
@@ -74,8 +74,8 @@ const scrimStyle = computed(() => buildScrimStyle(props.focus))
 .full-bleed-stage__copy {
   position: absolute;
   z-index: 3;
-  top: 54px;
-  width: min(660px, 52%);
+  top: 42px;
+  width: min(700px, 58%);
 }
 
 .focus-left .full-bleed-stage__copy { left: 68px; text-align: left; }
@@ -85,7 +85,7 @@ const scrimStyle = computed(() => buildScrimStyle(props.focus))
 .stage-eyebrow {
   margin: 0 0 10px;
   color: var(--ss-cyan);
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: .18em;
   text-transform: uppercase;
@@ -94,7 +94,7 @@ const scrimStyle = computed(() => buildScrimStyle(props.focus))
 h1 {
   margin: 0;
   max-width: 100%;
-  font-size: clamp(42px, 4.4vw, 64px);
+  font-size: clamp(36px, 3.7vw, 52px);
   line-height: 1.04;
   letter-spacing: -.04em;
   text-wrap: balance;
@@ -102,10 +102,10 @@ h1 {
 }
 
 .stage-claim {
-  margin: 18px 0 0;
-  max-width: 620px;
+  margin: 12px 0 0;
+  max-width: 580px;
   color: rgba(245,248,255,.88);
-  font-size: clamp(21px, 2vw, 28px);
+  font-size: clamp(17px, 1.65vw, 22px);
   font-weight: 560;
   line-height: 1.34;
   text-shadow: 0 3px 20px rgba(0,0,0,.82);
@@ -117,7 +117,7 @@ h1 {
 .full-bleed-stage__diagram {
   position: absolute;
   z-index: 2;
-  inset: 170px 54px 62px;
+  inset: 190px 54px 62px;
   pointer-events: auto;
 }
 

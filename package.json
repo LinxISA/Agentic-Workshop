@@ -16,13 +16,16 @@
     "export": "npm run export:1 && npm run export:2",
     "experiments": "bash experiments/smoke.sh",
     "test:blueprint": "node scripts/check-slide-blueprint.mjs",
+    "test:images": "node --test qa/image-manifest.spec.mjs",
+    "test:models": "node --test qa/architecture-models.spec.mjs qa/full-bleed-contracts.spec.mjs",
     "test:content": "node scripts/check-content.mjs",
     "test:offline": "node scripts/check-offline.mjs",
     "test:sources": "bash scripts/check-sources.sh",
     "traceability": "node scripts/build-traceability.mjs",
+    "images:manifest": "node scripts/write-image-manifest.mjs",
     "qa:render": "node scripts/render-qa.mjs",
     "qa:contact": "node scripts/make-contact-sheets.mjs",
-    "test": "npm run test:sources && npm run experiments && npm run test:content && npm run build && npm run test:offline",
+    "test": "npm run test:sources && npm run test:blueprint && npm run test:images && npm run test:models && npm run experiments && npm run test:content && npm run build && npm run test:offline",
     "preview": "vite preview --host 127.0.0.1 --port 4173"
   },
   "devDependencies": {

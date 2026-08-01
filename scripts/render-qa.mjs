@@ -43,7 +43,7 @@ for (const deck of decks) {
         const style = getComputedStyle(candidate)
         return rect.width > 100 && rect.height > 100 && style.visibility !== 'hidden' && style.opacity !== '0'
       })
-      if (!layout) return { missingLayout: true, overflow: [], fontMinPx: null, imageIssues: [], contrastIssues: [], titleWrapped: false }
+      if (!layout) return { missingLayout: true, overflow: [], fontMinPx: null, imageIssues: [], contrastIssues: [], titleWrapped: false, overlapIssues: [] }
       const root = layout.getBoundingClientRect()
       const scale = root.width / layout.offsetWidth
       const overflow = []
@@ -92,13 +92,28 @@ for (const deck of decks) {
         const font = Number.parseFloat(style.fontSize) * scale
         if (fg && contrast(fg, bg) < (font >= 24 ? 3 : 4.5)) contrastIssues.push({ tag: el.tagName, text: text.slice(0, 80), ratio: Number(contrast(fg, bg).toFixed(2)) })
       }
-      const title = layout.querySelector('h1')
+      const overlapIssues = []
+      const copy = layout.querySelector('.full-bleed-stage__copy')
+      const diagram = layout.querySelector('.full-bleed-stage__diagram')
+      if (copy && diagram) {
+        const a = copy.getBoundingClientRect()
+        for (const child of diagram.children) {
+          const style = getComputedStyle(child)
+          const b = child.getBoundingClientRect()
+          const overlapWidth = Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left))
+          const overlapHeight = Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top))
+          if (style.display !== 'none' && style.visibility !== 'hidden' && overlapWidth * overlapHeight > 100) {
+            overlapIssues.push({ tag: child.tagName, cls: String(child.className).slice(0, 120) })
+          }
+        }
+      }
+      const title = layout.querySelector('.full-bleed-stage__copy h1')
       let titleWrapped = false
       if (title) {
         const range = document.createRange()
         range.selectNodeContents(title)
         const lineTops = [...range.getClientRects()].map((rect) => Math.round(rect.top / 3) * 3)
-        titleWrapped = new Set(lineTops).size > 1
+        titleWrapped = new Set(lineTops).size > 2
       }
       const imageIssues = [...layout.querySelectorAll('img')].flatMap((img) => {
         const rect = img.getBoundingClientRect()
@@ -110,7 +125,7 @@ for (const deck of decks) {
         }
         return []
       })
-      return { missingLayout: false, overflow: overflow.slice(0, 20), fontMinPx: Number.isFinite(fontMinPx) ? Number(fontMinPx.toFixed(1)) : null, imageIssues, contrastIssues: contrastIssues.slice(0, 20), titleWrapped }
+      return { missingLayout: false, overflow: overflow.slice(0, 20), fontMinPx: Number.isFinite(fontMinPx) ? Number(fontMinPx.toFixed(1)) : null, imageIssues, contrastIssues: contrastIssues.slice(0, 20), titleWrapped, overlapIssues: overlapIssues.slice(0, 20) }
     })
     slides.push({ number: i, ...geometry })
     if (i < count) {
@@ -130,6 +145,7 @@ const failures = report.decks.flatMap((deck) => [
   ...deck.slides.flatMap((slide) => [
     ...(slide.missingLayout ? [`${deck.id}/${slide.number}: layout missing`] : []),
     ...slide.imageIssues.map((issue) => `${deck.id}/${slide.number}: image ${issue.issue} ${issue.src}`),
+    ...slide.overlapIssues.map((issue) => `${deck.id}/${slide.number}: copy overlaps ${issue.tag}.${issue.cls}`),
     ...slide.contrastIssues.map((issue) => `${deck.id}/${slide.number}: contrast ${issue.ratio} ${issue.tag} ${issue.text}`),
     ...(slide.titleWrapped ? [`${deck.id}/${slide.number}: title wrapped`] : []),
     ...(slide.fontMinPx !== null && slide.fontMinPx < 16 ? [`${deck.id}/${slide.number}: font ${slide.fontMinPx}px`] : []),

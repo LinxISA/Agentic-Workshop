@@ -10,6 +10,13 @@ test('buildStageStyle covers the complete slide with the requested local image',
   })
 })
 
+test('buildStageStyle respects the Slidev base path for offline subdirectory builds', () => {
+  assert.equal(
+    buildStageStyle('/generated/slides/s01-architecture-first.png', 'center', '/session-1/').backgroundImage,
+    "url('/session-1/generated/slides/s01-architecture-first.png')",
+  )
+})
+
 test('buildStageStyle rejects remote and non-slide assets', () => {
   assert.throws(() => buildStageStyle('https://example.com/image.png'), /local generated slide asset/)
   assert.throws(() => buildStageStyle('/generated/main-hero.png'), /local generated slide asset/)
