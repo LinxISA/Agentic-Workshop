@@ -8,6 +8,9 @@ const digest = async path => createHash('sha256').update(await readFile(path)).d
 test('every slide has one reviewed, unique, offline ImageGen asset', async () => {
   const manifest = JSON.parse(await readFile('assets/generated/prompts.yaml', 'utf8'))
   assert.equal(manifest.generator, 'OpenAI ImageGen')
+  assert.equal(manifest.provenance_status, 'reconstructed_after_generation')
+  assert.equal(manifest.original_call_metadata_available, false)
+  assert.match(manifest.prompt_record, /original ImageGen call-time prompt metadata was not retained/)
   assert.equal(manifest.assets.length, 42)
   assert.equal(new Set(manifest.assets.map(item => item.slide)).size, 42)
   assert.equal(new Set(manifest.assets.map(item => item.asset)).size, 42)

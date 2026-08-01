@@ -10,6 +10,9 @@ import {
   effectiveBandwidth,
   rooflineGeometry,
   paretoPosition,
+  nocMeshEdges,
+  doubleBufferTimeline,
+  hierarchySweepPoint,
 } from '../components/architectureModels.mjs'
 
 test('roofline point selects the lower of compute and bandwidth ceilings', () => {
@@ -70,4 +73,25 @@ test('pareto plot maps higher performance upward', () => {
   assert.ok(high.x > low.x)
   assert.ok(high.y < low.y)
   assert.deepEqual(low, { x: 125.45, y: 236 })
+})
+
+test('4x4 NoC mesh contains exactly 12 horizontal and 12 vertical links', () => {
+  const edges = nocMeshEdges({ size: 4, hotspot: 80, clustered: true })
+  assert.equal(edges.length, 24)
+  assert.equal(edges.filter(edge => edge.orientation === 'horizontal').length, 12)
+  assert.equal(edges.filter(edge => edge.orientation === 'vertical').length, 12)
+  assert.ok(edges.every(edge => edge.to - edge.from === 1 || edge.to - edge.from === 4))
+})
+
+test('single-buffer timeline never overlaps load, compute, and store', () => {
+  const rows = doubleBufferTimeline(false)
+  for (let cycle = 1; cycle < rows[0].length; cycle += 1) {
+    assert.ok(rows.filter(row => row[cycle] !== '·').length <= 1)
+  }
+  assert.ok(doubleBufferTimeline(true).some((row, rowIndex, all) => row.slice(1).some((value, index) => value !== '·' && all.some((other, otherIndex) => otherIndex !== rowIndex && other[index + 1] !== '·'))))
+})
+
+test('deterministic hierarchy model reproduces the baseline artifact', async () => {
+  const artifact = JSON.parse(await (await import('node:fs/promises')).readFile('experiments/artifacts/10/hierarchy_sweep.json', 'utf8'))
+  assert.deepEqual(hierarchySweepPoint({ workloadBytes: artifact.workload_bytes, hitRate: .75, queueDepth: 8, baseCycles: artifact.base_cycles }), artifact.variants.baseline)
 })

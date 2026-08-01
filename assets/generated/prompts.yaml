@@ -1,7 +1,9 @@
 {
   "generator": "OpenAI ImageGen",
   "policy": "one unique, locally bundled, visually reviewed architecture background per slide",
-  "prompt_record": "generation specification preserved from the brief, slide claim, and foreground overlay contract",
+  "prompt_record": "reconstructed prompt specification; original ImageGen call-time prompt metadata was not retained",
+  "provenance_status": "reconstructed_after_generation",
+  "original_call_metadata_available": false,
   "assets": [
     {
       "slide": "S01",

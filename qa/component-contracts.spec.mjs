@@ -12,8 +12,11 @@ test('planned architecture interactions are present on their assigned slides', a
 
 test('experiment comparison is backed by the checked-in artifact',async()=>{
   const component=await readFile('components/ArtifactComparison.vue','utf8')
+  const baseline=await readFile('components/BaselineExperiment.vue','utf8')
   const artifact=JSON.parse(await readFile('experiments/artifacts/10/hierarchy_sweep.json','utf8'))
   assert.match(component,/hierarchy_sweep\.json/)
+  assert.match(baseline,/hierarchySweepPoint/)
+  assert.match(baseline,/Run JS model/)
   assert.equal(artifact.variants.baseline.total_cycles,1192)
   assert.equal(artifact.variants.balanced.normalized_performance,1)
 })

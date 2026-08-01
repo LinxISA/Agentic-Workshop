@@ -70,3 +70,38 @@ export function paretoPosition({ area, performance }) {
     y: round(Math.max(40, Math.min(260, 300 - performance * 40)), 2),
   }
 }
+
+export function nocMeshEdges({ size = 4, hotspot = 35, clustered = false }) {
+  const nodes = Array.from({ length: size * size }, (_, id) => ({ id, x: id % size, y: Math.floor(id / size) }))
+  const edges = []
+  for (const node of nodes) {
+    if (node.x + 1 < size) edges.push({ from: node.id, to: node.id + 1, orientation: 'horizontal' })
+    if (node.y + 1 < size) edges.push({ from: node.id, to: node.id + size, orientation: 'vertical' })
+  }
+  return edges.map((edge, index) => {
+    const central = [5, 6, 9, 10].includes(edge.from) || [5, 6, 9, 10].includes(edge.to)
+    return { ...edge, load: Math.min(100, 18 + (clustered && central ? hotspot : Math.round(hotspot / 3)) + index % 3) }
+  })
+}
+
+export function doubleBufferTimeline(enabled) {
+  return enabled
+    ? [['LOAD','A','B','C','D','·','·'],['COMPUTE','·','A','B','C','D','·'],['STORE','·','·','A','B','C','D']]
+    : [['LOAD','A','·','·','B','·','·'],['COMPUTE','·','A','·','·','B','·'],['STORE','·','·','A','·','·','B']]
+}
+
+export function hierarchySweepPoint({ workloadBytes, hitRate, queueDepth, baseCycles = 1000 }) {
+  const dramBytes = Math.round(workloadBytes * (1 - hitRate))
+  const outstandingMisses = Math.round(dramBytes / 32)
+  const stallCycles = Math.max(0, (outstandingMisses - queueDepth) * 8)
+  const totalCycles = baseCycles + stallCycles
+  return {
+    dram_bytes: dramBytes,
+    hit_rate: hitRate,
+    normalized_performance: round(baseCycles / totalCycles, 4),
+    outstanding_misses: outstandingMisses,
+    queue_depth: queueDepth,
+    stall_cycles: stallCycles,
+    total_cycles: totalCycles,
+  }
+}

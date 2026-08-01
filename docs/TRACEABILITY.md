@@ -1,6 +1,6 @@
 # Course Traceability Matrix
 
-Generated from the authoritative deck contract. `COURSE-Sxx` identifiers are course slide records; PTO, LinxCore, and pyCircuit claims retain their repository paths.
+Generated from the authoritative deck contract. `COURSE-Sxx` identifiers are course slide records. The mappings below are separate verified examples; they are not presented as one cross-layer semantic chain.
 
 | Course record | Session | Claim | Overlay | Sources | Boundary |
 |---|---:|---|---|---|---|
@@ -47,10 +47,10 @@ Generated from the authoritative deck contract. `COURSE-Sxx` identifiers are cou
 | COURSE-S41 | 2 | 性能、流量、面积、功耗和复杂度之间没有单一冠军。 | ParetoFrontier | `course-model`, `course-synthesis` | 当前 cost 指标为教学代理量，不替代综合、时序和功耗工具。 |
 | COURSE-S42 | 2 | 从工作负载到周期事件，保持层次、因果、来源和可复现性。 | ArchitectureZoom | `course-synthesis` | 总结图表示方法论关系，不声称任何单一模型覆盖全部真实处理器行为。 |
 
-## Verified cross-layer example
+## Verified mappings
 
-- Course requirement: `NDF-MTH-001` in `docs/NDF.md`.
-- PTO semantic symbol: `BundleIsActive()` in `vendor/pto-spec/asl/bundle/state.asl:143`.
-- pyCircuit model: `vendor/pyCircuit/designs/IssueQueue/issq.py`.
-- LinxCore implementation symbol: `build_rob_ctrl_stage()` in `vendor/LinxCore/src/bcc/backend/rob.py:217`.
-- Executable evidence: `vendor/pyCircuit/designs/IssueQueue/tb_issq.py`.
+| Scope | Claim | Source | Evidence |
+|---|---|---|---|
+| separate example | PTO bundle-active state is implemented and directly asserted | `vendor/pto-spec/asl/bundle/state.asl` | `vendor/pto-spec/tests/asl/bundle-tests.asl` |
+| separate example | The pyCircuit IssueQueue build is instantiated by its testbench | `vendor/pyCircuit/designs/IssueQueue/issq.py` | `vendor/pyCircuit/designs/IssueQueue/tb_issq.py` |
+| separate example | LinxCore ROB control is wired into the ROB bank | `vendor/LinxCore/src/bcc/backend/rob.py` | `vendor/LinxCore/src/bcc/backend/modules/rob_bank.py` |

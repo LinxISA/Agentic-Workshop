@@ -4,8 +4,8 @@ import { resolve } from 'node:path'
 
 const base = process.env.SUMMERSCHOOL_PREVIEW_URL || 'http://127.0.0.1:4173'
 const allDecks = [
-  { id: 'session-1', source: 'decks/session-1/slides.md' },
-  { id: 'session-2', source: 'decks/session-2/slides.md' },
+  { id: 'session-1', source: 'decks/session-1/slides.md', interactive: [5,9,13,16,17,21] },
+  { id: 'session-2', source: 'decks/session-2/slides.md', interactive: [2,5,6,7,8,9,11,12,13,14,15,16,17,19,20] },
 ]
 const selected = new Set((process.env.SUMMERSCHOOL_QA_DECKS || 'session-1,session-2').split(','))
 const decks = allDecks.filter((deck) => selected.has(deck.id))
@@ -158,10 +158,10 @@ for (const deck of decks) {
       } else await control.click()
       await page.waitForTimeout(200)
       const after = await page.locator('.slidev-layout:visible .full-bleed-stage__diagram').innerHTML()
-      interactionTested = before !== after || tag === 'INPUT'
+      interactionTested = before !== after
       await page.screenshot({ path: resolve(interactionDir, `${String(i).padStart(2, '0')}.png`) })
     }
-    slides.push({ number: i, interactionTested, ...geometry })
+    slides.push({ number: i, expectedInteraction: deck.interactive.includes(i), interactionTested, ...geometry })
     if (i < count) {
       await page.evaluate(() => document.activeElement?.blur())
       await page.keyboard.press('ArrowRight')
@@ -180,6 +180,7 @@ const failures = report.decks.flatMap((deck) => [
   ...deck.failedResponses.map((failure) => `${deck.id}: local response failure ${failure}`),
   ...deck.slides.flatMap((slide) => [
     ...(slide.missingLayout ? [`${deck.id}/${slide.number}: layout missing`] : []),
+    ...(slide.expectedInteraction && !slide.interactionTested ? [`${deck.id}/${slide.number}: expected interaction did not change rendered state`] : []),
     ...(!slide.backgroundLoaded ? [`${deck.id}/${slide.number}: expected full-bleed background not loaded`] : []),
     ...slide.imageIssues.map((issue) => `${deck.id}/${slide.number}: image ${issue.issue} ${issue.src}`),
     ...slide.overlapIssues.map((issue) => `${deck.id}/${slide.number}: copy overlaps ${issue.tag}.${issue.cls}`),

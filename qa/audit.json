@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T21:56:16.383Z",
+  "generatedAt": "2026-08-01T22:11:46.886Z",
   "viewport": [
     1920,
     1080
@@ -14,6 +14,7 @@
       "slides": [
         {
           "number": 1,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -27,6 +28,7 @@
         },
         {
           "number": 2,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -40,6 +42,7 @@
         },
         {
           "number": 3,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -53,6 +56,7 @@
         },
         {
           "number": 4,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -66,6 +70,7 @@
         },
         {
           "number": 5,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -79,6 +84,7 @@
         },
         {
           "number": 6,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -92,6 +98,7 @@
         },
         {
           "number": 7,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -105,6 +112,7 @@
         },
         {
           "number": 8,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -118,6 +126,7 @@
         },
         {
           "number": 9,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -131,6 +140,7 @@
         },
         {
           "number": 10,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -144,6 +154,7 @@
         },
         {
           "number": 11,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -157,6 +168,7 @@
         },
         {
           "number": 12,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -170,6 +182,7 @@
         },
         {
           "number": 13,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -183,6 +196,7 @@
         },
         {
           "number": 14,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -196,6 +210,7 @@
         },
         {
           "number": 15,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -209,6 +224,7 @@
         },
         {
           "number": 16,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -222,6 +238,7 @@
         },
         {
           "number": 17,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -235,6 +252,7 @@
         },
         {
           "number": 18,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -248,6 +266,7 @@
         },
         {
           "number": 19,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -261,6 +280,7 @@
         },
         {
           "number": 20,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -274,6 +294,7 @@
         },
         {
           "number": 21,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -295,6 +316,7 @@
       "slides": [
         {
           "number": 1,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -308,6 +330,7 @@
         },
         {
           "number": 2,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -321,6 +344,7 @@
         },
         {
           "number": 3,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -334,6 +358,7 @@
         },
         {
           "number": 4,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -347,6 +372,7 @@
         },
         {
           "number": 5,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -360,6 +386,7 @@
         },
         {
           "number": 6,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -373,6 +400,7 @@
         },
         {
           "number": 7,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -386,6 +414,7 @@
         },
         {
           "number": 8,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -399,6 +428,7 @@
         },
         {
           "number": 9,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -412,6 +442,7 @@
         },
         {
           "number": 10,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -425,6 +456,7 @@
         },
         {
           "number": 11,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -438,6 +470,7 @@
         },
         {
           "number": 12,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -451,6 +484,7 @@
         },
         {
           "number": 13,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -464,6 +498,7 @@
         },
         {
           "number": 14,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -477,6 +512,7 @@
         },
         {
           "number": 15,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -490,6 +526,7 @@
         },
         {
           "number": 16,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -503,6 +540,7 @@
         },
         {
           "number": 17,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -516,6 +554,7 @@
         },
         {
           "number": 18,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
@@ -529,6 +568,7 @@
         },
         {
           "number": 19,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -542,6 +582,7 @@
         },
         {
           "number": 20,
+          "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
@@ -555,6 +596,7 @@
         },
         {
           "number": 21,
+          "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
