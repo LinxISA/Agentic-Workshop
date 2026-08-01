@@ -15,6 +15,7 @@
     "export:2": "slidev export decks/session-2/slides.md --output dist/session-2.pdf",
     "export": "npm run export:1 && npm run export:2",
     "experiments": "bash experiments/smoke.sh",
+    "test:blueprint": "node scripts/check-slide-blueprint.mjs",
     "test:content": "node scripts/check-content.mjs",
     "test:offline": "node scripts/check-offline.mjs",
     "test:sources": "bash scripts/check-sources.sh",

@@ -1,0 +1,48 @@
+sources:
+  source-deck:
+    type: local-presentation
+    path: /Users/zhoubot/Documents/PTO ISA_扩展版.pptx
+    use: visual language, logistics metaphor, Roofline, hierarchy, Tile, scheduling, optimization narrative
+  agenda:
+    type: local-text
+    path: materials/agenda-2026.txt
+    use: official talk title, presenter, two 60-minute slots
+  roofline-paper:
+    type: research-paper
+    title: Roofline: An Insightful Visual Performance Model for Multicore Architectures
+    use: arithmetic intensity, compute ceiling, bandwidth slope, ridge point
+  pto-spec:
+    type: pinned-submodule
+    path: vendor/pto-spec
+    revision: 9574f0293929bf692517dd29de11a8354440c7dc
+    use: PTO instruction, architectural state, and effect semantics
+  pycircuit:
+    type: pinned-submodule
+    path: vendor/pyCircuit
+    revision: cc0203928b0c078468f2549a2477f891a17552e0
+    use: cycle model and trace examples
+  linxcore:
+    type: pinned-submodule
+    path: vendor/LinxCore
+    revision: 2758fb007efccca8b1d4cf869480af99059e9f23
+    use: modular processor case study
+  ndf-course:
+    type: course-document
+    path: docs/NDF.md
+    use: traceable architecture-model projection
+  experiment-artifacts:
+    type: reproducible-local-data
+    path: experiments/artifacts
+    use: trace, sweep, and Pareto evidence
+  agentic-materials:
+    type: local-materials
+    paths:
+      - materials/agentic_circuit_optimizer.md
+      - materials/agentic_tao_physical_design_flow.md
+    use: constrained proposal-measure-critique loop
+  course-model:
+    type: course-synthesis
+    use: explicitly labeled deterministic teaching models and parameters
+  course-synthesis:
+    type: course-synthesis
+    use: architecture reasoning framework assembled for this tutorial
