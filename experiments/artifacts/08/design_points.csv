@@ -1,0 +1,7 @@
+design,latency,energy,area,pareto
+tiny,20,6,2,true
+eco,14,5,3,true
+balanced,10,7,4,true
+fast,7,10,6,true
+wasteful,16,9,5,false
+oversized,10,9,7,false

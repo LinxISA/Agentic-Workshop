@@ -1,0 +1,5 @@
+instruction,pc,opcode,rd,value,matched
+0,0x80000000,movi,r1,2,true
+1,0x80000004,movi,r2,5,true
+2,0x80000008,add,r3,7,true
+3,0x8000000c,halt,-,-,true

@@ -1,0 +1,6 @@
+{
+  "format": "ELF64-little",
+  "entry": "0x80000000",
+  "text_base": "0x80000000",
+  "symbols": {"_start": "0x80000000", "done": "0x8000000c"}
+}

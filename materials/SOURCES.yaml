@@ -1,0 +1,28 @@
+course:
+  agenda:
+    file: agenda-2026.txt
+    presenter: RUOYU ZHOU
+    date: 2026-08-04
+    slots:
+      - "09:00-10:00"
+      - "10:30-11:30"
+  inputs:
+    - file: agentic_tao_physical_design_flow.md
+      status: research-proposal-v0.1
+    - file: agentic_circuit_optimizer.md
+      status: research-proposal-v0.1
+    - file: normative_language.md
+      source: https://github.com/hengliao1972/normative_language/blob/main/normative_language.md
+      commit: 09cfe646931183caee82dd913f77f516b82134df
+      status: draft-proposal-v0.1
+pto:
+  repository: https://github.com/PTO-ISA/pto-spec
+  commit: 9574f0293929bf692517dd29de11a8354440c7dc
+  role: normative-source
+  terminology: PTO executable architecture spec
+linxcore:
+  repository: https://github.com/LinxISA/LinxCore
+  role: modular-processor-and-hw-sw-codesign-case
+pycircuit:
+  repository: https://github.com/LinxISA/pyCircuit
+  role: structured-microarchitecture-action-space

@@ -1,0 +1,78 @@
+{
+  "experiments": [
+    {
+      "expected_exit_code": 0,
+      "id": "01",
+      "name": "01_pto_tensor_trace",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "01 PTO tensor trace: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "02",
+      "name": "02_clause_ndf_projection",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "02 clause to NDF projection: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "03",
+      "name": "03_pycircuit_pipeline",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "03 pyCircuit pipeline: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "04",
+      "name": "04_microarch_trace_compare",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "04 microarchitecture comparison: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "05",
+      "name": "05_linxcore_queue",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "05 LinxCore ready/valid queue: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "06",
+      "name": "06_trace_crosscheck",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "06 ELF/QEMU/hardware trace cross-check: PASS"
+    },
+    {
+      "expected_exit_code": 2,
+      "id": "07",
+      "name": "07_intentional_failure",
+      "observed_exit_code": 2,
+      "status": "pass",
+      "stderr": "intentional invariant violation: requested 20 bytes exceeds allocation 16",
+      "stdout": ""
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "08",
+      "name": "08_design_space_pareto",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "08 design-space Pareto analysis: PASS"
+    }
+  ],
+  "failed": 0,
+  "passed": 8
+}

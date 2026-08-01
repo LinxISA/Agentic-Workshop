@@ -1,0 +1,61 @@
+generator: openai-imagegen
+date: 2026-08-01
+policy:
+  use: atmospheric-backgrounds-and-concept-illustrations-only
+  technical-diagrams: deterministic-vue-svg-mermaid-canvas
+  common_constraints:
+    - 16:9 landscape, 1920x1080-safe
+    - dark navy, cyan, circuit green, restrained warm orange
+    - negative space for Chinese title
+    - no text, formulas, logos, watermark, robot face, or fake exact wiring
+assets:
+  - id: main-hero
+    file: main-hero.png
+    public_file: ../../public/generated/main-hero.png
+    purpose: course landing and main title
+    prompt: "Executable specification transforms through microarchitecture into processor evidence and a Pareto frontier; calm left-center title space."
+  - id: session-1-hero
+    file: session-1-hero.png
+    public_file: ../../public/generated/session-1-hero.png
+    purpose: session one cover
+    prompt: "Specification pages and opcode tiles evolve into a pipelined circuit and aligned traces; quiet left title space."
+  - id: session-2-hero
+    file: session-2-hero.png
+    public_file: ../../public/generated/session-2-hero.png
+    purpose: session two cover
+    prompt: "Modular processor, software binary, matching evidence traces, and measured design frontier; quiet left title space."
+  - id: spec-to-circuit
+    file: spec-to-circuit.png
+    public_file: ../../public/generated/spec-to-circuit.png
+    purpose: concept transition
+    prompt: "Executable ISA semantic tiles become linked normative records and a modular pipelined circuit."
+  - id: agent-loop
+    file: agent-loop.png
+    public_file: ../../public/generated/agent-loop.png
+    purpose: agent methodology concept
+    prompt: "Constrained loop of structured actions, independent judge, measurable sensors, and versioned normative memory."
+  - id: modular-processor
+    file: modular-processor.png
+    public_file: ../../public/generated/modular-processor.png
+    purpose: LinxCore chapter concept
+    prompt: "Exploded modular research processor with fetch, issue, execute, reorder/commit, and observation boundaries."
+  - id: hw-sw-lab
+    file: hw-sw-lab.png
+    public_file: ../../public/generated/hw-sw-lab.png
+    purpose: hardware/software co-design concept
+    prompt: "Compiled binary, modular processor prototype, synchronized traces, and neutral comparator in a research lab."
+  - id: design-space
+    file: design-space.png
+    public_file: ../../public/generated/design-space.png
+    purpose: Pareto chapter concept
+    prompt: "Microarchitecture candidates filtered by correctness evidence into a sparse Pareto frontier."
+  - id: chapter-evidence
+    file: chapter-evidence.png
+    public_file: ../../public/generated/chapter-evidence.png
+    purpose: evidence chapter transition
+    prompt: "Synchronized commit traces resolve from mismatch into exact alignment."
+  - id: chapter-frontier
+    file: chapter-frontier.png
+    public_file: ../../public/generated/chapter-frontier.png
+    purpose: research frontier transition
+    prompt: "Specification, circuit, measurements, and physical-design layers extend into a few promising research paths."

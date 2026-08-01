@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.DS_Store
+.slidev/
+test-results/
+playwright-report/
+qa/rendered/
+qa/contact-sheets/

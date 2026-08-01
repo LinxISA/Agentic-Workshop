@@ -1,0 +1,9 @@
+[submodule "vendor/pto-spec"]
+	path = vendor/pto-spec
+	url = https://github.com/PTO-ISA/pto-spec
+[submodule "vendor/pyCircuit"]
+	path = vendor/pyCircuit
+	url = https://github.com/LinxISA/pyCircuit
+[submodule "vendor/LinxCore"]
+	path = vendor/LinxCore
+	url = https://github.com/LinxISA/LinxCore

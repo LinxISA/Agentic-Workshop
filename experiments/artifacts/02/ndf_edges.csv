@@ -1,0 +1,4 @@
+src,dst,value
+load_a,add,ta
+load_b,add,tb
+add,store,tc

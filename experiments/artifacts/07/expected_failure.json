@@ -1,0 +1,8 @@
+{
+  "allocated_bytes": 16,
+  "case": "tensor_store_out_of_bounds",
+  "expected_exit_code": 2,
+  "expected_failure_observed": true,
+  "observed_exit_code": 2,
+  "requested_bytes": 20
+}

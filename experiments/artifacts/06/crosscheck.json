@@ -1,0 +1,10 @@
+{
+  "checked_instructions": 4,
+  "elf_entry_matches_first_pc": true,
+  "mismatches": [],
+  "sources": [
+    "ELF metadata fixture",
+    "QEMU trace fixture",
+    "hardware commit trace fixture"
+  ]
+}

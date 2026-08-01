@@ -1,0 +1,35 @@
+{
+  "name": "linxisa-summer-school-2026",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:1": "slidev decks/session-1/slides.md --open",
+    "dev:2": "slidev decks/session-2/slides.md --open",
+    "build:1": "slidev build decks/session-1/slides.md --base /session-1/ --out ../../dist/session-1",
+    "build:2": "slidev build decks/session-2/slides.md --base /session-2/ --out ../../dist/session-2",
+    "build:index": "node scripts/build-index.mjs",
+    "build": "npm run clean && npm run build:1 && npm run build:2 && npm run build:index",
+    "clean": "node scripts/clean.mjs",
+    "export:1": "slidev export decks/session-1/slides.md --output dist/session-1.pdf",
+    "export:2": "slidev export decks/session-2/slides.md --output dist/session-2.pdf",
+    "export": "npm run export:1 && npm run export:2",
+    "experiments": "bash experiments/smoke.sh",
+    "test:content": "node scripts/check-content.mjs",
+    "test:offline": "node scripts/check-offline.mjs",
+    "test:sources": "bash scripts/check-sources.sh",
+    "traceability": "node scripts/build-traceability.mjs",
+    "qa:render": "node scripts/render-qa.mjs",
+    "qa:contact": "node scripts/make-contact-sheets.mjs",
+    "test": "npm run test:sources && npm run experiments && npm run test:content && npm run build && npm run test:offline",
+    "preview": "vite preview --host 127.0.0.1 --port 4173"
+  },
+  "devDependencies": {
+    "@slidev/cli": "52.18.1",
+    "@slidev/theme-default": "latest",
+    "playwright-chromium": "latest",
+    "sharp": "^0.35.3",
+    "vite": "latest",
+    "vue": "latest"
+  }
+}

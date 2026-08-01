@@ -1,0 +1,68 @@
+{
+  "clauses": [
+    {
+      "id": "load_a",
+      "op": "TLOAD",
+      "reads": [
+        "A"
+      ],
+      "writes": [
+        "ta"
+      ]
+    },
+    {
+      "id": "load_b",
+      "op": "TLOAD",
+      "reads": [
+        "B"
+      ],
+      "writes": [
+        "tb"
+      ]
+    },
+    {
+      "id": "add",
+      "op": "TADD",
+      "reads": [
+        "ta",
+        "tb"
+      ],
+      "writes": [
+        "tc"
+      ]
+    },
+    {
+      "id": "store",
+      "op": "TSTORE",
+      "reads": [
+        "tc"
+      ],
+      "writes": [
+        "C"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "dst": "add",
+      "src": "load_a",
+      "value": "ta"
+    },
+    {
+      "dst": "add",
+      "src": "load_b",
+      "value": "tb"
+    },
+    {
+      "dst": "store",
+      "src": "add",
+      "value": "tc"
+    }
+  ],
+  "topological_order": [
+    "load_a",
+    "load_b",
+    "add",
+    "store"
+  ]
+}

@@ -1,0 +1,269 @@
+会议议程
+计算机体系结构暑期研讨会
+第0天·星期日（2026年8月2日）
+2026/08/03 — 2026/08/07 北京
+TIME PROGRAM VENUE
+14:00 – 18:00 注册 辽宁大厦
+第1天·星期一（2026年8月3日）
+TIME PROGRAM VENUE
+08:30 – 09:00 注册 辽宁大厦沈阳厅
+09:00 – 09:10 开幕式 辽宁大厦沈阳厅
+09:10 – 10:10 辽宁大厦沈阳厅
+10:10 – 10:40 茶歇 辽宁大厦
+智算融筑 芯启未来
+Babak Falsafi（洛桑联邦理工学院计算机与通信科学教授） —
+Datacenter Design in an Energy- and Memory-Constrained Era
+10:40 – 11:40 辽宁大厦沈阳厅
+11:40 – 14:00 午餐 辽宁大厦盛安汇餐厅
+Babak Falsafi（洛桑联邦理工学院计算机与通信科学教授） —
+Datacenter Design in an Energy- and Memory-Constrained Era
+14:00 – 15:00 辽宁大厦沈阳厅
+15:00 – 15:30 茶歇 辽宁大厦
+John Kim（韩国科学院计算机学院副教授） —
+Communication-Centric Architectures for Scalable AI Systems
+15:30 – 16:30 辽宁大厦沈阳厅
+17:30 – 18:30 晚餐 辽宁大厦盛安汇餐厅
+John Kim（韩国科学院计算机学院副教授） —
+Communication-Centric Architectures for Scalable AI Systems
+第2天· 星期二（2026年8月4日）
+TIME PROGRAM VENUE
+09:00 – 10:00 辽宁大厦沈阳厅
+10:00 – 10:30 茶歇 辽宁大厦
+周若愚（海思图灵架构师、五星博士） —
+Agent 时代的体系结构研究：pyCircuit 与工具驱动的芯片设计方法学
+10:30 – 11:30 辽宁大厦沈阳厅
+11:30 – 14:00 午餐 辽宁大厦盛安汇餐厅
+周若愚（海思图灵架构师、五星博士）—
+Agent 时代的体系结构研究：pyCircuit 与工具驱动的芯片设计方法学
+14:00 – 15:00 辽宁大厦沈阳厅
+15:00 – 15:30 茶歇 辽宁大厦
+Amro Awad（牛津大学电气工程副教授）— Confidential Computing:
+Principles and Current Challenges — A Hardware Perspective
+15:30 – 16:30 辽宁大厦沈阳厅
+17:30 – 18:30 晚餐 辽宁大厦盛安汇餐厅
+Amro Awad（牛津大学电气工程副教授） — Confidential Computing:
+Principles and Current Challenges — A Hardware Perspective
+第3天·星期三（2026年8月5日）
+TIME PROGRAM VENUE
+09:00 – 10:00 辽宁大厦沈阳厅
+10:00 – 10:30 茶歇 辽宁大厦
+Barath Daniel Bela（苏黎世联邦理工学院计算机视觉与几何组高级
+研究员） — Global Structure-from Motion
+10:30 – 11:30 辽宁大厦沈阳厅
+11:30 – 13:30 午餐 辽宁大厦盛安汇餐厅
+Barath Daniel Bela（苏黎世联邦理工学院计算机视觉与几何组高级
+研究员）— Global Structure-from Motion
+13:30 – 17:30 华为北京研究所
+18:00 – 19:00 晚餐 辽宁大厦盛安汇餐厅
+现场参观华为北京研究所
+第4天·星期四（2026年8月6日）
+TIME PROGRAM VENUE
+09:00 – 10:00 辽宁大厦沈阳厅
+10:00 – 10:30 茶歇 辽宁大厦
+邹楠（海思图灵高级技术专家） —
+基于华为超节点的大模型训练推理集群部署
+10:30 – 11:30 辽宁大厦沈阳厅
+11:30 – 14:00 午餐 辽宁大厦盛安汇餐厅
+邹楠（海思图灵高级技术专家） —
+基于华为超节点的大模型训练推理集群部署
+14:00 – 15:00 辽宁大厦沈阳厅
+15:00 – 15:30 茶歇 辽宁大厦
+任奕（海思图灵技术专家）—
+一种AI超标量加速器处理器结构
+15:30 – 16:30 辽宁大厦沈阳厅
+17:30 – 18:30 晚餐 辽宁大厦盛安汇餐厅
+任奕（海思图灵技术专家）—
+一种AI超标量加速器处理器结构
+第5天·星期五（2026年8月7日）
+TIME PROGRAM VENUE
+09:00 – 10:00 辽宁大厦沈阳厅
+10:00 – 10:30 茶歇 辽宁大厦
+陈亦程（不列颠哥伦比亚大学计算机科学系助理教授）一
+Scaling 4D World Models for Physical AI: Balancing Physics and Data
+10:30 – 11:30 辽宁大厦沈阳厅
+11:30 – 14:00 午餐 辽宁大厦盛安汇餐厅
+陈亦程（不列颠哥伦比亚大学计算机科学系助理教授） —
+Scaling 4D World Models for Physical AI: Balancing Physics and Data
+14:00 – 15:00 辽宁大厦沈阳厅
+15:00 – 15:30 茶歇 辽宁大厦
+实践训练营：左志良（海思图灵业务部技术专家）—
+智算集群可靠性技术探索与实践
+15:30 – 16:00 辽宁大厦沈阳厅
+17:30 – 18:30 晚宴 辽宁大厦
+实践训练营：左志良（海思图灵业务部技术专家） —
+算集群可靠性技术探索与实践
+ Notes
+·如无特殊说明，所有课程地点均为辽宁大厦
+·Lunch午餐和晚餐地点位于辽宁大厦一层的盛安汇餐厅
+·第三日下午的课程为现场参观华为北京研究所
+会议议程
+CONFERENCE AGENDA
+2026/08/03 - 2026/08/07 北京
+智算融筑
+芯启未来
+COMPUTER ARCHITECTURE SUMMER WORKSHOP
+计算机体系结构暑期
+研讨会
+CONFERENCE AGENDA
+COMPUTER ARCHITECTURE
+SUMMER WORKSHOP
+DAY 0 · SUNDAY, AUGUST 2, 2026
+August 3 – 7, 2026 Beijing, China
+TIME PROGRAM VENUE
+14:00 – 18:00 Registration Liaoning International Hotel
+08:30 – 09:00 Registration Shenyang Hall, Liaoning
+International Hotel
+09:00 – 09:10 Opening Ceremony Shenyang Hall, Liaoning
+International Hotel
+09:10 – 10:10
+Babak Falsafi(Professor in Computer and Communication
+Sciences at EPFL) —
+Datacenter Design in an Energy- and Memory-Constrained Era
+Shenyang Hall, Liaoning
+International Hotel
+10:40 – 11:40
+Babak Falsafi(Professor in Computer and Communication
+Sciences at EPFL) —
+Datacenter Design in an Energy- and Memory-Constrained Era
+Shenyang Hall, Liaoning
+International Hotel
+14:00 – 15:00
+John Kim(Associate Professor in the School of Computing
+at KAIST) —
+Communication-Centric Architectures for Scalable AI Systems
+Shenyang Hall, Liaoning
+International Hotel
+15:30 – 16:30
+John Kim(Associate Professor in the School of Computing
+at KAIST) —
+Communication-Centric Architectures for Scalable AI Systems
+Shenyang Hall, Liaoning
+International Hotel
+DAY 1 · MONDAY, AUGUST 3, 2026
+TIME PROGRAM VENUE
+10:10 – 10:40 Coffee Break Liaoning International Hotel
+11:40 – 14:00 Lunch Sheng’anhui Restaurant,
+Liaoning International Hotel
+17:30 – 18:30 Dinner Sheng’anhui Restaurant,
+Liaoning International Hotel
+15:00 – 15:30 Coffee Break Liaoning International Hotel
+09:00 – 10:00
+Zhou Ruoyu(HiSilicon Turing Architect and Five-Star PhD) —
+Computer Architecture Research in the Agent Era: pyCircuit and
+Tool-Driven Chip Design Methodology
+Shenyang Hall, Liaoning
+International Hotel
+10:30 – 11:30
+Zhou Ruoyu(HiSilicon Turing Architect and Five-Star PhD) —
+Computer Architecture Research in the Agent Era: pyCircuit and
+Tool-Driven Chip Design Methodology
+Shenyang Hall, Liaoning
+International Hotel
+DAY 2 · TUESDAY, AUGUST 4, 2026
+TIME PROGRAM VENUE
+10:00 – 10:30 Coffee Break Liaoning International Hotel
+11:30 – 14:00 Lunch Sheng’anhui Restaurant,
+Liaoning International Hotel
+14:00 – 15:00
+Amro Awad(Associate Professor in Electrical Engineering at the
+University of Oxford) —
+Confidential Computing: Principles and Current Challenges
+ — A Hardware Perspective
+Shenyang Hall, Liaoning
+International Hotel
+15:30 – 16:30
+Amro Awad(Associate Professor in Electrical Engineering at the
+University of Oxford) —
+Confidential Computing: Principles and Current Challenges
+— A Hardware Perspective
+Shenyang Hall, Liaoning
+International Hotel
+15:00 – 15:30 Coffee Break Liaoning International Hotel
+17:30 – 18:30 Dinner Sheng’anhui Restaurant,
+Liaoning International Hotel
+09:00 – 10:00
+Barath Daniel Bela(Senior Researcher in the Computer Vision
+and Geometry Group at ETH Zürich) —
+Global Structure-from Motion
+Shenyang Hall, Liaoning
+International Hotel
+10:30 – 11:30
+Barath Daniel Bela(Senior Researcher in the Computer Vision
+and Geometry Group at ETH Zürich) —
+Global Structure-from Motion
+Shenyang Hall, Liaoning
+International Hotel
+DAY 3 · WEDNESDAY, AUGUST 5, 2026
+TIME PROGRAM VENUE
+10:00 – 10:30 Coffee Break Liaoning International Hotel
+11:30 – 13:30 Lunch Sheng’anhui Restaurant,
+Liaoning International Hotel
+13:30 – 17:30 Site Visit: Huawei Beijing Research Institute Huawei Beijing Research
+Institute
+18:00 – 19:00 Dinner Sheng’anhui Restaurant,
+Liaoning International Hotel
+14:00 – 15:00 Ren Yi (HiSilicon Turing Technical Expert) —
+A Superscalar AI Accelerator Processor Architecture
+Shenyang Hall, Liaoning
+International Hotel
+15:30 – 16:30 Ren Yi (HiSilicon Turing Technical Expert) —
+A Superscalar AI Accelerator Processor Architecture
+Shenyang Hall, Liaoning
+International Hotel
+15:00 – 15:30 Coffee Break Liaoning International Hotel
+17:30 – 18:30 Dinner Sheng’anhui Restaurant,
+Liaoning International Hotel
+09:00 – 10:00
+Peter Yichen Chen(Assistant Professor in Computer Science
+at UBC) — Scaling 4D World Models for Physical AI:
+Balancing Physics and Data
+Shenyang Hall, Liaoning
+International Hotel
+10:30 – 11:30
+Peter Yichen Chen(Assistant Professor in Computer Science
+at UBC) — Scaling 4D World Models for Physical AI:
+Balancing Physics and Data
+Shenyang Hall, Liaoning
+International Hotel
+DAY 5 · FRIDAY, AUGUST 7, 2026
+TIME PROGRAM VENUE
+10:00 – 10:30 Coffee Break Liaoning International Hotel
+11:30 – 14:00 Lunch Sheng’anhui Restaurant,
+Liaoning International Hotel
+14:00 – 15:00
+Hands-on Session: Zuo Zhiliang(Technical Expert of the Turing
+Business Department of Hisilicon) —
+Reliability Technologies for Intelligent Computing Clusters:
+Exploration and Practice
+Shenyang Hall, Liaoning
+International Hotel
+15:30 – 16:00
+Hands-on Session: Zuo Zhiliang(Technical Expert of the Turing
+Business Department of Hisilicon) —
+Reliability Technologies for Intelligent Computing Clusters:
+Exploration and Practice
+Notes
+• Unless noted otherwise, all sessions are held at the Liaoning International Hotel.
+• Lunch and dinner are served at the Sheng'anhui Restaurant on the hotel's first floor.
+• Afternoon sessions on Day 3 take place on-site at the Huawei Beijing Research Institute.
+Shenyang Hall, Liaoning
+International Hotel
+15:00 – 15:30 Coffee Break Liaoning International Hotel
+17:30 – 18:30 Banquet Liaoning International Hotel
+09:00 – 10:00
+Zou Nan(HiSilicon Turing Senior Technical Expert) —
+Large-Model Training and Inference Cluster Deployment on
+Huawei SuperPoD
+Shenyang Hall, Liaoning
+International Hotel
+10:30 – 11:30
+Zou Nan(HiSilicon Turing Senior Technical Expert) —
+Large-Model Training and Inference Cluster Deployment on
+Huawei SuperPoD
+Shenyang Hall, Liaoning
+International Hotel
+DAY 4 · THURSDAY, AUGUST 6, 2026
+TIME PROGRAM VENUE
+10:00 – 10:30 Coffee Break Liaoning International Hotel
+11:30 – 14:00 Lunch Sheng’anhui Restaurant,
+Liaoning International Hotel

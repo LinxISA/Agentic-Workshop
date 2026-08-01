@@ -1,0 +1,11 @@
+{
+  "architectural_match": true,
+  "dual_issue_cycles": 2,
+  "final_state": {
+    "r1": 2,
+    "r2": 5,
+    "r3": 7,
+    "r4": 10
+  },
+  "scalar_cycles": 4
+}

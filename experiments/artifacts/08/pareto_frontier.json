@@ -1,0 +1,14 @@
+{
+  "frontier": [
+    "tiny",
+    "eco",
+    "balanced",
+    "fast"
+  ],
+  "minimize": true,
+  "objectives": [
+    "latency",
+    "energy",
+    "area"
+  ]
+}

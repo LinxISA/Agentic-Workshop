@@ -1,0 +1,71 @@
+{
+  "kernel": "vector_add_4",
+  "result": [
+    11,
+    22,
+    33,
+    44
+  ],
+  "trace": [
+    {
+      "dst": "t2",
+      "dtype": "i32",
+      "op": "TALLOC",
+      "shape": [
+        4
+      ],
+      "step": 0
+    },
+    {
+      "address": "A",
+      "dst": "t0",
+      "op": "TLOAD",
+      "step": 1,
+      "value": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "address": "B",
+      "dst": "t1",
+      "op": "TLOAD",
+      "step": 2,
+      "value": [
+        10,
+        20,
+        30,
+        40
+      ]
+    },
+    {
+      "dst": "t2",
+      "op": "TADD",
+      "src": [
+        "t0",
+        "t1"
+      ],
+      "step": 3,
+      "value": [
+        11,
+        22,
+        33,
+        44
+      ]
+    },
+    {
+      "address": "C",
+      "op": "TSTORE",
+      "src": "t2",
+      "step": 4,
+      "value": [
+        11,
+        22,
+        33,
+        44
+      ]
+    }
+  ]
+}

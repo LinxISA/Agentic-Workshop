@@ -1,0 +1,9 @@
+cycle,consumer_ready,queue_before,pushed,popped,queue_after
+0,true,[],3,-,[3]
+1,false,[3],5,-,"[3, 5]"
+2,false,"[3, 5]",-,-,"[3, 5]"
+3,true,"[3, 5]",8,3,"[5, 8]"
+4,true,"[5, 8]",13,5,"[8, 13]"
+5,false,"[8, 13]",-,-,"[8, 13]"
+6,true,"[8, 13]",-,8,[13]
+7,true,[13],-,13,[]
