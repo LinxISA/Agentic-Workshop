@@ -6,4 +6,5 @@ test-results/
 playwright-report/
 qa/rendered/
 qa/contact-sheets/
+tmp/
 .worktrees/
