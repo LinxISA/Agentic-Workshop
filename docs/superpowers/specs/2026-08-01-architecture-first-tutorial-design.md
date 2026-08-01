@@ -1,8 +1,8 @@
 # Architecture-First Summer School Tutorial Design
 
-**Date:** 2026-08-01  
-**Source template:** `/Users/zhoubot/Documents/PTO ISA_扩展版.pptx`  
-**Delivery:** two 60-minute Chinese Slidev sessions, fully offline  
+**Date:** 2026-08-01
+**Source template:** `/Users/zhoubot/Documents/PTO ISA_扩展版.pptx`
+**Delivery:** two 60-minute Chinese Slidev sessions, fully offline
 **Audience:** graduate students and early-career computer-architecture researchers
 
 ## Design Decision
@@ -144,4 +144,3 @@ The new web deck must not reuse low-resolution screenshots of source slides as f
 - All slides render at 1920×1080 with no overflow, tiny labels, accidental low contrast, or empty visual regions.
 - Presenter notes include timing, teaching claim, interaction cue, source, and claim boundary.
 - `npm test`, PDF export, screenshot rendering, contact-sheet review, and offline checks pass before completion.
-

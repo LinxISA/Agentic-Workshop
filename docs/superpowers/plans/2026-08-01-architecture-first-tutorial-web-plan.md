@@ -79,7 +79,7 @@ Add to `package.json`:
 "test:blueprint": "node scripts/check-slide-blueprint.mjs"
 ```
 
-Run: `npm run test:blueprint`  
+Run: `npm run test:blueprint`
 Expected: FAIL because `content/slides.json` does not exist.
 
 - [ ] **Step 3: Create the canonical slide inventory**
@@ -92,7 +92,7 @@ Write `content/architecture-sources.yaml` with source IDs for the source PPTX, R
 
 - [ ] **Step 5: Verify and commit**
 
-Run: `npm run test:blueprint`  
+Run: `npm run test:blueprint`
 Expected: PASS with `42 slides; session timing within limit; backgrounds unique`.
 
 ```bash
@@ -121,7 +121,7 @@ Add failures for remote URLs, slides without `/generated/slides/` backgrounds, p
 
 - [ ] **Step 2: Run the content check**
 
-Run: `npm run test:content`  
+Run: `npm run test:content`
 Expected: FAIL on the current card-oriented decks.
 
 - [ ] **Step 3: Implement `FullBleedStage.vue`**
@@ -138,7 +138,7 @@ Create `ArchitectureZoom.vue` with levels `system`, `package`, `chip`, `cluster`
 
 - [ ] **Step 6: Verify and commit**
 
-Run: `npm run test:content`  
+Run: `npm run test:content`
 Expected: current deck may still fail slide inventory requirements, but component/theme static checks pass.
 
 ```bash
@@ -176,7 +176,7 @@ Repeat the workflow. Ensure TLOAD/TSTORE, double buffering, banking, and schedul
 
 - [ ] **Step 5: Validate and commit**
 
-Run: `node scripts/check-image-prompts.mjs --session 1`  
+Run: `node scripts/check-image-prompts.mjs --session 1`
 Expected: PASS with 21 unique reviewed assets.
 
 ```bash
@@ -208,7 +208,7 @@ Test the Roofline formula, ridge point, hierarchy selection, NoC saturation, dou
 
 - [ ] **Step 2: Run tests and confirm failure**
 
-Run: `node --test qa/component-contracts.spec.mjs`  
+Run: `node --test qa/component-contracts.spec.mjs`
 Expected: FAIL because the components and helpers do not exist.
 
 - [ ] **Step 3: Implement the Roofline and hierarchy components**
@@ -225,7 +225,7 @@ Display exact bank mapping, conflict degree, and LOAD/COMPUTE/STORE overlap. Avo
 
 - [ ] **Step 6: Verify and commit**
 
-Run: `node --test qa/component-contracts.spec.mjs`  
+Run: `node --test qa/component-contracts.spec.mjs`
 Expected: PASS.
 
 ```bash
@@ -262,7 +262,7 @@ For every page add objective, 1–5 minute timing, interaction cue, source IDs, 
 
 - [ ] **Step 5: Verify and commit**
 
-Run: `npm run test:blueprint && npm run test:content && npm run build:1`  
+Run: `npm run test:blueprint && npm run test:content && npm run build:1`
 Expected: PASS.
 
 ```bash
@@ -295,7 +295,7 @@ Generate experiment, sweep, predicted-vs-measured, agent loop, Pareto, and closi
 
 - [ ] **Step 4: Validate and commit**
 
-Run: `node scripts/check-image-prompts.mjs --session 2`  
+Run: `node scripts/check-image-prompts.mjs --session 2`
 Expected: PASS with 21 unique reviewed assets.
 
 ```bash
@@ -326,7 +326,7 @@ Test queue readiness, in-order commit, miss-induced backpressure, architecture-t
 
 - [ ] **Step 2: Run tests and confirm failure**
 
-Run: `node --test qa/microarchitecture-contracts.spec.mjs`  
+Run: `node --test qa/microarchitecture-contracts.spec.mjs`
 Expected: FAIL.
 
 - [ ] **Step 3: Refactor the LinxCore and pipeline views**
@@ -343,7 +343,7 @@ Connect architecture IDs to NDF clauses, pyCircuit state, trace rows, and experi
 
 - [ ] **Step 6: Verify and commit**
 
-Run: `node --test qa/microarchitecture-contracts.spec.mjs`  
+Run: `node --test qa/microarchitecture-contracts.spec.mjs`
 Expected: PASS.
 
 ```bash
@@ -379,7 +379,7 @@ Ensure every page has the complete note contract and Session 2 totals no more th
 
 - [ ] **Step 5: Verify and commit**
 
-Run: `npm run test:blueprint && npm run test:content && npm run build:2`  
+Run: `npm run test:blueprint && npm run test:content && npm run build:2`
 Expected: PASS.
 
 ```bash
@@ -409,7 +409,7 @@ Require deterministic outputs for bandwidth sweep, cache hit-rate sweep, queue-d
 
 - [ ] **Step 2: Run and confirm failure**
 
-Run: `python3 -m pytest experiments/tests/test_smoke.py -q`  
+Run: `python3 -m pytest experiments/tests/test_smoke.py -q`
 Expected: FAIL for missing experiments 09 and 10.
 
 - [ ] **Step 3: Implement the Roofline sweep**
@@ -426,7 +426,7 @@ Update queue, trace comparison, and Pareto outputs to expose the exact metrics c
 
 - [ ] **Step 6: Verify and commit**
 
-Run: `npm run experiments`  
+Run: `npm run experiments`
 Expected: PASS and refreshed artifacts committed.
 
 ```bash
@@ -457,7 +457,7 @@ Add a temporary fixture in the test harness, assert rejection, then keep only th
 
 - [ ] **Step 3: Run the complete non-visual suite**
 
-Run: `npm test`  
+Run: `npm test`
 Expected: PASS with 42 slides and 42 local unique backgrounds.
 
 - [ ] **Step 4: Commit**
@@ -480,7 +480,7 @@ git commit -m "test: enforce architecture tutorial delivery gates"
 
 - [ ] **Step 1: Render all pages at 1920×1080**
 
-Run: `npm run qa:render && npm run qa:contact`  
+Run: `npm run qa:render && npm run qa:contact`
 Expected: 42 screenshots and two contact sheets.
 
 - [ ] **Step 2: Review every full-resolution screenshot**
@@ -493,7 +493,7 @@ Regenerate art only for raster problems. Fix technical problems in SVG/Vue. Re-r
 
 - [ ] **Step 4: Verify zero visual failures**
 
-Run: `npm run qa:render && npm run qa:contact`  
+Run: `npm run qa:render && npm run qa:contact`
 Expected: all 42 slides marked pass in `docs/VISUAL_QA.md`.
 
 - [ ] **Step 5: Commit**
@@ -521,7 +521,7 @@ Describe the architecture-first positioning, two-session timing, six core intera
 
 - [ ] **Step 2: Rebuild traceability**
 
-Run: `npm run traceability`  
+Run: `npm run traceability`
 Expected: all 42 slide IDs connect to sources, components, experiments, and evidence where applicable.
 
 - [ ] **Step 3: Run final verification**
@@ -554,4 +554,3 @@ git commit -m "docs: finalize architecture tutorial delivery"
 - Architecture accuracy: exact information is isolated in deterministic components in Tasks 4 and 7.
 - Reproducibility/offline: experiments and delivery gates are covered in Tasks 9, 10, and 12.
 - Placeholder scan: the plan contains no deferred page, asset, interaction, or verification requirement.
-
