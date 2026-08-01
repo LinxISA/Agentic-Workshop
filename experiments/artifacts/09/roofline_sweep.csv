@@ -1,0 +1,6 @@
+bandwidth_tb_s,performance_tflops,utilization_percent,bottleneck
+1.0,32.0,25.0,bandwidth
+2.0,64.0,50.0,bandwidth
+4.0,128.0,100.0,compute
+6.0,128.0,100.0,compute
+8.0,128.0,100.0,compute

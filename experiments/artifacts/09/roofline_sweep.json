@@ -1,0 +1,39 @@
+{
+  "arithmetic_intensity_flop_per_byte": 32.0,
+  "claim_boundary": "Deterministic course model; not a LinxCore RTL benchmark.",
+  "model": "P=min(Ppeak, AI*BW)",
+  "peak_tflops": 128.0,
+  "points": [
+    {
+      "bandwidth_tb_s": 1.0,
+      "bottleneck": "bandwidth",
+      "performance_tflops": 32.0,
+      "utilization_percent": 25.0
+    },
+    {
+      "bandwidth_tb_s": 2.0,
+      "bottleneck": "bandwidth",
+      "performance_tflops": 64.0,
+      "utilization_percent": 50.0
+    },
+    {
+      "bandwidth_tb_s": 4.0,
+      "bottleneck": "compute",
+      "performance_tflops": 128.0,
+      "utilization_percent": 100.0
+    },
+    {
+      "bandwidth_tb_s": 6.0,
+      "bottleneck": "compute",
+      "performance_tflops": 128.0,
+      "utilization_percent": 100.0
+    },
+    {
+      "bandwidth_tb_s": 8.0,
+      "bottleneck": "compute",
+      "performance_tflops": 128.0,
+      "utilization_percent": 100.0
+    }
+  ],
+  "ridge_bandwidth_tb_s": 4.0
+}
