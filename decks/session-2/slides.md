@@ -40,7 +40,7 @@ Narrative: Roofline 告诉我们哪类资源可能限制上界，但无法说明
 <!--
 Slide-ID: S23
 Objective: 给学生一张可点击的 LinxCore 模块地图，并建立代码来源意识。
-Timing: 4 min
+Timing: 3 min
 Visual: 模块化核心由 frontend、BISQ、execute、memory、BROB 等区域组成；前景 explorer 逐个高亮模块。
 Interaction: 点击模块，预测它拥有的状态、输入输出队列和最可能的背压来源。
 Sources: linxcore; course-synthesis
@@ -78,7 +78,7 @@ Narrative: 语义边界是软硬件协同的稳定支点。Agent 可以探索实
 <!--
 Slide-ID: S25
 Objective: 建立跨层 traceability，避免把某一层的术语错误投射到另一层。
-Timing: 3 min
+Timing: 2 min
 Visual: 同一矩阵 tile 垂直穿过五个透明层，最终落入物理核心事件。
 Interaction: 选择 TLOAD 或 MATMUL，从算法意图一直口述到 queue fire 与 cache request。
 Sources: pto-spec; pycircuit; course-synthesis
@@ -97,7 +97,7 @@ Narrative: 可追踪性让性能数字能够回到源头。某个 stall 可以�
 <!--
 Slide-ID: S26
 Objective: 用队列网络而非理想流水线理解乱序核心的状态与反馈。
-Timing: 3 min
+Timing: 2 min
 Visual: Fetch 到 Commit 的宽流水线包含多条反馈和资源控制路径；前景 explorer 逐级选择状态所有者。
 Interaction: 点击一个模块，要求学生指出 valid、ready、payload 分别由哪一侧持有。
 Sources: linxcore; course-synthesis
@@ -116,7 +116,7 @@ Narrative: 队列把时间解耦，也把压力储存起来。性能分析的关
 <!--
 Slide-ID: S27
 Objective: 说明核心吞吐上限从取指与解码开始，并量化分支错误的供给损失。
-Timing: 3 min
+Timing: 2 min
 Visual: I-cache 向多路 decode 供给，洋红错误路径被 flush；前景 stepper 展示四个前端阶段。
 Interaction: 逐步调整宽度和分支准确率的口算场景，判断后端每周期可见的有效操作数。
 Sources: linxcore; course-model
@@ -135,7 +135,7 @@ Narrative: 执行端口再多，如果前端不能稳定供给就会空转。分
 <!--
 Slide-ID: S28
 Objective: 区分执行完成与架构提交，理解 ROB 在精确状态中的角色。
-Timing: 3 min
+Timing: 2 min
 Visual: 多条 rename 路径汇入环形 ROB，在 commit 边界重新顺序化；前景播放四阶段生命周期。
 Interaction: 点击 Rename→Execute→Complete→Commit，询问每一步可以撤销哪些状态。
 Sources: linxcore; course-synthesis
@@ -192,7 +192,7 @@ Narrative: 一个四周期流水单元可以每周期接收新操作，却仍让
 <!--
 Slide-ID: S31
 Objective: 把一个 load 拆成多个结构阶段，连接第一课的存储层级与核心队列。
-Timing: 4 min
+Timing: 3 min
 Visual: LSU 切面包含 AGU、LQ、SQ、D-cache 和 miss path；前景逐层说明职责。
 Interaction: 追踪一次 load：地址未知、命中、store forwarding、cache miss 四种路径分别占用什么状态。
 Sources: linxcore; course-synthesis
@@ -230,7 +230,7 @@ Narrative: Miss latency 本身只说明一个请求等待多久；全核性能�
 <!--
 Slide-ID: S33
 Objective: 用 valid/ready/fire 波形解释数据保持、停顿和恢复的周期语义。
-Timing: 4 min
+Timing: 3 min
 Visual: 物理核心外围形成闭合 backpressure 回路；前景波形可逐周期播放。
 Interaction: Step 波形，找出 valid=1、ready=0 时 payload 必须保持的周期，以及真正发生 transfer 的周期。
 Sources: pycircuit; course-synthesis
@@ -249,10 +249,10 @@ Narrative: 把回压建成显式信号比写一个平均吞吐公式更强，因
 <!--
 Slide-ID: S34
 Objective: 把 LinxCore 物理模块投影为可追踪的 NDF 节点、端口、队列和主张。
-Timing: 4 min
+Timing: 3 min
 Visual: 左侧物理核心一对一投影为右侧分层图；前景 traceability 组件强调来源与边界。
 Interaction: 选择 Issue Queue，填写最小 NDF：inputs、outputs、state、fire condition、evidence link。
-Sources: ndf; linxcore; agentic-tao-material
+Sources: ndf-course; linxcore; agentic-materials
 Boundary: NDF 是课程设计方法，不是 PTO 官方格式；所有 normative 语句必须带来源。
 Narrative: NDF 的价值不是换一种画框图，而是让每条边都可判定。它把自然语言主张、代码符号、实验指标和不确定边界放在同一设计记录里。
 -->
@@ -268,10 +268,10 @@ Narrative: NDF 的价值不是换一种画框图，而是让每条边都可判�
 <!--
 Slide-ID: S35
 Objective: 说明 pyCircuit 在课程中负责实现可执行的周期状态机，而非替代 RTL 全流程。
-Timing: 4 min
+Timing: 3 min
 Visual: 时钟脉冲推动 token 穿过寄存器、队列和功能单元；前景逐周期观察 fire/stall。
 Interaction: 修改 ready 序列或逐步播放，检查 payload 在 stall 周期是否保持、计数器是否只在 fire 时更新。
-Sources: pycircuit; agentic-circuit-material
+Sources: pycircuit; agentic-materials
 Boundary: 示例聚焦当前 pyCircuit frontend 支持的队列与寄存器语义，不承诺完整 LinxCore 等价模型。
 Narrative: 可执行模型让“应该会背压”变成可以失败的测试。Agent 修改模块后，固定 stimulus、trace schema 和断言会独立判断行为是否仍满足设计承诺。
 -->
@@ -281,7 +281,7 @@ Narrative: 可执行模型让“应该会背压”变成可以失败的测试。
 # 先固定 workload 和 baseline
 
 <FullBleedStage background="/generated/slides/s36-reproducible-baseline.png" title="先固定 workload 和 baseline" claim="没有固定输入、配置、指标和产物，任何性能比较都不可信。" eyebrow="EXPERIMENT CONTRACT" slide-id="S36">
-  <template #diagram><div class="diagram-dock architecture-chain"><span>Workload</span><i>+</i><span>Config</span><i>→</i><span>Trace</span><i>+</i><span>Metrics</span><i>→</i><span>Verdict</span></div></template>
+  <template #diagram><BaselineExperiment /></template>
 </FullBleedStage>
 
 <!--
@@ -290,7 +290,7 @@ Objective: 定义可复现实验的最小契约：固定 workload、配置、种
 Timing: 3 min
 Visual: 处理器被 workload、cycle model 和多组测量仪器包围；前景显示实验数据流。
 Interaction: 打开本仓实验目录，指出 input、config、artifact、expected 与 validator 的位置。
-Sources: experiments; agentic-circuit-material; course-synthesis
+Sources: experiment-artifacts; agentic-materials; course-synthesis
 Boundary: 实验为教学规模模型，目标是方法可复现，不是宣称硅后性能。
 Narrative: Agent 可以生成很多结果，但可重复不等于可信。baseline 必须能被另一进程从干净环境重跑，指标必须从原始 trace 派生，verdict 必须由独立检查器给出。
 -->
@@ -306,10 +306,10 @@ Narrative: Agent 可以生成很多结果，但可重复不等于可信。baseli
 <!--
 Slide-ID: S37
 Objective: 通过单变量 sweep 验证 Roofline 对带宽区间与计算区间的预测。
-Timing: 5 min
+Timing: 4 min
 Visual: 相同核心连接逐渐变宽的内存通道；前景 Roofline 滑杆与仓内实验结果相互校准。
 Interaction: 运行实验 09 或使用离线结果，预测每个 bandwidth 点的性能，并找出 ridge point。
-Sources: experiments; roofline-paper; course-model
+Sources: experiment-artifacts; roofline-paper; course-model
 Boundary: sweep 使用课程性能模型；结果用于验证趋势与上界，不代表 LinxCore RTL benchmark。
 Narrative: 单变量实验先保持 peak、AI、队列和延迟不变，再改变 BW。预测曲线必须在 ridge 之前近似线性、之后饱和；偏离时再检查并发和队列约束。
 -->
@@ -319,16 +319,16 @@ Narrative: 单变量实验先保持 peak、AI、队列和延迟不变，再改�
 # 实验二：Cache、局部性与队列深度
 
 <FullBleedStage background="/generated/slides/s38-cache-queue-sweep.png" title="实验二：Cache、局部性与队列深度" claim="更大 cache 减少流量，更深队列隐藏延迟；两者解决的不是同一个问题。" eyebrow="REPRODUCIBLE LAB 10" slide-id="S38">
-  <template #diagram><ExperimentPanel /></template>
+  <template #diagram><ArtifactComparison /></template>
 </FullBleedStage>
 
 <!--
 Slide-ID: S38
 Objective: 比较 locality 优化与 concurrency 优化，观察它们对不同指标的影响。
-Timing: 5 min
+Timing: 4 min
 Visual: 三个核心变体分别增加 cache、增加 queue、同时平衡；前景切换变体查看 PERF、TRAFFIC、QUEUE。
 Interaction: 运行实验 10 或使用离线结果，解释为何 queue 变深不一定降低 DRAM bytes，cache 变大也不一定消除依赖链延迟。
-Sources: experiments; course-model; linxcore
+Sources: experiment-artifacts; course-model; linxcore
 Boundary: 变体是教学参数化模型，未包含 cache 面积、频率和功耗回归。
 Narrative: 不同优化应由不同证据裁判。Cache 看 miss 与 bytes，queue 看 occupancy、headroom 与 overlap，性能只是最终结果；只看单一 speedup 会掩盖代价和原因。
 -->
@@ -347,7 +347,7 @@ Objective: 建立宏观预测与微观测量的双模型校准方法。
 Timing: 3 min
 Visual: Roofline 山脊与下方流水线由同一 operating point 连接；前景并列 upper bound、measured、gap、action。
 Interaction: 给出 Roofline 预测 100、周期模型测得 72，要求提出三项可区分的补充指标。
-Sources: roofline-paper; experiments; course-synthesis
+Sources: roofline-paper; experiment-artifacts; course-synthesis
 Boundary: 两类模型精度不同；不应强迫周期模型等于上界，而应解释差距。
 Narrative: 好模型不是每次都“预测正确”，而是当预测失败时能告诉我们缺少哪条结构约束。队列占用、端口利用、miss overlap 与前端气泡共同把 gap 变成可定位证据。
 -->
@@ -363,10 +363,10 @@ Narrative: 好模型不是每次都“预测正确”，而是当预测失败时
 <!--
 Slide-ID: S40
 Objective: 把 Agent 定位为受约束的研究协作者，并保留独立验证者。
-Timing: 4 min
+Timing: 3 min
 Visual: 中央处理器连接 propose、simulate、measure、critique 四台装置，无机器人或拟人形象。
 Interaction: 让学生给 Agent 一个最小 design delta，并写出 validator 必须拒绝的两种错误结论。
-Sources: agentic-tao-material; agentic-circuit-material; normative-language
+Sources: agentic-materials; normative-language
 Boundary: Agent 不产生规范真相；它的主张必须由来源、实验和独立检查器支持。
 Narrative: 研究自动化最危险的不是代码错误，而是未经证明的因果叙事。闭环必须限制修改范围、固定输入、保存原始产物，并让 critique 阶段能真正返回失败。
 -->
@@ -404,7 +404,7 @@ Objective: 总结两课主线，并给学生一个可以继续使用的研究工
 Timing: 2 min
 Visual: Workload、Roofline、存储层级、队列、流水线、NDF 与 cycle token 重新组装为完整处理器。
 Interaction: 回到 S02 的瓶颈投票，每位学生用一条因果链重新解释自己的答案。
-Sources: course-synthesis; all-course-sources
+Sources: course-synthesis
 Boundary: 总结图表示方法论关系，不声称任何单一模型覆盖全部真实处理器行为。
 Narrative: 先用宏观模型找到限制区间，再沿存储层级和队列进入微架构，用 PTO 固定语义边界，以 NDF 记录设计承诺，以 pyCircuit 和实验产物建立可重放证据，最后让 Agent 在边界内探索。
 -->

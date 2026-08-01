@@ -16,8 +16,12 @@ test('every slide has one reviewed, unique, offline ImageGen asset', async () =>
     assert.match(item.slide, /^S\d{2}$/)
     assert.equal(item.review, 'pass')
     assert.ok(item.prompt.length > 220)
-    const source = `assets/generated/slides/${item.asset}`
-    const runtime = `public/generated/slides/${item.asset}`
+    assert.match(item.date, /^2026-\d{2}-\d{2}$/)
+    assert.equal(item.source_style, 'PTO ISA_扩展版 · image-dominant architecture keynote')
+    assert.equal(item.final_path, `assets/generated/slides/${item.asset}`)
+    assert.equal(item.runtime_path, `public/generated/slides/${item.asset}`)
+    const source = item.final_path
+    const runtime = item.runtime_path
     assert.equal(await digest(source), item.sha256)
     assert.equal(await digest(runtime), item.sha256)
   }

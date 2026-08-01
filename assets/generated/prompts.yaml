@@ -1,14 +1,16 @@
 {
   "generator": "OpenAI ImageGen",
   "policy": "one unique, locally bundled, visually reviewed architecture background per slide",
-  "promptRecord": "reproducible prompt reconstructed from the generation brief, slide claim, and foreground overlay contract",
+  "prompt_record": "generation specification preserved from the brief, slide claim, and foreground overlay contract",
   "assets": [
     {
       "slide": "S01",
       "asset": "s01-architecture-first.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 算力不是答案，体系结构才是. Architecture claim to visualize: 课程研究处理器如何获得性能，而不是某个工具如何使用。 Required composition for the foreground teaching layer: ArchitectureZoom: system→chip→core→unit. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 算力不是答案，体系结构才是. Architecture claim to visualize: 先问数据在哪里、何时到达、由谁等待，再问 Agent 能做什么。 Required composition for the foreground teaching layer: ArchitectureZoom. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s01-architecture-first.png",
+      "runtime_path": "public/generated/slides/s01-architecture-first.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "89192eb6abb360be7e9162fc442bda2522d0101c3f94e615e82bbf3ca5789fce"
@@ -16,9 +18,11 @@
     {
       "slide": "S02",
       "asset": "s02-peak-gap.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 432 TFLOPS 为什么跑不满. Architecture claim to visualize: 峰值算力和实际性能之间的缺口，就是体系结构研究空间。 Required composition for the foreground teaching layer: Peak、measured 与 utilization reveal. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 432 TFLOPS 为什么跑不满. Architecture claim to visualize: 峰值算力与实测性能之间的缺口，就是体系结构研究空间。 Required composition for the foreground teaching layer: Peak、measured 与 utilization reveal. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s02-peak-gap.png",
+      "runtime_path": "public/generated/slides/s02-peak-gap.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "b8ad3c7cf04cd26cb96d2ccf84c74cf88097735363447702337a2a7729f5a57d"
@@ -26,9 +30,11 @@
     {
       "slide": "S03",
       "asset": "s03-workload-data-movement.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 工作负载 = 计算 + 数据移动. Architecture claim to visualize: 任何算子都同时要求运算次数和数据搬运字节数。 Required composition for the foreground teaching layer: FLOPs、Bytes、Reuse. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 工作负载 = 计算 + 数据移动. Architecture claim to visualize: 任何算子都同时要求运算次数、搬运字节数和可利用的复用。 Required composition for the foreground teaching layer: FLOPs、Bytes、Reuse. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s03-workload-data-movement.png",
+      "runtime_path": "public/generated/slides/s03-workload-data-movement.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "5fbc27369f42ca243c17245a2737f032a4e7512786132e10b5293724f267d789"
@@ -36,9 +42,11 @@
     {
       "slide": "S04",
       "asset": "s04-roofline-axes.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Roofline 的两根轴. Architecture claim to visualize: 横轴描述每字节计算量，纵轴描述每秒计算量。 Required composition for the foreground teaching layer: SVG log axes、bandwidth slope、compute ceiling. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Roofline 的两根轴. Architecture claim to visualize: 横轴是每字节计算量，纵轴是每秒完成的计算量。 Required composition for the foreground teaching layer: SVG log axes、bandwidth slope、compute ceiling. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s04-roofline-axes.png",
+      "runtime_path": "public/generated/slides/s04-roofline-axes.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "6ebc4c7c97f4444afd95d880f52ab2cf44c07c7ad0ac683206c78144d3bf952d"
@@ -47,8 +55,10 @@
       "slide": "S05",
       "asset": "s05-interactive-roofline.png",
       "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 交互 Roofline. Architecture claim to visualize: 架构参数移动屋顶，算法复用移动工作点。 Required composition for the foreground teaching layer: InteractiveRoofline. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s05-interactive-roofline.png",
+      "runtime_path": "public/generated/slides/s05-interactive-roofline.png",
       "review": "pass",
       "regenerated": true,
       "sha256": "06ee96df9d7f43a8871ba7b4877a07288158fd414df2e49b52d8675c460633ad"
@@ -56,9 +66,11 @@
     {
       "slide": "S06",
       "asset": "s06-arithmetic-intensity.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Arithmetic Intensity：一份数据用几次. Architecture claim to visualize: 提高复用往往比增加计算单元更能改变瓶颈。 Required composition for the foreground teaching layer: 两组 FLOPs/Bytes 算例. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Arithmetic Intensity 不是常数. Architecture claim to visualize: 同一算子在不同分块、缓存命中率和数据布局下，会落在不同工作点。 Required composition for the foreground teaching layer: 两组 FLOPs/Bytes 算例. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s06-arithmetic-intensity.png",
+      "runtime_path": "public/generated/slides/s06-arithmetic-intensity.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "35f46ce2e4cfb20dd2f52ef6e0be85bcb3b66149f9bad2bf5797d2d654c11428"
@@ -66,9 +78,11 @@
     {
       "slide": "S07",
       "asset": "s07-locality.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Locality：让工作点向右移动. Architecture claim to visualize: 缓存、Tile 和布局通过减少有效字节移动提升局部性。 Required composition for the foreground teaching layer: 三个 Roofline 工作点. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 局部性就是避免昂贵搬运. Architecture claim to visualize: 时间复用、空间复用和生产者—消费者复用，最终都减少远端字节。 Required composition for the foreground teaching layer: 三个 Roofline 工作点. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s07-locality.png",
+      "runtime_path": "public/generated/slides/s07-locality.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "7c216350e3078f8eba613ef884dce8cc3f0d2b7ac91f747f7c49e47d13421aab"
@@ -76,9 +90,11 @@
     {
       "slide": "S08",
       "asset": "s08-memory-latency-days.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 如果一个周期等于一天. Architecture claim to visualize: 访存层级的延迟差异足以改变调度策略。 Required composition for the foreground teaching layer: MemoryHierarchyExplorer latency mode. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 把存储延迟换算成“天”. Architecture claim to visualize: 核心尺度上的几个周期，与片外访问的几百周期，是完全不同的时间世界。 Required composition for the foreground teaching layer: MemoryHierarchyExplorer latency mode. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s08-memory-latency-days.png",
+      "runtime_path": "public/generated/slides/s08-memory-latency-days.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "843682c40787613f833c211029c3afdb11fc111432cdc82ca0258461a1f973f1"
@@ -86,9 +102,11 @@
     {
       "slide": "S09",
       "asset": "s09-memory-hierarchy.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 延迟、带宽、容量不能混为一谈. Architecture claim to visualize: 每一级存储都是容量、带宽、延迟和能耗的不同组合。 Required composition for the foreground teaching layer: MemoryHierarchyExplorer four metrics. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 存储层级：容量、延迟、带宽三角. Architecture claim to visualize: 每一级都在用有限容量换取更低平均延迟和更少片外流量。 Required composition for the foreground teaching layer: MemoryHierarchyExplorer. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s09-memory-hierarchy.png",
+      "runtime_path": "public/generated/slides/s09-memory-hierarchy.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "1d7fb0259f86b6538f4bbd5a94eed0cd083cf1efb5c1dd80edbf0a574a880a56"
@@ -96,9 +114,11 @@
     {
       "slide": "S10",
       "asset": "s10-concurrency.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 延迟不可消失，但可以被覆盖. Architecture claim to visualize: Outstanding requests、MLP 和队列容量决定能否隐藏延迟。 Required composition for the foreground teaching layer: Little’s Law 与队列占用. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 并发度把延迟变成吞吐. Architecture claim to visualize: 足够多的独立请求可以隐藏延迟，但队列、端口和返回带宽会先饱和。 Required composition for the foreground teaching layer: Little’s Law 与队列占用. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s10-concurrency.png",
+      "runtime_path": "public/generated/slides/s10-concurrency.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "8c34eccf293fd8a5d4a9fb276f15df1ef6b7e8e513a757d32ac23f0917df54e7"
@@ -106,9 +126,11 @@
     {
       "slide": "S11",
       "asset": "s11-processor-city.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 一颗处理器就是一座城市. Architecture claim to visualize: 计算、缓存、互连和调度共同决定吞吐。 Required composition for the foreground teaching layer: Core、cache、NoC、controller 标签. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 一座处理器城市. Architecture claim to visualize: 计算单元是工厂，存储是仓库，NoC 是道路，调度器决定货物流向。 Required composition for the foreground teaching layer: ArchitectureZoom. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s11-processor-city.png",
+      "runtime_path": "public/generated/slides/s11-processor-city.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "8b11653e91798085aeb2ffee6a693d898608687ec88fd8ebcb3a8a9974d843bc"
@@ -116,9 +138,11 @@
     {
       "slide": "S12",
       "asset": "s12-package-memory.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 封装、HBM 与 DDR. Architecture claim to visualize: 内存位置和封装互连决定可用带宽与能耗。 Required composition for the foreground teaching layer: package/HBM/DDR paths. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 封装本身也是存储体系结构. Architecture claim to visualize: HBM、interposer、chiplet 与引脚共同决定可见带宽、延迟和能耗。 Required composition for the foreground teaching layer: package/HBM/DDR paths. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s12-package-memory.png",
+      "runtime_path": "public/generated/slides/s12-package-memory.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "c7bb5e0ce29b355cabdcbbba50ab7cfc61773d1ddf242ac35fd64601dc2a6653"
@@ -126,9 +150,11 @@
     {
       "slide": "S13",
       "asset": "s13-noc-congestion.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: NoC：路够宽，但路口堵了. Architecture claim to visualize: 端点带宽充足不代表片上网络没有拥塞。 Required composition for the foreground teaching layer: NoCTraffic deterministic mesh. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: NoC：带宽不是均匀水池. Architecture claim to visualize: 局部热点、路由重叠和回压，会让总带宽充足的网络仍然拥塞。 Required composition for the foreground teaching layer: NoCTraffic. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s13-noc-congestion.png",
+      "runtime_path": "public/generated/slides/s13-noc-congestion.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "813291f423407c2c6230f118971703f22f8b2ad60847fbf17c63432a3eaa0fc6"
@@ -136,9 +162,11 @@
     {
       "slide": "S14",
       "asset": "s14-tile-cube.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Tile/CUBE：把数据留在计算旁边. Architecture claim to visualize: Tile 架构以局部存储和专用数据通路提升复用。 Required composition for the foreground teaching layer: TileDataflow resources. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 计算阵列周围的本地复用. Architecture claim to visualize: 高吞吐来自操作数在阵列附近循环，而不是每次乘加都访问远端。 Required composition for the foreground teaching layer: TileDataflow resources. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s14-tile-cube.png",
+      "runtime_path": "public/generated/slides/s14-tile-cube.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "f4b55188629b2cb25b1b4a4890fee70ca8beb5787e85f85c6851f436c20d9de2"
@@ -146,9 +174,11 @@
     {
       "slide": "S15",
       "asset": "s15-tload-tstore.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: TLOAD/TSTORE：布局也是体系结构. Architecture claim to visualize: Tensor 到 Tile 的加载同时建立布局和访问模式。 Required composition for the foreground teaching layer: Tile shape、layout、bank mapping. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Tile 是软硬件共同选择. Architecture claim to visualize: Tile 太小浪费复用，太大挤爆容量和端口；最优点来自共同约束。 Required composition for the foreground teaching layer: Tile shape、layout、bank mapping. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s15-tload-tstore.png",
+      "runtime_path": "public/generated/slides/s15-tload-tstore.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "e60433ba708302f8d7246c8cadc3c07915e868324b67f6db54c6096663f8235f"
@@ -156,9 +186,11 @@
     {
       "slide": "S16",
       "asset": "s16-double-buffer.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Double Buffer：搬运与计算重叠. Architecture claim to visualize: 双缓冲提升重叠度，但不会增加原始带宽。 Required composition for the foreground teaching layer: TimingDiagram LOAD/COMPUTE/STORE. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 双缓冲：用容量换重叠. Architecture claim to visualize: 一块 buffer 服务计算，另一块 buffer 同时搬运下一 tile。 Required composition for the foreground teaching layer: DoubleBufferTimeline. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s16-double-buffer.png",
+      "runtime_path": "public/generated/slides/s16-double-buffer.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "69527c5f20c031d1be83046d82bc24af2716371d4c9730419302e95fbb2cb959"
@@ -166,9 +198,11 @@
     {
       "slide": "S17",
       "asset": "s17-bank-swizzle.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Bank Conflict 与 Swizzle. Architecture claim to visualize: 总带宽不变时，数据布局仍会决定实际并行度。 Required composition for the foreground teaching layer: BankConflictExplorer. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Bank conflict 与地址 swizzle. Architecture claim to visualize: 总容量相同，地址映射不同，瞬时带宽可以相差数倍。 Required composition for the foreground teaching layer: BankConflictExplorer. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s17-bank-swizzle.png",
+      "runtime_path": "public/generated/slides/s17-bank-swizzle.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "3c5e871357a84c70e5bf0e610e4586fa53a01ff5d591e5fd7b559d3703cbe9ab"
@@ -176,9 +210,11 @@
     {
       "slide": "S18",
       "asset": "s18-scheduling-levels.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 调度：任务、块与微操作. Architecture claim to visualize: 体系结构需要在多个时间尺度上分配资源。 Required composition for the foreground teaching layer: three-level scheduler zoom. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 三层调度看同一件事. Architecture claim to visualize: Task、Tile、Micro-op 分别管理全局依赖、本地复用和周期资源。 Required composition for the foreground teaching layer: three-level scheduler zoom. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s18-scheduling-levels.png",
+      "runtime_path": "public/generated/slides/s18-scheduling-levels.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "a197d2f4166dc372c0bc05208b91580c044320ee19b5ed7dafc0098f93c14fc9"
@@ -186,9 +222,11 @@
     {
       "slide": "S19",
       "asset": "s19-performance-causality.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 一张性能因果图. Architecture claim to visualize: 性能由工作量、局部性、带宽、并发、调度和计算共同决定。 Required composition for the foreground teaching layer: clickable causal pipeline. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 从工作负载到利用率的因果链. Architecture claim to visualize: 不要直接从代码跳到性能数字；先追踪每一级结构状态。 Required composition for the foreground teaching layer: clickable causal pipeline. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s19-performance-causality.png",
+      "runtime_path": "public/generated/slides/s19-performance-causality.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "395c1f42dbaafa2a32ca43d67c559bffad111f3ce4cf42c8b597445d0c2f0d10"
@@ -196,9 +234,11 @@
     {
       "slide": "S20",
       "asset": "s20-agentic-circuit-map.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Agentic Circuit：给体系结构装上可执行模型. Architecture claim to visualize: 工具把体系结构对象变成可运行、可测量、可探索的模型。 Required composition for the foreground teaching layer: ArchitectureModelOverlay. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Agentic Circuit：让架构假设可执行. Architecture claim to visualize: Agent 负责提出和修改模型；独立实验负责裁判。 Required composition for the foreground teaching layer: ArchitectureZoom. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s20-agentic-circuit-map.png",
+      "runtime_path": "public/generated/slides/s20-agentic-circuit-map.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "3a226c0f251e30991886a0a1793649a947994d9afc0232c08f3d8e7816e4d3c7"
@@ -206,9 +246,11 @@
     {
       "slide": "S21",
       "asset": "s21-design-challenge.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 你会先改什么. Architecture claim to visualize: 没有证据前，不应直接扩大计算阵列。 Required composition for the foreground teaching layer: four design branches and evidence reveal. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 第一课挑战：你会改哪一层. Architecture claim to visualize: 给定同一工作负载，选择一个改动，并预测它会改变哪条证据链。 Required composition for the foreground teaching layer: ExperimentPanel. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s21-design-challenge.png",
+      "runtime_path": "public/generated/slides/s21-design-challenge.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "a7cad0c7e650451275cdfdae9d0302bc826ea3a151402b6b4e72d8f17d1990d5"
@@ -216,9 +258,11 @@
     {
       "slide": "S22",
       "asset": "s22-core-dive.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 进入处理器内部. Architecture claim to visualize: 把系统瓶颈追到具体微架构状态和模块。 Required composition for the foreground teaching layer: ArchitectureZoom system→cycle. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 从屋顶钻进核心. Architecture claim to visualize: 第一课给出上界；第二课解释每个周期为什么达不到上界。 Required composition for the foreground teaching layer: ArchitectureZoom. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s22-core-dive.png",
+      "runtime_path": "public/generated/slides/s22-core-dive.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "b9a456d399a010c762b09c69d18841819c5538d822d0619a35ceaa01d22eb874"
@@ -226,9 +270,11 @@
     {
       "slide": "S23",
       "asset": "s23-linxcore-case.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: LinxCore：案例而不是答案. Architecture claim to visualize: 用具体模块化处理器学习可迁移的研究方法。 Required composition for the foreground teaching layer: LinxCoreModuleExplorer. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: LinxCore：真实模块，真实问题. Architecture claim to visualize: 以开源 LinxCore 为锚点，把前端、调度、执行、访存和提交连成系统。 Required composition for the foreground teaching layer: LinxCoreModuleExplorer. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s23-linxcore-case.png",
+      "runtime_path": "public/generated/slides/s23-linxcore-case.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "16a503bafd0fab53a762d8eac0056c6170b56f91576b448ca3c353c4c5f62f5d"
@@ -236,9 +282,11 @@
     {
       "slide": "S24",
       "asset": "s24-pto-contract.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: PTO-SPEC：工作负载与 ISA 合同. Architecture claim to visualize: 规范定义应该发生什么，微架构研究如何发生。 Required composition for the foreground teaching layer: semantic/implementation boundary. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: PTO 定义语义，不规定微架构. Architecture claim to visualize: 同一虚拟 ISA effect 可以由不同流水线、缓存和调度策略实现。 Required composition for the foreground teaching layer: semantic/implementation boundary. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s24-pto-contract.png",
+      "runtime_path": "public/generated/slides/s24-pto-contract.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "f57df784724f6597e6bcf0b1b0625b56b91a0b8c33ea854c306a67516fa81a0c"
@@ -246,9 +294,11 @@
     {
       "slide": "S25",
       "asset": "s25-cross-layer.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 同一个算子穿过五层. Architecture claim to visualize: 算法、Tile 程序、ISA effect、微操作和硬件事件是不同观察层。 Required composition for the foreground teaching layer: five-layer event alignment. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 同一个算子穿过五层. Architecture claim to visualize: 算法、Tile 程序、ISA effect、微操作和硬件事件，是五种不同观察层。 Required composition for the foreground teaching layer: five-layer event alignment. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s25-cross-layer.png",
+      "runtime_path": "public/generated/slides/s25-cross-layer.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "19fd48f73427a015e80112ab75988b0aa8a1633ce8780c5f0e3f72838e3ee53a"
@@ -256,9 +306,11 @@
     {
       "slide": "S26",
       "asset": "s26-core-pipeline.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 流水线是一组相互背压的队列. Architecture claim to visualize: 现代核心是带状态、反馈和资源竞争的队列网络。 Required composition for the foreground teaching layer: Fetch→Commit queue network. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 流水线是一组相互背压的队列. Architecture claim to visualize: 现代核心不是单向传送带，而是带状态、反馈和资源竞争的队列网络。 Required composition for the foreground teaching layer: LinxCoreModuleExplorer. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s26-core-pipeline.png",
+      "runtime_path": "public/generated/slides/s26-core-pipeline.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "46c66177940f5b1991f2b12f91a4a0c8c188e82dc8bddb17329cf18de9ac9a53"
@@ -266,9 +318,11 @@
     {
       "slide": "S27",
       "asset": "s27-frontend.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Fetch/Decode：带宽从前端开始. Architecture claim to visualize: 前端供给不足会让后端算力失去意义。 Required composition for the foreground teaching layer: fetch/decode widths and bubbles. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Fetch/Decode：带宽从前端开始. Architecture claim to visualize: 前端供给不足会让后端算力失去意义；错误路径还会浪费真实带宽。 Required composition for the foreground teaching layer: PipelineStepper. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s27-frontend.png",
+      "runtime_path": "public/generated/slides/s27-frontend.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "f122c16d16939ab5c1438f8550b726abe8b762b05bcd3f7b78ffd4476bcc421d"
@@ -276,9 +330,11 @@
     {
       "slide": "S28",
       "asset": "s28-rename-rob.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Rename 与 ROB：乱序执行，顺序退休. Architecture claim to visualize: 重命名释放假依赖，ROB 保存精确状态和程序顺序。 Required composition for the foreground teaching layer: ROBEntryBank and commit boundary. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Rename 与 ROB：乱序执行，顺序退休. Architecture claim to visualize: 重命名释放假依赖，ROB 保存程序顺序、异常边界和恢复状态。 Required composition for the foreground teaching layer: PipelineStepper. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s28-rename-rob.png",
+      "runtime_path": "public/generated/slides/s28-rename-rob.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "8f98071981ca205a93ff08ce9a8d39b1923c014c7bd40ea4462198ed1f51b718"
@@ -286,9 +342,11 @@
     {
       "slide": "S29",
       "asset": "s29-issue-queue.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Issue Queue：谁准备好了. Architecture claim to visualize: 发射性能由唤醒、选择、端口和队列压力共同决定。 Required composition for the foreground teaching layer: QueuePressure issue mode. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Issue Queue：谁准备好了. Architecture claim to visualize: 发射性能由唤醒、选择、端口和队列压力共同决定。 Required composition for the foreground teaching layer: QueuePressure. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s29-issue-queue.png",
+      "runtime_path": "public/generated/slides/s29-issue-queue.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "0bb063f7e78a5a8aef9254bdce4a36b7698a531f4829d05a430686c789437433"
@@ -296,9 +354,11 @@
     {
       "slide": "S30",
       "asset": "s30-execute-bypass.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Execute：流水线深度与旁路. Architecture claim to visualize: 执行吞吐、延迟和旁路是不同参数。 Required composition for the foreground teaching layer: ALU/multiply/memory pipelines. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Execute 与 bypass：结果何时可消费. Architecture claim to visualize: 执行延迟、吞吐和旁路覆盖，共同决定依赖链速度。 Required composition for the foreground teaching layer: PipelineStepper. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s30-execute-bypass.png",
+      "runtime_path": "public/generated/slides/s30-execute-bypass.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "ba8178eae8cac640a7431ec4ae73b3eaa355dcc1d02353426af88e7d00a86b09"
@@ -306,9 +366,11 @@
     {
       "slide": "S31",
       "asset": "s31-load-store.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Load/Store：最复杂的执行单元. Architecture claim to visualize: 访存执行同时面对地址、顺序、缓存、合并和异常。 Required composition for the foreground teaching layer: AGU/LQ/SQ/cache/miss path. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: LSU：地址、顺序、缓存与 miss. Architecture claim to visualize: 访存单元同时处理地址生成、内存顺序、转发、缓存和未完成请求。 Required composition for the foreground teaching layer: AGU/LQ/SQ/cache/miss path. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s31-load-store.png",
+      "runtime_path": "public/generated/slides/s31-load-store.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "91c634917d02f0e90d70013d69d4d3b420e9a1cb07bdea718071facf6ec73b46"
@@ -316,9 +378,11 @@
     {
       "slide": "S32",
       "asset": "s32-miss-propagation.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Cache Miss 如何变成全核停顿. Architecture claim to visualize: 局部 miss 可经队列和 ROB 传播成全局背压。 Required composition for the foreground teaching layer: miss pressure propagation. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 一次 cache miss 如何拖慢全核. Architecture claim to visualize: Miss 先占住 LSU，再堵塞 issue、ROB、rename，最终让 fetch 停止。 Required composition for the foreground teaching layer: QueuePressure. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s32-miss-propagation.png",
+      "runtime_path": "public/generated/slides/s32-miss-propagation.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "3f0f75a7753c1a3aab90e341ad823d078b265a41798b913e1097104d5d6cbb21"
@@ -326,9 +390,11 @@
     {
       "slide": "S33",
       "asset": "s33-backpressure.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Backpressure：体系结构中的反馈回路. Architecture claim to visualize: 性能模型必须包含反馈，否则只能描述理想吞吐。 Required composition for the foreground teaching layer: CircuitDataflow ready/valid/credit. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Backpressure 是一个闭环. Architecture claim to visualize: 下游满会向上游传播 stop；下游释放又向前传播 progress。 Required composition for the foreground teaching layer: TimingDiagram. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s33-backpressure.png",
+      "runtime_path": "public/generated/slides/s33-backpressure.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "922b964a3793fd2ee7965edeed087567e65d92f6555128f3878c110f54b60ae1"
@@ -336,9 +402,11 @@
     {
       "slide": "S34",
       "asset": "s34-ndf-graph.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: NDF：把体系结构写成可追踪图. Architecture claim to visualize: 模型需要稳定的模块、端口、状态、参数和测量定义。 Required composition for the foreground teaching layer: ArchitectureModelOverlay NDF mode. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 用 NDF 描述模块、队列和因果边. Architecture claim to visualize: NDF 记录设计承诺：谁拥有状态、谁生产、谁消费、什么条件推进。 Required composition for the foreground teaching layer: NdfTraceability. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s34-ndf-graph.png",
+      "runtime_path": "public/generated/slides/s34-ndf-graph.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "d9ef1062f4ebec8570567d1d661014d2ce02a928d41473b3afd5af0b652815f1"
@@ -346,9 +414,11 @@
     {
       "slide": "S35",
       "asset": "s35-pycircuit-cycle.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: pyCircuit：让模型按周期运行. Architecture claim to visualize: 可执行模型让假设产生 trace，而不是停留在方框图。 Required composition for the foreground teaching layer: PipelineStepper cycle/state/trace. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 用 pyCircuit 把周期语义跑起来. Architecture claim to visualize: 模块、寄存器和队列在时钟边界更新；相同输入必须产生可重放轨迹。 Required composition for the foreground teaching layer: TimingDiagram. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s35-pycircuit-cycle.png",
+      "runtime_path": "public/generated/slides/s35-pycircuit-cycle.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "672bee7131c232b503b3e37811630a03eb9983365e39db3f8cbd93bbb42d181a"
@@ -356,9 +426,11 @@
     {
       "slide": "S36",
       "asset": "s36-reproducible-baseline.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 可复现实验：先锁定 Baseline. Architecture claim to visualize: 没有固定输入、参数、trace 和指标，就没有可比较的优化。 Required composition for the foreground teaching layer: ExperimentPanel. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 先固定 workload 和 baseline. Architecture claim to visualize: 没有固定输入、配置、指标和产物，任何性能比较都不可信。 Required composition for the foreground teaching layer: BaselineExperiment. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s36-reproducible-baseline.png",
+      "runtime_path": "public/generated/slides/s36-reproducible-baseline.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "d193bd85fb207c3d0bd828ef0eee19fcbc53b977639ceb86eb673bc2d3ac8ee7"
@@ -366,9 +438,11 @@
     {
       "slide": "S37",
       "asset": "s37-bandwidth-sweep.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 实验一：扫带宽，不猜带宽. Architecture claim to visualize: 带宽 sweep 能识别性能拐点和新的瓶颈。 Required composition for the foreground teaching layer: Roofline sweep chart. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 实验一：扫描内存带宽. Architecture claim to visualize: 只改变带宽，观察性能先增长后在计算屋顶饱和。 Required composition for the foreground teaching layer: InteractiveRoofline. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s37-bandwidth-sweep.png",
+      "runtime_path": "public/generated/slides/s37-bandwidth-sweep.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "ad7f8ede32456709da53cb363a356783fd2ba924aa1628393fbdf77b1d8df5fa"
@@ -376,9 +450,11 @@
     {
       "slide": "S38",
       "asset": "s38-cache-queue-sweep.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 实验二：容量、命中率和队列深度. Architecture claim to visualize: 相同吞吐可能由不同微架构机制实现。 Required composition for the foreground teaching layer: trace and occupancy comparison. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 实验二：Cache、局部性与队列深度. Architecture claim to visualize: 更大 cache 减少流量，更深队列隐藏延迟；两者解决的不是同一个问题。 Required composition for the foreground teaching layer: ArtifactComparison. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s38-cache-queue-sweep.png",
+      "runtime_path": "public/generated/slides/s38-cache-queue-sweep.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "aaec91f06b80764da1d6f3ff44e39864259055e12ff790fc29551c230d2ef0ae"
@@ -386,9 +462,11 @@
     {
       "slide": "S39",
       "asset": "s39-predicted-measured.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Roofline 预测与周期模型测量. Architecture claim to visualize: Roofline 给上界，周期模型解释为什么达不到上界。 Required composition for the foreground teaching layer: gap decomposition. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 预测 Roofline，对照周期轨迹. Architecture claim to visualize: 宏观模型负责提出上界，微观轨迹负责解释偏差。 Required composition for the foreground teaching layer: gap decomposition. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s39-predicted-measured.png",
+      "runtime_path": "public/generated/slides/s39-predicted-measured.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "e60e6308d13f8df0b10f621e13fd86449ab631d87ef5a15f5d9ebe043d21354c"
@@ -396,9 +474,11 @@
     {
       "slide": "S40",
       "asset": "s40-agent-research-loop.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Agent 辅助研究：提出、运行、解释、反驳. Architecture claim to visualize: Agent 扩大实验吞吐，但不能替代约束、证据和架构判断。 Required composition for the foreground teaching layer: proposal→simulation→measurement→critique. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Agent 进入研究闭环，而不是替代裁判. Architecture claim to visualize: 提出变体、运行模型、收集证据、批判结果；每一步都有边界和失败条件。 Required composition for the foreground teaching layer: PipelineStepper. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s40-agent-research-loop.png",
+      "runtime_path": "public/generated/slides/s40-agent-research-loop.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "dc78e4ed358a722f2413ee6c89daa8eec617ebe6fc1206d6700cfc1a5a721ca3"
@@ -406,9 +486,11 @@
     {
       "slide": "S41",
       "asset": "s41-pareto.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Pareto：没有唯一最优处理器. Architecture claim to visualize: 性能、面积、功耗、复杂度和风险必须共同权衡。 Required composition for the foreground teaching layer: ParetoFrontier. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 最优设计是一条 Pareto 前沿. Architecture claim to visualize: 性能、流量、面积、功耗和复杂度之间没有单一冠军。 Required composition for the foreground teaching layer: ParetoFrontier. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s41-pareto.png",
+      "runtime_path": "public/generated/slides/s41-pareto.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "fd375838e72728408c518fca4eb0cb0a9735b57e882b9c03c2de0aa253e9df51"
@@ -416,9 +498,11 @@
     {
       "slide": "S42",
       "asset": "s42-architecture-first-closing.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: Architecture First, Agent Assisted. Architecture claim to visualize: 让体系结构假设更快变成可证伪证据。 Required composition for the foreground teaching layer: three takeaways and local lab entry. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "generated": "2026-08-01",
-      "sourceStyle": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 体系结构优先，Agent 为证据服务. Architecture claim to visualize: 从工作负载到周期事件，保持层次、因果、来源和可复现性。 Required composition for the foreground teaching layer: ArchitectureZoom. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
+      "date": "2026-08-01",
+      "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
+      "final_path": "assets/generated/slides/s42-architecture-first-closing.png",
+      "runtime_path": "public/generated/slides/s42-architecture-first-closing.png",
       "review": "pass",
       "regenerated": false,
       "sha256": "bb73fdfe5eea030b05f67d66844ecb0fb24c56435bbbe4fefe70e51e42b88756"

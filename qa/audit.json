@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T20:48:40.295Z",
+  "generatedAt": "2026-08-01T21:56:16.383Z",
   "viewport": [
     1920,
     1080
@@ -10,216 +10,280 @@
       "id": "session-1",
       "count": 21,
       "remoteRequests": [],
+      "failedResponses": [],
       "slides": [
         {
           "number": 1,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s01-architecture-first.png\")"
         },
         {
           "number": 2,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s02-peak-gap.png\")"
         },
         {
           "number": 3,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s03-workload-data-movement.png\")"
         },
         {
           "number": 4,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s04-roofline-axes.png\")"
         },
         {
           "number": 5,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s05-interactive-roofline.png\")"
         },
         {
           "number": 6,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s06-arithmetic-intensity.png\")"
         },
         {
           "number": 7,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s07-locality.png\")"
         },
         {
           "number": 8,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s08-memory-latency-days.png\")"
         },
         {
           "number": 9,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s09-memory-hierarchy.png\")"
         },
         {
           "number": 10,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s10-concurrency.png\")"
         },
         {
           "number": 11,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s11-processor-city.png\")"
         },
         {
           "number": 12,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s12-package-memory.png\")"
         },
         {
           "number": 13,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s13-noc-congestion.png\")"
         },
         {
           "number": 14,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s14-tile-cube.png\")"
         },
         {
           "number": 15,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s15-tload-tstore.png\")"
         },
         {
           "number": 16,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s16-double-buffer.png\")"
         },
         {
           "number": 17,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s17-bank-swizzle.png\")"
         },
         {
           "number": 18,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s18-scheduling-levels.png\")"
         },
         {
           "number": 19,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s19-performance-causality.png\")"
         },
         {
           "number": 20,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s20-agentic-circuit-map.png\")"
         },
         {
           "number": 21,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s21-design-challenge.png\")"
         }
       ]
     },
@@ -227,216 +291,280 @@
       "id": "session-2",
       "count": 21,
       "remoteRequests": [],
+      "failedResponses": [],
       "slides": [
         {
           "number": 1,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s22-core-dive.png\")"
         },
         {
           "number": 2,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s23-linxcore-case.png\")"
         },
         {
           "number": 3,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s24-pto-contract.png\")"
         },
         {
           "number": 4,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s25-cross-layer.png\")"
         },
         {
           "number": 5,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s26-core-pipeline.png\")"
         },
         {
           "number": 6,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s27-frontend.png\")"
         },
         {
           "number": 7,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s28-rename-rob.png\")"
         },
         {
           "number": 8,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s29-issue-queue.png\")"
         },
         {
           "number": 9,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s30-execute-bypass.png\")"
         },
         {
           "number": 10,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s31-load-store.png\")"
         },
         {
           "number": 11,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s32-miss-propagation.png\")"
         },
         {
           "number": 12,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s33-backpressure.png\")"
         },
         {
           "number": 13,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s34-ndf-graph.png\")"
         },
         {
           "number": 14,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s35-pycircuit-cycle.png\")"
         },
         {
           "number": 15,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 21.5,
+          "fontMinPx": 19.4,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s36-reproducible-baseline.png\")"
         },
         {
           "number": 16,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": 19.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s37-bandwidth-sweep.png\")"
         },
         {
           "number": 17,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 19.6,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": []
-        },
-        {
-          "number": 18,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 19.6,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": []
-        },
-        {
-          "number": 19,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 21.5,
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": []
-        },
-        {
-          "number": 20,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 17.6,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s38-cache-queue-sweep.png\")"
         },
         {
-          "number": 21,
+          "number": 18,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 19.6,
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s39-predicted-measured.png\")"
+        },
+        {
+          "number": 19,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": 21.5,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
-          "overlapIssues": []
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s40-agent-research-loop.png\")"
+        },
+        {
+          "number": 20,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 17.6,
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s41-pareto.png\")"
+        },
+        {
+          "number": 21,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 21.5,
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-2/generated/slides/s42-architecture-first-closing.png\")"
         }
       ]
     }

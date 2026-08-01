@@ -1,65 +1,56 @@
 # Course Traceability Matrix
 
-Generated from deck speaker notes. This is a course-level NDF projection, not a PTO normative artifact.
+Generated from the authoritative deck contract. `COURSE-Sxx` identifiers are course slide records; PTO, LinxCore, and pyCircuit claims retain their repository paths.
 
-| Course requirement | Slide | Claim | Diagram/component | Experiment/evidence |
-|---|---:|---|---|---|
-| NDF-MTH-001, NDF-SRC-001 | session-1 · 1 | 先建立一条**不会自欺**的研究闭环 | class: hero | docs/NDF.md; materials/SOURCES.yaml |
-| NDF-MTH-002, NDF-MTH-003 | session-1 · 2 | Agent 放大的首先是**歧义**，不是生产力 | class: compare | experiments/artifacts/07/expected_failure.json |
-| NDF-LRN-101, NDF-LRN-102 | session-1 · 3 | 今天只练**四个判断动作** | class: architecture | docs/NDF.md |
-| NDF-MTH-001 | session-1 · 4 | 一项研究只有闭环，才配得上“可复现” | class: architecture | docs/NDF.md; experiments/artifacts/summary.json |
-| NDF-MTH-003 | session-1 · 5 | 先给每句话贴上**证据类型**，争论会立刻变短 | class: evidence | docs/NDF.md |
-| NDF-SRC-001 | session-1 · 6 | 可执行规范让语义进入**机器检查** | class: architecture | materials/SOURCES.yaml |
-| NDF-SRC-001, NDF-MTH-001 | session-1 · 7 | 五个操作就能形成第一条**端到端证据链** | class: experiment | experiments/artifacts/01/pto_trace.json |
-| NDF-LRN-101, NDF-MTH-001 | session-1 · 8 | NDF 把研究承诺**钉在规范上** | NdfTraceability | experiments/artifacts/02/ndf_projection.json |
-| NDF-VIS-001, NDF-LRN-102 | session-1 · 9 | 好的追踪链必须允许你**反向找到责任人** | class: evidence | docs/NDF.md; experiments/artifacts/04/comparison.json |
-| NDF-LRN-101 | session-1 · 10 | 分层不是增加文档，而是限制每层**可以说什么** | class: architecture | experiments/artifacts/02/ndf_projection.json |
-| NDF-SRC-003 | session-1 · 11 | LinxCore 是模块化案例，**不是 PTO 官方实现** | class: compare | materials/SOURCES.yaml; docs/NDF.md |
-| NDF-SRC-003, NDF-LRN-101 | session-1 · 12 | 模块化的关键是**唯一状态所有者** | LinxCoreModuleExplorer | vendor/LinxCore/docs/spec/10-architecture/ownership.md |
-| NDF-LRN-101, NDF-MTH-002 | session-1 · 13 | pyCircuit 把“改设计”压缩成**结构化行动空间** | class: circuit-focus | experiments/artifacts/03/pipeline_summary.json |
-| NDF-LRN-101, NDF-MTH-001 | session-1 · 14 | 编译链不是后端细节，而是每次行动的**可审计路径** | PipelineStepper | experiments/artifacts/03/pipeline_summary.json |
-| NDF-LRN-102 | session-1 · 15 | 队列把并发设计变成一个**局部可判定契约** | CircuitDataflow | experiments/artifacts/05/queue_summary.json |
-| NDF-LRN-102, NDF-MTH-003 | session-1 · 16 | 观察点应贴近**架构承诺**，而不是贴满内部信号 | class: evidence | experiments/artifacts/04/comparison.json |
-| NDF-LRN-102 | session-1 · 17 | 等价允许时序不同，但**承诺必须一致** | class: compare | experiments/artifacts/04/comparison.json |
-| NDF-LRN-102, NDF-MTH-003 | session-1 · 18 | Trace 对比先做**身份对齐**，再谈差异 | TraceComparator | experiments/artifacts/04/comparison.json; experiments/artifacts/06/crosscheck.json |
-| NDF-MTH-002 | session-1 · 19 | 故意失败，证明**裁判独立** | class: experiment | experiments/artifacts/07/expected_failure.json |
-| NDF-MTH-002 | session-1 · 20 | 优化者与裁判共享代码，就会共享**盲点** | class: architecture | experiments/artifacts/07/expected_failure.json |
-| NDF-MTH-003, NDF-OFF-001 | session-1 · 21 | 可审计证据不是一张图，而是一份**可重放包** | class: evidence | experiments/artifacts/summary.json |
-| NDF-MTH-003, NDF-LRN-102 | session-1 · 22 | 主张写成六格卡片，Agent 才知道**何时停手** | class: evidence | experiments/artifacts/04/comparison.json |
-| NDF-MTH-001, NDF-MTH-002 | session-1 · 23 | 每轮实验只改变一个**可解释维度** | class: experiment | experiments/artifacts/summary.json |
-| NDF-MTH-002, NDF-LRN-102 | session-1 · 24 | Agent 的边界是**五件事**，不是一条 prompt | class: architecture | experiments/artifacts/07/expected_failure.json; experiments/artifacts/08/design_points.csv |
-| NDF-MTH-001, NDF-MTH-003 | session-1 · 25 | 接受一个设计，需要同时回答**对、好、懂** | class: evidence | experiments/artifacts/04/comparison.json; experiments/artifacts/08/design_points.csv |
-| NDF-LRN-101, NDF-LRN-102 | session-1 · 26 | 练习：把“做一个更快流水线”改写成**可审计任务** | class: quiz | experiments/artifacts/03/pipeline_summary.json; experiments/artifacts/04/comparison.json; experiments/artifacts/07/expected_failure.json |
-| NDF-LRN-101, NDF-LRN-102, NDF-MTH-002 | session-1 · 27 | 一个合格答案，必须让陌生人**不用猜** | class: evidence | experiments/artifacts/04/comparison.json; experiments/artifacts/07/expected_failure.json |
-| NDF-MTH-001, NDF-MTH-002, NDF-MTH-003, NDF-SRC-003 | session-1 · 28 | 证据最终要写回**设计记忆** | class: hero | experiments/artifacts/summary.json; docs/NDF.md |
-| NDF-LRN-201, NDF-LRN-202, NDF-SRC-003 | session-2 · 1 | 模块化把复杂核变成**可审计实验** | class: hero | docs/NDF.md; experiments/artifacts/summary.json |
-| NDF-LRN-201, NDF-LRN-202 | session-2 · 2 | 第二课把闭环落到**一个模块、一条 trace、一个决策** | class: architecture | docs/NDF.md |
-| NDF-SRC-001, NDF-SRC-003, NDF-MTH-003 | session-2 · 3 | 先钉死三条边界，才不会把**案例说成规范** | class: compare | materials/SOURCES.yaml; docs/NDF.md |
-| NDF-LRN-201, NDF-SRC-003 | session-2 · 4 | 模块不是文件夹，而是**状态、接口和证据的责任单元** | class: section | vendor/LinxCore/docs/spec/00-charter/scope.md |
-| NDF-LRN-201, NDF-SRC-003 | session-2 · 5 | LinxCore 案例显示执行路径可以按**责任边界**拆开 | LinxCoreModuleExplorer | vendor/LinxCore/docs/spec/00-charter/scope.md; vendor/LinxCore/docs/spec/10-architecture/ownership.md |
-| NDF-LRN-201, NDF-MTH-002 | session-2 · 6 | 单一状态所有者让恢复与提交只有**一个裁决点** | class: architecture | vendor/LinxCore/docs/spec/10-architecture/ownership.md |
-| NDF-LRN-201 | session-2 · 7 | ready/valid：一个**局部契约**就够了 | CircuitDataflow | experiments/artifacts/05/queue_trace.csv |
-| NDF-LRN-201, NDF-MTH-003 | session-2 · 8 | 8 周期队列 trace 把“不会丢数据”变成**可重放证据** | class: code-trace | experiments/artifacts/05/queue_trace.csv; experiments/artifacts/05/queue_summary.json |
-| NDF-LRN-201, NDF-LRN-102 | session-2 · 9 | 背压传播必须停在接口，不能污染**架构语义** | TimingDiagram | experiments/artifacts/05/queue_trace.csv |
-| NDF-LRN-201, NDF-LRN-102 | session-2 · 10 | 软硬件协同的共同语言是**可比较事件**，不是共享实现 | class: section | experiments/artifacts/06/crosscheck.json |
-| NDF-LRN-201, NDF-MTH-003 | session-2 · 11 | 从 ELF 到提交 trace，每层只承诺**自己知道的事实** | class: evidence | experiments/06_trace_crosscheck/fixtures/elf_symbols.json; experiments/06_trace_crosscheck/fixtures/qemu_trace.csv; experiments/06_trace_crosscheck/fixtures/hardware_trace.csv |
-| NDF-LRN-201, NDF-LRN-102 | session-2 · 12 | Crosscheck 先固定输入身份，再比较**4 条提交事件** | class: code-trace | experiments/artifacts/06/normalized_trace.csv; experiments/artifacts/06/crosscheck.json |
-| NDF-LRN-102, NDF-MTH-003 | session-2 · 13 | Trace 不一致要先定位**首个分歧**，不要先解释全局 | TraceComparator | experiments/artifacts/06/crosscheck.json; components/TraceComparator.vue |
-| NDF-LRN-102 | session-2 · 14 | 稳定 UID 让乱序、重放和 flush 之后仍能**可靠对齐** | class: architecture | vendor/LinxCore/docs/trace/uid_contract.md |
-| NDF-LRN-201, NDF-MTH-002 | session-2 · 15 | 观察者不能反向阻塞**被观察系统** | class: architecture | vendor/LinxCore/docs/spec/20-behavior/ifu.md |
-| NDF-MTH-001, NDF-MTH-002, NDF-LRN-202 | session-2 · 16 | 正确性门必须在 PPA 测量之前**关闭错误分支** | class: experiment | experiments/artifacts/summary.json |
-| NDF-MTH-002, NDF-LRN-202 | session-2 · 17 | 故意越界并得到 exit 2，证明裁判会**拒绝候选** | class: experiment | experiments/artifacts/07/expected_failure.json |
-| NDF-MTH-002, NDF-MTH-003, NDF-LRN-202 | session-2 · 18 | 失败工件是**设计知识**，不是日志垃圾 | class: evidence | experiments/artifacts/07/expected_failure.json |
-| NDF-LRN-202, NDF-MTH-002 | session-2 · 19 | 体系结构 Agent 由**五项可审计合同**组成 | class: section | docs/NDF.md; materials/agentic_circuit_optimizer.md |
-| NDF-LRN-202, NDF-LRN-201 | session-2 · 20 | 动作空间越结构化，实验的**因果归因**越可信 | class: compare | materials/agentic_circuit_optimizer.md |
-| NDF-LRN-202 | session-2 · 21 | 旋钮只有绑定不变量后，才是**研究变量** | DesignSpaceExplorer | components/DesignSpaceExplorer.vue; experiments/artifacts/08/design_points.csv |
-| NDF-LRN-202, NDF-MTH-003 | session-2 · 22 | 代理指标适合**筛选**，不适合宣称真实 PPA | class: architecture | materials/agentic_circuit_optimizer.md; materials/agentic_tao_physical_design_flow.md |
-| NDF-LRN-202 | session-2 · 23 | Pareto 前沿保留**不可比较的好设计** | ParetoFrontier | experiments/artifacts/08/pareto_frontier.json; components/ParetoFrontier.vue |
-| NDF-LRN-202, NDF-MTH-003 | session-2 · 24 | 被支配点仍能解释搜索为什么**停止** | class: evidence | experiments/artifacts/08/design_points.csv; experiments/artifacts/08/pareto_frontier.json |
-| NDF-LRN-202, NDF-MTH-001, NDF-MTH-002 | session-2 · 25 | 接受规则必须同时约束**正确性、收益和可解释性** | class: evidence | experiments/artifacts/07/expected_failure.json; experiments/artifacts/08/design_points.csv |
-| NDF-MTH-001, NDF-LRN-202 | session-2 · 26 | 每轮只验证一个假设，结果才能写回**设计记忆** | class: experiment | experiments/artifacts/summary.json; materials/agentic_circuit_optimizer.md |
-| NDF-LRN-202, NDF-LRN-101 | session-2 · 27 | 结构性跳变应开新分支，而不是伪装成**局部优化** | class: compare | materials/agentic_circuit_optimizer.md |
-| NDF-LRN-202, NDF-MTH-003 | session-2 · 28 | TAO v0.1 只是一条**待验证的物理设计研究路线** | class: section | materials/agentic_tao_physical_design_flow.md; materials/SOURCES.yaml |
-| NDF-LRN-201, NDF-LRN-202 | session-2 · 29 | 练习：用证据卡审计一个“更快”的候选 | class: quiz | experiments/artifacts/05/queue_summary.json; experiments/artifacts/06/crosscheck.json; experiments/artifacts/07/expected_failure.json |
-| NDF-LRN-202, NDF-MTH-003 | session-2 · 30 | 一张决策记录应让下一位研究者**复现选择** | class: evidence | docs/NDF.md; experiments/artifacts/summary.json |
-| NDF-LRN-201, NDF-LRN-202, NDF-MTH-001, NDF-MTH-002, NDF-SRC-003 | session-2 · 31 | 研究闭环的产物不是赢家，而是**可否证的决策历史** | class: takeaway | experiments/artifacts/summary.json; docs/NDF.md |
+| Course record | Session | Claim | Overlay | Sources | Boundary |
+|---|---:|---|---|---|---|
+| COURSE-S01 | 1 | 先问数据在哪里、何时到达、由谁等待，再问 Agent 能做什么。 | ArchitectureZoom | `source-deck`, `agenda` | 课程定位，不声称任何具体芯片结构。 |
+| COURSE-S02 | 1 | 峰值算力与实测性能之间的缺口，就是体系结构研究空间。 | Peak、measured 与 utilization reveal | `source-deck`, `course-model` | 432 TFLOPS 与 96 TFLOPS 是教学场景参数，不代表未公开产品实测。 |
+| COURSE-S03 | 1 | 任何算子都同时要求运算次数、搬运字节数和可利用的复用。 | FLOPs、Bytes、Reuse | `roofline-paper`, `course-model` | 使用简化矩阵乘模型，忽略索引、控制和缓存元数据开销。 |
+| COURSE-S04 | 1 | 横轴是每字节计算量，纵轴是每秒完成的计算量。 | SVG log axes、bandwidth slope、compute ceiling | `roofline-paper` | Roofline 是吞吐上界模型，不是周期级预测，也不描述尾延迟。 |
+| COURSE-S05 | 1 | 架构参数移动屋顶，算法复用移动工作点。 | InteractiveRoofline | `roofline-paper`, `course-model` | 交互数值由本仓简化模型计算，不是 LinxCore 或商业芯片测量。 |
+| COURSE-S06 | 1 | 同一算子在不同分块、缓存命中率和数据布局下，会落在不同工作点。 | 两组 FLOPs/Bytes 算例 | `roofline-paper`, `course-model` | 三组 AI 为教学示例，只表达数量级与趋势。 |
+| COURSE-S07 | 1 | 时间复用、空间复用和生产者—消费者复用，最终都减少远端字节。 | 三个 Roofline 工作点 | `course-model`, `source-deck` | 延迟范围是教学级概括，不代表 PTO 或 LinxCore 固定参数。 |
+| COURSE-S08 | 1 | 核心尺度上的几个周期，与片外访问的几百周期，是完全不同的时间世界。 | MemoryHierarchyExplorer latency mode | `source-deck`, `course-model` | 日历类比只表达数量级，不是物理时间换算或特定芯片参数。 |
+| COURSE-S09 | 1 | 每一级都在用有限容量换取更低平均延迟和更少片外流量。 | MemoryHierarchyExplorer | `course-model`, `source-deck` | 层级延迟和概率为课程模型，未声称对应 LinxCore 实现参数。 |
+| COURSE-S10 | 1 | 足够多的独立请求可以隐藏延迟，但队列、端口和返回带宽会先饱和。 | Little’s Law 与队列占用 | `course-model`, `source-deck` | 数值仅用于教学推导；真实上限还受地址相关、bank、协议与调度影响。 |
+| COURSE-S11 | 1 | 计算单元是工厂，存储是仓库，NoC 是道路，调度器决定货物流向。 | ArchitectureZoom | `source-deck`, `course-synthesis` | 城市隐喻帮助理解连接关系，不对应具体物理布局。 |
+| COURSE-S12 | 1 | HBM、interposer、chiplet 与引脚共同决定可见带宽、延迟和能耗。 | package/HBM/DDR paths | `source-deck`, `course-synthesis` | 图片为通用 2.5D 架构概念，不影射具体厂商封装。 |
+| COURSE-S13 | 1 | 局部热点、路由重叠和回压，会让总带宽充足的网络仍然拥塞。 | NoCTraffic | `course-model`, `source-deck` | NoCTraffic 是确定性 mesh 教学模型，不等同于 LinxCore 实际拓扑或完整路由器。 |
+| COURSE-S14 | 1 | 高吞吐来自操作数在阵列附近循环，而不是每次乘加都访问远端。 | TileDataflow resources | `pto-spec`, `course-synthesis` | Left、Right、ACC 是教学映射，不宣称 PTO 规定物理缓冲结构。 |
+| COURSE-S15 | 1 | Tile 太小浪费复用，太大挤爆容量和端口；最优点来自共同约束。 | Tile shape、layout、bank mapping | `pto-spec`, `course-model` | Tile 参数和容量为课程示例；PTO 定义语义而非唯一微架构映射。 |
+| COURSE-S16 | 1 | 一块 buffer 服务计算，另一块 buffer 同时搬运下一 tile。 | DoubleBufferTimeline | `course-model`, `source-deck` | 忽略 DMA setup、bank 冲突和尾块不规则性，作为一阶模型。 |
+| COURSE-S17 | 1 | 总容量相同，地址映射不同，瞬时带宽可以相差数倍。 | BankConflictExplorer | `course-model`, `source-deck` | 映射器只演示最简单顺序分布，未覆盖真实地址 XOR、端口与仲裁策略。 |
+| COURSE-S18 | 1 | Task、Tile、Micro-op 分别管理全局依赖、本地复用和周期资源。 | three-level scheduler zoom | `course-synthesis`, `pto-spec`, `linxcore` | 三层是课程分析框架，不是 PTO 或 LinxCore 的规范术语集合。 |
+| COURSE-S19 | 1 | 不要直接从代码跳到性能数字；先追踪每一级结构状态。 | clickable causal pipeline | `course-synthesis`, `course-model` | 因果链是分析顺序；真实系统存在反馈与并行路径，不是严格单向流水。 |
+| COURSE-S20 | 1 | Agent 负责提出和修改模型；独立实验负责裁判。 | ArchitectureZoom | `ndf-course`, `pycircuit`, `course-synthesis` | NDF 图是课程设计投影；除明确引用外不冒充 PTO 规范或 LinxCore RTL。 |
+| COURSE-S21 | 1 | 给定同一工作负载，选择一个改动，并预测它会改变哪条证据链。 | ExperimentPanel | `course-model`, `course-synthesis` | 面板结果是定性教学模型，第二课再用周期模型检查哪些预测站得住。 |
+| COURSE-S22 | 2 | 第一课给出上界；第二课解释每个周期为什么达不到上界。 | ArchitectureZoom | `course-synthesis`, `linxcore` | 爆炸图表达通用乱序核心层次，不声称是 LinxCore 物理版图。 |
+| COURSE-S23 | 2 | 以开源 LinxCore 为锚点，把前端、调度、执行、访存和提交连成系统。 | LinxCoreModuleExplorer | `linxcore`, `course-synthesis` | 组件只使用已核实的模块名；描述中的通用乱序概念与具体实现细节分开标注。 |
+| COURSE-S24 | 2 | 同一虚拟 ISA effect 可以由不同流水线、缓存和调度策略实现。 | semantic/implementation boundary | `pto-spec`, `normative-language` | 不使用 ARM ASL；PTO 引用只覆盖仓内核实的公开定义，课程模型不冒充规范。 |
+| COURSE-S25 | 2 | 算法、Tile 程序、ISA effect、微操作和硬件事件，是五种不同观察层。 | five-layer event alignment | `pto-spec`, `pycircuit`, `course-synthesis` | 微操作拆分和硬件信号属于课程实现；只有 effect 层引用 PTO 规范。 |
+| COURSE-S26 | 2 | 现代核心不是单向传送带，而是带状态、反馈和资源竞争的队列网络。 | LinxCoreModuleExplorer | `linxcore`, `course-synthesis` | 图只标注已核实模块或通用概念；不推断未检查的内部策略。 |
+| COURSE-S27 | 2 | 前端供给不足会让后端算力失去意义；错误路径还会浪费真实带宽。 | PipelineStepper | `linxcore`, `course-model` | 性能曲线来自课程前端模型；具体 LinxCore 宽度和预测器策略只以代码证据为准。 |
+| COURSE-S28 | 2 | 重命名释放假依赖，ROB 保存程序顺序、异常边界和恢复状态。 | PipelineStepper | `linxcore`, `course-synthesis` | 具体 ROB entry 字段与恢复机制以 LinxCore 代码为准，图中为教学抽象。 |
+| COURSE-S29 | 2 | 发射性能由唤醒、选择、端口和队列压力共同决定。 | QueuePressure | `linxcore`, `pycircuit`, `course-model` | QueuePressure 只演示容量动力学，选择优先级与端口兼容性需查看具体实现。 |
+| COURSE-S30 | 2 | 执行延迟、吞吐和旁路覆盖，共同决定依赖链速度。 | PipelineStepper | `linxcore`, `course-synthesis` | 流水级数与 bypass 覆盖为通用模型，具体路径必须由 LinxCore 源码或波形确认。 |
+| COURSE-S31 | 2 | 访存单元同时处理地址生成、内存顺序、转发、缓存和未完成请求。 | AGU/LQ/SQ/cache/miss path | `linxcore`, `course-synthesis` | 模块拆分采用通用 LSU 术语；LinXCore 的确切结构只陈述已核实部分。 |
+| COURSE-S32 | 2 | Miss 先占住 LSU，再堵塞 issue、ROB、rename，最终让 fetch 停止。 | QueuePressure | `course-model`, `linxcore`, `course-synthesis` | 传播顺序是教学级因果路径；真实乱序核心可用独立指令部分隐藏 miss。 |
+| COURSE-S33 | 2 | 下游满会向上游传播 stop；下游释放又向前传播 progress。 | TimingDiagram | `pycircuit`, `course-synthesis` | valid-ready 是课程模型采用的握手；具体 LinxCore 接口需以实现为准。 |
+| COURSE-S34 | 2 | NDF 记录设计承诺：谁拥有状态、谁生产、谁消费、什么条件推进。 | NdfTraceability | `ndf-course`, `linxcore`, `agentic-materials` | NDF 是课程设计方法，不是 PTO 官方格式；所有 normative 语句必须带来源。 |
+| COURSE-S35 | 2 | 模块、寄存器和队列在时钟边界更新；相同输入必须产生可重放轨迹。 | TimingDiagram | `pycircuit`, `agentic-materials` | 示例聚焦当前 pyCircuit frontend 支持的队列与寄存器语义，不承诺完整 LinxCore 等价模型。 |
+| COURSE-S36 | 2 | 没有固定输入、配置、指标和产物，任何性能比较都不可信。 | BaselineExperiment | `experiment-artifacts`, `agentic-materials`, `course-synthesis` | 实验为教学规模模型，目标是方法可复现，不是宣称硅后性能。 |
+| COURSE-S37 | 2 | 只改变带宽，观察性能先增长后在计算屋顶饱和。 | InteractiveRoofline | `experiment-artifacts`, `roofline-paper`, `course-model` | sweep 使用课程性能模型；结果用于验证趋势与上界，不代表 LinxCore RTL benchmark。 |
+| COURSE-S38 | 2 | 更大 cache 减少流量，更深队列隐藏延迟；两者解决的不是同一个问题。 | ArtifactComparison | `experiment-artifacts`, `course-model`, `linxcore` | 变体是教学参数化模型，未包含 cache 面积、频率和功耗回归。 |
+| COURSE-S39 | 2 | 宏观模型负责提出上界，微观轨迹负责解释偏差。 | gap decomposition | `roofline-paper`, `experiment-artifacts`, `course-synthesis` | 两类模型精度不同；不应强迫周期模型等于上界，而应解释差距。 |
+| COURSE-S40 | 2 | 提出变体、运行模型、收集证据、批判结果；每一步都有边界和失败条件。 | PipelineStepper | `agentic-materials`, `normative-language` | Agent 不产生规范真相；它的主张必须由来源、实验和独立检查器支持。 |
+| COURSE-S41 | 2 | 性能、流量、面积、功耗和复杂度之间没有单一冠军。 | ParetoFrontier | `course-model`, `course-synthesis` | 当前 cost 指标为教学代理量，不替代综合、时序和功耗工具。 |
+| COURSE-S42 | 2 | 从工作负载到周期事件，保持层次、因果、来源和可复现性。 | ArchitectureZoom | `course-synthesis` | 总结图表示方法论关系，不声称任何单一模型覆盖全部真实处理器行为。 |
+
+## Verified cross-layer example
+
+- Course requirement: `NDF-MTH-001` in `docs/NDF.md`.
+- PTO semantic symbol: `BundleIsActive()` in `vendor/pto-spec/asl/bundle/state.asl:143`.
+- pyCircuit model: `vendor/pyCircuit/designs/IssueQueue/issq.py`.
+- LinxCore implementation symbol: `build_rob_ctrl_stage()` in `vendor/LinxCore/src/bcc/backend/rob.py:217`.
+- Executable evidence: `vendor/pyCircuit/designs/IssueQueue/tb_issq.py`.

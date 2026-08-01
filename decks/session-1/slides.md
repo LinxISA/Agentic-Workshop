@@ -97,7 +97,7 @@ Narrative: 左侧工作点每做一次计算需要大量外部字节，因此沿
 <!--
 Slide-ID: S05
 Objective: 让学生亲手区分“提高屋顶”和“移动工作点”两类优化。
-Timing: 5 min
+Timing: 4 min
 Visual: 真实处理器与透明 Roofline 装置；前景 SVG 根据 Peak、BW、AI 三个滑杆实时更新。
 Interaction: 先只加算力观察无效，再加带宽，最后提高 AI；要求学生解释瓶颈为何切换。
 Sources: roofline-paper; course-model
@@ -173,7 +173,7 @@ Narrative: 延迟不能被带宽数字抹去。即使内存接口很宽，单个
 <!--
 Slide-ID: S09
 Objective: 用可调命中率把存储层级连接到平均访问延迟和片外流量。
-Timing: 4 min
+Timing: 3 min
 Visual: 阶梯式 L1、L2、DRAM 切面；前景组件实时显示命中分布、平均 cycles 与 reuse。
 Interaction: 分别降低 L1 hit 和 L2 hit，观察哪一个对 off-chip traffic 与平均延迟影响更大。
 Sources: course-model; source-deck
@@ -243,17 +243,17 @@ Narrative: 软件看到一个大内存空间，硬件实际面对多个通道、
 # NoC：带宽不是均匀水池
 
 <FullBleedStage background="/generated/slides/s13-noc-congestion.png" title="NoC：带宽不是均匀水池" claim="局部热点、路由重叠和回压，会让总带宽充足的网络仍然拥塞。" eyebrow="ON-CHIP NETWORK" slide-id="S13">
-  <template #diagram><QueuePressure /></template>
+  <template #diagram><NoCTraffic /></template>
 </FullBleedStage>
 
 <!--
 Slide-ID: S13
 Objective: 说明 NoC 吞吐由拓扑、流量分布和缓冲共同决定。
 Timing: 3 min
-Visual: mesh NoC 中央出现洋红热点；前景队列模型通过 arrival 与 service 速率显示拥塞形成。
-Interaction: 提高 arrival 或降低 service，观察占用率达到 100% 后 backpressure 如何产生。
+Visual: mesh NoC 中央出现洋红热点；前景显示 4×4 路由、链路负载和热点路径。
+Interaction: 切换 Spread / Hotspot 并调节热点比例，观察最热链路先于总带宽饱和。
 Sources: course-model; source-deck
-Boundary: QueuePressure 是单队列教学抽象，不等同于完整 NoC 路由器模型。
+Boundary: NoCTraffic 是确定性 mesh 教学模型，不等同于 LinxCore 实际拓扑或完整路由器。
 Narrative: 全芯片带宽求和可能很大，但热点链路仍会先饱和。下游 credit 消耗后，压力沿路由反向传播，最终让上游核心或 DMA 停顿。
 -->
 
@@ -300,7 +300,7 @@ Narrative: 软件调度选择块形状，硬件决定块能否驻留、多少 ba
 # 双缓冲：用容量换重叠
 
 <FullBleedStage background="/generated/slides/s16-double-buffer.png" title="双缓冲：用容量换重叠" claim="一块 buffer 服务计算，另一块 buffer 同时搬运下一 tile。" eyebrow="OVERLAP" slide-id="S16">
-  <template #diagram><div class="diagram-dock evidence-strip"><span>Phase A<b class="data">Fill B</b></span><span>Phase B<b class="compute">Compute A</b></span><span>Swap<b>1 boundary</b></span><span>Goal<b class="memory">Hide DMA</b></span></div></template>
+  <template #diagram><DoubleBufferTimeline /></template>
 </FullBleedStage>
 
 <!--
@@ -325,7 +325,7 @@ Narrative: 双缓冲不是“自动变快”，它要求两个阶段并行、容
 <!--
 Slide-ID: S17
 Objective: 让学生看到 bank 映射是可建模、可验证的架构参数。
-Timing: 4 min
+Timing: 3 min
 Visual: 左侧所有请求撞向一个 bank，右侧经过 swizzle 均匀分散；前景柱状图可切换映射。
 Interaction: 点击 Naive stride / Swizzled，对比每个 bank 的请求数和理论服务周期。
 Sources: course-model; source-deck
@@ -385,7 +385,7 @@ Objective: 在完成体系结构铺垫后，准确定位 NDF、pyCircuit 与 Age
 Timing: 3 min
 Visual: 物理处理器投影为 module、queue、link 图；前景展示 idea→NDF→pyCircuit→evidence。
 Interaction: 选中一个物理队列，口述其 NDF 节点、pyCircuit 状态和需要记录的证据。
-Sources: ndf; pycircuit; course-synthesis
+Sources: ndf-course; pycircuit; course-synthesis
 Boundary: NDF 图是课程设计投影；除明确引用外不冒充 PTO 规范或 LinxCore RTL。
 Narrative: Agentic Circuit 不是新体系结构，而是一套把架构主张写成可运行模型的工作方法。Agent 可以探索设计空间，但每个变体必须带边界、来源和独立可重放实验。
 -->
@@ -401,7 +401,7 @@ Narrative: Agentic Circuit 不是新体系结构，而是一套把架构主张�
 <!--
 Slide-ID: S21
 Objective: 让学生用本课模型提出一个受约束的体系结构假设，并为第二课微架构验证做铺垫。
-Timing: 5 min
+Timing: 4 min
 Visual: 一个处理器分叉为计算、带宽、缓存、队列多个设计；前景可切换 Baseline、2×BW、2×Cache、Balanced。
 Interaction: 小组选择一个变体，写下预测：Roofline 工作点、片外流量、队列压力各如何变化。
 Sources: course-model; course-synthesis

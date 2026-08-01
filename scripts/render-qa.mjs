@@ -1,5 +1,5 @@
 import { chromium } from 'playwright-chromium'
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
 const base = process.env.SUMMERSCHOOL_PREVIEW_URL || 'http://127.0.0.1:4173'
@@ -15,6 +15,7 @@ function slideCount(source) {
 }
 
 await mkdir('qa/rendered', { recursive: true })
+await mkdir('qa/interactions', { recursive: true })
 const browser = await chromium.launch({ headless: true })
 const report = { generatedAt: new Date().toISOString(), viewport: [1920, 1080], base, decks: [] }
 
@@ -22,28 +23,38 @@ for (const deck of decks) {
   const source = await readFile(deck.source, 'utf8')
   const count = slideCount(source)
   const outDir = resolve('qa/rendered', deck.id)
+  const interactionDir = resolve('qa/interactions', deck.id)
+  await rm(outDir, { recursive: true, force: true })
+  await rm(interactionDir, { recursive: true, force: true })
   await mkdir(outDir, { recursive: true })
+  await mkdir(interactionDir, { recursive: true })
   const context = await browser.newContext({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 })
   const page = await context.newPage()
   const remoteRequests = new Set()
+  const failedResponses = new Set()
   page.on('request', (request) => {
     const url = new URL(request.url())
     if (['http:', 'https:'].includes(url.protocol) && !['127.0.0.1', 'localhost'].includes(url.hostname)) remoteRequests.add(request.url())
   })
+  page.on('response', (response) => {
+    const url = new URL(response.url())
+    if (['127.0.0.1', 'localhost'].includes(url.hostname) && !response.ok()) failedResponses.add(`${response.status()} ${response.url()}`)
+  })
   const slides = []
+  const expectedBackgrounds = [...source.matchAll(/background="([^"]+)"/g)].map(match => match[1])
 
   await page.goto(`${base}/${deck.id}/`, { waitUntil: 'networkidle' })
   await page.waitForSelector('.slidev-layout', { timeout: 15000 })
 
   for (let i = 1; i <= count; i += 1) {
     await page.screenshot({ path: resolve(outDir, `${String(i).padStart(2, '0')}.png`) })
-    const geometry = await page.evaluate(() => {
+    const geometry = await page.evaluate((expectedBackground) => {
       const layout = [...document.querySelectorAll('.slidev-layout')].find((candidate) => {
         const rect = candidate.getBoundingClientRect()
         const style = getComputedStyle(candidate)
         return rect.width > 100 && rect.height > 100 && style.visibility !== 'hidden' && style.opacity !== '0'
       })
-      if (!layout) return { missingLayout: true, overflow: [], fontMinPx: null, imageIssues: [], contrastIssues: [], titleWrapped: false, overlapIssues: [] }
+      if (!layout) return { missingLayout: true, overflow: [], fontMinPx: null, imageIssues: [], contrastIssues: [], titleWrapped: false, overlapIssues: [], backgroundLoaded: false }
       const root = layout.getBoundingClientRect()
       const scale = root.width / layout.offsetWidth
       const overflow = []
@@ -125,16 +136,40 @@ for (const deck of decks) {
         }
         return []
       })
-      return { missingLayout: false, overflow: overflow.slice(0, 20), fontMinPx: Number.isFinite(fontMinPx) ? Number(fontMinPx.toFixed(1)) : null, imageIssues, contrastIssues: contrastIssues.slice(0, 20), titleWrapped, overlapIssues: overlapIssues.slice(0, 20) }
-    })
-    slides.push({ number: i, ...geometry })
+      const stage = layout.querySelector('.full-bleed-stage')
+      const backgroundImage = stage ? getComputedStyle(stage).backgroundImage : ''
+      const backgroundLoaded = Boolean(stage && expectedBackground && backgroundImage.includes(expectedBackground.split('/').pop()))
+      return { missingLayout: false, overflow: overflow.slice(0, 20), fontMinPx: Number.isFinite(fontMinPx) ? Number(fontMinPx.toFixed(1)) : null, imageIssues, contrastIssues: contrastIssues.slice(0, 20), titleWrapped, overlapIssues: overlapIssues.slice(0, 20), backgroundLoaded, backgroundImage }
+    }, expectedBackgrounds[i - 1])
+    const inputs = page.locator('.slidev-layout:visible .full-bleed-stage__diagram input:visible')
+    const buttons = page.locator('.slidev-layout:visible .full-bleed-stage__diagram button:visible:not(.on):not(.active)')
+    const control = await inputs.count() ? inputs.first() : buttons.first()
+    let interactionTested = false
+    if (await control.count()) {
+      const before = await page.locator('.slidev-layout:visible .full-bleed-stage__diagram').innerHTML()
+      const tag = await control.evaluate(element => element.tagName)
+      if (tag === 'INPUT') {
+        await control.evaluate((element) => {
+          const input = element
+          input.value = input.max || String(Number(input.value) + Number(input.step || 1))
+          input.dispatchEvent(new Event('input', { bubbles: true }))
+          input.dispatchEvent(new Event('change', { bubbles: true }))
+        })
+      } else await control.click()
+      await page.waitForTimeout(200)
+      const after = await page.locator('.slidev-layout:visible .full-bleed-stage__diagram').innerHTML()
+      interactionTested = before !== after || tag === 'INPUT'
+      await page.screenshot({ path: resolve(interactionDir, `${String(i).padStart(2, '0')}.png`) })
+    }
+    slides.push({ number: i, interactionTested, ...geometry })
     if (i < count) {
+      await page.evaluate(() => document.activeElement?.blur())
       await page.keyboard.press('ArrowRight')
       await page.waitForTimeout(700)
     }
   }
   await context.close()
-  report.decks.push({ id: deck.id, count, remoteRequests: [...remoteRequests], slides })
+  report.decks.push({ id: deck.id, count, remoteRequests: [...remoteRequests], failedResponses: [...failedResponses], slides })
 }
 
 await browser.close()
@@ -142,8 +177,10 @@ await writeFile('qa/audit.json', `${JSON.stringify(report, null, 2)}\n`)
 
 const failures = report.decks.flatMap((deck) => [
   ...deck.remoteRequests.map((url) => `${deck.id}: remote request ${url}`),
+  ...deck.failedResponses.map((failure) => `${deck.id}: local response failure ${failure}`),
   ...deck.slides.flatMap((slide) => [
     ...(slide.missingLayout ? [`${deck.id}/${slide.number}: layout missing`] : []),
+    ...(!slide.backgroundLoaded ? [`${deck.id}/${slide.number}: expected full-bleed background not loaded`] : []),
     ...slide.imageIssues.map((issue) => `${deck.id}/${slide.number}: image ${issue.issue} ${issue.src}`),
     ...slide.overlapIssues.map((issue) => `${deck.id}/${slide.number}: copy overlaps ${issue.tag}.${issue.cls}`),
     ...slide.contrastIssues.map((issue) => `${deck.id}/${slide.number}: contrast ${issue.ratio} ${issue.tag} ${issue.text}`),

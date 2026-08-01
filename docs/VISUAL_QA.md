@@ -18,8 +18,11 @@
 | element overflow/crop candidates | 0 |
 | title/diagram intersections | 0 |
 | broken or distorted images | 0 |
+| missing full-bleed backgrounds | 0 |
+| failed local asset responses | 0 |
 | contrast failures | 0 |
 | titles exceeding two lines | 0 |
+| interactive states exercised | 21 |
 
 ## Manual review
 
@@ -41,3 +44,4 @@ The accepted visual contract is:
 4. Added automated title/diagram intersection detection and a two-line title limit.
 5. Re-sized the Roofline, memory hierarchy, LinxCore, timing, NDF, pipeline, queue, bank, and Pareto components against the actual Slidev logical canvas.
 6. Re-rendered all 42 pages; the final audit contains zero geometry, image, contrast, title, overlap, or remote-request failures.
+7. Exercised 21 interactive pages after their initial render, captured the changed state locally, and verified that focus did not block deck navigation.

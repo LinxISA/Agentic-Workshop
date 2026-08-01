@@ -7,6 +7,9 @@ import {
   queueState,
   bankDistribution,
   sweepBandwidth,
+  effectiveBandwidth,
+  rooflineGeometry,
+  paretoPosition,
 } from '../components/architectureModels.mjs'
 
 test('roofline point selects the lower of compute and bandwidth ceilings', () => {
@@ -17,6 +20,22 @@ test('roofline point selects the lower of compute and bandwidth ceilings', () =>
     utilization: 23.7,
   })
   assert.equal(rooflinePoint({ peak: 432, bandwidth: 3.2, intensity: 256 }).bottleneck, 'compute')
+})
+
+test('roofline geometry moves both ceilings and the operating point', () => {
+  const base = rooflineGeometry({ peak: 432, bandwidth: 3.2, intensity: 32, cacheHit: 0 })
+  const wider = rooflineGeometry({ peak: 432, bandwidth: 6.4, intensity: 32, cacheHit: 0 })
+  const higherPeak = rooflineGeometry({ peak: 640, bandwidth: 3.2, intensity: 32, cacheHit: 0 })
+  assert.notEqual(base.memoryPath, wider.memoryPath)
+  assert.notEqual(base.computePath, higherPeak.computePath)
+  assert.notEqual(base.pointY, wider.pointY)
+  assert.ok(base.pointX >= 55 && base.pointX <= 525)
+  assert.ok(base.pointY >= 50 && base.pointY <= 255)
+})
+
+test('cache hit rate raises effective bandwidth in the explicit course model', () => {
+  assert.equal(effectiveBandwidth({ bandwidth: 3.2, cacheHit: 0 }), 3.2)
+  assert.ok(effectiveBandwidth({ bandwidth: 3.2, cacheHit: 0.8 }) > 3.2)
 })
 
 test('memory hierarchy turns hit rates into average latency and off-chip traffic', () => {
@@ -43,4 +62,12 @@ test('bank swizzle distributes sequential requests across all banks', () => {
 
 test('bandwidth sweep saturates at the compute ceiling', () => {
   assert.deepEqual(sweepBandwidth({ peak: 100, intensity: 10, values: [2, 5, 20] }), [20, 50, 100])
+})
+
+test('pareto plot maps higher performance upward', () => {
+  const low = paretoPosition({ area: 3.2, performance: 1.6 })
+  const high = paretoPosition({ area: 12.5, performance: 6.1 })
+  assert.ok(high.x > low.x)
+  assert.ok(high.y < low.y)
+  assert.deepEqual(low, { x: 125.45, y: 236 })
 })

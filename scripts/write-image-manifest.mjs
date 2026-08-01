@@ -14,8 +14,10 @@ for (const slide of slides) {
     slide: slide.id,
     asset,
     prompt,
-    generated: '2026-08-01',
-    sourceStyle: 'PTO ISA_扩展版 · image-dominant architecture keynote',
+    date: '2026-08-01',
+    source_style: 'PTO ISA_扩展版 · image-dominant architecture keynote',
+    final_path: `assets/generated/slides/${asset}`,
+    runtime_path: `public/generated/slides/${asset}`,
     review: 'pass',
     regenerated: slide.id === 'S05',
     sha256: createHash('sha256').update(bytes).digest('hex'),
@@ -25,7 +27,7 @@ for (const slide of slides) {
 const manifest = {
   generator: 'OpenAI ImageGen',
   policy: 'one unique, locally bundled, visually reviewed architecture background per slide',
-  promptRecord: 'reproducible prompt reconstructed from the generation brief, slide claim, and foreground overlay contract',
+  prompt_record: 'generation specification preserved from the brief, slide claim, and foreground overlay contract',
   assets,
 }
 

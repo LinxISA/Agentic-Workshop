@@ -40,6 +40,10 @@ sources:
       - materials/agentic_circuit_optimizer.md
       - materials/agentic_tao_physical_design_flow.md
     use: constrained proposal-measure-critique loop
+  normative-language:
+    type: local-material
+    path: materials/normative_language.md
+    use: distinction between normative requirements and explanatory claims
   course-model:
     type: course-synthesis
     use: explicitly labeled deterministic teaching models and parameters
