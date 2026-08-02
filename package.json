@@ -21,6 +21,7 @@
     "test:models": "node --test qa/architecture-models.spec.mjs qa/full-bleed-contracts.spec.mjs qa/component-contracts.spec.mjs qa/keyboard-navigation.spec.mjs",
     "test:content": "node scripts/check-content.mjs",
     "test:offline": "node scripts/check-offline.mjs",
+    "test:preview": "node --test qa/preview-routing.spec.mjs",
     "test:sources": "bash scripts/check-sources.sh",
     "traceability": "node scripts/build-traceability.mjs",
     "images:verify": "node scripts/verify-image-manifest.mjs",
