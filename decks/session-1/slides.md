@@ -2,7 +2,7 @@
 theme: default
 title: 体系结构研究的第一性原理 · 第一课
 info: 从 Roofline、存储层级到加速器数据流
-transition: fade-out
+transition: slide-left
 colorSchema: dark
 mdc: true
 favicon: /generated/slides/s01-architecture-first.png
