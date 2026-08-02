@@ -3,6 +3,38 @@ sources:
     type: local-presentation
     path: /Users/zhoubot/Documents/PTO ISA_扩展版.pptx
     use: visual language, logistics metaphor, Roofline, hierarchy, Tile, scheduling, optimization narrative
+  publish-keynote-page-2:
+    type: local-keynote-page
+    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=2
+    use: exact self-introduction copy, portrait, and HiSilicon visual
+  publish-keynote-page-3:
+    type: local-keynote-page
+    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=3
+    use: exact summer-school course outline and architecture-dimension diagram
+  publish-keynote-page-4:
+    type: local-keynote-page
+    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=4
+    use: exact first-chapter divider
+  publish-keynote-page-5:
+    type: local-keynote-page
+    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=5
+    use: exact agricultural-era Von Neumann metaphor
+  publish-keynote-page-6:
+    type: local-keynote-page
+    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=6
+    use: exact industrial-era storage hierarchy metaphor
+  publish-keynote-page-7:
+    type: local-keynote-page
+    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=7
+    use: exact multi-Lane and multi-level warehouse metaphor
+  publish-keynote-page-8:
+    type: local-keynote-page
+    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=8
+    use: exact warehouse-management Roofline explanation
+  publish-keynote-page-9:
+    type: local-keynote-page
+    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=9
+    use: exact Da Vinci Tile, CUBE, local warehouse, and hierarchy diagram
   agenda:
     type: local-text
     path: materials/agenda-2026.txt

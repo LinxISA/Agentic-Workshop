@@ -17,121 +17,114 @@
   {
     "id": "S02",
     "session": 1,
-    "title": "432 TFLOPS 为什么跑不满",
-    "claim": "峰值算力与实测性能之间的缺口，就是体系结构研究空间。",
-    "background": "/generated/slides/s02-peak-gap.png",
-    "overlay": "Peak、measured 与 utilization reveal",
-    "interaction": "四选一投票：算力、带宽、局部性还是并发度；先记录判断，课末再复盘。",
+    "title": "自我介绍",
+    "claim": "姓名：周若愚",
+    "background": "/generated/slides/s02-self-introduction.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "演讲人口头补充个人经历。",
     "minutes": 3,
     "sources": [
-      "source-deck",
-      "course-model"
+      "publish-keynote-page-2"
     ],
-    "claimBoundary": "432 TFLOPS 与 96 TFLOPS 是教学场景参数，不代表未公开产品实测。"
+    "claimBoundary": "可见文字与图片均直接来自演讲人提供的 Keynote。"
   },
   {
     "id": "S03",
     "session": 1,
-    "title": "工作负载 = 计算 + 数据移动",
-    "claim": "任何算子都同时要求运算次数、搬运字节数和可利用的复用。",
-    "background": "/generated/slides/s03-workload-data-movement.png",
-    "overlay": "FLOPs、Bytes、Reuse",
-    "interaction": "让学生口算一次矩阵乘：一个输出元素需要多少乘加、至少读取多少输入数据。",
+    "title": "本次暑期学校课程",
+    "claim": "什么是计算体系结构",
+    "background": "/generated/slides/s03-course-outline.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "让学生观察右侧六个体系结构维度如何连接到课程的三部分内容。",
     "minutes": 2,
     "sources": [
-      "roofline-paper",
-      "course-model"
+      "publish-keynote-page-3"
     ],
-    "claimBoundary": "使用简化矩阵乘模型，忽略索引、控制和缓存元数据开销。"
+    "claimBoundary": "可见文字与图形均直接来自演讲人提供的 Keynote。"
   },
   {
     "id": "S04",
     "session": 1,
-    "title": "Roofline 的两根轴",
-    "claim": "横轴是每字节计算量，纵轴是每秒完成的计算量。",
-    "background": "/generated/slides/s04-roofline-axes.png",
-    "overlay": "SVG log axes、bandwidth slope、compute ceiling",
-    "interaction": "分两步 reveal：先画 AI×BW，再加 Ppeak，最后取二者最小值。",
+    "title": "计算机体系结构-处理器",
+    "claim": "第一章",
+    "background": "/generated/slides/s04-chapter-processor.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "章节转场，无附加可见文字。",
     "minutes": 2,
     "sources": [
-      "roofline-paper"
+      "publish-keynote-page-4"
     ],
-    "claimBoundary": "Roofline 是吞吐上界模型，不是周期级预测，也不描述尾延迟。"
+    "claimBoundary": "可见文字与装饰均直接来自演讲人提供的 Keynote。"
   },
   {
     "id": "S05",
     "session": 1,
-    "title": "交互 Roofline",
-    "claim": "架构参数移动屋顶，算法复用移动工作点。",
-    "background": "/generated/slides/s05-interactive-roofline.png",
-    "overlay": "InteractiveRoofline",
-    "interaction": "先只加算力观察无效，再加带宽，最后提高 AI；要求学生解释瓶颈为何切换。",
+    "title": "冯诺依曼架构·农业时代·小农经济",
+    "claim": "Von Neumann bottleneck：性能瓶颈在于计算与存储之间信息传输率",
+    "background": "/generated/slides/s05-von-neumann-farm.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "依次讲解控制与计算、乡间小路、内存和基本指令类型。",
     "minutes": 4,
     "sources": [
-      "roofline-paper",
-      "course-model"
+      "publish-keynote-page-5"
     ],
-    "claimBoundary": "交互数值由本仓简化模型计算，不是 LinxCore 或商业芯片测量。"
+    "claimBoundary": "比喻与可见文字完全沿用演讲人原稿。"
   },
   {
     "id": "S06",
     "session": 1,
-    "title": "Arithmetic Intensity 不是常数",
-    "claim": "同一算子在不同分块、缓存命中率和数据布局下，会落在不同工作点。",
-    "background": "/generated/slides/s06-arithmetic-intensity.png",
-    "overlay": "两组 FLOPs/Bytes 算例",
-    "interaction": "点击或口头切换三种映射，判断工作点向右移动还是屋顶上移。",
+    "title": "冯诺依曼架构·工业时代",
+    "claim": "克服传输瓶颈：利用计算上的时间局部性与存储的空间局部性",
+    "background": "/generated/slides/s06-von-neumann-industry.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "让学生沿运输路径说明哪一级保存指令、数据和复用机会。",
     "minutes": 3,
     "sources": [
-      "roofline-paper",
-      "course-model"
+      "publish-keynote-page-6"
     ],
-    "claimBoundary": "三组 AI 为教学示例，只表达数量级与趋势。"
+    "claimBoundary": "比喻与可见文字完全沿用演讲人原稿。"
   },
   {
     "id": "S07",
     "session": 1,
-    "title": "局部性就是避免昂贵搬运",
-    "claim": "时间复用、空间复用和生产者—消费者复用，最终都减少远端字节。",
-    "background": "/generated/slides/s07-locality.png",
-    "overlay": "三个 Roofline 工作点",
-    "interaction": "指定一个矩阵块，让学生决定它应停留在哪一级、被复用多少次后才淘汰。",
+    "title": "冯诺依曼架构·工业时代·社会主义",
+    "claim": "冯诺依曼架构·工业时代·社会主义",
+    "background": "/generated/slides/s07-von-neumann-socialism.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "沿计算 Lane 到内存总仓逐级讲解并行度与共享层级。",
     "minutes": 2,
     "sources": [
-      "course-model",
-      "source-deck"
+      "publish-keynote-page-7"
     ],
-    "claimBoundary": "延迟范围是教学级概括，不代表 PTO 或 LinxCore 固定参数。"
+    "claimBoundary": "可见文字与图形完全沿用演讲人原稿。"
   },
   {
     "id": "S08",
     "session": 1,
-    "title": "把存储延迟换算成“天”",
-    "claim": "核心尺度上的几个周期，与片外访问的几百周期，是完全不同的时间世界。",
-    "background": "/generated/slides/s08-memory-latency-days.png",
-    "overlay": "MemoryHierarchyExplorer latency mode",
-    "interaction": "假设一次 DRAM 访问为 220 cycles，问需要多少独立 miss 才能填满返回带宽。",
+    "title": "仓库管理：Roofline Model",
+    "claim": "运力已经到达瓶颈，再加算力没有用处",
+    "background": "/generated/slides/s08-warehouse-roofline.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "结合右侧运输图解释“运力已经到达瓶颈”和“再加算力没有用处”。",
     "minutes": 2,
     "sources": [
-      "source-deck",
-      "course-model"
+      "publish-keynote-page-8"
     ],
-    "claimBoundary": "日历类比只表达数量级，不是物理时间换算或特定芯片参数。"
+    "claimBoundary": "可见文字、问题和示意图完全沿用演讲人原稿。"
   },
   {
     "id": "S09",
     "session": 1,
-    "title": "存储层级：容量、延迟、带宽三角",
-    "claim": "每一级都在用有限容量换取更低平均延迟和更少片外流量。",
-    "background": "/generated/slides/s09-memory-hierarchy.png",
-    "overlay": "MemoryHierarchyExplorer",
-    "interaction": "分别降低 L1 hit 和 L2 hit，观察哪一个对 off-chip traffic 与平均延迟影响更大。",
+    "title": "冯诺依曼架构·工业时代·达芬奇文艺复兴",
+    "claim": "256B/cycle",
+    "background": "/generated/slides/s09-davinci-architecture.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "先讲 Left Tile、Right Tile、ACC Tile 与 CUBE，再讲 L0A/L0B/L0C、256B/cycle、二级与三级仓库。",
     "minutes": 3,
     "sources": [
-      "course-model",
-      "source-deck"
+      "publish-keynote-page-9"
     ],
-    "claimBoundary": "层级延迟和概率为课程模型，未声称对应 LinxCore 实现参数。"
+    "claimBoundary": "可见文字、容量和带宽标注完全沿用演讲人原稿。"
   },
   {
     "id": "S10",

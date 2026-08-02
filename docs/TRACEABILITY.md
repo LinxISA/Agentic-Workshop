@@ -4,15 +4,15 @@ Generated from the authoritative deck contract. `COURSE-Sxx` identifiers are cou
 
 | Course record | Session | Claim | Overlay | Sources | Boundary |
 |---|---:|---|---|---|---|
-| COURSE-S01 | 1 | 先问数据在哪里、何时到达、由谁等待，再问 Agent 能做什么。 | ArchitectureZoom | `source-deck`, `agenda` | 课程定位，不声称任何具体芯片结构。 |
-| COURSE-S02 | 1 | 峰值算力与实测性能之间的缺口，就是体系结构研究空间。 | Peak、measured 与 utilization reveal | `source-deck`, `course-model` | 432 TFLOPS 与 96 TFLOPS 是教学场景参数，不代表未公开产品实测。 |
-| COURSE-S03 | 1 | 任何算子都同时要求运算次数、搬运字节数和可利用的复用。 | FLOPs、Bytes、Reuse | `roofline-paper`, `course-model` | 使用简化矩阵乘模型，忽略索引、控制和缓存元数据开销。 |
-| COURSE-S04 | 1 | 横轴是每字节计算量，纵轴是每秒完成的计算量。 | SVG log axes、bandwidth slope、compute ceiling | `roofline-paper` | Roofline 是吞吐上界模型，不是周期级预测，也不描述尾延迟。 |
-| COURSE-S05 | 1 | 架构参数移动屋顶，算法复用移动工作点。 | InteractiveRoofline | `roofline-paper`, `course-model` | 交互数值由本仓简化模型计算，不是 LinxCore 或商业芯片测量。 |
-| COURSE-S06 | 1 | 同一算子在不同分块、缓存命中率和数据布局下，会落在不同工作点。 | 两组 FLOPs/Bytes 算例 | `roofline-paper`, `course-model` | 三组 AI 为教学示例，只表达数量级与趋势。 |
-| COURSE-S07 | 1 | 时间复用、空间复用和生产者—消费者复用，最终都减少远端字节。 | 三个 Roofline 工作点 | `course-model`, `source-deck` | 延迟范围是教学级概括，不代表 PTO 或 LinxCore 固定参数。 |
-| COURSE-S08 | 1 | 核心尺度上的几个周期，与片外访问的几百周期，是完全不同的时间世界。 | MemoryHierarchyExplorer latency mode | `source-deck`, `course-model` | 日历类比只表达数量级，不是物理时间换算或特定芯片参数。 |
-| COURSE-S09 | 1 | 每一级都在用有限容量换取更低平均延迟和更少片外流量。 | MemoryHierarchyExplorer | `course-model`, `source-deck` | 层级延迟和概率为课程模型，未声称对应 LinxCore 实现参数。 |
+| COURSE-S01 | 1 | Architecture First · Agentic Circuit as a Research Instrument | AscendCover | `source-deck`, `agenda` | 背景为昇腾风格的概念视觉，不表示任何具体产品内部结构。 |
+| COURSE-S02 | 1 | 姓名：周若愚 | KeynoteSourceStage | `publish-keynote-page-2` | 可见文字与图片均直接来自演讲人提供的 Keynote。 |
+| COURSE-S03 | 1 | 什么是计算体系结构 | KeynoteSourceStage | `publish-keynote-page-3` | 可见文字与图形均直接来自演讲人提供的 Keynote。 |
+| COURSE-S04 | 1 | 第一章 | KeynoteSourceStage | `publish-keynote-page-4` | 可见文字与装饰均直接来自演讲人提供的 Keynote。 |
+| COURSE-S05 | 1 | Von Neumann bottleneck：性能瓶颈在于计算与存储之间信息传输率 | KeynoteSourceStage | `publish-keynote-page-5` | 比喻与可见文字完全沿用演讲人原稿。 |
+| COURSE-S06 | 1 | 克服传输瓶颈：利用计算上的时间局部性与存储的空间局部性 | KeynoteSourceStage | `publish-keynote-page-6` | 比喻与可见文字完全沿用演讲人原稿。 |
+| COURSE-S07 | 1 | 冯诺依曼架构·工业时代·社会主义 | KeynoteSourceStage | `publish-keynote-page-7` | 可见文字与图形完全沿用演讲人原稿。 |
+| COURSE-S08 | 1 | 运力已经到达瓶颈，再加算力没有用处 | KeynoteSourceStage | `publish-keynote-page-8` | 可见文字、问题和示意图完全沿用演讲人原稿。 |
+| COURSE-S09 | 1 | 256B/cycle | KeynoteSourceStage | `publish-keynote-page-9` | 可见文字、容量和带宽标注完全沿用演讲人原稿。 |
 | COURSE-S10 | 1 | 足够多的独立请求可以隐藏延迟，但队列、端口和返回带宽会先饱和。 | Little’s Law 与队列占用 | `course-model`, `source-deck` | 数值仅用于教学推导；真实上限还受地址相关、bank、协议与调度影响。 |
 | COURSE-S11 | 1 | 计算单元是工厂，存储是仓库，NoC 是道路，调度器决定货物流向。 | ArchitectureZoom | `source-deck`, `course-synthesis` | 城市隐喻帮助理解连接关系，不对应具体物理布局。 |
 | COURSE-S12 | 1 | HBM、interposer、chiplet 与引脚共同决定可见带宽、延迟和能耗。 | package/HBM/DDR paths | `source-deck`, `course-synthesis` | 图片为通用 2.5D 架构概念，不影射具体厂商封装。 |

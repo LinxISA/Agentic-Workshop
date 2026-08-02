@@ -35,154 +35,138 @@ Narrative: 先建立共同语言：性能来自计算、数据移动、并发、
 
 ---
 
-# 432 TFLOPS 为什么跑不满
+# 自我介绍
 
-<FullBleedStage background="/generated/slides/s02-peak-gap.png" title="432 TFLOPS 为什么跑不满" claim="峰值算力与实测性能之间的缺口，就是体系结构研究空间。" eyebrow="PROBLEM" slide-id="S02">
-  <template #diagram><div class="diagram-dock evidence-strip"><span>Peak<b class="compute">432</b></span><span>Measured<b class="bottleneck">96</b></span><span>Utilization<b>22%</b></span><span>Question<b>谁在等？</b></span></div></template>
-</FullBleedStage>
+<KeynoteSourceStage background="/generated/slides/s02-self-introduction.png" title="自我介绍" claim="姓名：周若愚" slide-id="S02" :focuses="[{ x: 78.5, y: 19, w: 18, h: 56 }]" />
 
 <!--
 Slide-ID: S02
-Objective: 用峰值—实测差距引出体系结构瓶颈，而不是把低利用率归咎于“代码没优化”。
+Objective: 按原稿介绍演讲人教育背景、研究方向和工作经历。
 Timing: 3 min
-Visual: 大部分熄灭的计算阵列与遥远存储体；四个前景数字按 Peak、Measured、Utilization、Question 逐步出现。
-Interaction: 四选一投票：算力、带宽、局部性还是并发度；先记录判断，课末再复盘。
-Sources: source-deck; course-model
-Boundary: 432 TFLOPS 与 96 TFLOPS 是教学场景参数，不代表未公开产品实测。
-Narrative: 峰值只描述所有执行单元都持续得到正确数据时的上限。真实系统会在访存、依赖、队列满、前端供给和同步上损失周期，因此研究问题是找出第一个限制吞吐的结构环节。
+Visual: 原 Keynote 第 2 页完整画面；轻微聚焦右侧个人照片与海思标识，不改动文字。
+Interaction: 演讲人口头补充个人经历。
+Sources: publish-keynote-page-2
+Boundary: 可见文字与图片均直接来自演讲人提供的 Keynote。
+Narrative: 姓名、教育背景、研究方向、ARM 与华为海思经历，以及 PTO 虚拟指令集规范工作。
 -->
 
 ---
 
-# 工作负载 = 计算 + 数据移动
+# 本次暑期学校课程
 
-<FullBleedStage background="/generated/slides/s03-workload-data-movement.png" title="工作负载 = 计算 + 数据移动" claim="任何算子都同时要求运算次数、搬运字节数和可利用的复用。" eyebrow="WORKLOAD MODEL" slide-id="S03">
-  <template #diagram><div class="diagram-dock architecture-chain"><span class="compute">FLOPs</span><i>÷</i><span class="data">Bytes</span><i>=</i><span class="memory">Reuse / AI</span></div></template>
-</FullBleedStage>
+<KeynoteSourceStage background="/generated/slides/s03-course-outline.png" title="本次暑期学校课程" claim="什么是计算体系结构" slide-id="S03" :focuses="[{ x: 53, y: 22, w: 42, h: 60 }]" />
 
 <!--
 Slide-ID: S03
-Objective: 把工作负载拆成计算量、数据量和复用机会，为 Roofline 建模准备变量。
+Objective: 按原稿说明课程范围与处理器核示例的组成。
 Timing: 2 min
-Visual: 张量块从存储流向计算阵列；前景公式只呈现 FLOPs、Bytes 与 Arithmetic Intensity 的关系。
-Interaction: 让学生口算一次矩阵乘：一个输出元素需要多少乘加、至少读取多少输入数据。
-Sources: roofline-paper; course-model
-Boundary: 使用简化矩阵乘模型，忽略索引、控制和缓存元数据开销。
-Narrative: 算法并不直接“拥有性能”，它只提出计算与数据移动需求。体系结构决定这些需求如何映射到本地存储、片上网络、执行阵列和调度窗口。
+Visual: 原 Keynote 第 3 页完整画面；轻微聚焦右侧计算、内存、互连、网络、编程关系图。
+Interaction: 让学生观察右侧六个体系结构维度如何连接到课程的三部分内容。
+Sources: publish-keynote-page-3
+Boundary: 可见文字与图形均直接来自演讲人提供的 Keynote。
+Narrative: 什么是计算体系结构；Agentic Circuit 与 NDF；基于 PTO Tile 的处理器核示例。
 -->
 
 ---
 
-# Roofline 的两根轴
+# 计算机体系结构-处理器
 
-<FullBleedStage background="/generated/slides/s04-roofline-axes.png" title="Roofline 的两根轴" claim="横轴是每字节计算量，纵轴是每秒完成的计算量。" eyebrow="MACRO MODEL" slide-id="S04">
-  <template #diagram><div class="diagram-dock"><div class="claim-callout"><b>P = min(P<sub>peak</sub>, AI × BW)</b><br><span class="muted">斜坡由带宽决定，平台由计算峰值决定。</span></div></div></template>
-</FullBleedStage>
+<KeynoteSourceStage background="/generated/slides/s04-chapter-processor.png" title="计算机体系结构-处理器" claim="第一章" slide-id="S04" :focuses="[{ x: 13.5, y: 17, w: 73, h: 66 }]" />
 
 <!--
 Slide-ID: S04
-Objective: 从两个独立上界推导 Roofline，而不是让学生死记图形。
+Objective: 完整保留原稿的第一章章节分隔页。
 Timing: 2 min
-Visual: 斜坡进入平顶屋顶的工业景观；前景用一行公式标记带宽上界和计算上界。
-Interaction: 分两步 reveal：先画 AI×BW，再加 Ppeak，最后取二者最小值。
-Sources: roofline-paper
-Boundary: Roofline 是吞吐上界模型，不是周期级预测，也不描述尾延迟。
-Narrative: 左侧工作点每做一次计算需要大量外部字节，因此沿带宽斜坡；越过 ridge point 后，数据供给足够，执行单元数量成为上限。
+Visual: 原 Keynote 第 4 页完整画面；边框以低强度呼吸光建立章节转场。
+Interaction: 章节转场，无附加可见文字。
+Sources: publish-keynote-page-4
+Boundary: 可见文字与装饰均直接来自演讲人提供的 Keynote。
+Narrative: 第一章：计算机体系结构-处理器。
 -->
 
 ---
 
-# 交互 Roofline
+# 冯诺依曼架构·农业时代·小农经济
 
-<FullBleedStage background="/generated/slides/s05-interactive-roofline.png" title="交互 Roofline" claim="架构参数移动屋顶，算法复用移动工作点。" eyebrow="LIVE MODEL" slide-id="S05">
-  <template #diagram><InteractiveRoofline /></template>
-</FullBleedStage>
+<KeynoteSourceStage background="/generated/slides/s05-von-neumann-farm.png" title="冯诺依曼架构·农业时代·小农经济" claim="Von Neumann bottleneck：性能瓶颈在于计算与存储之间信息传输率" slide-id="S05" interactive :focuses="[{ x: 10, y: 20, w: 31, h: 61 }, { x: 55, y: 20, w: 20, h: 61 }, { x: 78, y: 19, w: 19, h: 66 }]" />
 
 <!--
 Slide-ID: S05
-Objective: 让学生亲手区分“提高屋顶”和“移动工作点”两类优化。
+Objective: 用农业时代的小农经济比喻解释最基本的冯诺依曼结构与瓶颈。
 Timing: 4 min
-Visual: 真实处理器与透明 Roofline 装置；前景 SVG 根据 Peak、BW、AI 三个滑杆实时更新。
-Interaction: 先只加算力观察无效，再加带宽，最后提高 AI；要求学生解释瓶颈为何切换。
-Sources: roofline-paper; course-model
-Boundary: 交互数值由本仓简化模型计算，不是 LinxCore 或商业芯片测量。
-Narrative: 如果工作点仍在斜坡，加倍矩阵单元可能完全无效；如果工作点已经在平台，继续增加带宽也不会提升性能。优化必须针对当前限制项。
+Visual: 原 Keynote 第 5 页完整画面；点击右下角演示按钮依次聚焦村庄、农田和指令卷轴。
+Interaction: 依次讲解控制与计算、乡间小路、内存和基本指令类型。
+Sources: publish-keynote-page-5
+Boundary: 比喻与可见文字完全沿用演讲人原稿。
+Narrative: Von Neumann bottleneck：性能瓶颈在于计算与存储之间信息传输率。
 -->
 
 ---
 
-# Arithmetic Intensity 不是常数
+# 冯诺依曼架构·工业时代
 
-<FullBleedStage background="/generated/slides/s06-arithmetic-intensity.png" title="Arithmetic Intensity 不是常数" claim="同一算子在不同分块、缓存命中率和数据布局下，会落在不同工作点。" eyebrow="LOCALITY" slide-id="S06">
-  <template #diagram><div class="diagram-dock evidence-strip"><span>Naive<b>2 FLOP/B</b></span><span>Tiled<b>16 FLOP/B</b></span><span>Fused<b>48 FLOP/B</b></span><span>Effect<b class="memory">少搬数据</b></span></div></template>
-</FullBleedStage>
+<KeynoteSourceStage background="/generated/slides/s06-von-neumann-industry.png" title="冯诺依曼架构·工业时代" claim="克服传输瓶颈：利用计算上的时间局部性与存储的空间局部性" slide-id="S06" :focuses="[{ x: 29, y: 21, w: 55, h: 67 }]" />
 
 <!--
 Slide-ID: S06
-Objective: 说明 AI 是算法与存储体系结构共同产生的运行属性。
+Objective: 用城市、公路和分级仓库比喻解释存储层级与局部性。
 Timing: 3 min
-Visual: 一侧反复远距离取数，另一侧形成短复用环；前景对比 naive、tiled、fused 三个工作点。
-Interaction: 点击或口头切换三种映射，判断工作点向右移动还是屋顶上移。
-Sources: roofline-paper; course-model
-Boundary: 三组 AI 为教学示例，只表达数量级与趋势。
-Narrative: 算法 FLOPs 可能不变，但 DRAM 字节数会因 tile 大小、cache 容量、替换行为和融合机会而改变。体系结构研究必须显式建模这些条件。
+Visual: 原 Keynote 第 6 页完整画面；轻微聚焦城市公路、二级仓库、三级仓库和高速路。
+Interaction: 让学生沿运输路径说明哪一级保存指令、数据和复用机会。
+Sources: publish-keynote-page-6
+Boundary: 比喻与可见文字完全沿用演讲人原稿。
+Narrative: 克服传输瓶颈：利用计算上的时间局部性与存储的空间局部性；当运输成为瓶颈时触及 Roofline。
 -->
 
 ---
 
-# 局部性就是避免昂贵搬运
+# 冯诺依曼架构·工业时代·社会主义
 
-<FullBleedStage background="/generated/slides/s07-locality.png" title="局部性就是避免昂贵搬运" claim="时间复用、空间复用和生产者—消费者复用，最终都减少远端字节。" eyebrow="DATA MOVEMENT" slide-id="S07">
-  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#17d9ff">寄存器复用<small>1–2 cycles</small></span><span style="--layer:#ffbe00">片上 SRAM 复用<small>几到几十 cycles</small></span><span style="--layer:#b9ff33">片外内存<small>高延迟 / 高能耗</small></span></div></template>
-</FullBleedStage>
+<KeynoteSourceStage background="/generated/slides/s07-von-neumann-socialism.png" title="冯诺依曼架构·工业时代·社会主义" claim="冯诺依曼架构·工业时代·社会主义" slide-id="S07" :focuses="[{ x: 13, y: 18, w: 82, h: 76 }]" />
 
 <!--
 Slide-ID: S07
-Objective: 把抽象“局部性”翻译成逐级存储结构与数据生命周期。
+Objective: 按原稿展示多计算 Lane、分级仓库和多级道路组织。
 Timing: 2 min
-Visual: 以计算阵列为中心的同心存储环；颜色从寄存器、SRAM 延伸到 DRAM。
-Interaction: 指定一个矩阵块，让学生决定它应停留在哪一级、被复用多少次后才淘汰。
-Sources: course-model; source-deck
-Boundary: 延迟范围是教学级概括，不代表 PTO 或 LinxCore 固定参数。
-Narrative: 局部性不是缓存命中率的同义词，而是数据在离消费者更近的位置被再次使用。硬件提供容量、端口和带宽，软件决定块形状和访问顺序。
+Visual: 原 Keynote 第 7 页完整画面；整条层级化运输体系使用低强度边缘呼吸光。
+Interaction: 沿计算 Lane 到内存总仓逐级讲解并行度与共享层级。
+Sources: publish-keynote-page-7
+Boundary: 可见文字与图形完全沿用演讲人原稿。
+Narrative: 多个计算 Lane 经过一级数据仓库、二级仓库和三级仓库连接内存总仓。
 -->
 
 ---
 
-# 把存储延迟换算成“天”
+# 仓库管理：Roofline Model
 
-<FullBleedStage background="/generated/slides/s08-memory-latency-days.png" title="把存储延迟换算成“天”" claim="核心尺度上的几个周期，与片外访问的几百周期，是完全不同的时间世界。" eyebrow="LATENCY INTUITION" slide-id="S08">
-  <template #diagram><div class="diagram-dock evidence-strip"><span>Register<b>今天</b></span><span>L1<b>本周</b></span><span>L2/L3<b>下月</b></span><span>DRAM<b class="bottleneck">明年</b></span></div></template>
-</FullBleedStage>
+<KeynoteSourceStage background="/generated/slides/s08-warehouse-roofline.png" title="仓库管理：Roofline Model" claim="运力已经到达瓶颈，再加算力没有用处" slide-id="S08" :focuses="[{ x: 5.5, y: 22, w: 40, h: 68 }]" />
 
 <!--
 Slide-ID: S08
-Objective: 建立学生对存储延迟数量级的直觉，并说明为何需要并发隐藏延迟。
+Objective: 按原稿用仓库与运力比喻解释 Roofline、Arithmetic Intensity 和 Locality。
 Timing: 2 min
-Visual: 从核心向外扩展的时间距离地形；前景用“今天—明年”类比替代精确产品数字。
-Interaction: 假设一次 DRAM 访问为 220 cycles，问需要多少独立 miss 才能填满返回带宽。
-Sources: source-deck; course-model
-Boundary: 日历类比只表达数量级，不是物理时间换算或特定芯片参数。
-Narrative: 延迟不能被带宽数字抹去。即使内存接口很宽，单个依赖链仍然必须等待；体系结构依靠缓存、预取、乱序窗口和多线程形成足够并发。
+Visual: 原 Keynote 第 8 页完整画面；轻微聚焦左侧 Roofline 曲线与计算单元算力轴。
+Interaction: 结合右侧运输图解释“运力已经到达瓶颈”和“再加算力没有用处”。
+Sources: publish-keynote-page-8
+Boundary: 可见文字、问题和示意图完全沿用演讲人原稿。
+Narrative: Arithmetic Intensity 询问一个送来的包裹可以算几个运算；Locality 询问一个送来的货物能够用几次。
 -->
 
 ---
 
-# 存储层级：容量、延迟、带宽三角
+# 冯诺依曼架构·工业时代·达芬奇文艺复兴
 
-<FullBleedStage background="/generated/slides/s09-memory-hierarchy.png" title="存储层级：容量、延迟、带宽三角" claim="每一级都在用有限容量换取更低平均延迟和更少片外流量。" eyebrow="HIERARCHY" slide-id="S09">
-  <template #diagram><MemoryHierarchyExplorer /></template>
-</FullBleedStage>
+<KeynoteSourceStage background="/generated/slides/s09-davinci-architecture.png" title="冯诺依曼架构·工业时代·达芬奇文艺复兴" claim="256B/cycle" slide-id="S09" interactive :focuses="[{ x: 0.5, y: 19, w: 47, h: 71 }, { x: 48, y: 18, w: 50, h: 78 }]" />
 
 <!--
 Slide-ID: S09
-Objective: 用可调命中率把存储层级连接到平均访问延迟和片外流量。
+Objective: 按原稿展示达芬奇架构中的 Tile/CUBE 计算组织与 L0A、L0B、L0C 本地仓库。
 Timing: 3 min
-Visual: 阶梯式 L1、L2、DRAM 切面；前景组件实时显示命中分布、平均 cycles 与 reuse。
-Interaction: 分别降低 L1 hit 和 L2 hit，观察哪一个对 off-chip traffic 与平均延迟影响更大。
-Sources: course-model; source-deck
-Boundary: 层级延迟和概率为课程模型，未声称对应 LinxCore 实现参数。
-Narrative: 平均延迟是一种加权结果，但性能还取决于 miss 能否重叠、端口是否冲突、队列是否容纳未完成请求。下一步从概率模型走向并发结构。
+Visual: 原 Keynote 第 9 页完整画面；点击右下角演示按钮在 Tile/CUBE 与仓库层级之间切换焦点。
+Interaction: 先讲 Left Tile、Right Tile、ACC Tile 与 CUBE，再讲 L0A/L0B/L0C、256B/cycle、二级与三级仓库。
+Sources: publish-keynote-page-9
+Boundary: 可见文字、容量和带宽标注完全沿用演讲人原稿。
+Narrative: Tile 数据流与本地存储层级共同决定片上计算和数据供给。
 -->
 
 ---

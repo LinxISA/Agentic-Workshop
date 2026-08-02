@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T12:04:22.732Z",
+  "generatedAt": "2026-08-02T12:40:59.114Z",
   "viewport": [
     1920,
     1080
@@ -32,13 +32,13 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 19.6,
+          "fontMinPx": null,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s02-peak-gap.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s02-self-introduction.png\")"
         },
         {
           "number": 3,
@@ -46,13 +46,13 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 21.5,
+          "fontMinPx": null,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s03-workload-data-movement.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s03-course-outline.png\")"
         },
         {
           "number": 4,
@@ -60,13 +60,13 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 21.5,
+          "fontMinPx": null,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s04-roofline-axes.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s04-chapter-processor.png\")"
         },
         {
           "number": 5,
@@ -74,13 +74,13 @@
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 19.6,
+          "fontMinPx": null,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s05-interactive-roofline.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s05-von-neumann-farm.png\")"
         },
         {
           "number": 6,
@@ -88,13 +88,13 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 19.6,
+          "fontMinPx": null,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s06-arithmetic-intensity.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s06-von-neumann-industry.png\")"
         },
         {
           "number": 7,
@@ -102,13 +102,13 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 19.6,
+          "fontMinPx": null,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s07-locality.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s07-von-neumann-socialism.png\")"
         },
         {
           "number": 8,
@@ -116,13 +116,13 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 19.6,
+          "fontMinPx": null,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s08-memory-latency-days.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s08-warehouse-roofline.png\")"
         },
         {
           "number": 9,
@@ -130,13 +130,13 @@
           "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 17.6,
+          "fontMinPx": null,
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s09-memory-hierarchy.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4174/session-1/generated/slides/s09-davinci-architecture.png\")"
         },
         {
           "number": 10,

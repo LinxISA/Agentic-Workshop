@@ -12,4 +12,5 @@ for(const item of manifest.assets){
   if(sha!==item.sha256)errors.push(`${item.slide}: image hash differs from immutable manifest`)
 }
 if(errors.length){for(const error of errors)console.error(error);process.exit(1)}
-console.log(`verified ${manifest.assets.length} immutable image records; call-time provenance is explicitly unavailable`)
+const sourceRenders=manifest.assets.filter(item=>item.generator==='Keynote PDF render').length
+console.log(`verified ${manifest.assets.length} immutable image records (${sourceRenders} exact Keynote source renders); ImageGen call-time provenance remains explicit`)

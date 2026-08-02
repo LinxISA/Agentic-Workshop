@@ -5,6 +5,7 @@ const decks = [
   { path: 'decks/session-2/slides.md', session: 2 },
 ]
 const noteFields = ['Slide-ID:', 'Objective:', 'Timing:', 'Visual:', 'Interaction:', 'Sources:', 'Boundary:']
+const fullBleedStages = ['FullBleedStage', 'AscendCover', 'KeynoteSourceStage']
 let failed = false
 
 function audienceCharacterCount(slide) {
@@ -24,7 +25,7 @@ for (const deck of decks) {
   if (slides.length !== 21) errors.push(`expected 21 content slides, got ${slides.length}`)
   slides.forEach((slide, index) => {
     const expectedId = `S${String(index + 1 + (deck.session - 1) * 21).padStart(2, '0')}`
-    if (!slide.includes('<FullBleedStage')) errors.push(`${expectedId}: missing FullBleedStage`)
+    if (!fullBleedStages.some(component => slide.includes(`<${component}`))) errors.push(`${expectedId}: missing approved full-bleed stage`)
     if (!slide.includes(`/generated/slides/${expectedId.toLowerCase()}-`)) errors.push(`${expectedId}: missing unique local slide background`)
     for (const field of noteFields) {
       if (!slide.includes(field)) errors.push(`${expectedId}: missing speaker-note field ${field}`)

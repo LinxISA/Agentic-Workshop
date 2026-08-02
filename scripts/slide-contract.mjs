@@ -16,7 +16,9 @@ export async function readDeckContract() {
       const segment = source.slice(headings[index].index, headings[index + 1]?.index ?? source.length)
       const id = note(segment, 'Slide-ID')
       const diagram = segment.match(/<template #diagram>([\s\S]*?)<\/template>/)?.[1] ?? ''
+      const rootComponent = segment.match(/^<([A-Z][A-Za-z0-9]+)/m)?.[1]
       const component = diagram.match(/<([A-Z][A-Za-z0-9]+)/)?.[1]
+        ?? (rootComponent === 'FullBleedStage' ? undefined : rootComponent)
       slides.push({
         id,
         session,
