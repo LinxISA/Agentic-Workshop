@@ -12,20 +12,24 @@ fonts:
   provider: none
 ---
 
-# 算力不是答案，体系结构才是
+# Agent时代体系结构研究
 
-<FullBleedStage background="/generated/slides/s01-architecture-first.png" title="算力不是答案，体系结构才是" claim="先问数据在哪里、何时到达、由谁等待，再问 Agent 能做什么。" eyebrow="SESSION 01 · ARCHITECTURE FIRST" slide-id="S01">
-  <template #diagram><div class="diagram-dock"><ArchitectureZoom level="system" :active-path="['package','chip','core']" /></div></template>
-</FullBleedStage>
+<AscendCover
+  background="/generated/slides/s01-architecture-first.png"
+  title="Agent时代体系结构研究"
+  claim="Architecture First · Agentic Circuit as a Research Instrument"
+  speaker="周若愚"
+  affiliation="华为海思半导体"
+/>
 
 <!--
 Slide-ID: S01
-Objective: 把课程重心明确放在处理器体系结构，而不是工具教学。
+Objective: 建立“体系结构优先、Agent 为研究工具”的课程定位。
 Timing: 1 min
-Visual: 从系统、封装、芯片、核心逐层放大的处理器爆炸图；前景只保留尺度导航。
+Visual: 左侧为海思昇腾风格 AI 处理器与带宽线路，右侧以大标题和演讲人信息建立正式开场。
 Interaction: 开场提问：看到“432 TFLOPS”时，你最先追问哪个结构参数？
 Sources: source-deck; agenda
-Boundary: 课程定位，不声称任何具体芯片结构。
+Boundary: 背景为昇腾风格的概念视觉，不表示任何具体产品内部结构。
 Narrative: 先建立共同语言：性能来自计算、数据移动、并发、队列与控制的共同作用。Agentic Circuit 只负责把这些假设变成可执行模型和可审计证据。
 -->
 

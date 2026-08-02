@@ -8,14 +8,14 @@
     {
       "slide": "S01",
       "asset": "s01-architecture-first.png",
-      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer architecture lecture background. Style: cinematic industrial semiconductor cutaway, premium keynote, dark navy, technically grounded. Composition: one coherent processor-architecture scene, calm upper-left title zone, room for precise deterministic SVG overlays. Palette: cyan data movement, yellow compute, lime memory, sparse magenta bottleneck. Constraints: no text, letters, numbers, equations, labels, logos, watermarks, people, robots, pseudo-writing, or decorative fantasy circuitry. Scene: 算力不是答案，体系结构才是. Architecture claim to visualize: 先问数据在哪里、何时到达、由谁等待，再问 Agent 能做什么。 Required composition for the foreground teaching layer: ArchitectureZoom. Keep the processor, memory hierarchy, queues, interconnect, or pipeline as the visual subject; Agentic Circuit may appear only as an analytical projection.",
-      "date": "2026-08-01",
+      "prompt": "Use case: scientific-educational. Asset type: full-bleed 16:9 computer-architecture keynote cover. Style: photorealistic premium semiconductor product visualization, deep navy and cyan, technically credible. Composition: HiSilicon Ascend-inspired datacenter AI processor occupies the left third; compute tiles, memory-controller lanes, NoC routing, and bandwidth traces radiate across the PCB; the right half remains a calm dark gradient for deterministic Slidev title typography. Chip finish: matte graphite ceramic, beveled metal edges, dense gold contacts, subtle die detail, and a restrained red abstract geometric emblem without letters. Constraints: no generated text, letters, numbers, equations, labels, wordmarks, watermarks, people, robots, UI, ARM branding, pseudo-writing, borders, or bright detail behind the title zone.",
+      "date": "2026-08-02",
       "source_style": "PTO ISA_扩展版 · image-dominant architecture keynote",
       "final_path": "assets/generated/slides/s01-architecture-first.png",
       "runtime_path": "public/generated/slides/s01-architecture-first.png",
       "review": "pass",
-      "regenerated": false,
-      "sha256": "89192eb6abb360be7e9162fc442bda2522d0101c3f94e615e82bbf3ca5789fce"
+      "regenerated": true,
+      "sha256": "c68acba9aac7926ef191c6462cf86d269cd988127a69178b8a0e9fbc7507b5d3"
     },
     {
       "slide": "S02",

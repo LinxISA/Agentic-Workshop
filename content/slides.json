@@ -2,17 +2,17 @@
   {
     "id": "S01",
     "session": 1,
-    "title": "算力不是答案，体系结构才是",
-    "claim": "先问数据在哪里、何时到达、由谁等待，再问 Agent 能做什么。",
+    "title": "Agent时代体系结构研究",
+    "claim": "Architecture First · Agentic Circuit as a Research Instrument",
     "background": "/generated/slides/s01-architecture-first.png",
-    "overlay": "ArchitectureZoom",
+    "overlay": "AscendCover",
     "interaction": "开场提问：看到“432 TFLOPS”时，你最先追问哪个结构参数？",
     "minutes": 1,
     "sources": [
       "source-deck",
       "agenda"
     ],
-    "claimBoundary": "课程定位，不声称任何具体芯片结构。"
+    "claimBoundary": "背景为昇腾风格的概念视觉，不表示任何具体产品内部结构。"
   },
   {
     "id": "S02",
