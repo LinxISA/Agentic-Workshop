@@ -4,7 +4,7 @@ import { resolve } from 'node:path'
 
 const base = process.env.SUMMERSCHOOL_PREVIEW_URL || 'http://127.0.0.1:4173'
 const allDecks = [
-  { id: 'session-1', source: 'decks/session-1/slides.md', interactive: [5,9,13,16,17,21] },
+  { id: 'session-1', source: 'decks/session-1/slides.md', interactive: [13,16,17,21] },
   { id: 'session-2', source: 'decks/session-2/slides.md', interactive: [2,5,6,7,8,9,11,12,13,14,15,16,17,19,20] },
 ]
 const selected = new Set((process.env.SUMMERSCHOOL_QA_DECKS || 'session-1,session-2').split(','))
@@ -54,7 +54,7 @@ for (const deck of decks) {
         const style = getComputedStyle(candidate)
         return rect.width > 100 && rect.height > 100 && style.visibility !== 'hidden' && style.opacity !== '0'
       })
-      if (!layout) return { missingLayout: true, overflow: [], fontMinPx: null, imageIssues: [], contrastIssues: [], titleWrapped: false, overlapIssues: [], backgroundLoaded: false }
+      if (!layout) return { missingLayout: true, overflow: [], fontMinPx: null, imageIssues: [], contrastIssues: [], titleWrapped: false, overlapIssues: [], backgroundLoaded: false, focusFrameVisible: false }
       const root = layout.getBoundingClientRect()
       const scale = root.width / layout.offsetWidth
       const overflow = []
@@ -139,7 +139,12 @@ for (const deck of decks) {
       const stage = layout.querySelector('.full-bleed-stage')
       const backgroundImage = stage ? getComputedStyle(stage).backgroundImage : ''
       const backgroundLoaded = Boolean(stage && expectedBackground && backgroundImage.includes(expectedBackground.split('/').pop()))
-      return { missingLayout: false, overflow: overflow.slice(0, 20), fontMinPx: Number.isFinite(fontMinPx) ? Number(fontMinPx.toFixed(1)) : null, imageIssues, contrastIssues: contrastIssues.slice(0, 20), titleWrapped, overlapIssues: overlapIssues.slice(0, 20), backgroundLoaded, backgroundImage }
+      const focusFrameVisible = [...layout.querySelectorAll('.keynote-source-stage__focus')].some((element) => {
+        const rect = element.getBoundingClientRect()
+        const style = getComputedStyle(element)
+        return rect.width > 1 && rect.height > 1 && style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0'
+      })
+      return { missingLayout: false, overflow: overflow.slice(0, 20), fontMinPx: Number.isFinite(fontMinPx) ? Number(fontMinPx.toFixed(1)) : null, imageIssues, contrastIssues: contrastIssues.slice(0, 20), titleWrapped, overlapIssues: overlapIssues.slice(0, 20), backgroundLoaded, backgroundImage, focusFrameVisible }
     }, expectedBackgrounds[i - 1])
     const inputs = page.locator('.slidev-layout:visible .full-bleed-stage__diagram input:visible')
     const buttons = page.locator('.slidev-layout:visible .full-bleed-stage__diagram button:visible:not(.on):not(.active)')
@@ -180,6 +185,7 @@ const failures = report.decks.flatMap((deck) => [
   ...deck.failedResponses.map((failure) => `${deck.id}: local response failure ${failure}`),
   ...deck.slides.flatMap((slide) => [
     ...(slide.missingLayout ? [`${deck.id}/${slide.number}: layout missing`] : []),
+    ...(slide.focusFrameVisible ? [`${deck.id}/${slide.number}: animated focus frame is visible`] : []),
     ...(slide.expectedInteraction && !slide.interactionTested ? [`${deck.id}/${slide.number}: expected interaction did not change rendered state`] : []),
     ...(!slide.backgroundLoaded ? [`${deck.id}/${slide.number}: expected full-bleed background not loaded`] : []),
     ...slide.imageIssues.map((issue) => `${deck.id}/${slide.number}: image ${issue.issue} ${issue.src}`),

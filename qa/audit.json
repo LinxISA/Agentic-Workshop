@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T12:56:50.277Z",
+  "generatedAt": "2026-08-02T13:10:14.922Z",
   "viewport": [
     1920,
     1080
@@ -24,7 +24,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s01-architecture-first.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s01-architecture-first.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 2,
@@ -38,7 +39,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s02-self-introduction.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s02-self-introduction.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 3,
@@ -52,7 +54,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s03-course-outline.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s03-course-outline.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 4,
@@ -66,12 +69,13 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s04-chapter-processor.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s04-chapter-processor.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 5,
-          "expectedInteraction": true,
-          "interactionTested": true,
+          "expectedInteraction": false,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": null,
@@ -80,7 +84,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s05-von-neumann-farm.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s05-von-neumann-farm.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 6,
@@ -94,7 +99,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s06-von-neumann-industry.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s06-von-neumann-industry.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 7,
@@ -108,7 +114,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s07-von-neumann-socialism.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s07-von-neumann-socialism.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 8,
@@ -122,12 +129,13 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s08-warehouse-roofline.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s08-warehouse-roofline.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 9,
-          "expectedInteraction": true,
-          "interactionTested": true,
+          "expectedInteraction": false,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": null,
@@ -136,7 +144,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s09-davinci-architecture.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s09-davinci-architecture.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 10,
@@ -150,7 +159,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s10-concurrency.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s10-concurrency.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 11,
@@ -164,7 +174,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s11-processor-city.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s11-processor-city.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 12,
@@ -178,7 +189,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s12-package-memory.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s12-package-memory.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 13,
@@ -192,7 +204,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s13-noc-congestion.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s13-noc-congestion.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 14,
@@ -206,7 +219,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s14-tile-cube.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s14-tile-cube.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 15,
@@ -220,7 +234,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s15-tload-tstore.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s15-tload-tstore.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 16,
@@ -234,7 +249,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s16-double-buffer.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s16-double-buffer.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 17,
@@ -248,7 +264,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s17-bank-swizzle.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s17-bank-swizzle.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 18,
@@ -262,7 +279,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s18-scheduling-levels.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s18-scheduling-levels.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 19,
@@ -276,7 +294,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s19-performance-causality.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s19-performance-causality.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 20,
@@ -290,7 +309,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s20-agentic-circuit-map.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s20-agentic-circuit-map.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 21,
@@ -304,7 +324,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s21-design-challenge.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s21-design-challenge.png\")",
+          "focusFrameVisible": false
         }
       ]
     },
@@ -326,7 +347,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s22-core-dive.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s22-core-dive.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 2,
@@ -340,7 +362,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s23-linxcore-case.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s23-linxcore-case.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 3,
@@ -354,7 +377,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s24-pto-contract.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s24-pto-contract.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 4,
@@ -368,7 +392,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s25-cross-layer.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s25-cross-layer.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 5,
@@ -382,7 +407,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s26-core-pipeline.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s26-core-pipeline.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 6,
@@ -396,7 +422,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s27-frontend.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s27-frontend.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 7,
@@ -410,7 +437,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s28-rename-rob.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s28-rename-rob.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 8,
@@ -424,7 +452,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s29-issue-queue.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s29-issue-queue.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 9,
@@ -438,7 +467,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s30-execute-bypass.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s30-execute-bypass.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 10,
@@ -452,7 +482,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s31-load-store.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s31-load-store.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 11,
@@ -466,7 +497,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s32-miss-propagation.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s32-miss-propagation.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 12,
@@ -480,7 +512,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s33-backpressure.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s33-backpressure.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 13,
@@ -494,7 +527,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s34-ndf-graph.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s34-ndf-graph.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 14,
@@ -508,7 +542,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s35-pycircuit-cycle.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s35-pycircuit-cycle.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 15,
@@ -522,7 +557,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s36-reproducible-baseline.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s36-reproducible-baseline.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 16,
@@ -536,7 +572,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s37-bandwidth-sweep.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s37-bandwidth-sweep.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 17,
@@ -550,7 +587,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s38-cache-queue-sweep.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s38-cache-queue-sweep.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 18,
@@ -564,7 +602,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s39-predicted-measured.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s39-predicted-measured.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 19,
@@ -578,7 +617,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s40-agent-research-loop.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s40-agent-research-loop.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 20,
@@ -592,7 +632,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s41-pareto.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s41-pareto.png\")",
+          "focusFrameVisible": false
         },
         {
           "number": 21,
@@ -606,7 +647,8 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s42-architecture-first-closing.png\")"
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s42-architecture-first-closing.png\")",
+          "focusFrameVisible": false
         }
       ]
     }

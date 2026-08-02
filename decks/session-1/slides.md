@@ -37,7 +37,7 @@ Narrative: 先建立共同语言：性能来自计算、数据移动、并发、
 
 # 自我介绍
 
-<KeynoteSourceStage background="/generated/slides/s02-self-introduction.png" title="自我介绍" claim="姓名：周若愚" slide-id="S02" :focuses="[{ x: 78.5, y: 19, w: 18, h: 56 }]" />
+<KeynoteSourceStage background="/generated/slides/s02-self-introduction.png" title="自我介绍" claim="姓名：周若愚" slide-id="S02" />
 
 <!--
 Slide-ID: S02
@@ -54,7 +54,7 @@ Narrative: 姓名、教育背景、研究方向、ARM 与华为海思经历，�
 
 # 本次暑期学校课程
 
-<KeynoteSourceStage background="/generated/slides/s03-course-outline.png" title="本次暑期学校课程" claim="什么是计算体系结构" slide-id="S03" :focuses="[{ x: 53, y: 22, w: 42, h: 60 }]" />
+<KeynoteSourceStage background="/generated/slides/s03-course-outline.png" title="本次暑期学校课程" claim="什么是计算体系结构" slide-id="S03" />
 
 <!--
 Slide-ID: S03
@@ -71,7 +71,7 @@ Narrative: 什么是计算体系结构；Agentic Circuit 与 NDF；基于 PTO Ti
 
 # 计算机体系结构-处理器
 
-<KeynoteSourceStage background="/generated/slides/s04-chapter-processor.png" title="计算机体系结构-处理器" claim="第一章" slide-id="S04" :focuses="[{ x: 13.5, y: 17, w: 73, h: 66 }]" />
+<KeynoteSourceStage background="/generated/slides/s04-chapter-processor.png" title="计算机体系结构-处理器" claim="第一章" slide-id="S04" />
 
 <!--
 Slide-ID: S04
@@ -88,7 +88,7 @@ Narrative: 第一章：计算机体系结构-处理器。
 
 # 冯诺依曼架构·农业时代·小农经济
 
-<KeynoteSourceStage background="/generated/slides/s05-von-neumann-farm.png" title="冯诺依曼架构·农业时代·小农经济" claim="Von Neumann bottleneck：性能瓶颈在于计算与存储之间信息传输率" slide-id="S05" interactive :focuses="[{ x: 10, y: 20, w: 31, h: 61 }, { x: 55, y: 20, w: 20, h: 61 }, { x: 78, y: 19, w: 19, h: 66 }]" />
+<KeynoteSourceStage background="/generated/slides/s05-von-neumann-farm.png" title="冯诺依曼架构·农业时代·小农经济" claim="Von Neumann bottleneck：性能瓶颈在于计算与存储之间信息传输率" slide-id="S05" />
 
 <!--
 Slide-ID: S05
@@ -105,7 +105,7 @@ Narrative: Von Neumann bottleneck：性能瓶颈在于计算与存储之间信�
 
 # 冯诺依曼架构·工业时代
 
-<KeynoteSourceStage background="/generated/slides/s06-von-neumann-industry.png" title="冯诺依曼架构·工业时代" claim="克服传输瓶颈：利用计算上的时间局部性与存储的空间局部性" slide-id="S06" :focuses="[{ x: 29, y: 21, w: 55, h: 67 }]" />
+<KeynoteSourceStage background="/generated/slides/s06-von-neumann-industry.png" title="冯诺依曼架构·工业时代" claim="克服传输瓶颈：利用计算上的时间局部性与存储的空间局部性" slide-id="S06" />
 
 <!--
 Slide-ID: S06
@@ -122,7 +122,7 @@ Narrative: 克服传输瓶颈：利用计算上的时间局部性与存储的空
 
 # 冯诺依曼架构·工业时代·社会主义
 
-<KeynoteSourceStage background="/generated/slides/s07-von-neumann-socialism.png" title="冯诺依曼架构·工业时代·社会主义" claim="冯诺依曼架构·工业时代·社会主义" slide-id="S07" :focuses="[{ x: 13, y: 18, w: 82, h: 76 }]" />
+<KeynoteSourceStage background="/generated/slides/s07-von-neumann-socialism.png" title="冯诺依曼架构·工业时代·社会主义" claim="冯诺依曼架构·工业时代·社会主义" slide-id="S07" />
 
 <!--
 Slide-ID: S07
@@ -139,7 +139,7 @@ Narrative: 多个计算 Lane 经过一级数据仓库、二级仓库和三级仓
 
 # 仓库管理：Roofline Model
 
-<KeynoteSourceStage background="/generated/slides/s08-warehouse-roofline.png" title="仓库管理：Roofline Model" claim="运力已经到达瓶颈，再加算力没有用处" slide-id="S08" :focuses="[{ x: 5.5, y: 22, w: 40, h: 68 }]" />
+<KeynoteSourceStage background="/generated/slides/s08-warehouse-roofline.png" title="仓库管理：Roofline Model" claim="运力已经到达瓶颈，再加算力没有用处" slide-id="S08" />
 
 <!--
 Slide-ID: S08
@@ -156,7 +156,7 @@ Narrative: Arithmetic Intensity 询问一个送来的包裹可以算几个运算
 
 # 冯诺依曼架构·工业时代·达芬奇文艺复兴
 
-<KeynoteSourceStage background="/generated/slides/s09-davinci-architecture.png" title="冯诺依曼架构·工业时代·达芬奇文艺复兴" claim="256B/cycle" slide-id="S09" interactive :focuses="[{ x: 0.5, y: 19, w: 47, h: 71 }, { x: 48, y: 18, w: 50, h: 78 }]" />
+<KeynoteSourceStage background="/generated/slides/s09-davinci-architecture.png" title="冯诺依曼架构·工业时代·达芬奇文艺复兴" claim="256B/cycle" slide-id="S09" />
 
 <!--
 Slide-ID: S09

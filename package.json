@@ -18,7 +18,7 @@
     "blueprint:sync": "node scripts/sync-slide-blueprint.mjs",
     "test:blueprint": "node scripts/check-slide-blueprint.mjs",
     "test:images": "npm run images:verify && node --test qa/image-manifest.spec.mjs",
-    "test:models": "node --test qa/architecture-models.spec.mjs qa/full-bleed-contracts.spec.mjs qa/component-contracts.spec.mjs qa/keynote-source-stage.spec.mjs qa/keyboard-navigation.spec.mjs",
+    "test:models": "node --test qa/architecture-models.spec.mjs qa/full-bleed-contracts.spec.mjs qa/component-contracts.spec.mjs qa/keyboard-navigation.spec.mjs",
     "test:content": "node scripts/check-content.mjs",
     "test:offline": "node scripts/check-offline.mjs",
     "test:sources": "bash scripts/check-sources.sh",
