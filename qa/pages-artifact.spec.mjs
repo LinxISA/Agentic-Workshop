@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { readFile, readdir } from 'node:fs/promises'
+import { join } from 'node:path'
 import test from 'node:test'
 
 import { normalizeBasePath } from '../scripts/pages-paths.mjs'
@@ -10,6 +11,22 @@ const expectedBasePath = normalizeBasePath(
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+async function listTree(root, relativeRoot = '') {
+  const entries = await readdir(join(root, relativeRoot), { withFileTypes: true })
+  const paths = []
+
+  for (const entry of entries) {
+    const relativePath = join(relativeRoot, entry.name)
+    paths.push(relativePath)
+
+    if (entry.isDirectory()) {
+      paths.push(...await listTree(root, relativePath))
+    }
+  }
+
+  return paths.sort()
 }
 
 test('Pages artifact uses the configured asset prefix', async () => {
@@ -26,10 +43,16 @@ test('Pages artifact includes all physical numbered slide routes', async () => {
     const sessionHtml = await readFile(`dist/${session}/index.html`, 'utf8')
 
     for (let slide = 1; slide <= 28; slide += 1) {
+      const routeRoot = `dist/${session}/${slide}`
       assert.equal(
-        await readFile(`dist/${session}/${slide}/index.html`, 'utf8'),
+        await readFile(`${routeRoot}/index.html`, 'utf8'),
         sessionHtml,
         `${session}/${slide} must serve the deck entry point`,
+      )
+      assert.deepEqual(
+        await listTree(routeRoot),
+        ['index.html'],
+        `${session}/${slide} must not duplicate deck assets`,
       )
     }
   }
