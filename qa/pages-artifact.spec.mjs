@@ -64,7 +64,7 @@ test('Pages artifact uses the configured asset prefix', async () => {
 })
 
 test('Pages artifact includes all physical numbered slide routes', async () => {
-  for (const [session, count] of [['session-1', 35], ['session-2', 41]]) {
+  for (const [session, count] of [['session-1', 37], ['session-2', 34]]) {
     const sessionHtml = await readFile(`dist/${session}/index.html`, 'utf8')
 
     for (let slide = 1; slide <= count; slide += 1) {
@@ -142,10 +142,10 @@ test('GitHub Pages workflow deploys the verified prefixed artifact from main', a
   assert.match(deploy, /actions\/deploy-pages@v4/)
 })
 
-test('numbered Pages routes are backed by the complete 35-slide and 41-slide source decks', async () => {
+test('numbered Pages routes are backed by the complete 37-slide and 34-slide source decks', async () => {
   const sessions = [
-    ['session-1', 1, 35],
-    ['session-2', 36, 41],
+    ['session-1', 1, 37],
+    ['session-2', 38, 34],
   ]
 
   for (const [session, firstSlide, count] of sessions) {

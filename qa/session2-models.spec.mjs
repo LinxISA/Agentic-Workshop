@@ -118,23 +118,20 @@ test('timeline filters deterministically by opcode and engine', () => {
   assert.deepEqual(filterTimeline(events, { opcode: 'all', engine: 'Vector' }).map(event => event.sequence_id), [2])
 })
 
-test('Session 2 contract is 41 slides S36–S76, 75 minutes, with required interactions and source captures', async () => {
+test('Session 2 contract is 34 slides S38–S71, 75 minutes, with required interactions and source captures', async () => {
   const source = await readFile('decks/session-2/slides.md', 'utf8')
   const ids = [...source.matchAll(/Slide-ID:\s*(S\d{2})/g)].map(match => match[1])
   const minutes = [...source.matchAll(/Timing:\s*(\d+) min/g)].map(match => Number(match[1]))
-  assert.deepEqual(ids, Array.from({ length: 41 }, (_, index) => `S${index + 36}`))
+  assert.deepEqual(ids, Array.from({ length: 34 }, (_, index) => `S${index + 38}`))
   assert.equal(minutes.reduce((sum, value) => sum + value, 0), 75)
   for (const [id, component] of Object.entries({
-    S40: 'AgcElaborationExplorer', S43: 'AgcSpecializationExplorer', S44: 'AgcPipelineStepper',
-    S53: 'TraceAnatomy', S54: 'SimQueueExplorer', S55: 'DaVinciTopology', S58: 'CyclePlayback',
-    S60: 'ParameterSweep', S61: 'EvidenceTimeline', S75: 'ClosedLoopVerification',
+    S51: 'TraceAnatomy', S52: 'SimQueueExplorer', S53: 'DaVinciTopology', S56: 'CyclePlayback',
+    S58: 'ParameterSweep', S59: 'EvidenceTimeline', S70: 'ClosedLoopVerification',
   })) {
     const slide = source.slice(source.indexOf(`Slide-ID: ${id}`) - 1500, source.indexOf(`Slide-ID: ${id}`))
     assert.match(slide, new RegExp(`<${component}\\b`))
   }
-  for (const [slideId, page] of [[36,34],[37,35],[38,36],[39,37],[63,38],[64,39],[65,40],[66,41],[67,42],[68,43],[69,44]]) {
-    assert.match(source, new RegExp(`/generated/slides/s${slideId}-keynote-page-${page}\\.png`))
-  }
+  for (let page = 38; page <= 47; page += 1) assert.match(source, new RegExp(`/generated/keynote-latest/page-${page}\\.png`))
   const audience = source.replace(/<!--[\s\S]*?-->/g, '')
   assert.doesNotMatch(audience, /LinxCore|ARM ASL|hardware binary/i)
   assert.match(audience, /checked reference replay: 562 records \/ 11028 cycles/i)
@@ -142,9 +139,9 @@ test('Session 2 contract is 41 slides S36–S76, 75 minutes, with required inter
   assert.doesNotMatch(audience, /10920|pyCircuit replay harness/i)
 })
 
-test('S52 and S73 describe checked trace fields without claiming explicit deps', async () => {
+test('S50 and S68 describe checked trace fields without claiming explicit deps', async () => {
   const source = await readFile('decks/session-2/slides.md', 'utf8')
-  for (const [id, nextId] of [['S52', 'S53'], ['S73', 'S74']]) {
+  for (const [id, nextId] of [['S50', 'S51'], ['S68', 'S69']]) {
     const start = source.lastIndexOf('\n# ', source.indexOf(`Slide-ID: ${id}`))
     const end = source.lastIndexOf('\n# ', source.indexOf(`Slide-ID: ${nextId}`))
     const slide = source.slice(start, end)

@@ -17,6 +17,14 @@ test('buildStageStyle respects the Slidev base path for offline subdirectory bui
   )
 })
 
+test('buildStageStyle accepts synchronized Keynote page assets', () => {
+  assert.deepEqual(buildStageStyle('/generated/keynote-latest/page-01.png', 'center', '/session-1/'), {
+    backgroundImage: "url('/session-1/generated/keynote-latest/page-01.png')",
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+  })
+})
+
 test('buildStageStyle rejects remote and non-slide assets', () => {
   assert.throws(() => buildStageStyle('https://example.com/image.png'), /local generated slide asset/)
   assert.throws(() => buildStageStyle('/generated/main-hero.png'), /local generated slide asset/)

@@ -27,9 +27,9 @@ test('/ is available from the offline preview', async () => {
 
 for (const [path, deckTitle] of [
   ['/session-1/1', '体系结构研究的第一性原理'],
-  ['/session-1/35', '体系结构研究的第一性原理'],
+  ['/session-1/37', '体系结构研究的第一性原理'],
   ['/session-2/1', 'Agentic Model 与 PTO NPU Core'],
-  ['/session-2/41', 'Agentic Model 与 PTO NPU Core'],
+  ['/session-2/34', 'Agentic Model 与 PTO NPU Core'],
 ]) {
   test(`${path} returns the requested Slidev deck, not the course index`, async () => {
     const response = await fetch(`${base}${path}`)

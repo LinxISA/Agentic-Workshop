@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 const workspaceRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const outputRoot = resolve(workspaceRoot, 'dist')
 
-for (const [session, count] of [['session-1', 35], ['session-2', 41]]) {
+for (const [session, count] of [['session-1', 37], ['session-2', 34]]) {
   const sessionRoot = resolve(outputRoot, session)
   const html = await readFile(resolve(sessionRoot, 'index.html'), 'utf8')
 

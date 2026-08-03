@@ -19,7 +19,7 @@
     "blueprint:sync": "node scripts/sync-slide-blueprint.mjs",
     "test:blueprint": "node scripts/check-slide-blueprint.mjs",
     "test:course": "node --test qa/course-contracts.spec.mjs qa/agc-course.spec.mjs",
-    "test:images": "npm run images:verify && node --test qa/image-manifest.spec.mjs",
+    "test:images": "npm run images:verify && node --test qa/image-manifest.spec.mjs qa/latest-keynote-assets.spec.mjs",
     "test:cheatsheet": "node --test qa/pto-cheatsheet.spec.mjs",
     "test:models": "node --test qa/architecture-models.spec.mjs qa/agc-models.spec.mjs qa/full-bleed-contracts.spec.mjs qa/component-contracts.spec.mjs qa/keyboard-navigation.spec.mjs qa/session1-models.spec.mjs qa/session2-models.spec.mjs",
     "test:content": "node scripts/check-content.mjs",

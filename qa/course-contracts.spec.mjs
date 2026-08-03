@@ -55,17 +55,16 @@ async function readSlidesById() {
 const slidesPromise = readSlidesById()
 const interactionContracts = [
   ['S08', 'InteractiveRoofline'],
-  ['S25', 'ClockCycleConverter'],
-  ['S26', 'MemoryHierarchyExplorer'],
+  ['S24', 'ClockCycleConverter'],
+  ['S25', 'MemoryHierarchyExplorer'],
   ['S32', 'PtoMachineExplorer'],
-  ['S35', 'TransferTimeLab'],
-  ['S53', 'TraceAnatomy'],
-  ['S54', 'SimQueueExplorer'],
-  ['S55', 'DaVinciTopology'],
-  ['S58', 'CyclePlayback'],
-  ['S60', 'ParameterSweep'],
-  ['S61', 'EvidenceTimeline'],
-  ['S75', 'ClosedLoopVerification'],
+  ['S51', 'TraceAnatomy'],
+  ['S52', 'SimQueueExplorer'],
+  ['S53', 'DaVinciTopology'],
+  ['S56', 'CyclePlayback'],
+  ['S58', 'ParameterSweep'],
+  ['S59', 'EvidenceTimeline'],
+  ['S70', 'ClosedLoopVerification'],
 ]
 
 for (const [id, componentName] of interactionContracts) {
@@ -92,10 +91,10 @@ test('component placement ignores tag-shaped strings inside attribute values', (
 })
 
 const semanticContracts = [
-  ['S50', /\bq_proj\b/i, 'q_proj'],
-  ['S54', /\bSimQueue\b/i, 'SimQueue'],
-  ['S71', /\bPTO-ASL\b/i, 'PTO-ASL'],
-  ['S72', /\bNDF\b/, 'NDF'],
+  ['S48', /\bq_proj\b/i, 'q_proj'],
+  ['S52', /\bSimQueue\b/i, 'SimQueue'],
+  ['S66', /\bPTO-ASL\b/i, 'PTO-ASL'],
+  ['S67', /\bNDF\b/, 'NDF'],
 ]
 
 for (const [id, pattern, label] of semanticContracts) {
@@ -122,10 +121,10 @@ test('audience-visible narrative excludes the LinxCore case study', async () => 
   assert.deepEqual(offenders, [])
 })
 
-test('S71 visibly labels TPUT and TGET as non-normative DaVinciOO communication extensions', async () => {
+test('S66 visibly labels TPUT and TGET as non-normative DaVinciOO communication extensions', async () => {
   const slides = await slidesPromise
-  assert.ok(slides.has('S71'), 'S71 must exist')
-  assert.ok(hasDavinciExtensionBoundary(audienceVisibleText(slides.get('S71'))))
+  assert.ok(slides.has('S66'), 'S66 must exist')
+  assert.ok(hasDavinciExtensionBoundary(audienceVisibleText(slides.get('S66'))))
 })
 
 test('extension boundary rejects globally scattered semantic keywords', () => {
@@ -143,17 +142,17 @@ test('extension boundary rejects negation that applies only to unrelated TMOV', 
   assert.equal(hasDavinciExtensionBoundary(unrelatedNegation), false)
 })
 
-test('S71 visibly lists normative PTO-ASL operation cards', async () => {
+test('S66 visibly lists normative PTO-ASL operation cards', async () => {
   const slides = await slidesPromise
-  assert.ok(slides.has('S71'), 'S71 must exist')
-  const text = audienceVisibleText(slides.get('S71'))
+  assert.ok(slides.has('S66'), 'S66 must exist')
+  const text = audienceVisibleText(slides.get('S66'))
   for (const opcode of ['TLOAD', 'TMOV', 'TEXTRACT', 'TPUSH', 'TPOP']) assert.match(text, new RegExp(`\\b${opcode}\\b`))
 })
 
-test('speaker notes map K01 through K44 exactly once', async () => {
+test('speaker notes map K01 through K71 exactly once', async () => {
   const slides = await slidesPromise
   const actual = [...slides.values()].flatMap(keynoteSourceIds).sort()
-  const expected = Array.from({ length: 44 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
+  const expected = Array.from({ length: 71 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
   assert.deepEqual(actual, expected)
 })
 
