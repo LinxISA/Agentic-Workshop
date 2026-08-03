@@ -55,17 +55,17 @@ async function readSlidesById() {
 const slidesPromise = readSlidesById()
 const interactionContracts = [
   ['S08', 'InteractiveRoofline'],
-  ['S20', 'ClockCycleConverter'],
-  ['S21', 'MemoryHierarchyExplorer'],
-  ['S25', 'PtoMachineExplorer'],
-  ['S28', 'TransferTimeLab'],
-  ['S33', 'TraceAnatomy'],
-  ['S34', 'SimQueueExplorer'],
-  ['S35', 'DaVinciTopology'],
-  ['S38', 'CyclePlayback'],
-  ['S40', 'ParameterSweep'],
-  ['S41', 'EvidenceTimeline'],
-  ['S55', 'ClosedLoopVerification'],
+  ['S25', 'ClockCycleConverter'],
+  ['S26', 'MemoryHierarchyExplorer'],
+  ['S30', 'PtoMachineExplorer'],
+  ['S33', 'TransferTimeLab'],
+  ['S41', 'TraceAnatomy'],
+  ['S42', 'SimQueueExplorer'],
+  ['S43', 'DaVinciTopology'],
+  ['S46', 'CyclePlayback'],
+  ['S48', 'ParameterSweep'],
+  ['S49', 'EvidenceTimeline'],
+  ['S63', 'ClosedLoopVerification'],
 ]
 
 for (const [id, componentName] of interactionContracts) {
@@ -92,10 +92,10 @@ test('component placement ignores tag-shaped strings inside attribute values', (
 })
 
 const semanticContracts = [
-  ['S30', /\bq_proj\b/i, 'q_proj'],
-  ['S34', /\bSimQueue\b/i, 'SimQueue'],
-  ['S51', /\bPTO-ASL\b/i, 'PTO-ASL'],
-  ['S52', /\bNDF\b/, 'NDF'],
+  ['S38', /\bq_proj\b/i, 'q_proj'],
+  ['S42', /\bSimQueue\b/i, 'SimQueue'],
+  ['S59', /\bPTO-ASL\b/i, 'PTO-ASL'],
+  ['S60', /\bNDF\b/, 'NDF'],
 ]
 
 for (const [id, pattern, label] of semanticContracts) {
@@ -122,10 +122,10 @@ test('audience-visible narrative excludes the LinxCore case study', async () => 
   assert.deepEqual(offenders, [])
 })
 
-test('S51 visibly labels TPUT and TGET as non-normative DaVinciOO communication extensions', async () => {
+test('S59 visibly labels TPUT and TGET as non-normative DaVinciOO communication extensions', async () => {
   const slides = await slidesPromise
-  assert.ok(slides.has('S51'), 'S51 must exist')
-  assert.ok(hasDavinciExtensionBoundary(audienceVisibleText(slides.get('S51'))))
+  assert.ok(slides.has('S59'), 'S59 must exist')
+  assert.ok(hasDavinciExtensionBoundary(audienceVisibleText(slides.get('S59'))))
 })
 
 test('extension boundary rejects globally scattered semantic keywords', () => {
@@ -143,17 +143,17 @@ test('extension boundary rejects negation that applies only to unrelated TMOV', 
   assert.equal(hasDavinciExtensionBoundary(unrelatedNegation), false)
 })
 
-test('S51 visibly lists normative PTO-ASL operation cards', async () => {
+test('S59 visibly lists normative PTO-ASL operation cards', async () => {
   const slides = await slidesPromise
-  assert.ok(slides.has('S51'), 'S51 must exist')
-  const text = audienceVisibleText(slides.get('S51'))
+  assert.ok(slides.has('S59'), 'S59 must exist')
+  const text = audienceVisibleText(slides.get('S59'))
   for (const opcode of ['TLOAD', 'TMOV', 'TEXTRACT', 'TPUSH', 'TPOP']) assert.match(text, new RegExp(`\\b${opcode}\\b`))
 })
 
-test('speaker notes map K01 through K34 exactly once', async () => {
+test('speaker notes map K01 through K42 exactly once', async () => {
   const slides = await slidesPromise
   const actual = [...slides.values()].flatMap(keynoteSourceIds).sort()
-  const expected = Array.from({ length: 34 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
+  const expected = Array.from({ length: 42 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
   assert.deepEqual(actual, expected)
 })
 

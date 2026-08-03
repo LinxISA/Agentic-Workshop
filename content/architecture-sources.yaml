@@ -7,167 +7,207 @@ sources:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 2
-    use: exact self-introduction copy, portrait, and HiSilicon visual
+    use: exact updated Keynote page: 自我介绍
   publish-keynote-page-3:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 3
-    use: exact summer-school course outline and architecture-dimension diagram
+    use: exact updated Keynote page: 本次暑期学校课程
   publish-keynote-page-4:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 4
-    use: exact first-chapter divider
+    use: exact updated Keynote page: 计算机体系结构-处理器
   publish-keynote-page-5:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 5
-    use: exact agricultural-era Von Neumann metaphor
+    use: exact updated Keynote page: 冯诺依曼架构·农业时代·小农经济
   publish-keynote-page-6:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 6
-    use: exact industrial-era storage hierarchy metaphor
+    use: exact updated Keynote page: 冯诺依曼架构·工业时代
   publish-keynote-page-7:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 7
-    use: exact multi-Lane and multi-level warehouse metaphor
+    use: exact updated Keynote page: 冯诺依曼架构·工业时代·社会主义
   publish-keynote-page-8:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 8
-    use: exact warehouse-management Roofline explanation
+    use: exact updated Keynote page: 仓库管理：Roofline Model
   publish-keynote-page-9:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 9
-    use: exact Da Vinci Tile, CUBE, local warehouse, and hierarchy diagram
+    use: exact updated Keynote page: 冯诺依曼架构·工业时代·达芬奇文艺复兴
   publish-keynote-page-10:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 10
-    use: exact CUBE core design page
+    use: exact updated Keynote page: 冯诺依曼架构·工业时代·CUBE核设计
   publish-keynote-page-11:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 11
-    use: exact Da Vinci architecture page
+    use: exact updated Keynote page: 冯诺依曼架构·工业时代·达芬奇910B架构设计
   publish-keynote-page-12:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 12
-    use: exact urbanization and standardization page
+    use: exact updated Keynote page: 冯诺依曼架构·信息时代·Transformer
   publish-keynote-page-13:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 13
-    use: exact Ascend 950 teaching diagram and disclaimer
+    use: exact updated Keynote page: 达芬奇昇腾950架构
   publish-keynote-page-14:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 14
-    use: exact Ascend SoC teaching floorplan page
+    use: exact updated Keynote page: 同构架构
   publish-keynote-page-15:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 15
-    use: exact information-era urbanization page
+    use: exact updated Keynote page: AI时代的Tile处理器
   publish-keynote-page-16:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 16
-    use: exact Transformer architecture mapping page
+    use: exact updated Keynote page: 超标量NPU的物理约束
   publish-keynote-page-17:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 17
-    use: exact globalization and inter-chip communication page
+    use: exact updated Keynote page: 冯诺依曼架构·工业时代·昇腾950处理器
   publish-keynote-page-18:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 18
-    use: exact chapter 2 divider
+    use: exact updated Keynote page: 冯诺依曼架构·工业时代·SoC规划
   publish-keynote-page-19:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 19
-    use: exact SDR DDR QDR clock page
+    use: exact updated Keynote page: 冯诺依曼架构·信息时代·城市化
   publish-keynote-page-20:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 20
-    use: exact memory hierarchy day-scale page
+    use: exact updated Keynote page: 芯片与封装
   publish-keynote-page-21:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 21
-    use: exact remote memory and RPC day-scale page
+    use: exact updated Keynote page: 晶圆级系统
   publish-keynote-page-22:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 22
-    use: exact PTO scalar versus Tile page
+    use: exact updated Keynote page: 冯诺依曼架构·信息时代·国际化
   publish-keynote-page-23:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 23
-    use: exact Tile container shapes page
+    use: exact updated Keynote page: 第二章·空间和时间
   publish-keynote-page-24:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 24
-    use: exact PTO abstract machine page
+    use: exact updated Keynote page: 冯诺依曼架构·什么是芯片的一天？
   publish-keynote-page-25:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 25
-    use: exact PTO program and abstract machine page
+    use: exact updated Keynote page: 冯诺依曼架构·计算获取数据天数
   publish-keynote-page-26:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 26
-    use: exact TLOAD TSTORE factory page
+    use: exact updated Keynote page: 冯诺依曼架构·计算获取数据天数·远程访问
   publish-keynote-page-27:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 27
-    use: exact Agentic Model chapter divider
+    use: exact updated Keynote page: PTO指令集：Parallel Tile Operation
   publish-keynote-page-28:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 28
-    use: exact NPU Core for PTO chapter divider
+    use: exact updated Keynote page: PTO指令集：我们在设计不同形状的集装箱
   publish-keynote-page-29:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 29
-    use: exact hierarchical scheduling page
+    use: exact updated Keynote page: PTO指令集：抽象执行机器
   publish-keynote-page-30:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 30
-    use: exact PTO multi-level scheduling page
+    use: exact updated Keynote page: PTO指令集：抽象执行机器与程序
   publish-keynote-page-31:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 31
-    use: exact PTO and MLIR mapping page
+    use: exact updated Keynote page: PTO指令集：TLOAD TSTORE
   publish-keynote-page-32:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 32
-    use: exact source performance charts
+    use: exact updated Keynote page: Agentic Model
   publish-keynote-page-33:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 33
-    use: exact Swizzle source and mapping page
+    use: exact updated Keynote page: Agentic Architecture Model：基本仿真组件
   publish-keynote-page-34:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 34
-    use: exact Swizzle performance and capacity page
+    use: exact updated Keynote page: Agentic Architecture Model：MLIR架构方言
+  publish-keynote-page-35:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 35
+    use: exact updated Keynote page: Agentic Architecture Model：让Agent准确建模体系结构
+  publish-keynote-page-36:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 36
+    use: exact updated Keynote page: NPU Core for PTO
+  publish-keynote-page-37:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 37
+    use: exact updated Keynote page: 分层调度
+  publish-keynote-page-38:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 38
+    use: exact updated Keynote page: PTO 多级调度层次
+  publish-keynote-page-39:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 39
+    use: exact updated Keynote page: PTO / MLIR 源码表达
+  publish-keynote-page-40:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 40
+    use: exact updated Keynote page: 历史源稿性能结果
+  publish-keynote-page-41:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 41
+    use: exact updated Keynote page: Swizzle
+  publish-keynote-page-42:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 42
+    use: exact updated Keynote page: Swizzle 容量与性能
   agenda:
     type: local-text
     path: materials/agenda-2026.txt

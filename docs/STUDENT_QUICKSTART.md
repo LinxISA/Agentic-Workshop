@@ -8,11 +8,11 @@ npm run build
 npm run preview
 ```
 
-打开 `http://127.0.0.1:4173/`。课程包含两节各 75 分钟、各 28 页的内容：
+打开 `http://127.0.0.1:4173/`。课程包含两节各 75 分钟、共 64 页的内容：
 
 - `/`：课程首页；
-- `/session-1/1` 到 `/session-1/28`：城市、DaVinci/Ascend、存储/互连与 PTO 数据搬运时间；
-- `/session-2/1` 到 `/session-2/28`：q_proj Trace、DaVinciOO gfsim/SimQueue、参数敏感性、PTO-ASL、NDF、pyCircuit 与证据飞轮。
+- `/session-1/1` 到 `/session-1/33`：城市、DaVinci/Ascend、存储/互连与 PTO 数据搬运时间；
+- `/session-2/1` 到 `/session-2/31`：q_proj Trace、DaVinciOO gfsim/SimQueue、参数敏感性、PTO-ASL、NDF、pyCircuit 与证据飞轮。
 
 键盘：`←`/`→` 或 `J`/`K` 翻页，`Space` 前进，`F` 全屏，`O` 总览，`?` 打开帮助，`Esc` 关闭帮助。
 

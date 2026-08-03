@@ -22,11 +22,11 @@ function visibleText(slide) {
     .replace(/\s+/g, ' ')}`
 }
 
-test('Session 1 contains exactly S01-S28 and totals 75 minutes', async () => {
+test('Session 1 contains exactly S01-S33 and totals 75 minutes', async () => {
   const slides = await sessionOneSlides()
-  assert.equal(slides.length, 28)
+  assert.equal(slides.length, 33)
   assert.deepEqual(slides.map(slide => notes(slide).match(/Slide-ID:\s*(S\d{2})/)?.[1]),
-    Array.from({ length: 28 }, (_, index) => `S${String(index + 1).padStart(2, '0')}`))
+    Array.from({ length: 33 }, (_, index) => `S${String(index + 1).padStart(2, '0')}`))
   assert.equal(slides.reduce((total, slide) => total + Number(notes(slide).match(/Timing:\s*(\d+)\s*min/)?.[1]), 0), 75)
 })
 
@@ -43,18 +43,18 @@ test('Keynote pages map exactly to their approved Session 1 positions', async ()
   const slides = await sessionOneSlides()
   const sourceFor = slide => notes(slide).match(/Sources:\s*([^\n]+)/)?.[1] ?? ''
   assert.match(sourceFor(slides[0]), /\bsource-deck\b/)
-  for (let page = 2; page <= 17; page += 1) assert.match(sourceFor(slides[page - 1]), new RegExp(`\\bpublish-keynote-page-${page}\\b`))
-  assert.match(sourceFor(slides[17]), /\bcourse-synthesis\b/)
-  for (let page = 18; page <= 26; page += 1) assert.match(sourceFor(slides[page]), new RegExp(`\\bpublish-keynote-page-${page}\\b`))
-  assert.match(sourceFor(slides[27]), /\bcourse-synthesis\b/)
+  for (let page = 2; page <= 22; page += 1) assert.match(sourceFor(slides[page - 1]), new RegExp(`\\bpublish-keynote-page-${page}\\b`))
+  assert.match(sourceFor(slides[22]), /\bcourse-synthesis\b/)
+  for (let page = 23; page <= 31; page += 1) assert.match(sourceFor(slides[page]), new RegExp(`\\bpublish-keynote-page-${page}\\b`))
+  assert.match(sourceFor(slides[32]), /\bcourse-synthesis\b/)
   const mappingFor = slide => [...notes(slide).matchAll(/^\s*-\s*source:\s*(K\d{2})\s*$/gm)].map(match => match[1])
-  for (let page = 1; page <= 17; page += 1) assert.deepEqual(mappingFor(slides[page - 1]), [`K${String(page).padStart(2, '0')}`])
-  assert.deepEqual(mappingFor(slides[17]), [])
-  for (let page = 18; page <= 26; page += 1) assert.deepEqual(mappingFor(slides[page]), [`K${String(page).padStart(2, '0')}`])
-  assert.deepEqual(mappingFor(slides[27]), [])
+  for (let page = 1; page <= 22; page += 1) assert.deepEqual(mappingFor(slides[page - 1]), [`K${String(page).padStart(2, '0')}`])
+  assert.deepEqual(mappingFor(slides[22]), [])
+  for (let page = 23; page <= 31; page += 1) assert.deepEqual(mappingFor(slides[page]), [`K${String(page).padStart(2, '0')}`])
+  assert.deepEqual(mappingFor(slides[32]), [])
 })
 
-for (const [index, component] of [[7, 'InteractiveRoofline'], [19, 'ClockCycleConverter'], [20, 'MemoryHierarchyExplorer'], [24, 'PtoMachineExplorer'], [27, 'TransferTimeLab']]) {
+for (const [index, component] of [[7, 'InteractiveRoofline'], [24, 'ClockCycleConverter'], [25, 'MemoryHierarchyExplorer'], [29, 'PtoMachineExplorer'], [32, 'TransferTimeLab']]) {
   test(`S${String(index + 1).padStart(2, '0')} visibly mounts ${component}`, async () => {
     const slides = await sessionOneSlides()
     assert.match(slides[index].replace(/<!--[\s\S]*?-->/g, ''), new RegExp(`<${component}\\b`))
@@ -63,7 +63,7 @@ for (const [index, component] of [[7, 'InteractiveRoofline'], [19, 'ClockCycleCo
 
 test('PTO operation explorer visibly separates normative PTO-ASL from DaVinciOO extensions', async () => {
   const slides = await sessionOneSlides()
-  const text = visibleText(slides[24])
+  const text = visibleText(slides[29])
   for (const opcode of ['TLOAD', 'TMOV', 'TEXTRACT', 'TPUSH', 'TPOP', 'TPUT', 'TGET']) assert.match(text, new RegExp(`\\b${opcode}\\b`))
   assert.match(text, /DaVinciOO communication extensions\s*[—-]\s*not normative PTO-ASL/i)
 })
@@ -143,7 +143,7 @@ test('PTO operation table separates semantic effects from DaVinci gfsim routing'
 
 test('source-page labs are closed drawers with accessible triggers by default', async () => {
   const slides = await sessionOneSlides()
-  for (const [index, component] of [[7, 'InteractiveRoofline'], [20, 'MemoryHierarchyExplorer'], [24, 'PtoMachineExplorer']]) {
+  for (const [index, component] of [[7, 'InteractiveRoofline'], [25, 'MemoryHierarchyExplorer'], [29, 'PtoMachineExplorer']]) {
     const audience = slides[index].replace(/<!--[\s\S]*?-->/g, '')
     assert.match(audience, new RegExp(`<details class="keynote-lab-drawer">[\\s\\S]*?<summary[^>]*aria-label="[^"]+"[^>]*>[\\s\\S]*?<${component}\\b`))
     assert.doesNotMatch(audience, /<details[^>]*\sopen(?:\s|>)/)

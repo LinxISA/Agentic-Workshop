@@ -1,4 +1,4 @@
-# Goal Prompt：体系结构优先的 56 页交互式 Summer School 课程
+# Goal Prompt：体系结构优先的 64 页交互式 Summer School 课程
 
 复制本文件从“你是……”开始的全部内容，作为可复用的 Codex Goal prompt。
 
@@ -8,7 +8,7 @@
 
 > **Agent 时代的体系结构研究**
 
-课程由两节各 75 分钟、各 28 页的 session 组成。核心叙事必须始终是：
+课程由两节各 75 分钟的 session 组成，第一节 33 页、第二节 31 页。核心叙事必须始终是：
 
 `空间资源 → 时间代价 → 可执行模型 → 参数搜索 → 规范约束 → Agent 驱动实现 → 实验证据`
 
@@ -18,8 +18,8 @@ Agentic Circuit/Agent 是研究工具，不是课程主角。不得使用 Arm AS
 
 ## 1. 不可变交付约束
 
-1. `decks/session-1/slides.md` 与 `decks/session-2/slides.md` 各包含 28 页；备注中的分钟数各合计 75。
-2. 页面路由必须是 `/`、`/session-1/1..28` 与 `/session-2/1..28`；`/session-1` 和 `/session-2` 重定向到对应目录入口。
+1. `decks/session-1/slides.md` 包含 33 页，`decks/session-2/slides.md` 包含 31 页；备注中的分钟数各合计 75。
+2. 页面路由必须是 `/`、`/session-1/1..33` 与 `/session-2/1..31`；`/session-1` 和 `/session-2` 重定向到对应目录入口。
 3. 每页采用 16:9 全屏构图。观众层只保留一个标题、一个核心结论和必要标签；禁止 Markdown 文字墙、卡片墙和工具功能清单。
 4. 保留演讲人提供的 Keynote source pages 1–34，每页只映射一次：S01 使用经批准的课程封面视觉；source pages 2–34 使用 1920×1080 精确本地渲染，不改写可见文字、数字、标点、图形或排版。
 5. 新增或重绘页面各使用一张独立、已审查的 Image Gen 全屏背景。精确标签、模块边界、连线、公式、坐标、时序、trace 和实验数据必须由 HTML/SVG/Vue 确定性绘制。
@@ -170,11 +170,11 @@ npm run export
 
 必须满足：
 
-- 两节课各 28 页、各 75 分钟，核心叙事和页面顺序与本蓝图一致；
+- 两节课分别为 33 页与 31 页、各 75 分钟，核心叙事和页面顺序与本蓝图一致；
 - 34 个 Keynote source pages 都有唯一、可审计映射，新增视觉均有本地资产与 provenance；
 - 所有语义、实现、教学模型和实验观察的边界准确；
 - 所有精确图、数值和交互均可由代码审查和测试；
-- `/`、两个 session 的 `1..28` 页面、键盘操作、PDF 和 replay 在断网环境可用；
+- `/`、两个 session 的全部编号页面、键盘操作、PDF 和 replay 在断网环境可用；
 - 1920×1080 与 1366×768 渲染无溢出、裁切、遮挡、缺图、低对比或远程请求；
 - q_proj artifact 仍准确标为 `reference_replay`，fresh PTO capture 缺口和 sensitivity 边界没有被隐去；
 - 所有测试和导出成功，或明确记录无法运行的外部 live-environment 验证缺口。

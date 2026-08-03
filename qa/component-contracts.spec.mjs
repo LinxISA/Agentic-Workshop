@@ -2,12 +2,12 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 
-test('the approved 56-slide interactions are present on their assigned slides', async()=>{
+test('the approved 64-slide interactions are present on their assigned slides', async()=>{
   const s1=await readFile('decks/session-1/slides.md','utf8'),s2=await readFile('decks/session-2/slides.md','utf8')
-  for (const [id, component] of [['S08','InteractiveRoofline'],['S20','ClockCycleConverter'],['S21','MemoryHierarchyExplorer'],['S25','PtoMachineExplorer'],['S28','TransferTimeLab']]) {
+  for (const [id, component] of [['S08','InteractiveRoofline'],['S25','ClockCycleConverter'],['S26','MemoryHierarchyExplorer'],['S30','PtoMachineExplorer'],['S33','TransferTimeLab']]) {
     assert.match(s1,new RegExp(`slide-id="${id}"[\\s\\S]{0,240}<${component}\\b`))
   }
-  for (const [id, component] of [['S33','TraceAnatomy'],['S34','SimQueueExplorer'],['S35','DaVinciTopology'],['S38','CyclePlayback'],['S40','ParameterSweep'],['S41','EvidenceTimeline'],['S55','ClosedLoopVerification']]) {
+  for (const [id, component] of [['S41','TraceAnatomy'],['S42','SimQueueExplorer'],['S43','DaVinciTopology'],['S46','CyclePlayback'],['S48','ParameterSweep'],['S49','EvidenceTimeline'],['S63','ClosedLoopVerification']]) {
     assert.match(s2,new RegExp(`slide-id="${id}"[\\s\\S]{0,240}<${component}\\b`))
   }
 })

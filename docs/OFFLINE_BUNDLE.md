@@ -4,7 +4,7 @@
 
 - 本地构建的 base path 为空，入口是 `http://127.0.0.1:4173/`，课程路径从 `/session-1/` 和 `/session-2/` 开始。
 - GitHub Pages 构建设置 `SUMMERSCHOOL_BASE_PATH=/SummerSchool`，公开入口是 `https://linxisa.github.io/SummerSchool/`，资源和课程链接都带 `/SummerSchool` 前缀。
-- `npm run build:routes` 为每节课生成 `1..28/index.html`。这些物理编号路由复用对应 deck 的入口 HTML，不复制 assets，因此直接打开或刷新 `/session-1/17` 等链接时仍可离线工作。
+- `npm run build:routes` 分别生成 `session-1/1..33/index.html` 与 `session-2/1..31/index.html`。这些物理编号路由复用对应 deck 的入口 HTML，不复制 assets，因此直接打开或刷新 `/session-1/17` 等链接时仍可离线工作。
 
 验证 Pages 版本时使用：
 
@@ -28,8 +28,8 @@ dist/
 ## 路由契约
 
 - `/`：本地课程首页；
-- `/session-1/1` 到 `/session-1/28`：第一节课；
-- `/session-2/1` 到 `/session-2/28`：第二节课；
+- `/session-1/1` 到 `/session-1/33`：第一节课；
+- `/session-2/1` 到 `/session-2/31`：第二节课；
 - `/session-1` 与 `/session-2` 重定向到对应目录入口。
 
 两节课都支持 `←`/`→`、`Space`、`J`/`K`、`F`、`O`、`?` 和 `Esc`。这些控制不依赖网络。
@@ -44,8 +44,8 @@ npm run test:offline
 
 发布前必须满足：
 
-1. 两个 deck 各 28 页，计时各 75 分钟；
-2. 首页和所有 `/session-1/1..28`、`/session-2/1..28` 页面只读取本地脚本、字体、图片和数据；
+1. 两个 deck 分别为 33 页与 31 页，计时各 75 分钟；
+2. 首页和所有 `/session-1/1..33`、`/session-2/1..31` 页面只读取本地脚本、字体、图片和数据；
 3. 所有课程图片由 `public/generated/` 打包；
 4. 两份 PDF 与网页使用相同的 `slides.md` 源；
 5. `npm run test:offline` 不发现运行时远程 URL；

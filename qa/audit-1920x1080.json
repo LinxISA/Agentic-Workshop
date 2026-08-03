@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T18:19:07.499Z",
+  "generatedAt": "2026-08-03T09:02:47.786Z",
   "viewport": [
     1920,
     1080
@@ -8,7 +8,7 @@
   "decks": [
     {
       "id": "session-1",
-      "count": 28,
+      "count": 33,
       "remoteRequests": [],
       "failedResponses": [],
       "slides": [
@@ -84,7 +84,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s02-self-introduction.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s02-keynote-page-2.png\")",
           "focusFrameVisible": false
         },
         {
@@ -100,7 +100,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s03-course-outline.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s03-keynote-page-3.png\")",
           "focusFrameVisible": false
         },
         {
@@ -116,7 +116,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s04-chapter-processor.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s04-keynote-page-4.png\")",
           "focusFrameVisible": false
         },
         {
@@ -132,7 +132,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s05-von-neumann-farm.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s05-keynote-page-5.png\")",
           "focusFrameVisible": false
         },
         {
@@ -148,7 +148,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s06-von-neumann-industry.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s06-keynote-page-6.png\")",
           "focusFrameVisible": false
         },
         {
@@ -164,7 +164,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s07-von-neumann-socialism.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s07-keynote-page-7.png\")",
           "focusFrameVisible": false
         },
         {
@@ -180,7 +180,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s08-warehouse-roofline.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s08-keynote-page-8.png\")",
           "focusFrameVisible": false
         },
         {
@@ -196,7 +196,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s09-davinci-architecture.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s09-keynote-page-9.png\")",
           "focusFrameVisible": false
         },
         {
@@ -253,6 +253,70 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s13-keynote-page-13.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 14,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s14-keynote-page-14.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 15,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s15-keynote-page-15.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 16,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s16-keynote-page-16.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 17,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
           "fontMinPx": 23.5,
           "fontSamples": [
             {
@@ -267,11 +331,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s13-keynote-page-13.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s17-keynote-page-17.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 14,
+          "number": 18,
           "expectedInteraction": false,
           "interactionTested": true,
           "missingLayout": false,
@@ -332,11 +396,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s14-keynote-page-14.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s18-keynote-page-18.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 15,
+          "number": 19,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -348,11 +412,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s15-keynote-page-15.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s19-keynote-page-19.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 16,
+          "number": 20,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -364,11 +428,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s16-keynote-page-16.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s20-keynote-page-20.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 17,
+          "number": 21,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -380,11 +444,27 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s17-keynote-page-17.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s21-keynote-page-21.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 18,
+          "number": 22,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s22-keynote-page-22.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 23,
           "expectedInteraction": false,
           "interactionTested": true,
           "missingLayout": false,
@@ -436,7 +516,7 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S18",
+              "text": "S23",
               "px": 23.5
             }
           ],
@@ -445,11 +525,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s18-architecture-city-five-coordinates-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s23-architecture-city-five-coordinates-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 19,
+          "number": 24,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -461,11 +541,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s19-keynote-page-18.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s24-keynote-page-23.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 20,
+          "number": 25,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -526,93 +606,13 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s20-keynote-page-19.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 21,
-          "expectedInteraction": true,
-          "interactionTested": true,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s21-keynote-page-20.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 22,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s22-keynote-page-21.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 23,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s23-keynote-page-22.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 24,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s24-keynote-page-23.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 25,
-          "expectedInteraction": true,
-          "interactionTested": true,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
           "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s25-keynote-page-24.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 26,
-          "expectedInteraction": false,
-          "interactionTested": false,
+          "expectedInteraction": true,
+          "interactionTested": true,
           "missingLayout": false,
           "overflow": [],
           "fontMinPx": null,
@@ -643,6 +643,86 @@
         },
         {
           "number": 28,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s28-keynote-page-27.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 29,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s29-keynote-page-28.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 30,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s30-keynote-page-29.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 31,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s31-keynote-page-30.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 32,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s32-keynote-page-31.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 33,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -703,14 +783,14 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s28-data-movement-time-experiment-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s33-data-movement-time-experiment-v2.png\")",
           "focusFrameVisible": false
         }
       ]
     },
     {
       "id": "session-2",
-      "count": 28,
+      "count": 31,
       "remoteRequests": [],
       "failedResponses": [],
       "slides": [
@@ -727,11 +807,59 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s29-keynote-page-27.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s34-keynote-page-32.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 2,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s35-keynote-page-33.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 3,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s36-keynote-page-34.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 4,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s37-keynote-page-35.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 5,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -765,13 +893,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S30",
+              "text": "S38",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S30",
+              "text": "S38",
               "px": 23.5
             },
             {
@@ -792,11 +920,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s30-qproj-transformer-scaling-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s38-qproj-transformer-scaling-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 3,
+          "number": 6,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -836,13 +964,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S31",
+              "text": "S39",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S31",
+              "text": "S39",
               "px": 23.5
             },
             {
@@ -857,11 +985,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s31-pypto-to-gfsim-chain-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s39-pypto-to-gfsim-chain-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 4,
+          "number": 7,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -901,13 +1029,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S32",
+              "text": "S40",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S32",
+              "text": "S40",
               "px": 23.5
             },
             {
@@ -922,11 +1050,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s32-program-unfolds-into-events-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s40-program-unfolds-into-events-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 5,
+          "number": 8,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -987,11 +1115,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s33-jsonl-trace-microscope-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s41-jsonl-trace-microscope-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 6,
+          "number": 9,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -1052,11 +1180,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s34-simqueue-tollgate-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s42-simqueue-tollgate-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 7,
+          "number": 10,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -1117,11 +1245,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s35-davincioo-pipeline-topology-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s43-davincioo-pipeline-topology-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 8,
+          "number": 11,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1155,13 +1283,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S36",
+              "text": "S44",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S36",
+              "text": "S44",
               "px": 23.5
             },
             {
@@ -1182,11 +1310,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s36-execution-engine-time-model-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s44-execution-engine-time-model-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 9,
+          "number": 12,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1226,13 +1354,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S37",
+              "text": "S45",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S37",
+              "text": "S45",
               "px": 23.5
             },
             {
@@ -1247,11 +1375,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s37-opcode-resource-mapping-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s45-opcode-resource-mapping-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 10,
+          "number": 13,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -1312,11 +1440,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s38-single-cycle-step-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s46-single-cycle-step-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 11,
+          "number": 14,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1368,7 +1496,7 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S39",
+              "text": "S47",
               "px": 23.5
             }
           ],
@@ -1377,11 +1505,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s39-queueing-critical-path-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s47-queueing-critical-path-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 12,
+          "number": 15,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -1442,11 +1570,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s40-parameter-search-space-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s48-parameter-search-space-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 13,
+          "number": 16,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -1507,11 +1635,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s41-perfetto-kanata-timeline-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s49-perfetto-kanata-timeline-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 14,
+          "number": 17,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1557,13 +1685,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S42",
+              "text": "S50",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S42",
+              "text": "S50",
               "px": 23.5
             }
           ],
@@ -1572,55 +1700,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s42-candidate-design-point-v2.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 15,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s43-keynote-page-28.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 16,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s44-keynote-page-29.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 17,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s45-keynote-page-30.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s50-candidate-design-point-v2.png\")",
           "focusFrameVisible": false
         },
         {
@@ -1636,7 +1716,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s46-keynote-page-31.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s51-keynote-page-36.png\")",
           "focusFrameVisible": false
         },
         {
@@ -1652,7 +1732,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s47-keynote-page-32.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s52-keynote-page-37.png\")",
           "focusFrameVisible": false
         },
         {
@@ -1668,7 +1748,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s48-keynote-page-33.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s53-keynote-page-38.png\")",
           "focusFrameVisible": false
         },
         {
@@ -1684,11 +1764,59 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s49-keynote-page-34.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s54-keynote-page-39.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 22,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s55-keynote-page-40.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 23,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s56-keynote-page-41.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 24,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s57-keynote-page-42.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 25,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1704,13 +1832,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S50",
+              "text": "S58",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S50",
+              "text": "S58",
               "px": 23.5
             },
             {
@@ -1749,11 +1877,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s50-model-parameters-design-constraints-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s58-model-parameters-design-constraints-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 23,
+          "number": 26,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1787,13 +1915,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S51",
+              "text": "S59",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S51",
+              "text": "S59",
               "px": 23.5
             },
             {
@@ -1814,11 +1942,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s51-pto-asl-semantics-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s59-pto-asl-semantics-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 24,
+          "number": 27,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1858,13 +1986,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S52",
+              "text": "S60",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S52",
+              "text": "S60",
               "px": 23.5
             },
             {
@@ -1879,11 +2007,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s52-ndf-l0-l3-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s60-ndf-l0-l3-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 25,
+          "number": 28,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1923,13 +2051,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S53",
+              "text": "S61",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S53",
+              "text": "S61",
               "px": 23.5
             },
             {
@@ -1944,11 +2072,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s53-qproj-vertical-slice-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s61-qproj-vertical-slice-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 26,
+          "number": 29,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1970,13 +2098,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S54",
+              "text": "S62",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S54",
+              "text": "S62",
               "px": 23.5
             },
             {
@@ -2009,11 +2137,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s54-agent-collaboration-pycircuit-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s62-agent-collaboration-pycircuit-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 27,
+          "number": 30,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -2074,11 +2202,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s55-dual-model-closed-loop-validation-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s63-dual-model-closed-loop-validation-v2.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 28,
+          "number": 31,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2139,7 +2267,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s56-research-flywheel-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s64-research-flywheel-v2.png\")",
           "focusFrameVisible": false
         }
       ]

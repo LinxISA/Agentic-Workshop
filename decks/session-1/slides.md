@@ -19,7 +19,7 @@ fonts:
 <!--
 Slide-ID: S01
 Objective: 建立“体系结构优先、Agent 为研究工具”的课程定位。
-Timing: 1 min
+Timing: 3 min
 Visual: 沿用昇腾封面，计算芯片与带宽线路构成开场视觉。
 Interaction: 看到“432 TFLOPS”时，先追问哪个结构参数？
 Sources: source-deck
@@ -35,13 +35,13 @@ Transition: 从课程主张进入演讲人与课程背景。
 
 # 自我介绍
 
-<KeynoteSourceStage background="/generated/slides/s02-self-introduction.png" title="自我介绍" claim="姓名：周若愚" slide-id="S02" />
+<KeynoteSourceStage background="/generated/slides/s02-keynote-page-2.png" title="自我介绍" claim="姓名：周若愚" slide-id="S02" />
 
 <!--
 Slide-ID: S02
 Objective: 按原稿介绍演讲人背景与研究方向。
-Timing: 2 min
-Visual: 原 Keynote 第 2 页完整画面。
+Timing: 3 min
+Visual: 更新版 Keynote 第 2 页 1920×1080 确定性整页渲染。
 Interaction: 演讲人口头补充个人经历。
 Sources: publish-keynote-page-2
 Boundary: 可见文字与图片直接来自演讲人提供的 Keynote。
@@ -56,13 +56,13 @@ Transition: 由个人背景转向本次暑期学校课程结构。
 
 # 本次暑期学校课程
 
-<KeynoteSourceStage background="/generated/slides/s03-course-outline.png" title="本次暑期学校课程" claim="什么是计算体系结构" slide-id="S03" />
+<KeynoteSourceStage background="/generated/slides/s03-keynote-page-3.png" title="本次暑期学校课程" claim="什么是计算体系结构" slide-id="S03" />
 
 <!--
 Slide-ID: S03
 Objective: 保留原稿课程范围与处理器核示例组成。
-Timing: 2 min
-Visual: 原 Keynote 第 3 页完整画面。
+Timing: 3 min
+Visual: 更新版 Keynote 第 3 页 1920×1080 确定性整页渲染。
 Interaction: 指出右图哪些关系属于计算、内存、互连与编程。
 Sources: publish-keynote-page-3
 Boundary: 可见文字与图形直接来自演讲人提供的 Keynote。
@@ -77,13 +77,13 @@ Transition: 进入第一章处理器体系结构。
 
 # 计算机体系结构-处理器
 
-<KeynoteSourceStage background="/generated/slides/s04-chapter-processor.png" title="计算机体系结构-处理器" claim="第一章" slide-id="S04" />
+<KeynoteSourceStage background="/generated/slides/s04-keynote-page-4.png" title="计算机体系结构-处理器" claim="第一章" slide-id="S04" />
 
 <!--
 Slide-ID: S04
 Objective: 完整保留原稿第一章章节分隔页。
-Timing: 1 min
-Visual: 原 Keynote 第 4 页完整画面。
+Timing: 3 min
+Visual: 更新版 Keynote 第 4 页 1920×1080 确定性整页渲染。
 Interaction: 章节转场，无附加操作。
 Sources: publish-keynote-page-4
 Boundary: 可见文字与装饰直接来自演讲人提供的 Keynote。
@@ -98,13 +98,13 @@ Transition: 从章节标题进入农业时代的小农经济。
 
 # 冯诺依曼架构·农业时代·小农经济
 
-<KeynoteSourceStage background="/generated/slides/s05-von-neumann-farm.png" title="冯诺依曼架构·农业时代·小农经济" claim="Von Neumann bottleneck" slide-id="S05" />
+<KeynoteSourceStage background="/generated/slides/s05-keynote-page-5.png" title="冯诺依曼架构·农业时代·小农经济" claim="Von Neumann bottleneck" slide-id="S05" />
 
 <!--
 Slide-ID: S05
 Objective: 用小农经济比喻解释冯诺依曼结构与传输瓶颈。
 Timing: 3 min
-Visual: 原 Keynote 第 5 页完整画面。
+Visual: 更新版 Keynote 第 5 页 1920×1080 确定性整页渲染。
 Interaction: 沿村庄、道路、农田与指令卷轴讲解一次工作往返。
 Sources: publish-keynote-page-5
 Boundary: 比喻与可见文字沿用演讲人原稿。
@@ -119,13 +119,13 @@ Transition: 当小路变成公路，局部性开始组织运输。
 
 # 冯诺依曼架构·工业时代
 
-<KeynoteSourceStage background="/generated/slides/s06-von-neumann-industry.png" title="冯诺依曼架构·工业时代" claim="时间局部性与空间局部性" slide-id="S06" />
+<KeynoteSourceStage background="/generated/slides/s06-keynote-page-6.png" title="冯诺依曼架构·工业时代" claim="时间局部性与空间局部性" slide-id="S06" />
 
 <!--
 Slide-ID: S06
 Objective: 用城市、公路与分级仓库解释存储层级和局部性。
 Timing: 3 min
-Visual: 原 Keynote 第 6 页完整画面。
+Visual: 更新版 Keynote 第 6 页 1920×1080 确定性整页渲染。
 Interaction: 沿运输路径说明每一级保存什么复用机会。
 Sources: publish-keynote-page-6
 Boundary: 比喻与可见文字沿用演讲人原稿。
@@ -140,13 +140,13 @@ Transition: 单个工厂扩展为多 Lane 的共享运输体系。
 
 # 冯诺依曼架构·工业时代·社会主义
 
-<KeynoteSourceStage background="/generated/slides/s07-von-neumann-socialism.png" title="冯诺依曼架构·工业时代·社会主义" claim="共享层级与并行 Lane" slide-id="S07" />
+<KeynoteSourceStage background="/generated/slides/s07-keynote-page-7.png" title="冯诺依曼架构·工业时代·社会主义" claim="共享层级与并行 Lane" slide-id="S07" />
 
 <!--
 Slide-ID: S07
 Objective: 展示多计算 Lane、分级仓库和共享道路组织。
-Timing: 2 min
-Visual: 原 Keynote 第 7 页完整画面。
+Timing: 3 min
+Visual: 更新版 Keynote 第 7 页 1920×1080 确定性整页渲染。
 Interaction: 从计算 Lane 到内存总仓逐级讲解共享与争用。
 Sources: publish-keynote-page-7
 Boundary: 可见文字与图形沿用演讲人原稿。
@@ -161,7 +161,7 @@ Transition: 用 Roofline 把算力与运力放到同一张图。
 
 # 仓库管理：Roofline Model
 
-<KeynoteSourceStage background="/generated/slides/s08-warehouse-roofline.png" title="仓库管理：Roofline Model" claim="运力到达瓶颈，再加算力没有用处" slide-id="S08" />
+<KeynoteSourceStage background="/generated/slides/s08-keynote-page-8.png" title="仓库管理：Roofline Model" claim="运力到达瓶颈，再加算力没有用处" slide-id="S08" />
 <details class="keynote-lab-drawer">
   <summary aria-label="打开 Roofline 交互实验">交互实验</summary>
   <InteractiveRoofline />
@@ -170,8 +170,8 @@ Transition: 用 Roofline 把算力与运力放到同一张图。
 <!--
 Slide-ID: S08
 Objective: 用原稿仓库隐喻和交互曲线解释 Roofline。
-Timing: 4 min
-Visual: 原 Keynote 第 8 页完整画面，右下叠加可调 Roofline。
+Timing: 3 min
+Visual: 更新版 Keynote 第 8 页 1920×1080 确定性整页渲染。
 Interaction: 调节 Peak、BW、AI 与 Hit，观察瓶颈跨越 ridge point。
 Sources: publish-keynote-page-8; roofline-paper
 Boundary: 原稿可见内容保持不变；交互数值是确定性教学模型。
@@ -187,13 +187,13 @@ Transition: 把 Roofline 的局部性落实到 Da Vinci Tile 与仓库。
 
 # 冯诺依曼架构·工业时代·达芬奇文艺复兴
 
-<KeynoteSourceStage background="/generated/slides/s09-davinci-architecture.png" title="冯诺依曼架构·工业时代·达芬奇文艺复兴" claim="Tile / CUBE 与本地仓库" slide-id="S09" />
+<KeynoteSourceStage background="/generated/slides/s09-keynote-page-9.png" title="冯诺依曼架构·工业时代·达芬奇文艺复兴" claim="Tile / CUBE 与本地仓库" slide-id="S09" />
 
 <!--
 Slide-ID: S09
 Objective: 展示 Tile/CUBE 计算组织与 L0A、L0B、L0C 本地仓库。
 Timing: 3 min
-Visual: 原 Keynote 第 9 页完整画面。
+Visual: 更新版 Keynote 第 9 页 1920×1080 确定性整页渲染。
 Interaction: 先追踪 Left、Right、ACC Tile，再追踪 256B/cycle 路径。
 Sources: publish-keynote-page-9
 Boundary: 可见文字、容量和带宽标注沿用演讲人原稿。
@@ -213,8 +213,8 @@ Transition: 放大 CUBE 核内部的数据供给结构。
 <!--
 Slide-ID: S10
 Objective: 按原稿讲解 CUBE 核、L0 仓库与片外层级连接。
-Timing: 3 min
-Visual: 原 Keynote 第 10 页 1920×1080 完整画面。
+Timing: 2 min
+Visual: 更新版 Keynote 第 10 页 1920×1080 确定性整页渲染。
 Interaction: 从左侧输入依次追踪到 CUBE、二级仓库、三级仓库与 HBM。
 Sources: publish-keynote-page-10
 Boundary: 页面是原稿 CUBE 核教学图，不补充私有实现细节。
@@ -227,15 +227,15 @@ Transition: 从一个 CUBE 核扩展到完整 Da Vinci 架构。
 
 ---
 
-# 冯诺依曼架构·工业时代·达芬奇架构设计
+# 冯诺依曼架构·工业时代·达芬奇910B架构设计
 
-<KeynoteSourceStage background="/generated/slides/s11-keynote-page-11.png" title="冯诺依曼架构·工业时代·达芬奇架构设计" claim="计算、搬运与共享仓库协同" slide-id="S11" />
+<KeynoteSourceStage background="/generated/slides/s11-keynote-page-11.png" title="冯诺依曼架构·工业时代·达芬奇910B架构设计" claim="计算、搬运与共享仓库协同" slide-id="S11" />
 
 <!--
 Slide-ID: S11
 Objective: 按原稿展示 Da Vinci 架构的 CUBE、Vector 与搬运层级。
-Timing: 3 min
-Visual: 原 Keynote 第 11 页 1920×1080 完整画面。
+Timing: 2 min
+Visual: 更新版 Keynote 第 11 页 1920×1080 确定性整页渲染。
 Interaction: 对照上下两条路径，指出计算与数据搬运的汇合点。
 Sources: publish-keynote-page-11
 Boundary: 可见模块与连线按原稿保留，不推断未公开微架构时序。
@@ -248,20 +248,20 @@ Transition: 用城市化比喻抽象多个计算与运输单元的组织。
 
 ---
 
-# 冯诺依曼架构·工业时代·城市化
+# 冯诺依曼架构·信息时代·Transformer
 
-<KeynoteSourceStage background="/generated/slides/s12-keynote-page-12.png" title="冯诺依曼架构·工业时代·城市化" claim="复制、集中调度与统一规格" slide-id="S12" />
+<KeynoteSourceStage background="/generated/slides/s12-keynote-page-12.png" title="冯诺依曼架构·信息时代·Transformer" claim="Q、K、V 与 Tile 数据流" slide-id="S12" />
 
 <!--
 Slide-ID: S12
-Objective: 用城市化解释复制站点、集中调度与标准化。
+Objective: 按原稿把 Transformer 张量操作映射到 Tile/CUBE/Vector 数据流。
 Timing: 2 min
-Visual: 原 Keynote 第 12 页 1920×1080 完整画面。
-Interaction: 找出图中复制、集中调度、统一规格与交通枢纽的对应结构。
+Visual: 更新版 Keynote 第 12 页 1920×1080 确定性整页渲染。
+Interaction: 沿 Q、K、V 输入追踪矩阵计算、向量处理与中间结果驻留。
 Sources: publish-keynote-page-12
-Boundary: 城市化是原稿教学隐喻，不对应具体芯片物理布局。
-Narrative: 扩展规模要求规则化接口和可预测的共享基础设施。
-Transition: 把城市化比喻投影到 Ascend SoC 教学图。
+Boundary: 数据流按原稿教学表达，不宣称唯一实现或固定时序。
+Narrative: 算法图只有落到数据放置、运输和执行单元后才成为体系结构问题。
+Transition: 单芯片数据流继续扩展到芯片间通信。
 [Sources]
 - source: K12
 - catalog: publish-keynote-page-12
@@ -269,21 +269,20 @@ Transition: 把城市化比喻投影到 Ascend SoC 教学图。
 
 ---
 
-# 冯诺依曼架构·工业时代·昇腾950处理器
+# 达芬奇昇腾950架构
 
-<KeynoteSourceStage background="/generated/slides/s13-keynote-page-13.png" title="冯诺依曼架构·工业时代·昇腾950处理器" claim="教学抽象，不是产品框图" slide-id="S13" />
-<KeynoteInteractiveStage mode="disclaimer" />
+<KeynoteSourceStage background="/generated/slides/s13-keynote-page-13.png" title="达芬奇昇腾950架构" claim="严格保留更新版 Keynote 第 13 页文字、图片与构图" slide-id="S13" />
 
 <!--
 Slide-ID: S13
-Objective: 通过原稿 Ascend SoC 教学图讨论核、共享缓存与 I/O 分区。
-Timing: 3 min
-Visual: 原 Keynote 第 13 页完整画面，并显式显示教学免责声明。
-Interaction: 沿 NPU/CPU 核、共享缓存、NoC 与 I/O 找资源边界。
+Objective: 按更新版 Keynote 原页讲解“达芬奇昇腾950架构”。
+Timing: 2 min
+Visual: 更新版 Keynote 第 13 页 1920×1080 确定性整页渲染。
+Interaction: 按方向键推进；观察原页中的体系结构层次与数据路径。
 Sources: publish-keynote-page-13
-Boundary: 教学抽象，非产品框图；不得据此推断真实产品内部结构。
-Narrative: SoC 规划把复制的计算核连接到共享存储、互连和外部接口。
-Transition: 下一页在同一类 SoC 平面上追踪资源分区的因果路径。
+Boundary: 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。
+Narrative: 先按原页构图建立直觉，再把其中的资源、带宽、容量或执行关系接入课程主线。
+Transition: 沿新版源稿顺序进入下一层体系结构问题。
 [Sources]
 - source: K13
 - catalog: publish-keynote-page-13
@@ -291,21 +290,20 @@ Transition: 下一页在同一类 SoC 平面上追踪资源分区的因果路径
 
 ---
 
-# 冯诺依曼架构·工业时代·SoC规划
+# 同构架构
 
-<KeynoteSourceStage background="/generated/slides/s14-keynote-page-14.png" title="冯诺依曼架构·工业时代·SoC规划" claim="从资源分区追到共享路径" slide-id="S14" />
-<KeynoteInteractiveStage mode="plan" />
+<KeynoteSourceStage background="/generated/slides/s14-keynote-page-14.png" title="同构架构" claim="严格保留更新版 Keynote 第 14 页文字、图片与构图" slide-id="S14" />
 
 <!--
 Slide-ID: S14
-Objective: 用原稿 SoC 平面图建立核、共享缓存、NoC 与 I/O 的规划顺序。
-Timing: 3 min
-Visual: 原 Keynote 第 14 页完整画面，右下叠加可选资源路径。
-Interaction: 切换 NPU、CPU、NoC/共享缓存、DDR/I/O，追踪相邻约束。
+Objective: 按更新版 Keynote 原页讲解“同构架构”。
+Timing: 2 min
+Visual: 更新版 Keynote 第 14 页 1920×1080 确定性整页渲染。
+Interaction: 按方向键推进；观察原页中的体系结构层次与数据路径。
 Sources: publish-keynote-page-14
-Boundary: 叠加层只用于教学导航，不增加产品结构主张。
-Narrative: 一个资源分区的变化会改变共享链路、缓存压力与外部带宽需求。
-Transition: 从物理 SoC 规划回到信息时代的空间抽象。
+Boundary: 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。
+Narrative: 先按原页构图建立直觉，再把其中的资源、带宽、容量或执行关系接入课程主线。
+Transition: 沿新版源稿顺序进入下一层体系结构问题。
 [Sources]
 - source: K14
 - catalog: publish-keynote-page-14
@@ -313,20 +311,20 @@ Transition: 从物理 SoC 规划回到信息时代的空间抽象。
 
 ---
 
-# 冯诺依曼架构·信息时代·城市化
+# AI时代的Tile处理器
 
-<KeynoteSourceStage background="/generated/slides/s15-keynote-page-15.png" title="冯诺依曼架构·信息时代·城市化" claim="电梯连接不同规模的存储空间" slide-id="S15" />
+<KeynoteSourceStage background="/generated/slides/s15-keynote-page-15.png" title="AI时代的Tile处理器" claim="严格保留更新版 Keynote 第 15 页文字、图片与构图" slide-id="S15" />
 
 <!--
 Slide-ID: S15
-Objective: 按原稿用建筑、电梯与存储空间解释层级跨度。
+Objective: 按更新版 Keynote 原页讲解“AI时代的Tile处理器”。
 Timing: 2 min
-Visual: 原 Keynote 第 15 页 1920×1080 完整画面。
-Interaction: 让学生指出同层访问与跨层访问分别需要哪些运输资源。
+Visual: 更新版 Keynote 第 15 页 1920×1080 确定性整页渲染。
+Interaction: 按方向键推进；观察原页中的体系结构层次与数据路径。
 Sources: publish-keynote-page-15
-Boundary: 信息时代城市化仍是教学隐喻，不声明实际拓扑。
-Narrative: 空间越远、容量越大，访问时间和运输能耗通常越高。
-Transition: Transformer 把这种层级运输变成可观察的数据流。
+Boundary: 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。
+Narrative: 先按原页构图建立直觉，再把其中的资源、带宽、容量或执行关系接入课程主线。
+Transition: 沿新版源稿顺序进入下一层体系结构问题。
 [Sources]
 - source: K15
 - catalog: publish-keynote-page-15
@@ -334,20 +332,20 @@ Transition: Transformer 把这种层级运输变成可观察的数据流。
 
 ---
 
-# 冯诺依曼架构·信息时代·Transformer
+# 超标量NPU的物理约束
 
-<KeynoteSourceStage background="/generated/slides/s16-keynote-page-16.png" title="冯诺依曼架构·信息时代·Transformer" claim="Q、K、V 与 Tile 数据流" slide-id="S16" />
+<KeynoteSourceStage background="/generated/slides/s16-keynote-page-16.png" title="超标量NPU的物理约束" claim="严格保留更新版 Keynote 第 16 页文字、图片与构图" slide-id="S16" />
 
 <!--
 Slide-ID: S16
-Objective: 按原稿把 Transformer 张量操作映射到 Tile/CUBE/Vector 数据流。
-Timing: 4 min
-Visual: 原 Keynote 第 16 页 1920×1080 完整画面。
-Interaction: 沿 Q、K、V 输入追踪矩阵计算、向量处理与中间结果驻留。
+Objective: 按更新版 Keynote 原页讲解“超标量NPU的物理约束”。
+Timing: 2 min
+Visual: 更新版 Keynote 第 16 页 1920×1080 确定性整页渲染。
+Interaction: 按方向键推进；观察原页中的体系结构层次与数据路径。
 Sources: publish-keynote-page-16
-Boundary: 数据流按原稿教学表达，不宣称唯一实现或固定时序。
-Narrative: 算法图只有落到数据放置、运输和执行单元后才成为体系结构问题。
-Transition: 单芯片数据流继续扩展到芯片间通信。
+Boundary: 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。
+Narrative: 先按原页构图建立直觉，再把其中的资源、带宽、容量或执行关系接入课程主线。
+Transition: 沿新版源稿顺序进入下一层体系结构问题。
 [Sources]
 - source: K16
 - catalog: publish-keynote-page-16
@@ -355,20 +353,21 @@ Transition: 单芯片数据流继续扩展到芯片间通信。
 
 ---
 
-# 冯诺依曼架构·信息时代·国际化
+# 冯诺依曼架构·工业时代·昇腾950处理器
 
-<KeynoteSourceStage background="/generated/slides/s17-keynote-page-17.png" title="冯诺依曼架构·信息时代·国际化" claim="芯片间通信也是体系结构资源" slide-id="S17" />
+<KeynoteSourceStage background="/generated/slides/s17-keynote-page-17.png" title="冯诺依曼架构·工业时代·昇腾950处理器" claim="教学抽象，不是产品框图" slide-id="S17" />
+<KeynoteInteractiveStage mode="disclaimer" />
 
 <!--
 Slide-ID: S17
-Objective: 按原稿用航空与航运比喻芯片间通信和全局协同。
+Objective: 通过原稿 Ascend SoC 教学图讨论核、共享缓存与 I/O 分区。
 Timing: 2 min
-Visual: 原 Keynote 第 17 页 1920×1080 完整画面。
-Interaction: 比较空运与海运路径对应的延迟、带宽和批量化取舍。
+Visual: 更新版 Keynote 第 17 页 1920×1080 确定性整页渲染。
+Interaction: 沿 NPU/CPU 核、共享缓存、NoC 与 I/O 找资源边界。
 Sources: publish-keynote-page-17
-Boundary: 国际化是原稿通信隐喻，不对应具体互连协议。
-Narrative: 系统边界扩大后，远程运输与同步成本成为一等架构参数。
-Transition: 汇总第一章，建立五个可复用的体系结构坐标。
+Boundary: 教学抽象，非产品框图；不得据此推断真实产品内部结构。
+Narrative: SoC 规划把复制的计算核连接到共享存储、互连和外部接口。
+Transition: 下一页在同一类 SoC 平面上追踪资源分区的因果路径。
 [Sources]
 - source: K17
 - catalog: publish-keynote-page-17
@@ -376,16 +375,122 @@ Transition: 汇总第一章，建立五个可复用的体系结构坐标。
 
 ---
 
+# 冯诺依曼架构·工业时代·SoC规划
+
+<KeynoteSourceStage background="/generated/slides/s18-keynote-page-18.png" title="冯诺依曼架构·工业时代·SoC规划" claim="从资源分区追到共享路径" slide-id="S18" />
+<KeynoteInteractiveStage mode="plan" />
+
+<!--
+Slide-ID: S18
+Objective: 用原稿 SoC 平面图建立核、共享缓存、NoC 与 I/O 的规划顺序。
+Timing: 2 min
+Visual: 更新版 Keynote 第 18 页 1920×1080 确定性整页渲染。
+Interaction: 切换 NPU、CPU、NoC/共享缓存、DDR/I/O，追踪相邻约束。
+Sources: publish-keynote-page-18
+Boundary: 叠加层只用于教学导航，不增加产品结构主张。
+Narrative: 一个资源分区的变化会改变共享链路、缓存压力与外部带宽需求。
+Transition: 从物理 SoC 规划回到信息时代的空间抽象。
+[Sources]
+- source: K18
+- catalog: publish-keynote-page-18
+-->
+
+---
+
+# 冯诺依曼架构·信息时代·城市化
+
+<KeynoteSourceStage background="/generated/slides/s19-keynote-page-19.png" title="冯诺依曼架构·信息时代·城市化" claim="电梯连接不同规模的存储空间" slide-id="S19" />
+
+<!--
+Slide-ID: S19
+Objective: 按原稿用建筑、电梯与存储空间解释层级跨度。
+Timing: 2 min
+Visual: 更新版 Keynote 第 19 页 1920×1080 确定性整页渲染。
+Interaction: 让学生指出同层访问与跨层访问分别需要哪些运输资源。
+Sources: publish-keynote-page-19
+Boundary: 信息时代城市化仍是教学隐喻，不声明实际拓扑。
+Narrative: 空间越远、容量越大，访问时间和运输能耗通常越高。
+Transition: Transformer 把这种层级运输变成可观察的数据流。
+[Sources]
+- source: K19
+- catalog: publish-keynote-page-19
+-->
+
+---
+
+# 芯片与封装
+
+<KeynoteSourceStage background="/generated/slides/s20-keynote-page-20.png" title="芯片与封装" claim="严格保留更新版 Keynote 第 20 页文字、图片与构图" slide-id="S20" />
+
+<!--
+Slide-ID: S20
+Objective: 按更新版 Keynote 原页讲解“芯片与封装”。
+Timing: 2 min
+Visual: 更新版 Keynote 第 20 页 1920×1080 确定性整页渲染。
+Interaction: 按方向键推进；观察原页中的体系结构层次与数据路径。
+Sources: publish-keynote-page-20
+Boundary: 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。
+Narrative: 先按原页构图建立直觉，再把其中的资源、带宽、容量或执行关系接入课程主线。
+Transition: 沿新版源稿顺序进入下一层体系结构问题。
+[Sources]
+- source: K20
+- catalog: publish-keynote-page-20
+-->
+
+---
+
+# 晶圆级系统
+
+<KeynoteSourceStage background="/generated/slides/s21-keynote-page-21.png" title="晶圆级系统" claim="严格保留更新版 Keynote 第 21 页文字、图片与构图" slide-id="S21" />
+
+<!--
+Slide-ID: S21
+Objective: 按更新版 Keynote 原页讲解“晶圆级系统”。
+Timing: 2 min
+Visual: 更新版 Keynote 第 21 页 1920×1080 确定性整页渲染。
+Interaction: 按方向键推进；观察原页中的体系结构层次与数据路径。
+Sources: publish-keynote-page-21
+Boundary: 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。
+Narrative: 先按原页构图建立直觉，再把其中的资源、带宽、容量或执行关系接入课程主线。
+Transition: 沿新版源稿顺序进入下一层体系结构问题。
+[Sources]
+- source: K21
+- catalog: publish-keynote-page-21
+-->
+
+---
+
+# 冯诺依曼架构·信息时代·国际化
+
+<KeynoteSourceStage background="/generated/slides/s22-keynote-page-22.png" title="冯诺依曼架构·信息时代·国际化" claim="芯片间通信也是体系结构资源" slide-id="S22" />
+
+<!--
+Slide-ID: S22
+Objective: 按原稿用航空与航运比喻芯片间通信和全局协同。
+Timing: 2 min
+Visual: 更新版 Keynote 第 22 页 1920×1080 确定性整页渲染。
+Interaction: 比较空运与海运路径对应的延迟、带宽和批量化取舍。
+Sources: publish-keynote-page-22
+Boundary: 国际化是原稿通信隐喻，不对应具体互连协议。
+Narrative: 系统边界扩大后，远程运输与同步成本成为一等架构参数。
+Transition: 汇总第一章，建立五个可复用的体系结构坐标。
+[Sources]
+- source: K22
+- catalog: publish-keynote-page-22
+-->
+
+---
+
 # 体系结构的五个坐标
 
-<FullBleedStage background="/generated/slides/s18-architecture-city-five-coordinates-v2.png" title="体系结构的五个坐标" claim="计算、存储、互连、并发与控制共同解释性能。" eyebrow="ARCHITECTURE COORDINATES" slide-id="S18" focus="left">
+<FullBleedStage background="/generated/slides/s23-architecture-city-five-coordinates-v2.png" title="体系结构的五个坐标" claim="计算、存储、互连、并发与控制共同解释性能。" eyebrow="ARCHITECTURE COORDINATES" slide-id="S23" focus="left">
   <template #diagram><ArchitectureCoordinate /></template>
 </FullBleedStage>
 
 <!--
-Slide-ID: S18
+Slide-ID: S23
 Objective: 把第一章城市隐喻综合为五个可执行的体系结构追问。
-Timing: 4 min
+Timing: 2 min
 Visual: 新生成的处理器城市全景，叠加五坐标交互轨道。
 Interaction: 依次选择计算、存储、互连、并发、控制，为同一性能现象提出证据问题。
 Sources: course-synthesis; source-deck
@@ -401,130 +506,18 @@ Transition: 第二章把空间资源换算为时间代价。
 
 # 第二章·空间和时间
 
-<KeynoteSourceStage background="/generated/slides/s19-keynote-page-18.png" title="第二章·空间和时间" claim="从资源布局进入周期代价" slide-id="S19" />
-
-<!--
-Slide-ID: S19
-Objective: 完整保留原稿第二章“空间和时间”章节页。
-Timing: 2 min
-Visual: 原 Keynote 第 18 页 1920×1080 完整画面。
-Interaction: 章节转场，无附加操作。
-Sources: publish-keynote-page-18
-Boundary: 可见文字与装饰直接来自演讲人提供的 Keynote。
-Narrative: 空间回答资源在哪里，时间回答数据到达与操作完成需要多久。
-Transition: 从 SDR/DDR/QDR 信号边沿定义一个时钟周期。
-[Sources]
-- source: K18
-- catalog: publish-keynote-page-18
--->
-
----
-
-# 冯诺依曼架构·什么是芯片的一天？
-
-<KeynoteSourceStage background="/generated/slides/s20-keynote-page-19.png" title="冯诺依曼架构·什么是芯片的一天？" claim="时间 × 频率 = 周期数" slide-id="S20" />
-<ClockCycleConverter />
-
-<!--
-Slide-ID: S20
-Objective: 用原稿 SDR/DDR/QDR 时序把人类时间换算为芯片周期。
-Timing: 4 min
-Visual: 原 Keynote 第 19 页完整画面，右下叠加时间—频率换算器。
-Interaction: 切换 ps/ns/day 与 MHz/GHz，比较同一时间跨度包含多少周期。
-Sources: publish-keynote-page-19; course-model
-Boundary: 换算器只做单位与周期数换算，不代表具体存储接口协议时序。
-Narrative: 周期是离散模型的共同时间坐标，但事件仍可能跨多个信号边沿。
-Transition: 用“天数”尺度比较不同存储层级的访问代价。
-[Sources]
-- source: K19
-- catalog: publish-keynote-page-19
-- catalog: course-model
--->
-
----
-
-# 冯诺依曼架构·计算获取数据天数
-
-<KeynoteSourceStage background="/generated/slides/s21-keynote-page-20.png" title="冯诺依曼架构·计算获取数据天数" claim="层级越远，等待跨度越大" slide-id="S21" />
-<details class="keynote-lab-drawer">
-  <summary aria-label="打开存储层级交互实验">交互实验</summary>
-  <MemoryHierarchyExplorer />
-</details>
-
-<!--
-Slide-ID: S21
-Objective: 用原稿天数比喻与交互层级模型比较 L1、L2、L3、远端访问。
-Timing: 4 min
-Visual: 原 Keynote 第 20 页完整画面，右下叠加命中率与平均周期探索器。
-Interaction: 调节 L1/L2 hit rate，观察平均周期与片外访问比例。
-Sources: publish-keynote-page-20; course-model
-Boundary: 天数是原稿尺度隐喻；交互延迟参数是教学值。
-Narrative: 少量远端 miss 可以主导平均等待，因此命中率必须和代价共同建模。
-Transition: 将访问边界扩展到 RDMA 与 RPC。
-[Sources]
-- source: K20
-- catalog: publish-keynote-page-20
-- catalog: course-model
--->
-
----
-
-# 冯诺依曼架构·计算获取数据天数·远程访问
-
-<KeynoteSourceStage background="/generated/slides/s22-keynote-page-21.png" title="冯诺依曼架构·计算获取数据天数·远程访问" claim="RDMA 与 RPC 扩大时间尺度" slide-id="S22" />
-
-<!--
-Slide-ID: S22
-Objective: 按原稿比较片内层级、RDMA 与 RPC 的时间尺度。
-Timing: 2 min
-Visual: 原 Keynote 第 21 页 1920×1080 完整画面。
-Interaction: 找出从 ns 到 μs 的数量级跳变来自哪些边界。
-Sources: publish-keynote-page-21
-Boundary: 原稿数字用于数量级教学，不能替代具体系统测量。
-Narrative: 远程路径包含更多协议、队列、链路与同步阶段。
-Transition: 由标量操作转向以 Tile 为单位的并行操作。
-[Sources]
-- source: K21
-- catalog: publish-keynote-page-21
--->
-
----
-
-# PTO指令集：Parallel Tile Operation
-
-<KeynoteSourceStage background="/generated/slides/s23-keynote-page-22.png" title="PTO指令集：Parallel Tile Operation" claim="从 Scalar Operation 到 Tile Operation" slide-id="S23" />
-
-<!--
-Slide-ID: S23
-Objective: 按原稿说明 PTO 以 Tile 为并行数据与操作单位。
-Timing: 2 min
-Visual: 原 Keynote 第 22 页 1920×1080 完整画面。
-Interaction: 比较 32-bit scalar 与 8KB–16KB Tile 对搬运和调度粒度的影响。
-Sources: publish-keynote-page-22
-Boundary: 可见术语与容量范围按原稿保留；规范语义以后续 PTO-ASL 为准。
-Narrative: 粒度变大提高批量复用，也放大容量、分块和尾块约束。
-Transition: Tile 不只是方块，还需要表达不同形状与布局。
-[Sources]
-- source: K22
-- catalog: publish-keynote-page-22
--->
-
----
-
-# PTO指令集：我们在设计不同形状的集装箱
-
-<KeynoteSourceStage background="/generated/slides/s24-keynote-page-23.png" title="PTO指令集：我们在设计不同形状的集装箱" claim="形状、布局与调度共同定义 Tile" slide-id="S24" />
+<KeynoteSourceStage background="/generated/slides/s24-keynote-page-23.png" title="第二章·空间和时间" claim="从资源布局进入周期代价" slide-id="S24" />
 
 <!--
 Slide-ID: S24
-Objective: 按原稿用集装箱比喻解释 Tile 形状、装载、运输与调度。
+Objective: 完整保留原稿第二章“空间和时间”章节页。
 Timing: 2 min
-Visual: 原 Keynote 第 23 页 1920×1080 完整画面。
-Interaction: 对同一矩阵讨论 8×8、长条和子区域容器对搬运次数的影响。
+Visual: 更新版 Keynote 第 23 页 1920×1080 确定性整页渲染。
+Interaction: 章节转场，无附加操作。
 Sources: publish-keynote-page-23
-Boundary: 集装箱图是语义与调度隐喻，不规定物理 SRAM 形状。
-Narrative: 形状必须同时满足算法访问、执行单元和本地容量。
-Transition: 把这些操作放进 PTO 抽象执行机器。
+Boundary: 可见文字与装饰直接来自演讲人提供的 Keynote。
+Narrative: 空间回答资源在哪里，时间回答数据到达与操作完成需要多久。
+Transition: 从 SDR/DDR/QDR 信号边沿定义一个时钟周期。
 [Sources]
 - source: K23
 - catalog: publish-keynote-page-23
@@ -532,27 +525,139 @@ Transition: 把这些操作放进 PTO 抽象执行机器。
 
 ---
 
+# 冯诺依曼架构·什么是芯片的一天？
+
+<KeynoteSourceStage background="/generated/slides/s25-keynote-page-24.png" title="冯诺依曼架构·什么是芯片的一天？" claim="时间 × 频率 = 周期数" slide-id="S25" />
+<ClockCycleConverter />
+
+<!--
+Slide-ID: S25
+Objective: 用原稿 SDR/DDR/QDR 时序把人类时间换算为芯片周期。
+Timing: 2 min
+Visual: 更新版 Keynote 第 24 页 1920×1080 确定性整页渲染。
+Interaction: 切换 ps/ns/day 与 MHz/GHz，比较同一时间跨度包含多少周期。
+Sources: publish-keynote-page-24; course-model
+Boundary: 换算器只做单位与周期数换算，不代表具体存储接口协议时序。
+Narrative: 周期是离散模型的共同时间坐标，但事件仍可能跨多个信号边沿。
+Transition: 用“天数”尺度比较不同存储层级的访问代价。
+[Sources]
+- source: K24
+- catalog: publish-keynote-page-24
+- catalog: course-model
+-->
+
+---
+
+# 冯诺依曼架构·计算获取数据天数
+
+<KeynoteSourceStage background="/generated/slides/s26-keynote-page-25.png" title="冯诺依曼架构·计算获取数据天数" claim="层级越远，等待跨度越大" slide-id="S26" />
+<details class="keynote-lab-drawer">
+  <summary aria-label="打开存储层级交互实验">交互实验</summary>
+  <MemoryHierarchyExplorer />
+</details>
+
+<!--
+Slide-ID: S26
+Objective: 用原稿天数比喻与交互层级模型比较 L1、L2、L3、远端访问。
+Timing: 2 min
+Visual: 更新版 Keynote 第 25 页 1920×1080 确定性整页渲染。
+Interaction: 调节 L1/L2 hit rate，观察平均周期与片外访问比例。
+Sources: publish-keynote-page-25; course-model
+Boundary: 天数是原稿尺度隐喻；交互延迟参数是教学值。
+Narrative: 少量远端 miss 可以主导平均等待，因此命中率必须和代价共同建模。
+Transition: 将访问边界扩展到 RDMA 与 RPC。
+[Sources]
+- source: K25
+- catalog: publish-keynote-page-25
+- catalog: course-model
+-->
+
+---
+
+# 冯诺依曼架构·计算获取数据天数·远程访问
+
+<KeynoteSourceStage background="/generated/slides/s27-keynote-page-26.png" title="冯诺依曼架构·计算获取数据天数·远程访问" claim="RDMA 与 RPC 扩大时间尺度" slide-id="S27" />
+
+<!--
+Slide-ID: S27
+Objective: 按原稿比较片内层级、RDMA 与 RPC 的时间尺度。
+Timing: 2 min
+Visual: 更新版 Keynote 第 26 页 1920×1080 确定性整页渲染。
+Interaction: 找出从 ns 到 μs 的数量级跳变来自哪些边界。
+Sources: publish-keynote-page-26
+Boundary: 原稿数字用于数量级教学，不能替代具体系统测量。
+Narrative: 远程路径包含更多协议、队列、链路与同步阶段。
+Transition: 由标量操作转向以 Tile 为单位的并行操作。
+[Sources]
+- source: K26
+- catalog: publish-keynote-page-26
+-->
+
+---
+
+# PTO指令集：Parallel Tile Operation
+
+<KeynoteSourceStage background="/generated/slides/s28-keynote-page-27.png" title="PTO指令集：Parallel Tile Operation" claim="从 Scalar Operation 到 Tile Operation" slide-id="S28" />
+
+<!--
+Slide-ID: S28
+Objective: 按原稿说明 PTO 以 Tile 为并行数据与操作单位。
+Timing: 2 min
+Visual: 更新版 Keynote 第 27 页 1920×1080 确定性整页渲染。
+Interaction: 比较 32-bit scalar 与 8KB–16KB Tile 对搬运和调度粒度的影响。
+Sources: publish-keynote-page-27
+Boundary: 可见术语与容量范围按原稿保留；规范语义以后续 PTO-ASL 为准。
+Narrative: 粒度变大提高批量复用，也放大容量、分块和尾块约束。
+Transition: Tile 不只是方块，还需要表达不同形状与布局。
+[Sources]
+- source: K27
+- catalog: publish-keynote-page-27
+-->
+
+---
+
+# PTO指令集：我们在设计不同形状的集装箱
+
+<KeynoteSourceStage background="/generated/slides/s29-keynote-page-28.png" title="PTO指令集：我们在设计不同形状的集装箱" claim="形状、布局与调度共同定义 Tile" slide-id="S29" />
+
+<!--
+Slide-ID: S29
+Objective: 按原稿用集装箱比喻解释 Tile 形状、装载、运输与调度。
+Timing: 2 min
+Visual: 更新版 Keynote 第 28 页 1920×1080 确定性整页渲染。
+Interaction: 对同一矩阵讨论 8×8、长条和子区域容器对搬运次数的影响。
+Sources: publish-keynote-page-28
+Boundary: 集装箱图是语义与调度隐喻，不规定物理 SRAM 形状。
+Narrative: 形状必须同时满足算法访问、执行单元和本地容量。
+Transition: 把这些操作放进 PTO 抽象执行机器。
+[Sources]
+- source: K28
+- catalog: publish-keynote-page-28
+-->
+
+---
+
 # PTO指令集：抽象执行机器
 
-<KeynoteSourceStage background="/generated/slides/s25-keynote-page-24.png" title="PTO指令集：抽象执行机器" claim="语义路由到不同执行资源" slide-id="S25" />
+<KeynoteSourceStage background="/generated/slides/s30-keynote-page-29.png" title="PTO指令集：抽象执行机器" claim="语义路由到不同执行资源" slide-id="S30" />
 <details class="keynote-lab-drawer">
   <summary aria-label="打开 PTO 抽象机器交互实验">交互实验</summary>
   <PtoMachineExplorer label="TLOAD TMOV TEXTRACT TPUSH TPOP · TPUT TGET · DaVinciOO communication extensions — not normative PTO-ASL" />
 </details>
 
 <!--
-Slide-ID: S25
+Slide-ID: S30
 Objective: 在原稿抽象机器上区分 PTO-ASL 操作语义与 DaVinciOO 通信扩展。
-Timing: 4 min
-Visual: 原 Keynote 第 24 页完整画面，底部叠加操作—执行资源探索器。
+Timing: 2 min
+Visual: 更新版 Keynote 第 29 页 1920×1080 确定性整页渲染。
 Interaction: 切换 TLOAD、TMOV、TEXTRACT、TPUSH/TPOP、TPUT/TGET，观察路径和引擎。
-Sources: publish-keynote-page-24; pto-spec; davincioo-public-docs
+Sources: publish-keynote-page-29; pto-spec; davincioo-public-docs
 Boundary: TPUT/TGET 是 DaVinciOO communication extensions — not normative PTO-ASL；不展示私有时序细节。
 Narrative: TLOAD 为 GM→Tile/TMA；TMOV 为形状匹配 Tile copy 并在 DaVinci gfsim 路由 Vector；TEXTRACT 为 Vector 子区域；TPUSH/TPOP 使用显式 handoff slot/capacity；扩展路径为 GM→UB→GM。
 Transition: 下一页观察 PTO 程序如何驱动抽象机器。
 [Sources]
-- source: K24
-- catalog: publish-keynote-page-24
+- source: K29
+- catalog: publish-keynote-page-29
 - catalog: pto-spec
 - catalog: davincioo-public-docs
 -->
@@ -561,56 +666,56 @@ Transition: 下一页观察 PTO 程序如何驱动抽象机器。
 
 # PTO指令集：抽象执行机器与程序
 
-<KeynoteSourceStage background="/generated/slides/s26-keynote-page-25.png" title="PTO指令集：抽象执行机器与程序" claim="程序语义与机器资源相互映射" slide-id="S26" />
+<KeynoteSourceStage background="/generated/slides/s31-keynote-page-30.png" title="PTO指令集：抽象执行机器与程序" claim="程序语义与机器资源相互映射" slide-id="S31" />
 
 <!--
-Slide-ID: S26
+Slide-ID: S31
 Objective: 按原稿把 PTO 程序操作映射到抽象执行机器。
 Timing: 2 min
-Visual: 原 Keynote 第 25 页 1920×1080 完整画面。
+Visual: 更新版 Keynote 第 30 页 1920×1080 确定性整页渲染。
 Interaction: 从一条 load/matmul/extract/store 链指出每步读写的架构状态。
-Sources: publish-keynote-page-25
+Sources: publish-keynote-page-30
 Boundary: 代码与抽象机器按原稿展示；具体规范效果以 PTO-ASL 为准。
 Narrative: 程序顺序表达语义依赖，实现可以用不同资源与调度策略完成效果。
 Transition: 放大最基础的 TLOAD/TSTORE 搬运链。
 [Sources]
-- source: K25
-- catalog: publish-keynote-page-25
+- source: K30
+- catalog: publish-keynote-page-30
 -->
 
 ---
 
 # PTO指令集：TLOAD TSTORE
 
-<KeynoteSourceStage background="/generated/slides/s27-keynote-page-26.png" title="PTO指令集：TLOAD TSTORE" claim="Tensor → Tile → Layout" slide-id="S27" />
+<KeynoteSourceStage background="/generated/slides/s32-keynote-page-31.png" title="PTO指令集：TLOAD TSTORE" claim="Tensor → Tile → Layout" slide-id="S32" />
 
 <!--
-Slide-ID: S27
+Slide-ID: S32
 Objective: 按原稿用工厂隐喻解释 Tensor、Tile 与 Layout 的装载过程。
 Timing: 2 min
-Visual: 原 Keynote 第 26 页 1920×1080 完整画面。
+Visual: 更新版 Keynote 第 31 页 1920×1080 确定性整页渲染。
 Interaction: 逐步指出 Tensor 选择、Tile 分块与 Layout 排列分别解决什么问题。
-Sources: publish-keynote-page-26
+Sources: publish-keynote-page-31
 Boundary: 工厂图是原稿教学比喻；TLOAD/TSTORE 规范语义以 PTO-ASL 为准。
 Narrative: 数据搬运时间同时受分块次数、各段带宽、排队与同步影响。
 Transition: 用可计算实验分解一次数据移动的总周期。
 [Sources]
-- source: K26
-- catalog: publish-keynote-page-26
+- source: K31
+- catalog: publish-keynote-page-31
 -->
 
 ---
 
 # 数据搬运时间实验
 
-<FullBleedStage background="/generated/slides/s28-data-movement-time-experiment-v2.png" title="数据搬运时间实验" claim="总时间 = 固有搬运 + 排队 + 同步。" eyebrow="SPACE → TIME" slide-id="S28" focus="left">
+<FullBleedStage background="/generated/slides/s33-data-movement-time-experiment-v2.png" title="数据搬运时间实验" claim="总时间 = 固有搬运 + 排队 + 同步。" eyebrow="SPACE → TIME" slide-id="S33" focus="left">
   <template #diagram><TransferTimeLab /></template>
 </FullBleedStage>
 
 <!--
-Slide-ID: S28
+Slide-ID: S33
 Objective: 用确定性公式把 Tile 分块、最窄带宽、排队和同步合成总周期。
-Timing: 4 min
+Timing: 2 min
 Visual: 新生成的数据移动实验场景，底部为可调计算实验室。
 Interaction: 切换 TLOAD、TMOV、TEXTRACT、TPUSH/TPOP、TPUT/TGET 并调节数据量、Tile 容量、链路带宽与排队成本。
 Sources: course-synthesis; pto-spec; davincioo-public-docs

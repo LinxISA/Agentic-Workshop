@@ -5,11 +5,11 @@ import { fileURLToPath } from 'node:url'
 const workspaceRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const outputRoot = resolve(workspaceRoot, 'dist')
 
-for (const session of ['session-1', 'session-2']) {
+for (const [session, count] of [['session-1', 33], ['session-2', 31]]) {
   const sessionRoot = resolve(outputRoot, session)
   const html = await readFile(resolve(sessionRoot, 'index.html'), 'utf8')
 
-  for (let slide = 1; slide <= 28; slide += 1) {
+  for (let slide = 1; slide <= count; slide += 1) {
     const routeRoot = resolve(sessionRoot, String(slide))
     await mkdir(routeRoot, { recursive: true })
     await writeFile(resolve(routeRoot, 'index.html'), html)

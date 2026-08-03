@@ -118,20 +118,20 @@ test('timeline filters deterministically by opcode and engine', () => {
   assert.deepEqual(filterTimeline(events, { opcode: 'all', engine: 'Vector' }).map(event => event.sequence_id), [2])
 })
 
-test('Session 2 contract is 28 slides S29–S56, 75 minutes, with required interactions and source captures', async () => {
+test('Session 2 contract is 31 slides S34–S64, 75 minutes, with required interactions and source captures', async () => {
   const source = await readFile('decks/session-2/slides.md', 'utf8')
   const ids = [...source.matchAll(/Slide-ID:\s*(S\d{2})/g)].map(match => match[1])
   const minutes = [...source.matchAll(/Timing:\s*(\d+) min/g)].map(match => Number(match[1]))
-  assert.deepEqual(ids, Array.from({ length: 28 }, (_, index) => `S${index + 29}`))
+  assert.deepEqual(ids, Array.from({ length: 31 }, (_, index) => `S${index + 34}`))
   assert.equal(minutes.reduce((sum, value) => sum + value, 0), 75)
   for (const [id, component] of Object.entries({
-    S33: 'TraceAnatomy', S34: 'SimQueueExplorer', S35: 'DaVinciTopology', S38: 'CyclePlayback',
-    S40: 'ParameterSweep', S41: 'EvidenceTimeline', S55: 'ClosedLoopVerification',
+    S41: 'TraceAnatomy', S42: 'SimQueueExplorer', S43: 'DaVinciTopology', S46: 'CyclePlayback',
+    S48: 'ParameterSweep', S49: 'EvidenceTimeline', S63: 'ClosedLoopVerification',
   })) {
     const slide = source.slice(source.indexOf(`Slide-ID: ${id}`) - 1500, source.indexOf(`Slide-ID: ${id}`))
     assert.match(slide, new RegExp(`<${component}\\b`))
   }
-  for (const [slideId, page] of [[29,27],[43,28],[44,29],[45,30],[46,31],[47,32],[48,33],[49,34]]) {
+  for (const [slideId, page] of [[34,32],[35,33],[36,34],[37,35],[51,36],[52,37],[53,38],[54,39],[55,40],[56,41],[57,42]]) {
     assert.match(source, new RegExp(`/generated/slides/s${slideId}-keynote-page-${page}\\.png`))
   }
   const audience = source.replace(/<!--[\s\S]*?-->/g, '')
@@ -141,9 +141,9 @@ test('Session 2 contract is 28 slides S29–S56, 75 minutes, with required inter
   assert.doesNotMatch(audience, /10920|pyCircuit replay harness/i)
 })
 
-test('S32 and S53 describe checked trace fields without claiming explicit deps', async () => {
+test('S40 and S61 describe checked trace fields without claiming explicit deps', async () => {
   const source = await readFile('decks/session-2/slides.md', 'utf8')
-  for (const [id, nextId] of [['S32', 'S33'], ['S53', 'S54']]) {
+  for (const [id, nextId] of [['S40', 'S41'], ['S61', 'S62']]) {
     const start = source.lastIndexOf('\n# ', source.indexOf(`Slide-ID: ${id}`))
     const end = source.lastIndexOf('\n# ', source.indexOf(`Slide-ID: ${nextId}`))
     const slide = source.slice(start, end)

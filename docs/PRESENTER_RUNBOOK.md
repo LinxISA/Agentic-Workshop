@@ -4,7 +4,7 @@
 
 1. 在演示机器执行 `npm ci && npm test`，确认 `dist/` 来自当前源码。
 2. 执行 `npm run preview`，打开 `http://127.0.0.1:4173/`。
-3. 首页 `/` 进入两节课；第一页分别是 `/session-1/1` 与 `/session-2/1`，每节课的有效页码为 `1..28`。
+3. 首页 `/` 进入两节课；第一页分别是 `/session-1/1` 与 `/session-2/1`，有效页码分别为 `1..33` 与 `1..31`。
 4. PDF 只作为静态备份；交互讲解使用本地网页。
 
 ## 两节课节奏
@@ -20,7 +20,7 @@
 | 55–71 分钟 | 23–27 | 从 PTO Tile 粒度进入抽象执行机器、操作路径和布局。 |
 | 71–75 分钟 | 28 | 用数据搬运实验总结：总时间 = 固有搬运 + 排队 + 同步。 |
 
-讲解主线：城市 → DaVinci/Ascend 教学抽象 → 存储/互连 → PTO 数据搬运时间。S25 与 S28 必须明确：`TPUT/TGET` 是 DaVinciOO communication extensions，不属于 normative PTO-ASL。
+讲解主线：城市 → DaVinci/Ascend 教学抽象 → 存储/互连 → PTO 数据搬运时间。S30 与 S33 必须明确：`TPUT/TGET` 是 DaVinciOO communication extensions，不属于 normative PTO-ASL。
 
 ### Session 2 · 75 分钟 · 从 q_proj Trace 到证据飞轮
 

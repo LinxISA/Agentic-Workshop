@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises'
 
 const decks = [
-  { path: 'decks/session-1/slides.md', session: 1 },
-  { path: 'decks/session-2/slides.md', session: 2 },
+  { path: 'decks/session-1/slides.md', session: 1, count: 33, offset: 0 },
+  { path: 'decks/session-2/slides.md', session: 2, count: 31, offset: 33 },
 ]
 const noteFields = ['Slide-ID:', 'Objective:', 'Transition:', 'Timing:', 'Visual:', 'Interaction:', 'Boundary:', '[Sources]']
 const fullBleedStages = ['FullBleedStage', 'AscendCover', 'KeynoteSourceStage']
@@ -23,9 +23,9 @@ for (const deck of decks) {
   const slides = headings.map((match, index) => source.slice(match.index, headings[index + 1]?.index ?? source.length))
   const errors = []
 
-  if (slides.length !== 28) errors.push(`expected 28 content slides, got ${slides.length}`)
+  if (slides.length !== deck.count) errors.push(`expected ${deck.count} content slides, got ${slides.length}`)
   slides.forEach((slide, index) => {
-    const expectedId = `S${String(index + 1 + (deck.session - 1) * 28).padStart(2, '0')}`
+    const expectedId = `S${String(index + 1 + deck.offset).padStart(2, '0')}`
     const noteText = [...slide.matchAll(/<!--([\s\S]*?)-->/g)].map(match => match[1]).join('\n')
     const actualId = noteText.match(/Slide-ID:\s*(S\d{2})/)?.[1]
     if (actualId !== expectedId) errors.push(`${expectedId}: speaker-note Slide-ID is ${actualId ?? 'missing'}`)
@@ -47,11 +47,11 @@ for (const deck of decks) {
     console.error(`${deck.path}:`)
     for (const error of errors) console.error(`  - ${error}`)
   } else {
-    console.log(`${deck.path}: 28 slides pass full-bleed, notes, density, and offline checks`)
+    console.log(`${deck.path}: ${deck.count} slides pass full-bleed, notes, density, and offline checks`)
   }
 }
 
-const expectedKeynoteIds = Array.from({ length: 34 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
+const expectedKeynoteIds = Array.from({ length: 42 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
 const mappingCounts = new Map()
 for (const { sourceId } of keynoteMappings) mappingCounts.set(sourceId, (mappingCounts.get(sourceId) ?? 0) + 1)
 const missingKeynoteIds = expectedKeynoteIds.filter(sourceId => !mappingCounts.has(sourceId))

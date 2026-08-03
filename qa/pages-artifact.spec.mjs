@@ -64,10 +64,10 @@ test('Pages artifact uses the configured asset prefix', async () => {
 })
 
 test('Pages artifact includes all physical numbered slide routes', async () => {
-  for (const session of ['session-1', 'session-2']) {
+  for (const [session, count] of [['session-1', 33], ['session-2', 31]]) {
     const sessionHtml = await readFile(`dist/${session}/index.html`, 'utf8')
 
-    for (let slide = 1; slide <= 28; slide += 1) {
+    for (let slide = 1; slide <= count; slide += 1) {
       const routeRoot = `dist/${session}/${slide}`
       assert.equal(
         await readFile(`${routeRoot}/index.html`, 'utf8'),
@@ -142,21 +142,21 @@ test('GitHub Pages workflow deploys the verified prefixed artifact from main', a
   assert.match(deploy, /actions\/deploy-pages@v4/)
 })
 
-test('numbered Pages routes are backed by two complete 28-slide source decks', async () => {
+test('numbered Pages routes are backed by the complete 33-slide and 31-slide source decks', async () => {
   const sessions = [
-    ['session-1', 1],
-    ['session-2', 29],
+    ['session-1', 1, 33],
+    ['session-2', 34, 31],
   ]
 
-  for (const [session, firstSlide] of sessions) {
+  for (const [session, firstSlide, count] of sessions) {
     const source = await readFile(`decks/${session}/slides.md`, 'utf8')
     const headings = [...source.matchAll(/^#\s+.+$/gm)]
     const slideIds = [...source.matchAll(/Slide-ID:\s*(S\d{2})/g)].map(match => match[1])
 
-    assert.equal(headings.length, 28, `${session} must contain 28 actual slide headings`)
+    assert.equal(headings.length, count, `${session} must contain ${count} actual slide headings`)
     assert.deepEqual(
       slideIds,
-      Array.from({ length: 28 }, (_, index) => `S${String(firstSlide + index).padStart(2, '0')}`),
+      Array.from({ length: count }, (_, index) => `S${String(firstSlide + index).padStart(2, '0')}`),
       `${session} must contain exactly one ordered Slide-ID per source slide`,
     )
   }
