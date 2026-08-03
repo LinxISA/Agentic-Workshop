@@ -12,6 +12,7 @@ export function normalizeBasePath(value) {
   if (
     !value.startsWith('/') ||
     value.startsWith('//') ||
+    value.includes('%') ||
     value.includes('?') ||
     value.includes('#') ||
     value.includes('\\')
