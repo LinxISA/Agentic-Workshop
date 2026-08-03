@@ -1,7 +1,7 @@
 # Architecture-First Summer School Tutorial Design
 
 **Date:** 2026-08-01
-**Source template:** `/Users/zhoubot/Documents/PTO ISA_扩展版.pptx`
+**Source template:** `PTO ISA_扩展版.pptx` (presenter-provided source; not stored in this repository)
 **Delivery:** two 60-minute Chinese Slidev sessions, fully offline
 **Audience:** graduate students and early-career computer-architecture researchers
 

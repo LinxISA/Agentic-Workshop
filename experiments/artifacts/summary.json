@@ -89,8 +89,17 @@
       "status": "pass",
       "stderr": "",
       "stdout": "10 hierarchy and queue sweep: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "11",
+      "name": "11_qproj_davincioo",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "11 q_proj DaVinciOO model lab (replay): PASS"
     }
   ],
   "failed": 0,
-  "passed": 10
+  "passed": 11
 }

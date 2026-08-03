@@ -35,10 +35,12 @@ export function rooflineGeometry({ peak, bandwidth, intensity, cacheHit = 0 }) {
 }
 
 export function memoryHierarchy({ l1Hit, l2Hit, dramCycles, l1Cycles = 4, l2Cycles = 14 }) {
-  const l2Fraction = (1 - l1Hit) * l2Hit
-  const dramFraction = (1 - l1Hit) * (1 - l2Hit)
+  const dramFraction = round((1 - l1Hit) * (1 - l2Hit), 12)
+  const l2Fraction = 1 - l1Hit - dramFraction
   return {
-    dramFraction: round(dramFraction, 3),
+    l1Fraction: l1Hit,
+    l2Fraction,
+    dramFraction,
     averageCycles: round(l1Hit * l1Cycles + l2Fraction * l2Cycles + dramFraction * dramCycles),
     reuse: round(1 / dramFraction),
   }

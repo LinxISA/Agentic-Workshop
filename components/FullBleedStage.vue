@@ -139,7 +139,7 @@ h1 {
   gap: 10px;
   min-height: 18px;
   color: rgba(245,248,255,.56);
-  font-size: 11px;
+  font-size:12px;
   letter-spacing: .04em;
 }
 

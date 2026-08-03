@@ -21,9 +21,9 @@ test('J and K provide presentation-style next and previous navigation', () => {
   assert.equal(actionForKey(event('K')), 'prev')
 })
 
-test('question mark and Escape control the keyboard help overlay', () => {
+test('question mark controls help while Escape is delegated to Slidev shortcuts', () => {
   assert.equal(actionForKey(event('?')), 'toggle-help')
-  assert.equal(actionForKey(event('Escape')), 'close-help')
+  assert.equal(actionForKey(event('Escape')), null)
 })
 
 test('shortcuts do not interfere with typing, modifiers, or held keys', () => {
@@ -43,5 +43,14 @@ test('each Slidev entry root mounts the shared keyboard navigation layer', async
   for (const session of ['session-1', 'session-2']) {
     const source = await readFile(new URL(`../decks/${session}/global-top.vue`, import.meta.url), 'utf8')
     assert.match(source, /KeyboardNavigation/)
+  }
+})
+
+test('each deck replaces Slidev hide-overview Escape with help-aware overview toggling', async () => {
+  for (const session of ['session-1', 'session-2']) {
+    const source = await readFile(new URL(`../decks/${session}/setup/shortcuts.ts`, import.meta.url), 'utf8')
+    assert.match(source, /shortcut\.name !== 'hide_overview'/)
+    assert.match(source, /nav\.toggleOverview\(\)/)
+    assert.match(source, /summerschool:close-keyboard-help/)
   }
 })

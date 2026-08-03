@@ -37,7 +37,7 @@ const isActive = (id) => id === props.level || props.activePath.includes(id)
 .architecture-zoom { width: 100%; height: 100%; overflow: visible; }
 .zoom-axis { fill: none; stroke: rgba(245,248,255,.22); stroke-width: 2; stroke-dasharray: 4 8; }
 .zoom-level rect { fill: color-mix(in srgb, var(--level-color) 13%, transparent); stroke: color-mix(in srgb, var(--level-color) 48%, transparent); stroke-width: 1.5; }
-.zoom-level text { fill: rgba(245,248,255,.58); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.zoom-level text { fill: rgba(245,248,255,.58); font-size:12px; font-weight: 700; letter-spacing: .08em; }
 .zoom-level.active rect { fill: color-mix(in srgb, var(--level-color) 22%, transparent); stroke: var(--level-color); stroke-width: 2.5; filter: url(#zoom-glow); }
 .zoom-level.active text { fill: var(--level-color); }
 </style>

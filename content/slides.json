@@ -6,13 +6,12 @@
     "claim": "Architecture First · Agentic Circuit as a Research Instrument",
     "background": "/generated/slides/s01-architecture-first.png",
     "overlay": "AscendCover",
-    "interaction": "开场提问：看到“432 TFLOPS”时，你最先追问哪个结构参数？",
+    "interaction": "看到“432 TFLOPS”时，先追问哪个结构参数？",
     "minutes": 1,
     "sources": [
-      "source-deck",
-      "agenda"
+      "source-deck"
     ],
-    "claimBoundary": "背景为昇腾风格的概念视觉，不表示任何具体产品内部结构。"
+    "claimBoundary": "背景为昇腾风格概念视觉，不表示具体产品内部结构。"
   },
   {
     "id": "S02",
@@ -22,11 +21,11 @@
     "background": "/generated/slides/s02-self-introduction.png",
     "overlay": "KeynoteSourceStage",
     "interaction": "演讲人口头补充个人经历。",
-    "minutes": 3,
+    "minutes": 2,
     "sources": [
       "publish-keynote-page-2"
     ],
-    "claimBoundary": "可见文字与图片均直接来自演讲人提供的 Keynote。"
+    "claimBoundary": "可见文字与图片直接来自演讲人提供的 Keynote。"
   },
   {
     "id": "S03",
@@ -35,12 +34,12 @@
     "claim": "什么是计算体系结构",
     "background": "/generated/slides/s03-course-outline.png",
     "overlay": "KeynoteSourceStage",
-    "interaction": "让学生观察右侧六个体系结构维度如何连接到课程的三部分内容。",
+    "interaction": "指出右图哪些关系属于计算、内存、互连与编程。",
     "minutes": 2,
     "sources": [
       "publish-keynote-page-3"
     ],
-    "claimBoundary": "可见文字与图形均直接来自演讲人提供的 Keynote。"
+    "claimBoundary": "可见文字与图形直接来自演讲人提供的 Keynote。"
   },
   {
     "id": "S04",
@@ -49,585 +48,773 @@
     "claim": "第一章",
     "background": "/generated/slides/s04-chapter-processor.png",
     "overlay": "KeynoteSourceStage",
-    "interaction": "章节转场，无附加可见文字。",
-    "minutes": 2,
+    "interaction": "章节转场，无附加操作。",
+    "minutes": 1,
     "sources": [
       "publish-keynote-page-4"
     ],
-    "claimBoundary": "可见文字与装饰均直接来自演讲人提供的 Keynote。"
+    "claimBoundary": "可见文字与装饰直接来自演讲人提供的 Keynote。"
   },
   {
     "id": "S05",
     "session": 1,
     "title": "冯诺依曼架构·农业时代·小农经济",
-    "claim": "Von Neumann bottleneck：性能瓶颈在于计算与存储之间信息传输率",
+    "claim": "Von Neumann bottleneck",
     "background": "/generated/slides/s05-von-neumann-farm.png",
     "overlay": "KeynoteSourceStage",
-    "interaction": "依次讲解控制与计算、乡间小路、内存和基本指令类型。",
-    "minutes": 4,
+    "interaction": "沿村庄、道路、农田与指令卷轴讲解一次工作往返。",
+    "minutes": 3,
     "sources": [
       "publish-keynote-page-5"
     ],
-    "claimBoundary": "比喻与可见文字完全沿用演讲人原稿。"
+    "claimBoundary": "比喻与可见文字沿用演讲人原稿。"
   },
   {
     "id": "S06",
     "session": 1,
     "title": "冯诺依曼架构·工业时代",
-    "claim": "克服传输瓶颈：利用计算上的时间局部性与存储的空间局部性",
+    "claim": "时间局部性与空间局部性",
     "background": "/generated/slides/s06-von-neumann-industry.png",
     "overlay": "KeynoteSourceStage",
-    "interaction": "让学生沿运输路径说明哪一级保存指令、数据和复用机会。",
+    "interaction": "沿运输路径说明每一级保存什么复用机会。",
     "minutes": 3,
     "sources": [
       "publish-keynote-page-6"
     ],
-    "claimBoundary": "比喻与可见文字完全沿用演讲人原稿。"
+    "claimBoundary": "比喻与可见文字沿用演讲人原稿。"
   },
   {
     "id": "S07",
     "session": 1,
     "title": "冯诺依曼架构·工业时代·社会主义",
-    "claim": "冯诺依曼架构·工业时代·社会主义",
+    "claim": "共享层级与并行 Lane",
     "background": "/generated/slides/s07-von-neumann-socialism.png",
     "overlay": "KeynoteSourceStage",
-    "interaction": "沿计算 Lane 到内存总仓逐级讲解并行度与共享层级。",
+    "interaction": "从计算 Lane 到内存总仓逐级讲解共享与争用。",
     "minutes": 2,
     "sources": [
       "publish-keynote-page-7"
     ],
-    "claimBoundary": "可见文字与图形完全沿用演讲人原稿。"
+    "claimBoundary": "可见文字与图形沿用演讲人原稿。"
   },
   {
     "id": "S08",
     "session": 1,
     "title": "仓库管理：Roofline Model",
-    "claim": "运力已经到达瓶颈，再加算力没有用处",
+    "claim": "运力到达瓶颈，再加算力没有用处",
     "background": "/generated/slides/s08-warehouse-roofline.png",
     "overlay": "KeynoteSourceStage",
-    "interaction": "结合右侧运输图解释“运力已经到达瓶颈”和“再加算力没有用处”。",
-    "minutes": 2,
+    "interaction": "调节 Peak、BW、AI 与 Hit，观察瓶颈跨越 ridge point。",
+    "minutes": 4,
     "sources": [
-      "publish-keynote-page-8"
+      "publish-keynote-page-8",
+      "roofline-paper"
     ],
-    "claimBoundary": "可见文字、问题和示意图完全沿用演讲人原稿。"
+    "claimBoundary": "原稿可见内容保持不变；交互数值是确定性教学模型。"
   },
   {
     "id": "S09",
     "session": 1,
     "title": "冯诺依曼架构·工业时代·达芬奇文艺复兴",
-    "claim": "256B/cycle",
+    "claim": "Tile / CUBE 与本地仓库",
     "background": "/generated/slides/s09-davinci-architecture.png",
     "overlay": "KeynoteSourceStage",
-    "interaction": "先讲 Left Tile、Right Tile、ACC Tile 与 CUBE，再讲 L0A/L0B/L0C、256B/cycle、二级与三级仓库。",
+    "interaction": "先追踪 Left、Right、ACC Tile，再追踪 256B/cycle 路径。",
     "minutes": 3,
     "sources": [
       "publish-keynote-page-9"
     ],
-    "claimBoundary": "可见文字、容量和带宽标注完全沿用演讲人原稿。"
+    "claimBoundary": "可见文字、容量和带宽标注沿用演讲人原稿。"
   },
   {
     "id": "S10",
     "session": 1,
-    "title": "并发度把延迟变成吞吐",
-    "claim": "足够多的独立请求可以隐藏延迟，但队列、端口和返回带宽会先饱和。",
-    "background": "/generated/slides/s10-concurrency.png",
-    "overlay": "Little’s Law 与队列占用",
-    "interaction": "逐步增加 outstanding requests，预测吞吐何时线性增长、何时平台化。",
+    "title": "冯诺依曼架构·工业时代·CUBE核设计",
+    "claim": "CUBE 核的数据供给与计算闭环",
+    "background": "/generated/slides/s10-keynote-page-10.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "从左侧输入依次追踪到 CUBE、二级仓库、三级仓库与 HBM。",
     "minutes": 3,
     "sources": [
-      "course-model",
-      "source-deck"
+      "publish-keynote-page-10"
     ],
-    "claimBoundary": "数值仅用于教学推导；真实上限还受地址相关、bank、协议与调度影响。"
+    "claimBoundary": "页面是原稿 CUBE 核教学图，不补充私有实现细节。"
   },
   {
     "id": "S11",
     "session": 1,
-    "title": "一座处理器城市",
-    "claim": "计算单元是工厂，存储是仓库，NoC 是道路，调度器决定货物流向。",
-    "background": "/generated/slides/s11-processor-city.png",
-    "overlay": "ArchitectureZoom",
-    "interaction": "让学生在图上指出一次 cache miss 穿过的“道路”和占用的“停车位”。",
-    "minutes": 2,
+    "title": "冯诺依曼架构·工业时代·达芬奇架构设计",
+    "claim": "计算、搬运与共享仓库协同",
+    "background": "/generated/slides/s11-keynote-page-11.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "对照上下两条路径，指出计算与数据搬运的汇合点。",
+    "minutes": 3,
     "sources": [
-      "source-deck",
-      "course-synthesis"
+      "publish-keynote-page-11"
     ],
-    "claimBoundary": "城市隐喻帮助理解连接关系，不对应具体物理布局。"
+    "claimBoundary": "可见模块与连线按原稿保留，不推断未公开微架构时序。"
   },
   {
     "id": "S12",
     "session": 1,
-    "title": "封装本身也是存储体系结构",
-    "claim": "HBM、interposer、chiplet 与引脚共同决定可见带宽、延迟和能耗。",
-    "background": "/generated/slides/s12-package-memory.png",
-    "overlay": "package/HBM/DDR paths",
-    "interaction": "假设总带宽不变，讨论更多窄通道与更少宽通道对并发和冲突的影响。",
-    "minutes": 3,
+    "title": "冯诺依曼架构·工业时代·城市化",
+    "claim": "复制、集中调度与统一规格",
+    "background": "/generated/slides/s12-keynote-page-12.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "找出图中复制、集中调度、统一规格与交通枢纽的对应结构。",
+    "minutes": 2,
     "sources": [
-      "source-deck",
-      "course-synthesis"
+      "publish-keynote-page-12"
     ],
-    "claimBoundary": "图片为通用 2.5D 架构概念，不影射具体厂商封装。"
+    "claimBoundary": "城市化是原稿教学隐喻，不对应具体芯片物理布局。"
   },
   {
     "id": "S13",
     "session": 1,
-    "title": "NoC：带宽不是均匀水池",
-    "claim": "局部热点、路由重叠和回压，会让总带宽充足的网络仍然拥塞。",
-    "background": "/generated/slides/s13-noc-congestion.png",
-    "overlay": "NoCTraffic",
-    "interaction": "切换 Spread / Hotspot 并调节热点比例，观察最热链路先于总带宽饱和。",
+    "title": "冯诺依曼架构·工业时代·昇腾950处理器",
+    "claim": "教学抽象，不是产品框图",
+    "background": "/generated/slides/s13-keynote-page-13.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "沿 NPU/CPU 核、共享缓存、NoC 与 I/O 找资源边界。",
     "minutes": 3,
     "sources": [
-      "course-model",
-      "source-deck"
+      "publish-keynote-page-13"
     ],
-    "claimBoundary": "NoCTraffic 是确定性 mesh 教学模型，不等同于 LinxCore 实际拓扑或完整路由器。"
+    "claimBoundary": "教学抽象，非产品框图；不得据此推断真实产品内部结构。"
   },
   {
     "id": "S14",
     "session": 1,
-    "title": "计算阵列周围的本地复用",
-    "claim": "高吞吐来自操作数在阵列附近循环，而不是每次乘加都访问远端。",
-    "background": "/generated/slides/s14-tile-cube.png",
-    "overlay": "TileDataflow resources",
-    "interaction": "选择 Left、Right 或 ACC，要求学生描述其生命周期、读取次数和写回时机。",
+    "title": "冯诺依曼架构·工业时代·SoC规划",
+    "claim": "从资源分区追到共享路径",
+    "background": "/generated/slides/s14-keynote-page-14.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "切换 NPU、CPU、NoC/共享缓存、DDR/I/O，追踪相邻约束。",
     "minutes": 3,
     "sources": [
-      "pto-spec",
-      "course-synthesis"
+      "publish-keynote-page-14"
     ],
-    "claimBoundary": "Left、Right、ACC 是教学映射，不宣称 PTO 规定物理缓冲结构。"
+    "claimBoundary": "叠加层只用于教学导航，不增加产品结构主张。"
   },
   {
     "id": "S15",
     "session": 1,
-    "title": "Tile 是软硬件共同选择",
-    "claim": "Tile 太小浪费复用，太大挤爆容量和端口；最优点来自共同约束。",
-    "background": "/generated/slides/s15-tload-tstore.png",
-    "overlay": "Tile shape、layout、bank mapping",
-    "interaction": "给定 128 KB scratchpad，让学生判断增大 M、N、K 三个 tile 维度分别改变什么。",
-    "minutes": 3,
+    "title": "冯诺依曼架构·信息时代·城市化",
+    "claim": "电梯连接不同规模的存储空间",
+    "background": "/generated/slides/s15-keynote-page-15.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "让学生指出同层访问与跨层访问分别需要哪些运输资源。",
+    "minutes": 2,
     "sources": [
-      "pto-spec",
-      "course-model"
+      "publish-keynote-page-15"
     ],
-    "claimBoundary": "Tile 参数和容量为课程示例；PTO 定义语义而非唯一微架构映射。"
+    "claimBoundary": "信息时代城市化仍是教学隐喻，不声明实际拓扑。"
   },
   {
     "id": "S16",
     "session": 1,
-    "title": "双缓冲：用容量换重叠",
-    "claim": "一块 buffer 服务计算，另一块 buffer 同时搬运下一 tile。",
-    "background": "/generated/slides/s16-double-buffer.png",
-    "overlay": "DoubleBufferTimeline",
-    "interaction": "让学生推导稳定态吞吐是 max(Tload,Tcompute)，并找出启动与收尾气泡。",
-    "minutes": 3,
+    "title": "冯诺依曼架构·信息时代·Transformer",
+    "claim": "Q、K、V 与 Tile 数据流",
+    "background": "/generated/slides/s16-keynote-page-16.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "沿 Q、K、V 输入追踪矩阵计算、向量处理与中间结果驻留。",
+    "minutes": 4,
     "sources": [
-      "course-model",
-      "source-deck"
+      "publish-keynote-page-16"
     ],
-    "claimBoundary": "忽略 DMA setup、bank 冲突和尾块不规则性，作为一阶模型。"
+    "claimBoundary": "数据流按原稿教学表达，不宣称唯一实现或固定时序。"
   },
   {
     "id": "S17",
     "session": 1,
-    "title": "Bank conflict 与地址 swizzle",
-    "claim": "总容量相同，地址映射不同，瞬时带宽可以相差数倍。",
-    "background": "/generated/slides/s17-bank-swizzle.png",
-    "overlay": "BankConflictExplorer",
-    "interaction": "点击 Naive stride / Swizzled，对比每个 bank 的请求数和理论服务周期。",
-    "minutes": 3,
+    "title": "冯诺依曼架构·信息时代·国际化",
+    "claim": "芯片间通信也是体系结构资源",
+    "background": "/generated/slides/s17-keynote-page-17.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "比较空运与海运路径对应的延迟、带宽和批量化取舍。",
+    "minutes": 2,
     "sources": [
-      "course-model",
-      "source-deck"
+      "publish-keynote-page-17"
     ],
-    "claimBoundary": "映射器只演示最简单顺序分布，未覆盖真实地址 XOR、端口与仲裁策略。"
+    "claimBoundary": "国际化是原稿通信隐喻，不对应具体互连协议。"
   },
   {
     "id": "S18",
     "session": 1,
-    "title": "三层调度看同一件事",
-    "claim": "Task、Tile、Micro-op 分别管理全局依赖、本地复用和周期资源。",
-    "background": "/generated/slides/s18-scheduling-levels.png",
-    "overlay": "three-level scheduler zoom",
-    "interaction": "给出一次矩阵乘停顿，让学生判断原因属于 task、tile 还是 micro-op 层。",
-    "minutes": 3,
+    "title": "体系结构的五个坐标",
+    "claim": "计算、存储、互连、并发与控制共同解释性能。",
+    "background": "/generated/slides/s18-architecture-city-five-coordinates-v2.png",
+    "overlay": "ArchitectureCoordinate",
+    "interaction": "依次选择计算、存储、互连、并发、控制，为同一性能现象提出证据问题。",
+    "minutes": 4,
     "sources": [
       "course-synthesis",
-      "pto-spec",
-      "linxcore"
+      "source-deck"
     ],
-    "claimBoundary": "三层是课程分析框架，不是 PTO 或 LinxCore 的规范术语集合。"
+    "claimBoundary": "五坐标是课程综合框架，不是特定 ISA 或产品规范。"
   },
   {
     "id": "S19",
     "session": 1,
-    "title": "从工作负载到利用率的因果链",
-    "claim": "不要直接从代码跳到性能数字；先追踪每一级结构状态。",
-    "background": "/generated/slides/s19-performance-causality.png",
-    "overlay": "clickable causal pipeline",
-    "interaction": "从“利用率只有 22%”反向追问，每一级需要什么证据才能排除。",
-    "minutes": 3,
+    "title": "第二章·空间和时间",
+    "claim": "从资源布局进入周期代价",
+    "background": "/generated/slides/s19-keynote-page-18.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "章节转场，无附加操作。",
+    "minutes": 2,
     "sources": [
-      "course-synthesis",
-      "course-model"
+      "publish-keynote-page-18"
     ],
-    "claimBoundary": "因果链是分析顺序；真实系统存在反馈与并行路径，不是严格单向流水。"
+    "claimBoundary": "可见文字与装饰直接来自演讲人提供的 Keynote。"
   },
   {
     "id": "S20",
     "session": 1,
-    "title": "Agentic Circuit：让架构假设可执行",
-    "claim": "Agent 负责提出和修改模型；独立实验负责裁判。",
-    "background": "/generated/slides/s20-agentic-circuit-map.png",
-    "overlay": "ArchitectureZoom",
-    "interaction": "选中一个物理队列，口述其 NDF 节点、pyCircuit 状态和需要记录的证据。",
-    "minutes": 3,
+    "title": "冯诺依曼架构·什么是芯片的一天？",
+    "claim": "时间 × 频率 = 周期数",
+    "background": "/generated/slides/s20-keynote-page-19.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "切换 ps/ns/day 与 MHz/GHz，比较同一时间跨度包含多少周期。",
+    "minutes": 4,
     "sources": [
-      "ndf-course",
-      "pycircuit",
-      "course-synthesis"
+      "publish-keynote-page-19",
+      "course-model"
     ],
-    "claimBoundary": "NDF 图是课程设计投影；除明确引用外不冒充 PTO 规范或 LinxCore RTL。"
+    "claimBoundary": "换算器只做单位与周期数换算，不代表具体存储接口协议时序。"
   },
   {
     "id": "S21",
     "session": 1,
-    "title": "第一课挑战：你会改哪一层",
-    "claim": "给定同一工作负载，选择一个改动，并预测它会改变哪条证据链。",
-    "background": "/generated/slides/s21-design-challenge.png",
-    "overlay": "ExperimentPanel",
-    "interaction": "小组选择一个变体，写下预测：Roofline 工作点、片外流量、队列压力各如何变化。",
+    "title": "冯诺依曼架构·计算获取数据天数",
+    "claim": "层级越远，等待跨度越大",
+    "background": "/generated/slides/s21-keynote-page-20.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "调节 L1/L2 hit rate，观察平均周期与片外访问比例。",
     "minutes": 4,
     "sources": [
-      "course-model",
-      "course-synthesis"
+      "publish-keynote-page-20",
+      "course-model"
     ],
-    "claimBoundary": "面板结果是定性教学模型，第二课再用周期模型检查哪些预测站得住。"
+    "claimBoundary": "天数是原稿尺度隐喻；交互延迟参数是教学值。"
   },
   {
     "id": "S22",
-    "session": 2,
-    "title": "从屋顶钻进核心",
-    "claim": "第一课给出上界；第二课解释每个周期为什么达不到上界。",
-    "background": "/generated/slides/s22-core-dive.png",
-    "overlay": "ArchitectureZoom",
-    "interaction": "复盘第一课投票，问“带宽不足”在核心内部会留下哪些可观察状态。",
-    "minutes": 1,
+    "session": 1,
+    "title": "冯诺依曼架构·计算获取数据天数·远程访问",
+    "claim": "RDMA 与 RPC 扩大时间尺度",
+    "background": "/generated/slides/s22-keynote-page-21.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "找出从 ns 到 μs 的数量级跳变来自哪些边界。",
+    "minutes": 2,
     "sources": [
-      "course-synthesis",
-      "linxcore"
+      "publish-keynote-page-21"
     ],
-    "claimBoundary": "爆炸图表达通用乱序核心层次，不声称是 LinxCore 物理版图。"
+    "claimBoundary": "原稿数字用于数量级教学，不能替代具体系统测量。"
   },
   {
     "id": "S23",
-    "session": 2,
-    "title": "LinxCore：真实模块，真实问题",
-    "claim": "以开源 LinxCore 为锚点，把前端、调度、执行、访存和提交连成系统。",
-    "background": "/generated/slides/s23-linxcore-case.png",
-    "overlay": "LinxCoreModuleExplorer",
-    "interaction": "点击模块，预测它拥有的状态、输入输出队列和最可能的背压来源。",
-    "minutes": 3,
+    "session": 1,
+    "title": "PTO指令集：Parallel Tile Operation",
+    "claim": "从 Scalar Operation 到 Tile Operation",
+    "background": "/generated/slides/s23-keynote-page-22.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "比较 32-bit scalar 与 8KB–16KB Tile 对搬运和调度粒度的影响。",
+    "minutes": 2,
     "sources": [
-      "linxcore",
-      "course-synthesis"
+      "publish-keynote-page-22"
     ],
-    "claimBoundary": "组件只使用已核实的模块名；描述中的通用乱序概念与具体实现细节分开标注。"
+    "claimBoundary": "可见术语与容量范围按原稿保留；规范语义以后续 PTO-ASL 为准。"
   },
   {
     "id": "S24",
-    "session": 2,
-    "title": "PTO 定义语义，不规定微架构",
-    "claim": "同一虚拟 ISA effect 可以由不同流水线、缓存和调度策略实现。",
-    "background": "/generated/slides/s24-pto-contract.png",
-    "overlay": "semantic/implementation boundary",
-    "interaction": "给出一个 matrix/tile effect，让学生列出“规范必须保证”和“硬件可以选择”的各两项。",
-    "minutes": 3,
+    "session": 1,
+    "title": "PTO指令集：我们在设计不同形状的集装箱",
+    "claim": "形状、布局与调度共同定义 Tile",
+    "background": "/generated/slides/s24-keynote-page-23.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "对同一矩阵讨论 8×8、长条和子区域容器对搬运次数的影响。",
+    "minutes": 2,
     "sources": [
-      "pto-spec",
-      "normative-language"
+      "publish-keynote-page-23"
     ],
-    "claimBoundary": "不使用 ARM ASL；PTO 引用只覆盖仓内核实的公开定义，课程模型不冒充规范。"
+    "claimBoundary": "集装箱图是语义与调度隐喻，不规定物理 SRAM 形状。"
   },
   {
     "id": "S25",
-    "session": 2,
-    "title": "同一个算子穿过五层",
-    "claim": "算法、Tile 程序、ISA effect、微操作和硬件事件，是五种不同观察层。",
-    "background": "/generated/slides/s25-cross-layer.png",
-    "overlay": "five-layer event alignment",
-    "interaction": "选择 TLOAD 或 MATMUL，从算法意图一直口述到 queue fire 与 cache request。",
-    "minutes": 2,
+    "session": 1,
+    "title": "PTO指令集：抽象执行机器",
+    "claim": "语义路由到不同执行资源",
+    "background": "/generated/slides/s25-keynote-page-24.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "切换 TLOAD、TMOV、TEXTRACT、TPUSH/TPOP、TPUT/TGET，观察路径和引擎。",
+    "minutes": 4,
     "sources": [
+      "publish-keynote-page-24",
       "pto-spec",
-      "pycircuit",
-      "course-synthesis"
+      "davincioo-public-docs"
     ],
-    "claimBoundary": "微操作拆分和硬件信号属于课程实现；只有 effect 层引用 PTO 规范。"
+    "claimBoundary": "TPUT/TGET 是 DaVinciOO communication extensions — not normative PTO-ASL；不展示私有时序细节。"
   },
   {
     "id": "S26",
-    "session": 2,
-    "title": "流水线是一组相互背压的队列",
-    "claim": "现代核心不是单向传送带，而是带状态、反馈和资源竞争的队列网络。",
-    "background": "/generated/slides/s26-core-pipeline.png",
-    "overlay": "LinxCoreModuleExplorer",
-    "interaction": "点击一个模块，要求学生指出 valid、ready、payload 分别由哪一侧持有。",
+    "session": 1,
+    "title": "PTO指令集：抽象执行机器与程序",
+    "claim": "程序语义与机器资源相互映射",
+    "background": "/generated/slides/s26-keynote-page-25.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "从一条 load/matmul/extract/store 链指出每步读写的架构状态。",
     "minutes": 2,
     "sources": [
-      "linxcore",
-      "course-synthesis"
+      "publish-keynote-page-25"
     ],
-    "claimBoundary": "图只标注已核实模块或通用概念；不推断未检查的内部策略。"
+    "claimBoundary": "代码与抽象机器按原稿展示；具体规范效果以 PTO-ASL 为准。"
   },
   {
     "id": "S27",
-    "session": 2,
-    "title": "Fetch/Decode：带宽从前端开始",
-    "claim": "前端供给不足会让后端算力失去意义；错误路径还会浪费真实带宽。",
-    "background": "/generated/slides/s27-frontend.png",
-    "overlay": "PipelineStepper",
-    "interaction": "逐步调整宽度和分支准确率的口算场景，判断后端每周期可见的有效操作数。",
+    "session": 1,
+    "title": "PTO指令集：TLOAD TSTORE",
+    "claim": "Tensor → Tile → Layout",
+    "background": "/generated/slides/s27-keynote-page-26.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "逐步指出 Tensor 选择、Tile 分块与 Layout 排列分别解决什么问题。",
     "minutes": 2,
     "sources": [
-      "linxcore",
-      "course-model"
+      "publish-keynote-page-26"
     ],
-    "claimBoundary": "性能曲线来自课程前端模型；具体 LinxCore 宽度和预测器策略只以代码证据为准。"
+    "claimBoundary": "工厂图是原稿教学比喻；TLOAD/TSTORE 规范语义以 PTO-ASL 为准。"
   },
   {
     "id": "S28",
-    "session": 2,
-    "title": "Rename 与 ROB：乱序执行，顺序退休",
-    "claim": "重命名释放假依赖，ROB 保存程序顺序、异常边界和恢复状态。",
-    "background": "/generated/slides/s28-rename-rob.png",
-    "overlay": "PipelineStepper",
-    "interaction": "点击 Rename→Execute→Complete→Commit，询问每一步可以撤销哪些状态。",
-    "minutes": 2,
+    "session": 1,
+    "title": "数据搬运时间实验",
+    "claim": "总时间 = 固有搬运 + 排队 + 同步。",
+    "background": "/generated/slides/s28-data-movement-time-experiment-v2.png",
+    "overlay": "TransferTimeLab",
+    "interaction": "切换 TLOAD、TMOV、TEXTRACT、TPUSH/TPOP、TPUT/TGET 并调节数据量、Tile 容量、链路带宽与排队成本。",
+    "minutes": 4,
     "sources": [
-      "linxcore",
-      "course-synthesis"
+      "course-synthesis",
+      "pto-spec",
+      "davincioo-public-docs"
     ],
-    "claimBoundary": "具体 ROB entry 字段与恢复机制以 LinxCore 代码为准，图中为教学抽象。"
+    "claimBoundary": "公式是教学一阶模型；TPUT/TGET 是 DaVinciOO 通信扩展，不属于规范 PTO-ASL；不暴露私有 DaVinci 时序实现。"
   },
   {
     "id": "S29",
     "session": 2,
-    "title": "Issue Queue：谁准备好了",
-    "claim": "发射性能由唤醒、选择、端口和队列压力共同决定。",
-    "background": "/generated/slides/s29-issue-queue.png",
-    "overlay": "QueuePressure",
-    "interaction": "增加 dispatch rate 或降低 issue rate，观察 occupancy、headroom 和 stalled 状态。",
-    "minutes": 3,
+    "title": "Agentic Model",
+    "claim": "Agentic Model",
+    "background": "/generated/slides/s29-keynote-page-27.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "章节转场，提示后续用一个 q_proj 贯穿模型与证据链。",
+    "minutes": 1,
     "sources": [
-      "linxcore",
-      "pycircuit",
-      "course-model"
+      "publish-keynote-page-27"
     ],
-    "claimBoundary": "QueuePressure 只演示容量动力学，选择优先级与端口兼容性需查看具体实现。"
+    "claimBoundary": "可见文字与图形直接来自演讲人提供的 Keynote。"
   },
   {
     "id": "S30",
     "session": 2,
-    "title": "Execute 与 bypass：结果何时可消费",
-    "claim": "执行延迟、吞吐和旁路覆盖，共同决定依赖链速度。",
-    "background": "/generated/slides/s30-execute-bypass.png",
+    "title": "q_proj：从 Transformer 到一次 BF16 投影",
+    "claim": "输入 activation × BF16 weight → GEMM → projected output；一次投影就是可追踪的垂直切片。",
+    "background": "/generated/slides/s30-qproj-transformer-scaling-v2.png",
     "overlay": "PipelineStepper",
-    "interaction": "比较独立乘法流与乘法依赖链，解释为何同一单元有不同吞吐表现。",
+    "interaction": "让学生指出 shape、dtype、layout 和数据搬运中哪些会改变执行代价。",
     "minutes": 3,
     "sources": [
-      "linxcore",
+      "qproj-davincioo-lab",
       "course-synthesis"
     ],
-    "claimBoundary": "流水级数与 bypass 覆盖为通用模型，具体路径必须由 LinxCore 源码或波形确认。"
+    "claimBoundary": "这是 q_proj 教学切片，不声称覆盖完整模型推理、量化或并行策略。"
   },
   {
     "id": "S31",
     "session": 2,
-    "title": "LSU：地址、顺序、缓存与 miss",
-    "claim": "访存单元同时处理地址生成、内存顺序、转发、缓存和未完成请求。",
-    "background": "/generated/slides/s31-load-store.png",
+    "title": "从 Python 到周期模型",
+    "claim": "每一层都保留可审计的中间产物，而不是把程序直接跳成一个性能数字。",
+    "background": "/generated/slides/s31-pypto-to-gfsim-chain-v2.png",
     "overlay": "AGU/LQ/SQ/cache/miss path",
-    "interaction": "追踪一次 load：地址未知、命中、store forwarding、cache miss 四种路径分别占用什么状态。",
+    "interaction": "点名每个中间产物可以回答的问题，以及失败时应回到哪一层定位。",
     "minutes": 3,
     "sources": [
-      "linxcore",
-      "course-synthesis"
+      "qproj-davincioo-lab",
+      "davincioo-public-docs"
     ],
-    "claimBoundary": "模块拆分采用通用 LSU 术语；LinXCore 的确切结构只陈述已核实部分。"
+    "claimBoundary": "流水线描述止于 host trace 与 gfsim replay，不推断未公开的部署格式。"
   },
   {
     "id": "S32",
     "session": 2,
-    "title": "一次 cache miss 如何拖慢全核",
-    "claim": "Miss 先占住 LSU，再堵塞 issue、ROB、rename，最终让 fetch 停止。",
-    "background": "/generated/slides/s32-miss-propagation.png",
+    "title": "q_proj 展开成可调度事件",
+    "claim": "Trace 明示 input_tiles / output_tiles / scalar_inputs；dependency readiness 由 rename / scoreboard 推导。",
+    "background": "/generated/slides/s32-program-unfolds-into-events-v2.png",
     "overlay": "QueuePressure",
-    "interaction": "先令 service rate 小于 arrival rate，再指出每个上游模块在什么条件下停止接收。",
+    "interaction": "让学生根据 Tile 读写推导 load、extract、matmul-acc、store 的 readiness 顺序。",
     "minutes": 3,
     "sources": [
-      "course-model",
-      "linxcore",
-      "course-synthesis"
+      "qproj-davincioo-lab",
+      "pto-spec"
     ],
-    "claimBoundary": "传播顺序是教学级因果路径；真实乱序核心可用独立指令部分隐藏 miss。"
+    "claimBoundary": "opcode 组合来自已检查的 q_proj reference replay；不把一次展开推广成所有实现的唯一 lowering。"
   },
   {
     "id": "S33",
     "session": 2,
-    "title": "Backpressure 是一个闭环",
-    "claim": "下游满会向上游传播 stop；下游释放又向前传播 progress。",
-    "background": "/generated/slides/s33-backpressure.png",
-    "overlay": "TimingDiagram",
-    "interaction": "Step 波形，找出 valid=1、ready=0 时 payload 必须保持的周期，以及真正发生 transfer 的周期。",
+    "title": "一条 trace 记录的解剖",
+    "claim": "Tile metadata 可见；依赖由 rename / scoreboard 推导。",
+    "background": "/generated/slides/s33-jsonl-trace-microscope-v2.png",
+    "overlay": "TraceAnatomy",
+    "interaction": "点击记录或使用方向键切换，要求学生解释每个字段影响语义还是调度。",
     "minutes": 3,
     "sources": [
-      "pycircuit",
-      "course-synthesis"
+      "qproj-davincioo-lab",
+      "course-model"
     ],
-    "claimBoundary": "valid-ready 是课程模型采用的握手；具体 LinxCore 接口需以实现为准。"
+    "claimBoundary": "组件只显示 sanitized checked sample 的真实字段，不补造 deps；artifact 不可用时只显示明确标注的 teaching sample。"
   },
   {
     "id": "S34",
     "session": 2,
-    "title": "用 NDF 描述模块、队列和因果边",
-    "claim": "NDF 记录设计承诺：谁拥有状态、谁生产、谁消费、什么条件推进。",
-    "background": "/generated/slides/s34-ndf-graph.png",
-    "overlay": "NdfTraceability",
-    "interaction": "选择 Issue Queue，填写最小 NDF：inputs、outputs、state、fire condition、evidence link。",
+    "title": "SimQueue：容量、延迟与可见性",
+    "claim": "push 先进入 pending；延迟到期才 visible；容量耗尽会把 backpressure 传回生产者。",
+    "background": "/generated/slides/s34-simqueue-tollgate-v2.png",
+    "overlay": "SimQueueExplorer",
+    "interaction": "调整容量和延迟，每次按键推进一周期，观察何时拒绝新 arrival。",
     "minutes": 3,
     "sources": [
-      "ndf-course",
-      "linxcore",
-      "agentic-materials"
+      "davincioo-public-docs",
+      "course-model"
     ],
-    "claimBoundary": "NDF 是课程设计方法，不是 PTO 官方格式；所有 normative 语句必须带来源。"
+    "claimBoundary": "不展示私有实现字段、调度规则或 timing constants；组件是教学模型。"
   },
   {
     "id": "S35",
     "session": 2,
-    "title": "用 pyCircuit 把周期语义跑起来",
-    "claim": "模块、寄存器和队列在时钟边界更新；相同输入必须产生可重放轨迹。",
-    "background": "/generated/slides/s35-pycircuit-cycle.png",
-    "overlay": "TimingDiagram",
-    "interaction": "修改 ready 序列或逐步播放，检查 payload 在 stall 周期是否保持、计数器是否只在 fire 时更新。",
+    "title": "DaVinci gfsim 的高层拓扑",
+    "claim": "TraceSource 供给事件，乱序窗口追踪依赖，四类执行资源完成工作并通过 wakeup 释放消费者。",
+    "background": "/generated/slides/s35-davincioo-pipeline-topology-v2.png",
+    "overlay": "DaVinciTopology",
+    "interaction": "点击 opcode 或使用左右键，查看它进入哪类执行资源。",
     "minutes": 3,
     "sources": [
-      "pycircuit",
-      "agentic-materials"
+      "davincioo-public-docs",
+      "course-synthesis"
     ],
-    "claimBoundary": "示例聚焦当前 pyCircuit frontend 支持的队列与寄存器语义，不承诺完整 LinxCore 等价模型。"
+    "claimBoundary": "图不公开私有状态字段、选择策略或 timing constants，只表达教学层连接关系。"
   },
   {
     "id": "S36",
     "session": 2,
-    "title": "先固定 workload 和 baseline",
-    "claim": "没有固定输入、配置、指标和产物，任何性能比较都不可信。",
-    "background": "/generated/slides/s36-reproducible-baseline.png",
+    "title": "三类执行时间模型",
+    "claim": "公式是可替换假设；参数必须来自公开配置、实验或明确的课程设定。",
+    "background": "/generated/slides/s36-execution-engine-time-model-v2.png",
     "overlay": "BaselineExperiment",
-    "interaction": "打开本仓实验目录，指出 input、config、artifact、expected 与 validator 的位置。",
+    "interaction": "固定工作量，分别把带宽或 MACs/cycle 加倍，判断哪类时间会改变。",
     "minutes": 3,
     "sources": [
-      "experiment-artifacts",
-      "agentic-materials",
-      "course-synthesis"
+      "davincioo-public-docs",
+      "course-model"
     ],
-    "claimBoundary": "实验为教学规模模型，目标是方法可复现，不是宣称硅后性能。"
+    "claimBoundary": "页面不披露私有 timing constants；公式只定义参数关系，不声称完成校准。"
   },
   {
     "id": "S37",
     "session": 2,
-    "title": "实验一：扫描内存带宽",
-    "claim": "只改变带宽，观察性能先增长后在计算屋顶饱和。",
-    "background": "/generated/slides/s37-bandwidth-sweep.png",
+    "title": "Opcode 到执行资源的确定性路由",
+    "claim": "这是 DaVinci gfsim implementation routing；PTO family 只定义语义类别，不规定同一资源映射。",
+    "background": "/generated/slides/s37-opcode-resource-mapping-v2.png",
     "overlay": "InteractiveRoofline",
-    "interaction": "运行实验 09 或使用离线结果，预测每个 bandwidth 点的性能，并找出 ridge point。",
-    "minutes": 4,
+    "interaction": "给出一组混合 trace，让学生统计四类 engine 的 arrival pressure。",
+    "minutes": 3,
     "sources": [
-      "experiment-artifacts",
-      "roofline-paper",
-      "course-model"
+      "davincioo-public-docs",
+      "pto-spec"
     ],
-    "claimBoundary": "sweep 使用课程性能模型；结果用于验证趋势与上界，不代表 LinxCore RTL benchmark。"
+    "claimBoundary": "TMOV 被标为 PTO family；具体映射属于 DaVinci gfsim 实现而非 PTO 规范。"
   },
   {
     "id": "S38",
     "session": 2,
-    "title": "实验二：Cache、局部性与队列深度",
-    "claim": "更大 cache 减少流量，更深队列隐藏延迟；两者解决的不是同一个问题。",
-    "background": "/generated/slides/s38-cache-queue-sweep.png",
-    "overlay": "ArtifactComparison",
-    "interaction": "运行实验 10 或使用离线结果，解释为何 queue 变深不一定降低 DRAM bytes，cache 变大也不一定消除依赖链延迟。",
-    "minutes": 4,
+    "title": "一次只推进一个周期",
+    "claim": "每次按键只做一次状态转移：dispatch、ready、issue、execute、complete、retire 都能被逐步检查。",
+    "background": "/generated/slides/s38-single-cycle-step-v2.png",
+    "overlay": "CyclePlayback",
+    "interaction": "点击按钮、空格或右箭头每次推进一个周期；Home 回到初始状态。",
+    "minutes": 3,
     "sources": [
-      "experiment-artifacts",
       "course-model",
-      "linxcore"
+      "davincioo-public-docs"
     ],
-    "claimBoundary": "变体是教学参数化模型，未包含 cache 面积、频率和功耗回归。"
+    "claimBoundary": "播放器是确定性教学模型，不声称复制 gfsim 的全部内部事件顺序。"
   },
   {
     "id": "S39",
     "session": 2,
-    "title": "预测 Roofline，对照周期轨迹",
-    "claim": "宏观模型负责提出上界，微观轨迹负责解释偏差。",
-    "background": "/generated/slides/s39-predicted-measured.png",
+    "title": "Intrinsic latency 不等于 system time",
+    "claim": "系统时间还包含依赖等待、资源争用、ROB/IQ 容量、可重叠工作与最终 critical path。",
+    "background": "/generated/slides/s39-queueing-critical-path-v2.png",
     "overlay": "gap decomposition",
-    "interaction": "给出 Roofline 预测 100、周期模型测得 72，要求提出三项可区分的补充指标。",
+    "interaction": "比较一条独立 TLOAD 与一条 critical-path TLOAD，说明相同 intrinsic latency 为何有不同影响。",
     "minutes": 3,
     "sources": [
-      "roofline-paper",
-      "experiment-artifacts",
-      "course-synthesis"
+      "course-model",
+      "davincioo-public-docs"
     ],
-    "claimBoundary": "两类模型精度不同；不应强迫周期模型等于上界，而应解释差距。"
+    "claimBoundary": "因果项是公开教学分类，不给出私有实现的精确等待分解。"
   },
   {
     "id": "S40",
     "session": 2,
-    "title": "Agent 进入研究闭环，而不是替代裁判",
-    "claim": "提出变体、运行模型、收集证据、批判结果；每一步都有边界和失败条件。",
-    "background": "/generated/slides/s40-agent-research-loop.png",
-    "overlay": "PipelineStepper",
-    "interaction": "让学生给 Agent 一个最小 design delta，并写出 validator 必须拒绝的两种错误结论。",
+    "title": "参数搜索：找敏感方向，不制造等价",
+    "claim": "同时观察 ROB depth、Tile tags、TMA BW、Cube MACs 与 engine counts；结果只支持候选方向。",
+    "background": "/generated/slides/s40-parameter-search-space-v2.png",
+    "overlay": "ParameterSweep",
+    "interaction": "选择 baseline 与各 OFAT point，比较实际 simulated_cycles 和 bottleneck_signal。",
     "minutes": 3,
     "sources": [
-      "agentic-materials",
-      "normative-language"
+      "qproj-davincioo-lab",
+      "experiment-artifacts",
+      "course-model"
     ],
-    "claimBoundary": "Agent 不产生规范真相；它的主张必须由来源、实验和独立检查器支持。"
+    "claimBoundary": "组件只展示本地 qproj_sweep.json 的 checked points；artifact 不可用时明确显示 unavailable，不生成 q_proj 替代证据。"
   },
   {
     "id": "S41",
     "session": 2,
-    "title": "最优设计是一条 Pareto 前沿",
-    "claim": "性能、流量、面积、功耗和复杂度之间没有单一冠军。",
-    "background": "/generated/slides/s41-pareto.png",
-    "overlay": "ParetoFrontier",
-    "interaction": "选择两个 Pareto 点，分别为云端吞吐、边缘功耗和教学实现三个场景辩护。",
+    "title": "离线时间线：证据必须可浏览",
+    "claim": "按 opcode 与 engine 过滤 q_proj 事件，检查 issue、complete 与 retire 的相对位置。",
+    "background": "/generated/slides/s41-perfetto-kanata-timeline-v2.png",
+    "overlay": "EvidenceTimeline",
+    "interaction": "组合 opcode 与 engine filter，定位首个 Cube 工作和末尾 TSTORE。",
     "minutes": 3,
     "sources": [
-      "course-model",
-      "course-synthesis"
+      "qproj-davincioo-lab",
+      "experiment-artifacts"
     ],
-    "claimBoundary": "当前 cost 指标为教学代理量，不替代综合、时序和功耗工具。"
+    "claimBoundary": "时间线读取本地 CSV，展示 reference_replay；不声称是新抓取的硬件波形。"
   },
   {
     "id": "S42",
     "session": 2,
-    "title": "体系结构优先，Agent 为证据服务",
-    "claim": "从工作负载到周期事件，保持层次、因果、来源和可复现性。",
-    "background": "/generated/slides/s42-architecture-first-closing.png",
+    "title": "q_proj 实验：可复述，也有边界",
+    "claim": "checked reference replay: 562 records / 11028 cycles。候选点来自敏感性，不代表结构等价。",
+    "background": "/generated/slides/s42-candidate-design-point-v2.png",
     "overlay": "ArchitectureZoom",
-    "interaction": "回到 S02 的瓶颈投票，每位学生用一条因果链重新解释自己的答案。",
+    "interaction": "要求学生把结论拆成 observation、candidate design point、sensitivity conclusion 与 unresolved question。",
+    "minutes": 3,
+    "sources": [
+      "qproj-davincioo-lab",
+      "experiment-artifacts"
+    ],
+    "claimBoundary": "durable artifact 标为 reference_replay。一次 task-local gfsim re-simulation 曾重现 11028 cycles，但不是 checked live artifact，也不是 fresh PTO capture；不宣称等价。"
+  },
+  {
+    "id": "S43",
+    "session": 2,
+    "title": "NPU Core for PTO",
+    "claim": "NPU Core for PTO",
+    "background": "/generated/slides/s43-keynote-page-28.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "章节转场，把上一章的模型参数转成实现约束。",
+    "minutes": 1,
+    "sources": [
+      "publish-keynote-page-28"
+    ],
+    "claimBoundary": "可见文字与图形直接来自演讲人提供的 Keynote。"
+  },
+  {
+    "id": "S44",
+    "session": 2,
+    "title": "分层调度",
+    "claim": "分层调度",
+    "background": "/generated/slides/s44-keynote-page-29.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "沿原图说明不同层级为何需要不同粒度的调度决策。",
     "minutes": 2,
     "sources": [
+      "publish-keynote-page-29"
+    ],
+    "claimBoundary": "本页可见内容完全来自历史源稿，不追加当前实现结论。"
+  },
+  {
+    "id": "S45",
+    "session": 2,
+    "title": "PTO 多级调度层次",
+    "claim": "PTO 多级调度层次",
+    "background": "/generated/slides/s45-keynote-page-30.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "指出原图中层次之间传递的是意图、约束还是具体调度动作。",
+    "minutes": 2,
+    "sources": [
+      "publish-keynote-page-30"
+    ],
+    "claimBoundary": "可见层次与术语完全来自历史源稿。"
+  },
+  {
+    "id": "S46",
+    "session": 2,
+    "title": "PTO / MLIR 源码表达",
+    "claim": "PTO / MLIR 源码表达",
+    "background": "/generated/slides/s46-keynote-page-31.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "在原图上识别程序意图、dialect 表达与实现映射的边界。",
+    "minutes": 2,
+    "sources": [
+      "publish-keynote-page-31"
+    ],
+    "claimBoundary": "源码截图是历史源稿内容；本页不声称已用当前工具链重新编译。"
+  },
+  {
+    "id": "S47",
+    "session": 2,
+    "title": "历史源稿性能结果",
+    "claim": "历史源稿性能结果",
+    "background": "/generated/slides/s47-keynote-page-32.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "让学生区分历史 source result 与本课程 q_proj replay evidence。",
+    "minutes": 2,
+    "sources": [
+      "publish-keynote-page-32"
+    ],
+    "claimBoundary": "性能图明确标为历史源稿结果，不作为本次环境新测量。"
+  },
+  {
+    "id": "S48",
+    "session": 2,
+    "title": "Swizzle",
+    "claim": "Swizzle",
+    "background": "/generated/slides/s48-keynote-page-33.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "沿原图说明逻辑 Tile layout 与物理访问分布之间的关系。",
+    "minutes": 2,
+    "sources": [
+      "publish-keynote-page-33"
+    ],
+    "claimBoundary": "Swizzle 可见内容直接来自历史源稿，不延伸到未核实实现细节。"
+  },
+  {
+    "id": "S49",
+    "session": 2,
+    "title": "Swizzle 容量与性能",
+    "claim": "Swizzle 容量与性能",
+    "background": "/generated/slides/s49-keynote-page-34.png",
+    "overlay": "KeynoteSourceStage",
+    "interaction": "讨论容量变化、访问分布与历史性能曲线之间可能的因果链。",
+    "minutes": 2,
+    "sources": [
+      "publish-keynote-page-34"
+    ],
+    "claimBoundary": "所有数值明确属于历史源稿，不标为当前实验结果。"
+  },
+  {
+    "id": "S50",
+    "session": 2,
+    "title": "从模型结果到设计约束",
+    "claim": "每个敏感参数都要落到容量、端口、队列、带宽或延迟契约，并写出可验证的接受条件。",
+    "background": "/generated/slides/s50-model-parameters-design-constraints-v2.png",
+    "overlay": "deterministic HTML/CSS overlay",
+    "interaction": "选择一个 sweep 信号，写出资源约束、可测指标与失败判据。",
+    "minutes": 3,
+    "sources": [
+      "course-synthesis",
+      "qproj-davincioo-lab"
+    ],
+    "claimBoundary": "敏感性用于形成候选约束，不直接决定实现尺寸或 PPA 最优点。"
+  },
+  {
+    "id": "S51",
+    "session": 2,
+    "title": "PTO-ASL 是语义权威",
+    "claim": "实现可以改变队列与流水线，但不能悄悄改变 TLOAD、TMOV、TEXTRACT、TPUSH、TPOP 的软件可见 effect。",
+    "background": "/generated/slides/s51-pto-asl-semantics-v2.png",
+    "overlay": "deterministic HTML/CSS overlay",
+    "interaction": "给出一项性能优化，让学生判断它改变实现时序还是软件可见 effect。",
+    "minutes": 3,
+    "sources": [
+      "pto-spec",
+      "davincioo-public-docs",
+      "normative-language"
+    ],
+    "claimBoundary": "TPUT/TGET 明确标为 DaVinciOO communication extensions，不属于 normative PTO-ASL。"
+  },
+  {
+    "id": "S52",
+    "session": 2,
+    "title": "NDF：从意图到可执行验收",
+    "claim": "L0 intent → L1 contract → L2 mechanism → L3 executable acceptance；层间关系必须显式可追踪。",
+    "background": "/generated/slides/s52-ndf-l0-l3-v2.png",
+    "overlay": "deterministic HTML/CSS overlay",
+    "interaction": "把“q_proj 不因 Tile tag 不足停顿”分别写成 L0、L1、L2、L3。",
+    "minutes": 3,
+    "sources": [
+      "ndf-course",
+      "normative-language"
+    ],
+    "claimBoundary": "当前 L3 明确是 draft test contract，不是已经存在的 implementation。"
+  },
+  {
+    "id": "S53",
+    "session": 2,
+    "title": "q_proj vertical slice：稳定 ID 与接口",
+    "claim": "sequence_id 穿过 Trace、Tile Register、TMA、Extract、Matmul 与乱序窗口。",
+    "background": "/generated/slides/s53-qproj-vertical-slice-v2.png",
+    "overlay": "deterministic HTML/CSS overlay",
+    "interaction": "选一个 sequence_id，逐模块说出输入、输出、状态所有者与验收检查。",
+    "minutes": 3,
+    "sources": [
+      "ndf-course",
+      "qproj-davincioo-lab",
       "course-synthesis"
     ],
-    "claimBoundary": "总结图表示方法论关系，不声称任何单一模型覆盖全部真实处理器行为。"
+    "claimBoundary": "IDs 是课程设计契约；不冒充已完成的生产实现或最终命名。"
+  },
+  {
+    "id": "S54",
+    "session": 2,
+    "title": "Agent 协作落到 pyCircuit",
+    "claim": "spec、model、implementation、verification Agent 围绕同一 NDF 与 trace 工作；pyCircuit 是 pinned implementation target/source surface。",
+    "background": "/generated/slides/s54-agent-collaboration-pycircuit-v2.png",
+    "overlay": "deterministic HTML/CSS overlay",
+    "interaction": "让学生为一个接口变更分配提案、模型影响、实现和验证责任。",
+    "minutes": 3,
+    "sources": [
+      "pycircuit",
+      "davincioo-public-docs",
+      "agentic-materials"
+    ],
+    "claimBoundary": "pyCircuit 是 implementation target/source surface，不是 RTL 或 silicon；本页不声称已执行、已编译或已有 replay 结果。"
+  },
+  {
+    "id": "S55",
+    "session": 2,
+    "title": "闭环验证：先定义验收，再比较结果",
+    "claim": "当前是 proposed acceptance design：同一 trace 进入 checked gfsim evidence 与 pyCircuit replay target；只定义验收项，不展示 pyCircuit 结果。",
+    "background": "/generated/slides/s55-dual-model-closed-loop-validation-v2.png",
+    "overlay": "ClosedLoopVerification",
+    "interaction": "上下键选择 coverage、order、resource trends、errors、perf envelope acceptance criterion。",
+    "minutes": 4,
+    "sources": [
+      "qproj-davincioo-lab",
+      "pycircuit",
+      "course-model"
+    ],
+    "claimBoundary": "本页是 proposed acceptance design；不声称 replay implementation 已存在或 pyCircuit 已产出结果。绝对 cycles 只有校准后才可比较。"
+  },
+  {
+    "id": "S56",
+    "session": 2,
+    "title": "体系结构研究的 Agent 飞轮",
+    "claim": "Agent 加速可执行证据循环；选择问题、划定语义边界和判断架构取舍仍是研究核心。",
+    "background": "/generated/slides/s56-research-flywheel-v2.png",
+    "overlay": "deterministic HTML/CSS overlay",
+    "interaction": "每位学生选择飞轮中的一个边，写下其输入证据、输出 artifact 与停止条件。",
+    "minutes": 3,
+    "sources": [
+      "agentic-materials",
+      "course-synthesis",
+      "qproj-davincioo-lab"
+    ],
+    "claimBoundary": "Agent 是研究工具，不替代语义权威、实验边界或体系结构判断。"
   }
 ]

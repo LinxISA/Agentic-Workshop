@@ -1,0 +1,7 @@
+alloc_cycle,engine,engine_complete_cycle,evidence_mode,issue_cycle,opcode,retire_cycle,sequence_id
+0,SCALAR,1,reference_replay,0,TASSIGN,3,573
+2,TMA,18,reference_replay,2,TLOAD,21,575
+6,VEC,28,reference_replay,20,TEXTRACT,276,579
+14,CUBE,544,reference_replay,412,TMATMUL,546,587
+16,CUBE,677,reference_replay,545,TMATMUL_ACC,679,589
+10073,TMA,11025,reference_replay,10993,TSTORE,11027,1134

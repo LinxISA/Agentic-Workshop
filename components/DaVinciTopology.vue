@@ -1,0 +1,10 @@
+<script setup>
+import { computed, ref } from 'vue'
+import { routeOpcode, shouldHandleRootKey } from './session2Models.mjs'
+const opcodes=['TLOAD','TEXTRACT','TMOV','TMATMUL','TPUSH'],selected=ref(0)
+const engine=computed(()=>routeOpcode(opcodes[selected.value]))
+function move(delta){selected.value=(selected.value+delta+opcodes.length)%opcodes.length}
+function onKey(event){if(shouldHandleRootKey(event,['ArrowRight'])){event.preventDefault();move(1)}else if(shouldHandleRootKey(event,['ArrowLeft'])){event.preventDefault();move(-1)}}
+</script>
+<template><section class="topology arch-overlay" tabindex="0" aria-label="DaVinci gfsim topology" @keydown="onKey"><div class="chain"><b>TraceSource</b><i>→</i><b>ROB</b><i>→</i><b>Rename</b><i>→</i><b>Dispatch</b><i>→</i><b>ReadyTable</b><i>→</i><b>IQ</b></div><div class="engines"><span v-for="name in ['Scalar','Vector','Cube','TMA']" :key="name" :class="{active:name===engine}">{{name}}</span><i>↖ Wakeup</i></div><footer><button v-for="(opcode,index) in opcodes" :key="opcode" :aria-pressed="index===selected" @click="selected=index">{{opcode}}</button><b>{{opcodes[selected]}} → {{engine}}</b></footer></section></template>
+<style scoped>.topology{right:0;bottom:0;width:760px;padding:18px;border-radius:20px}.chain{display:flex;align-items:center;justify-content:center;gap:5px}.chain b{padding:8px;border:1px solid #17d9ff55;border-radius:7px;background:#06152bd9;font-size:12px}.chain i{color:#17d9ff;font-style:normal}.engines{display:flex;justify-content:center;gap:10px;margin:18px 0}.engines span{padding:14px 22px;border:1px solid #ffffff24;border-radius:10px;color:#9fb7ca}.engines span.active{border-color:#ffbe00;color:#ffbe00;box-shadow:0 0 20px #ffbe0033}.engines i{align-self:center;color:#b9ff33;font-size:12px;font-style:normal}.topology footer{display:flex;align-items:center;gap:7px}.topology button{padding:6px 10px;font-size:12px}.topology button[aria-pressed=true]{border-color:#ffbe00}.topology footer>b{margin-left:auto;color:#f5f8ff;font-size:12px}</style>

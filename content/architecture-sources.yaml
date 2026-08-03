@@ -1,44 +1,177 @@
 sources:
   source-deck:
     type: local-presentation
-    path: /Users/zhoubot/Documents/PTO ISA_扩展版.pptx
+    path_env: SUMMERSCHOOL_SOURCE_DECK
     use: visual language, logistics metaphor, Roofline, hierarchy, Tile, scheduling, optimization narrative
   publish-keynote-page-2:
     type: local-keynote-page
-    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=2
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 2
     use: exact self-introduction copy, portrait, and HiSilicon visual
   publish-keynote-page-3:
     type: local-keynote-page
-    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=3
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 3
     use: exact summer-school course outline and architecture-dimension diagram
   publish-keynote-page-4:
     type: local-keynote-page
-    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=4
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 4
     use: exact first-chapter divider
   publish-keynote-page-5:
     type: local-keynote-page
-    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=5
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 5
     use: exact agricultural-era Von Neumann metaphor
   publish-keynote-page-6:
     type: local-keynote-page
-    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=6
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 6
     use: exact industrial-era storage hierarchy metaphor
   publish-keynote-page-7:
     type: local-keynote-page
-    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=7
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 7
     use: exact multi-Lane and multi-level warehouse metaphor
   publish-keynote-page-8:
     type: local-keynote-page
-    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=8
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 8
     use: exact warehouse-management Roofline explanation
   publish-keynote-page-9:
     type: local-keynote-page
-    path: /Users/zhoubot/Documents/SummerSchool/publish/Agent时代体系结构研究-周若愚.key#page=9
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 9
     use: exact Da Vinci Tile, CUBE, local warehouse, and hierarchy diagram
+  publish-keynote-page-10:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 10
+    use: exact CUBE core design page
+  publish-keynote-page-11:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 11
+    use: exact Da Vinci architecture page
+  publish-keynote-page-12:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 12
+    use: exact urbanization and standardization page
+  publish-keynote-page-13:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 13
+    use: exact Ascend 950 teaching diagram and disclaimer
+  publish-keynote-page-14:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 14
+    use: exact Ascend SoC teaching floorplan page
+  publish-keynote-page-15:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 15
+    use: exact information-era urbanization page
+  publish-keynote-page-16:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 16
+    use: exact Transformer architecture mapping page
+  publish-keynote-page-17:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 17
+    use: exact globalization and inter-chip communication page
+  publish-keynote-page-18:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 18
+    use: exact chapter 2 divider
+  publish-keynote-page-19:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 19
+    use: exact SDR DDR QDR clock page
+  publish-keynote-page-20:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 20
+    use: exact memory hierarchy day-scale page
+  publish-keynote-page-21:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 21
+    use: exact remote memory and RPC day-scale page
+  publish-keynote-page-22:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 22
+    use: exact PTO scalar versus Tile page
+  publish-keynote-page-23:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 23
+    use: exact Tile container shapes page
+  publish-keynote-page-24:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 24
+    use: exact PTO abstract machine page
+  publish-keynote-page-25:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 25
+    use: exact PTO program and abstract machine page
+  publish-keynote-page-26:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 26
+    use: exact TLOAD TSTORE factory page
+  publish-keynote-page-27:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 27
+    use: exact Agentic Model chapter divider
+  publish-keynote-page-28:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 28
+    use: exact NPU Core for PTO chapter divider
+  publish-keynote-page-29:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 29
+    use: exact hierarchical scheduling page
+  publish-keynote-page-30:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 30
+    use: exact PTO multi-level scheduling page
+  publish-keynote-page-31:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 31
+    use: exact PTO and MLIR mapping page
+  publish-keynote-page-32:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 32
+    use: exact source performance charts
+  publish-keynote-page-33:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 33
+    use: exact Swizzle source and mapping page
+  publish-keynote-page-34:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 34
+    use: exact Swizzle performance and capacity page
   agenda:
     type: local-text
     path: materials/agenda-2026.txt
-    use: official talk title, presenter, two 60-minute slots
+    use: official talk title and presenter; course implementation uses two 75-minute teaching sessions
   roofline-paper:
     type: research-paper
     title: Roofline: An Insightful Visual Performance Model for Multicore Architectures
@@ -66,6 +199,14 @@ sources:
     type: reproducible-local-data
     path: experiments/artifacts
     use: trace, sweep, and Pareto evidence
+  qproj-davincioo-lab:
+    type: reproducible-local-data
+    path: experiments/11_qproj_davincioo
+    use: Qwen3-14B q_proj trace replay, live gfsim wrapper, provenance, and parameter sensitivity evidence
+  davincioo-public-docs:
+    type: environment-configured-source
+    root_env: DAVINCIOO_ROOT
+    use: high-level public DaVinciOO architecture, trace-flow, communication-extension, NDF, and pyCircuit documentation
   agentic-materials:
     type: local-materials
     paths:

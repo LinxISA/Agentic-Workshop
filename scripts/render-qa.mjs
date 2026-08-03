@@ -4,31 +4,35 @@ import { resolve } from 'node:path'
 
 const base = process.env.SUMMERSCHOOL_PREVIEW_URL || 'http://127.0.0.1:4173'
 const allDecks = [
-  { id: 'session-1', source: 'decks/session-1/slides.md', interactive: [13,16,17,21] },
-  { id: 'session-2', source: 'decks/session-2/slides.md', interactive: [2,5,6,7,8,9,11,12,13,14,15,16,17,19,20] },
+  { id: 'session-1', source: 'decks/session-1/slides.md', interactive: [8,20,21,25,28] },
+  { id: 'session-2', source: 'decks/session-2/slides.md', interactive: [5,6,7,10,12,13,27] },
 ]
 const selected = new Set((process.env.SUMMERSCHOOL_QA_DECKS || 'session-1,session-2').split(','))
 const decks = allDecks.filter((deck) => selected.has(deck.id))
+const viewportMatch = (process.env.SUMMERSCHOOL_QA_VIEWPORT || '1920x1080').match(/^(\d+)x(\d+)$/)
+if (!viewportMatch) throw new Error('SUMMERSCHOOL_QA_VIEWPORT must use WIDTHxHEIGHT')
+const viewport = { width: Number(viewportMatch[1]), height: Number(viewportMatch[2]) }
+const viewportKey = `${viewport.width}x${viewport.height}`
 
 function slideCount(source) {
   return [...source.matchAll(/^# /gm)].length
 }
 
-await mkdir('qa/rendered', { recursive: true })
-await mkdir('qa/interactions', { recursive: true })
+await mkdir(`qa/rendered/${viewportKey}`, { recursive: true })
+await mkdir(`qa/interactions/${viewportKey}`, { recursive: true })
 const browser = await chromium.launch({ headless: true })
-const report = { generatedAt: new Date().toISOString(), viewport: [1920, 1080], base, decks: [] }
+const report = { generatedAt: new Date().toISOString(), viewport: [viewport.width, viewport.height], base, decks: [] }
 
 for (const deck of decks) {
   const source = await readFile(deck.source, 'utf8')
   const count = slideCount(source)
-  const outDir = resolve('qa/rendered', deck.id)
-  const interactionDir = resolve('qa/interactions', deck.id)
+  const outDir = resolve('qa/rendered', viewportKey, deck.id)
+  const interactionDir = resolve('qa/interactions', viewportKey, deck.id)
   await rm(outDir, { recursive: true, force: true })
   await rm(interactionDir, { recursive: true, force: true })
   await mkdir(outDir, { recursive: true })
   await mkdir(interactionDir, { recursive: true })
-  const context = await browser.newContext({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 })
+  const context = await browser.newContext({ viewport, deviceScaleFactor: 1 })
   const page = await context.newPage()
   const remoteRequests = new Set()
   const failedResponses = new Set()
@@ -59,6 +63,7 @@ for (const deck of decks) {
       const scale = root.width / layout.offsetWidth
       const overflow = []
       let fontMinPx = Infinity
+      const fontSamples = []
       const contrastIssues = []
       const parseRgb = (value) => {
         const parts = value.match(/[\d.]+/g)?.map(Number)
@@ -76,11 +81,21 @@ for (const deck of decks) {
         return (hi + .05) / (lo + .05)
       }
       for (const el of layout.querySelectorAll('*')) {
+        if (el.closest('details:not([open])')) continue
         const style = getComputedStyle(el)
         const rect = el.getBoundingClientRect()
         if (rect.width > 1 && rect.height > 1 && style.visibility !== 'hidden' && style.display !== 'none') {
           const font = Number.parseFloat(style.fontSize)
-          if (Number.isFinite(font) && (el.textContent || '').trim()) fontMinPx = Math.min(fontMinPx, font * scale)
+          if (Number.isFinite(font) && (el.textContent || '').trim()) {
+            const renderedFont = font * scale
+            fontMinPx = Math.min(fontMinPx, renderedFont)
+            fontSamples.push({
+              tag: el.tagName,
+              cls: String(el.className).slice(0, 120),
+              text: (el.textContent || '').trim().slice(0, 80),
+              px: Number(renderedFont.toFixed(1)),
+            })
+          }
           const crossesSlide = rect.left < root.left - 1 || rect.right > root.right + 1 || rect.top < root.top - 1 || rect.bottom > root.bottom + 1
           const clipsX = ['hidden', 'clip', 'auto', 'scroll'].includes(style.overflowX) && el.scrollWidth > el.clientWidth + 2
           const clipsY = ['hidden', 'clip', 'auto', 'scroll'].includes(style.overflowY) && el.scrollHeight > el.clientHeight + 2
@@ -144,14 +159,27 @@ for (const deck of decks) {
         const style = getComputedStyle(element)
         return rect.width > 1 && rect.height > 1 && style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0'
       })
-      return { missingLayout: false, overflow: overflow.slice(0, 20), fontMinPx: Number.isFinite(fontMinPx) ? Number(fontMinPx.toFixed(1)) : null, imageIssues, contrastIssues: contrastIssues.slice(0, 20), titleWrapped, overlapIssues: overlapIssues.slice(0, 20), backgroundLoaded, backgroundImage, focusFrameVisible }
+      return { missingLayout: false, overflow: overflow.slice(0, 20), fontMinPx: Number.isFinite(fontMinPx) ? Number(fontMinPx.toFixed(1)) : null, fontSamples: fontSamples.sort((a, b) => a.px - b.px).slice(0, 8), imageIssues, contrastIssues: contrastIssues.slice(0, 20), titleWrapped, overlapIssues: overlapIssues.slice(0, 20), backgroundLoaded, backgroundImage, focusFrameVisible }
     }, expectedBackgrounds[i - 1])
-    const inputs = page.locator('.slidev-layout:visible .full-bleed-stage__diagram input:visible')
-    const buttons = page.locator('.slidev-layout:visible .full-bleed-stage__diagram button:visible:not(.on):not(.active)')
-    const control = await inputs.count() ? inputs.first() : buttons.first()
+    const drawerSummary = page.locator('.slidev-layout:visible details:not([open]) > summary:visible').first()
+    if (deck.interactive.includes(i) && await drawerSummary.count()) {
+      await drawerSummary.click()
+      await page.waitForTimeout(100)
+    }
+    const inputs = page.locator('.slidev-layout:visible input:visible')
+    const selects = page.locator('.slidev-layout:visible select:visible')
+    const unselectedButtons = page.locator('.slidev-layout:visible button[aria-pressed="false"]:visible')
+    const buttons = page.locator('.slidev-layout:visible button:visible:not(.on):not(.active)')
+    const control = await inputs.count()
+      ? inputs.first()
+      : await selects.count()
+        ? selects.first()
+        : await unselectedButtons.count()
+          ? unselectedButtons.first()
+          : buttons.first()
     let interactionTested = false
     if (await control.count()) {
-      const before = await page.locator('.slidev-layout:visible .full-bleed-stage__diagram').innerHTML()
+      const before = await page.locator('.slidev-layout:visible').innerHTML()
       const tag = await control.evaluate(element => element.tagName)
       if (tag === 'INPUT') {
         await control.evaluate((element) => {
@@ -160,9 +188,15 @@ for (const deck of decks) {
           input.dispatchEvent(new Event('input', { bubbles: true }))
           input.dispatchEvent(new Event('change', { bubbles: true }))
         })
+      } else if (tag === 'SELECT') {
+        await control.evaluate((element) => {
+          element.selectedIndex = Math.min(element.options.length - 1, element.selectedIndex + 1)
+          element.dispatchEvent(new Event('input', { bubbles: true }))
+          element.dispatchEvent(new Event('change', { bubbles: true }))
+        })
       } else await control.click()
       await page.waitForTimeout(200)
-      const after = await page.locator('.slidev-layout:visible .full-bleed-stage__diagram').innerHTML()
+      const after = await page.locator('.slidev-layout:visible').innerHTML()
       interactionTested = before !== after
       await page.screenshot({ path: resolve(interactionDir, `${String(i).padStart(2, '0')}.png`) })
     }
@@ -178,7 +212,7 @@ for (const deck of decks) {
 }
 
 await browser.close()
-await writeFile('qa/audit.json', `${JSON.stringify(report, null, 2)}\n`)
+await writeFile(`qa/audit-${viewportKey}.json`, `${JSON.stringify(report, null, 2)}\n`)
 
 const failures = report.decks.flatMap((deck) => [
   ...deck.remoteRequests.map((url) => `${deck.id}: remote request ${url}`),
@@ -197,7 +231,7 @@ const failures = report.decks.flatMap((deck) => [
   ]),
 ])
 
-console.log(`Rendered ${report.decks.reduce((sum, deck) => sum + deck.count, 0)} slides at 1920x1080`)
+console.log(`Rendered ${report.decks.reduce((sum, deck) => sum + deck.count, 0)} slides at ${viewportKey}`)
 console.log(`Remote requests: ${report.decks.reduce((sum, deck) => sum + deck.remoteRequests.length, 0)}`)
 console.log(`Potential geometry issues: ${failures.filter((f) => f.includes('overflow') || f.includes('image') || f.includes('layout')).length}`)
 if (failures.length) {

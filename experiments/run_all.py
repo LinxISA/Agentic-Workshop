@@ -20,6 +20,7 @@ EXPERIMENTS = [
     ("08", "08_design_space_pareto", 0),
     ("09", "09_roofline_bandwidth_sweep", 0),
     ("10", "10_hierarchy_queue_sweep", 0),
+    ("11", "11_qproj_davincioo", 0),
 ]
 
 

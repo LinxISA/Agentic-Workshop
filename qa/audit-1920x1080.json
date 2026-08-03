@@ -1,0 +1,2148 @@
+{
+  "generatedAt": "2026-08-02T18:19:07.499Z",
+  "viewport": [
+    1920,
+    1080
+  ],
+  "base": "http://127.0.0.1:4173",
+  "decks": [
+    {
+      "id": "session-1",
+      "count": 28,
+      "remoteRequests": [],
+      "failedResponses": [],
+      "slides": [
+        {
+          "number": 1,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 33.3,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "ascend-cover__claim",
+              "text": "Architecture First · Agentic Circuit as a Research Instrument",
+              "px": 33.3
+            },
+            {
+              "tag": "MAIN",
+              "cls": "ascend-cover full-bleed-stage",
+              "text": "Agent时代体系结构研究Architecture First · Agentic Circuit as a Research Instrument演讲人：周若",
+              "px": 34.4
+            },
+            {
+              "tag": "SECTION",
+              "cls": "ascend-cover__copy",
+              "text": "Agent时代体系结构研究Architecture First · Agentic Circuit as a Research Instrument",
+              "px": 34.4
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "ascend-cover__presenter",
+              "text": "演讲人：周若愚华为海思半导体",
+              "px": 34.4
+            },
+            {
+              "tag": "P",
+              "cls": "",
+              "text": "华为海思半导体",
+              "px": 35.2
+            },
+            {
+              "tag": "P",
+              "cls": "",
+              "text": "演讲人：周若愚",
+              "px": 41.1
+            },
+            {
+              "tag": "H1",
+              "cls": "",
+              "text": "Agent时代体系结构研究",
+              "px": 105.7
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s01-architecture-first.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 2,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s02-self-introduction.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 3,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s03-course-outline.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 4,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s04-chapter-processor.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 5,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s05-von-neumann-farm.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 6,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s06-von-neumann-industry.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 7,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s07-von-neumann-socialism.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 8,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s08-warehouse-roofline.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 9,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s09-davinci-architecture.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 10,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s10-keynote-page-10.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 11,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s11-keynote-page-11.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 12,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s12-keynote-page-12.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 13,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "ASIDE",
+              "cls": "keynote-disclaimer",
+              "text": "教学抽象 · 非产品框图",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s13-keynote-page-13.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 14,
+          "expectedInteraction": false,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "TEACHING PLAN OVERLAY",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "active",
+              "text": "NPU clusters",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "CPU clusters",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "NoC / shared cache",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "DDR / I/O",
+              "px": 23.5
+            },
+            {
+              "tag": "P",
+              "cls": "",
+              "text": "NPU clusters从资源分区追到共享链路，再追到数据入口。",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "NPU clusters",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "从资源分区追到共享链路，再追到数据入口。",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s14-keynote-page-14.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 15,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s15-keynote-page-15.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 16,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s16-keynote-page-16.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 17,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s17-keynote-page-17.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 18,
+          "expectedInteraction": false,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "ARCHITECTURE COORDINATES",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "COORDINATE 1 / 5",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "active",
+              "text": "计算",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "存储",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "互连",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "并发",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "控制",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S18",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s18-architecture-city-five-coordinates-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 19,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s19-keynote-page-18.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 20,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "TIME → CYCLES",
+              "px": 23.5
+            },
+            {
+              "tag": "DIV",
+              "cls": "formula",
+              "text": "cycles = time × frequency",
+              "px": 23.5
+            },
+            {
+              "tag": "LABEL",
+              "cls": "",
+              "text": "时间psnsusmssday",
+              "px": 23.5
+            },
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "text": "psnsusmssday",
+              "px": 23.5
+            },
+            {
+              "tag": "LABEL",
+              "cls": "",
+              "text": "频率MHzGHz",
+              "px": 23.5
+            },
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "text": "MHzGHz",
+              "px": 23.5
+            },
+            {
+              "tag": "SECTION",
+              "cls": "clock-converter arch-overlay",
+              "text": "TIME → CYCLES8 cyclescycles = time × frequency时间psnsusmssday×频率MHzGHz",
+              "px": 34.4
+            },
+            {
+              "tag": "HEADER",
+              "cls": "",
+              "text": "TIME → CYCLES8 cycles",
+              "px": 34.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s20-keynote-page-19.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 21,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s21-keynote-page-20.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 22,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s22-keynote-page-21.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 23,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s23-keynote-page-22.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 24,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s24-keynote-page-23.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 25,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s25-keynote-page-24.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 26,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s26-keynote-page-25.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 27,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s27-keynote-page-26.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 28,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "SPACE → TIME",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "TRANSFER-TIME LAB",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "cycles total",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "active",
+              "text": "TLOAD",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "TMOV",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "TEXTRACT",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "TPUSH/TPOP",
+              "px": 23.5
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "",
+              "text": "TPUT/TGET",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s28-data-movement-time-experiment-v2.png\")",
+          "focusFrameVisible": false
+        }
+      ]
+    },
+    {
+      "id": "session-2",
+      "count": 28,
+      "remoteRequests": [],
+      "failedResponses": [],
+      "slides": [
+        {
+          "number": 1,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s29-keynote-page-27.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 2,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "QWEN3-14B · WORKLOAD SLICE",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "activation tile",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "BF16 q_proj",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "query projection",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S30",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S30",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Inputactivation tile",
+              "px": 27.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "WeightBF16 q_proj",
+              "px": 27.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s30-qproj-transformer-scaling-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 3,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "REPRODUCIBLE PIPELINE",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "Python",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "MLIR PTO dialect",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "C++",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "JSONL",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S31",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S31",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "pypto-libPython",
+              "px": 27.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s31-pypto-to-gfsim-chain-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 4,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "PTO TRACE VOCABULARY",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "input_tiles / output_tiles / scalar_inputs",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "数据进入可见 Tile 状态",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "首块计算与累加",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "readiness: rename / scoreboard derived",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S32",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S32",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "TASSIGN → TEXTRACTinput_tiles / output_tiles / scalar_inputs",
+              "px": 25.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s32-program-unfolds-into-events-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 5,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "TRACE ANATOMY",
+              "px": 23.5
+            },
+            {
+              "tag": "HEADER",
+              "cls": "",
+              "text": ".pto.trace JSONL · checked artifactrecord 1 / 6",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": ".pto.trace JSONL · checked artifact",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "record 1 / 6",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "#573",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "TASSIGN",
+              "px": 23.5
+            },
+            {
+              "tag": "I",
+              "cls": "",
+              "text": "Scalar",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "#575",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s33-jsonl-trace-microscope-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 6,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "PUBLIC TEACHING ABSTRACTION",
+              "px": 23.5
+            },
+            {
+              "tag": "HEADER",
+              "cls": "",
+              "text": "PUBLIC TEACHING ABSTRACTIONcycle 0",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "PUBLIC TEACHING ABSTRACTION",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "cycle 0",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "PENDING",
+              "px": 23.5
+            },
+            {
+              "tag": "I",
+              "cls": "",
+              "text": "latency not elapsed",
+              "px": 23.5
+            },
+            {
+              "tag": "STRONG",
+              "cls": "",
+              "text": "→ visible →",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "VISIBLE",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s34-simqueue-tollgate-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 7,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "HIGH-LEVEL MODEL TOPOLOGY",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "TraceSource",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "ROB",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "Rename",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "Dispatch",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "ReadyTable",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "IQ",
+              "px": 23.5
+            },
+            {
+              "tag": "I",
+              "cls": "",
+              "text": "↖ Wakeup",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s35-davincioo-pipeline-topology-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 8,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "TIMING ASSUMPTIONS",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "再叠加公开的固定开销假设",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "按数据量与操作类别分层",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "shape 与有效并行度进入模型",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S36",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S36",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "TMA time = ceil(bytes / bandwidth)再叠加公开的固定开销假设",
+              "px": 25.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Vector time = f(data volume, op class)按数据量与操作类别分层",
+              "px": 25.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s36-execution-engine-time-model-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 9,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "IMPLEMENTATION CHOICE",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "数据搬运",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "TMOV 是 PTO family；此处为 gfsim 路由",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "矩阵计算",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "管理与同步",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S37",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S37",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "TLOAD → TMA数据搬运",
+              "px": 25.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s37-opcode-resource-mapping-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 10,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "CYCLE PLAYBACK",
+              "px": 23.5
+            },
+            {
+              "tag": "HEADER",
+              "cls": "",
+              "text": "CYCLE 0one key / one button = exactly one cycle",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "one key / one button = exactly one cycle",
+              "px": 23.5
+            },
+            {
+              "tag": "STRONG",
+              "cls": "",
+              "text": "Trace",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "#1TLOAD",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "TLOAD",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "#2TEXTRACT",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "TEXTRACT",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s38-single-cycle-step-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 11,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "QUEUEING + DEPENDENCIES",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Intrinsicservice time",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Depsready wait",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Contentionengine wait",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "WindowROB / IQ",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Overlaphidden work",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Resultcritical path",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S39",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s39-queueing-critical-path-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 12,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "PARAMETER SWEEP",
+              "px": 23.5
+            },
+            {
+              "tag": "HEADER",
+              "cls": "",
+              "text": "q_proj checked OFAT pointschecked reference_replay OFAT",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "q_proj checked OFAT points",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "checked reference_replay OFAT",
+              "px": 23.5
+            },
+            {
+              "tag": "LABEL",
+              "cls": "picker",
+              "text": "point baseline · baseline=0 referencerob_16 · rob_entries=16 entriesrob_32 · rob",
+              "px": 23.5
+            },
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "text": "baseline · baseline=0 referencerob_16 · rob_entries=16 entriesrob_32 · rob_entri",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "parameterbaseline",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "baseline",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s40-parameter-search-space-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 13,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "PERFETTO / KANATA-STYLE",
+              "px": 23.5
+            },
+            {
+              "tag": "HEADER",
+              "cls": "",
+              "text": "OFFLINE TIMELINE · checked reference_replay artifactopcode allTASSIGNTLOADTEXTRA",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "OFFLINE TIMELINE · checked reference_replay artifact",
+              "px": 23.5
+            },
+            {
+              "tag": "LABEL",
+              "cls": "",
+              "text": "opcode allTASSIGNTLOADTEXTRACTTMATMULTMATMUL_ACCTSTORE",
+              "px": 23.5
+            },
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "text": "allTASSIGNTLOADTEXTRACTTMATMULTMATMUL_ACCTSTORE",
+              "px": 23.5
+            },
+            {
+              "tag": "LABEL",
+              "cls": "",
+              "text": "engine allScalarTmaVecCube",
+              "px": 23.5
+            },
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "text": "allScalarTmaVecCube",
+              "px": 23.5
+            },
+            {
+              "tag": "STRONG",
+              "cls": "",
+              "text": "Scalar",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s41-perfetto-kanata-timeline-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 14,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "REPRODUCIBLE EVIDENCE",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Trace562 records",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Opcode mix281 / 160 / 40 / 1 / 79 / 1",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Replay11028 cycles",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Artifactreference_replay",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Fresh capturenot done",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S42",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S42",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s42-candidate-design-point-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 15,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s43-keynote-page-28.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 16,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s44-keynote-page-29.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 17,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s45-keynote-page-30.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 18,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s46-keynote-page-31.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 19,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s47-keynote-page-32.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 20,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s48-keynote-page-33.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 21,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s49-keynote-page-34.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 22,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "MODEL → DESIGN",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S50",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S50",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Model result",
+              "px": 27.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Capacity",
+              "px": 27.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Ports",
+              "px": 27.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Queues",
+              "px": 27.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Bandwidth",
+              "px": 27.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s50-model-parameters-design-constraints-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 23,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "NORMATIVE SEMANTICS",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "Tile 数据与布局语义",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "架构状态交互",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "GM → UB → GM",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S51",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S51",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "TLOAD · TMOV · TEXTRACTTile 数据与布局语义",
+              "px": 25.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "TPUSH · TPOP架构状态交互",
+              "px": 25.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s51-pto-asl-semantics-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 24,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "TRACEABLE DESIGN",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "为什么需要它",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "软件与邻接模块可依赖什么",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "资源与状态如何实现",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "current: draft test contract, not implementation",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S52",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S52",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "L0 · Intent为什么需要它",
+              "px": 25.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s52-ndf-l0-l3-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 25,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "IMPLEMENTATION CONTRACT",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "input_tiles / output_tiles / scalar_inputs",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "address / shape / layout / dtype",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "TMA / Extract / Matmul",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "readiness: rename / scoreboard derived",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S53",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S53",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "TRACE-01 · Traceinput_tiles / output_tiles / scalar_inputs",
+              "px": 25.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s53-qproj-vertical-slice-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 26,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "AGENT-DRIVEN COOPERATION",
+              "px": 23.5
+            },
+            {
+              "tag": "SMALL",
+              "cls": "",
+              "text": "pinned source · target",
+              "px": 23.5
+            },
+            {
+              "tag": "FOOTER",
+              "cls": "full-bleed-stage__footer",
+              "text": "S54",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "S54",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Spec Agent",
+              "px": 27.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Model Agent",
+              "px": 27.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Implementation Agent",
+              "px": 27.4
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Verification Agent",
+              "px": 27.4
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s54-agent-collaboration-pycircuit-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 27,
+          "expectedInteraction": true,
+          "interactionTested": true,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "CLOSED-LOOP VERIFICATION",
+              "px": 23.5
+            },
+            {
+              "tag": "HEADER",
+              "cls": "",
+              "text": "PROPOSED ACCEPTANCE DESIGNno pyCircuit result loaded",
+              "px": 23.5
+            },
+            {
+              "tag": "B",
+              "cls": "",
+              "text": "PROPOSED ACCEPTANCE DESIGN",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "no pyCircuit result loaded",
+              "px": 23.5
+            },
+            {
+              "tag": "DIV",
+              "cls": "fork",
+              "text": "checked gfsim artifact⇐ same trace ⇒pyCircuit replay target",
+              "px": 23.5
+            },
+            {
+              "tag": "STRONG",
+              "cls": "",
+              "text": "checked gfsim artifact",
+              "px": 23.5
+            },
+            {
+              "tag": "I",
+              "cls": "",
+              "text": "⇐ same trace ⇒",
+              "px": 23.5
+            },
+            {
+              "tag": "STRONG",
+              "cls": "",
+              "text": "pyCircuit replay target",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s55-dual-model-closed-loop-validation-v2.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 28,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": 23.5,
+          "fontSamples": [
+            {
+              "tag": "P",
+              "cls": "stage-eyebrow",
+              "text": "ARCHITECTURE JUDGMENT FIRST",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Workload",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "PTO",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Trace",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Model",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "Explore",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "ASL / NDF",
+              "px": 23.5
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "pyCircuit / Core",
+              "px": 23.5
+            }
+          ],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s56-research-flywheel-v2.png\")",
+          "focusFrameVisible": false
+        }
+      ]
+    }
+  ]
+}

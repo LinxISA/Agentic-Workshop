@@ -22,19 +22,25 @@ function onKeydown(event) {
 
   if (!action) return
   event.preventDefault()
+  event.stopImmediatePropagation()
   if (action === 'next') nextSlide()
   if (action === 'prev') prevSlide()
   if (action === 'toggle-help') helpOpen.value = !helpOpen.value
-  if (action === 'close-help') helpOpen.value = false
+}
+
+function closeHelp() {
+  helpOpen.value = false
 }
 
 onMounted(() => {
-  window.addEventListener('keydown', onKeydown)
+  window.addEventListener('keydown', onKeydown, true)
+  window.addEventListener('summerschool:close-keyboard-help', closeHelp)
   hintTimer = window.setTimeout(() => { hintVisible.value = false }, 4800)
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('keydown', onKeydown)
+  window.removeEventListener('keydown', onKeydown, true)
+  window.removeEventListener('summerschool:close-keyboard-help', closeHelp)
   window.clearTimeout(hintTimer)
 })
 </script>
@@ -67,7 +73,8 @@ onBeforeUnmount(() => {
             <div><dt><kbd>J</kbd> / <kbd>K</kbd></dt><dd>直接翻到下一页 / 上一页</dd></div>
             <div><dt><kbd>F</kbd></dt><dd>全屏演示</dd></div>
             <div><dt><kbd>O</kbd></dt><dd>幻灯片总览</dd></div>
-            <div><dt><kbd>?</kbd> / <kbd>Esc</kbd></dt><dd>打开 / 关闭帮助</dd></div>
+            <div><dt><kbd>?</kbd></dt><dd>打开 / 关闭帮助</dd></div>
+            <div><dt><kbd>Esc</kbd></dt><dd>打开总览；再次按下关闭当前浮层</dd></div>
           </dl>
           <footer>{{ currentSlideNo }} / {{ total }}</footer>
         </article>
@@ -99,7 +106,7 @@ onBeforeUnmount(() => {
   background: rgba(3, 12, 29, .68);
   box-shadow: 0 10px 34px rgba(0, 0, 0, .36);
   backdrop-filter: blur(9px);
-  font-size: 11px;
+  font-size:12px;
   white-space: nowrap;
 }
 
@@ -114,7 +121,7 @@ kbd {
   border-radius: 5px;
   background: rgba(255, 255, 255, .08);
   color: #fff;
-  font: 700 10px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 700  12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
   text-align: center;
 }
 
@@ -148,7 +155,7 @@ kbd {
 
 .keyboard-navigation__help small {
   color: #17d9ff;
-  font-size: 10px;
+  font-size:12px;
   font-weight: 800;
   letter-spacing: .18em;
 }
@@ -182,7 +189,7 @@ kbd {
   padding: 11px 27px;
   border-top: 1px solid rgba(255, 255, 255, .08);
   color: rgba(228, 239, 250, .54);
-  font: 700 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 700  12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
   text-align: right;
 }
 

@@ -38,12 +38,12 @@ class ExperimentSmokeTest(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
             summary = json.loads((output / "summary.json").read_text())
-            self.assertEqual(summary["passed"], 10)
+            self.assertEqual(summary["passed"], 11)
             self.assertEqual(summary["failed"], 0)
-            self.assertEqual(len(summary["experiments"]), 10)
+            self.assertEqual(len(summary["experiments"]), 11)
             self.assertEqual(
                 [item["id"] for item in summary["experiments"]],
-                [f"{index:02d}" for index in range(1, 11)],
+                [f"{index:02d}" for index in range(1, 12)],
             )
 
             pto = json.loads((output / "01" / "pto_trace.json").read_text())
@@ -83,6 +83,10 @@ class ExperimentSmokeTest(unittest.TestCase):
             hierarchy = json.loads((output / "10" / "hierarchy_sweep.json").read_text())
             self.assertLess(hierarchy["variants"]["locality"]["dram_bytes"], hierarchy["variants"]["baseline"]["dram_bytes"])
             self.assertLess(hierarchy["variants"]["deeper_queue"]["stall_cycles"], hierarchy["variants"]["baseline"]["stall_cycles"])
+
+            qproj = json.loads((output / "11" / "qproj_summary.json").read_text())
+            self.assertEqual(qproj["evidence_mode"], "reference_replay")
+            self.assertEqual(qproj["record_count"], 562)
 
     def test_repeated_runs_are_byte_for_byte_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:

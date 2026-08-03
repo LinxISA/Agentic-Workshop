@@ -1,1 +1,21 @@
 @import "../../styles/theme.css";
+
+.keynote-lab-drawer > summary {
+  position: absolute;
+  z-index: 9;
+  right: 12px;
+  bottom: 10px;
+  padding: 5px 10px;
+  border: 1px solid rgba(23, 217, 255, .55);
+  border-radius: 999px;
+  color: #dff8ff;
+  background: rgba(3, 12, 29, .88);
+  font-size: 9px;
+  letter-spacing: .08em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.keynote-lab-drawer > summary::-webkit-details-marker { display: none; }
+.keynote-lab-drawer > summary:focus-visible { outline: 2px solid #17d9ff; outline-offset: 3px; }
+.keynote-lab-drawer[open] > summary { bottom: auto; top: 10px; }

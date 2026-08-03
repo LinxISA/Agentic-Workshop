@@ -7,6 +7,5 @@ export function actionForKey(event) {
   if (event.key === 'j' || event.key === 'J') return 'next'
   if (event.key === 'k' || event.key === 'K') return 'prev'
   if (event.key === '?') return 'toggle-help'
-  if (event.key === 'Escape') return 'close-help'
   return null
 }

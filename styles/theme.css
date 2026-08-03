@@ -49,7 +49,7 @@
 .memory { color: var(--ss-green); }
 .bottleneck { color: var(--ss-magenta); }
 .muted { color: var(--ss-muted); }
-.source-note { color: var(--ss-muted); font-size: 11px; opacity: .8; }
+.source-note { color: var(--ss-muted); font-size:12px; opacity: .8; }
 
 .diagram-dock {
   position: absolute;
@@ -79,16 +79,18 @@
 .metric-pill {
   display: grid;
   gap: 4px;
-  min-width: 108px;
-  padding: 10px 12px;
+  min-width: 0;
+  padding: 10px 8px;
   border: 1px solid rgba(255,255,255,.13);
   border-radius: 12px;
   color: var(--ss-muted);
   background: rgba(3,12,29,.72);
-  font-size: 10px;
+  font-size:12px;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+
+.evidence-strip > span { flex: 1 1 0; }
 
 .evidence-strip b,
 .metric-pill b { color: var(--ss-text); font-size: 18px; letter-spacing: 0; text-transform: none; }
@@ -111,7 +113,27 @@
   font-weight: 760;
 }
 
+.architecture-chain small { font-size: 12px; }
+
 .architecture-chain i { color: var(--ss-cyan); font-style: normal; font-size: 22px; }
+
+.flywheel-chain {
+  width: 100%;
+  max-width: none;
+  gap: 4px;
+  justify-content: center;
+  padding-inline: 10px;
+}
+
+.flywheel-chain span {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 9px 5px;
+  font-size:12px;
+  text-align: center;
+}
+
+.flywheel-chain i { flex: 0 0 auto; font-size: 14px; }
 
 .layer-stack { display: grid; gap: 7px; }
 .layer-stack span {
@@ -124,7 +146,7 @@
   color: var(--ss-text);
   font-size: 13px;
 }
-.layer-stack small { color: var(--ss-muted); font-size: 10px; }
+.layer-stack small { color: var(--ss-muted); font-size:12px; }
 
 .claim-callout {
   padding: 14px 18px;

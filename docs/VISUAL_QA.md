@@ -2,46 +2,54 @@
 
 ## Scope
 
-- Session 1: 21 slides
-- Session 2: 21 slides
-- Total: 42 slides
-- Render viewport: 1920×1080, device scale factor 1
-- Contact sheets: `docs/visual-qa/session-1-contact-sheet.png`, `docs/visual-qa/session-2-contact-sheet.png`
-- Machine-readable report: `qa/audit.json`
+- Session 1: 28 slides
+- Session 2: 28 slides
+- Total: 56 slides
+- Viewports: 1920×1080 and 1366×768, device scale factor 1
+- Machine-readable reports: `qa/audit-1920x1080.json`, `qa/audit-1366x768.json`
+- Contact sheets:
+  - `qa/contact-sheets/session-1-1920x1080.png`
+  - `qa/contact-sheets/session-2-1920x1080.png`
+  - `qa/contact-sheets/session-1-1366x768.png`
+  - `qa/contact-sheets/session-2-1366x768.png`
 
-## Automated gates
+## Final automated gates
 
-| Gate | Result |
-|---|---:|
-| slide render count | 42 / 42 |
-| remote runtime requests | 0 |
-| element overflow/crop candidates | 0 |
-| title/diagram intersections | 0 |
-| broken or distorted images | 0 |
-| missing full-bleed backgrounds | 0 |
-| failed local asset responses | 0 |
-| contrast failures | 0 |
-| titles exceeding two lines | 0 |
-| interactive states exercised | 21 |
+| Gate | 1920×1080 | 1366×768 |
+|---|---:|---:|
+| slide render count | 56 / 56 | 56 / 56 |
+| remote runtime requests | 0 | 0 |
+| geometry / overflow candidates | 0 | 0 |
+| title / diagram intersections | 0 | 0 |
+| broken or distorted images | 0 | 0 |
+| missing full-bleed backgrounds | 0 | 0 |
+| failed local asset responses | 0 | 0 |
+| contrast failures | 0 | 0 |
+| titles exceeding two lines | 0 | 0 |
+| text below 16 rendered px | 0 | 0 |
+| designated interactions exercised | 12 / 12 | 12 / 12 |
+
+The interaction runner also captured changed states on 14 pages per viewport. Closed drawers are excluded from default-layout geometry checks, then opened and exercised separately.
 
 ## Manual review
 
-Both final contact sheets were reviewed as complete sequences after the global Slidev theme was moved into each deck's root `style.css`. Representative full-resolution inspection covered ImageGen backgrounds, Roofline, memory hierarchy, LinxCore module exploration, queue pressure, waveforms, NDF traceability, experiments, and the Pareto explorer.
+All four final contact sheets were reviewed as complete sequences. Full-resolution inspection covered the Keynote migration pages, Roofline, memory hierarchy, PTO abstract machine, transfer-time lab, trace anatomy, SimQueue, cycle playback, parameter sweep, offline timeline, PTO-ASL/NDF separation, and the proposed gfsim↔pyCircuit acceptance loop.
 
 The accepted visual contract is:
 
-- every slide uses a unique full-bleed processor-architecture background;
-- the title and one-sentence claim stay in a calm high-contrast region;
-- exact architecture labels, charts, traces, and waveforms are deterministic overlays;
-- interactive overlays remain subordinate to the processor image and do not cross the title or footer safe areas;
+- each page has a full-bleed local visual, with deterministic SVG/Vue overlays for labels, formulas, traces, queues, and data paths;
+- the title and one-sentence claim remain in a high-contrast safe region;
+- interactive overlays do not cross title or footer safe areas;
+- 1366×768 retains at least 16 rendered pixels for visible teaching text;
+- animations and interactions explain state transitions or data flow; no decorative flashing frame is present;
 - no runtime request leaves localhost.
 
-## Fixes made during QA
+## Fixes made during final QA
 
-1. Disabled remote font injection and replaced remote favicons with local generated PNGs.
-2. Added Slidev base-path handling for background assets under `/session-1/` and `/session-2/`.
-3. Moved shared theme rules out of scoped Markdown styles into deck-level global styles.
-4. Added automated title/diagram intersection detection and a two-line title limit.
-5. Re-sized the Roofline, memory hierarchy, LinxCore, timing, NDF, pipeline, queue, bank, and Pareto components against the actual Slidev logical canvas.
-6. Re-rendered all 42 pages; the final audit contains zero geometry, image, contrast, title, overlap, or remote-request failures.
-7. Exercised 21 interactive pages after their initial render, captured the changed state locally, and verified that focus did not block deck navigation.
+1. Removed the final S33 trace-panel overlap and shortened its claim without changing semantics.
+2. Increased small-screen teaching labels to a 12 px logical minimum, which renders at or above 16 px at 1366×768.
+3. Repositioned SimQueue, cycle playback, evidence timeline, and closed-loop panels after the readability increase.
+4. Added minimum-font samples to the machine-readable audit for actionable diagnosis.
+5. Re-rendered 112 slide images and exercised both static and changed interaction states; both final audits contain zero failures.
+6. Verified the keyboard-help overlay at 1366×768 after its entrance transition: the dialog remains fully inside the viewport, all seven shortcut rows are visible, and Esc closes it without opening the overview.
+7. Verified `/session-1`, `/session-2`, and slide-number deep links against the built preview so no deck route falls back to the course index.
