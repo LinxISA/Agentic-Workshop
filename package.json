@@ -27,7 +27,7 @@
     "test:pages": "node --test qa/pages-paths.spec.mjs qa/pages-artifact.spec.mjs",
     "test:preview": "node --test qa/preview-routing.spec.mjs",
     "test:sources": "bash scripts/check-sources.sh",
-    "test:web": "npm run test:course && npm run test:blueprint && npm run test:images && npm run test:models && npm run experiments && npm run traceability && npm run test:content && npm run build && npm run test:offline && npm run test:pages",
+    "test:web": "npm run test:course && npm run test:blueprint && npm run test:images && npm run test:models && npm run experiments && npm run test:content && npm run build && npm run test:offline && npm run test:pages",
     "traceability": "node scripts/build-traceability.mjs",
     "images:verify": "node scripts/verify-image-manifest.mjs",
     "qa:render": "SUMMERSCHOOL_QA_VIEWPORT=1920x1080 node scripts/render-qa.mjs && SUMMERSCHOOL_QA_VIEWPORT=1366x768 node scripts/render-qa.mjs",
