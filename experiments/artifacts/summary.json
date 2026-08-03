@@ -71,8 +71,35 @@
       "status": "pass",
       "stderr": "",
       "stdout": "08 design-space Pareto analysis: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "09",
+      "name": "09_roofline_bandwidth_sweep",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "09 Roofline bandwidth sweep: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "10",
+      "name": "10_hierarchy_queue_sweep",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "10 hierarchy and queue sweep: PASS"
+    },
+    {
+      "expected_exit_code": 0,
+      "id": "11",
+      "name": "11_qproj_davincioo",
+      "observed_exit_code": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "11 q_proj DaVinciOO model lab (replay): PASS"
     }
   ],
   "failed": 0,
-  "passed": 8
+  "passed": 11
 }

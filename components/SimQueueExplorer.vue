@@ -1,0 +1,12 @@
+<script setup>
+import { computed, ref } from 'vue'
+import { shouldHandleRootKey, simulateQueue } from './session2Models.mjs'
+const capacity=ref(4),latency=ref(2),cycle=ref(0)
+const arrivals=[2,2,1,0,2,0],service=[0,0,1,1,1,2]
+const state=computed(()=>simulateQueue({capacity:capacity.value,latency:latency.value,arrivals,service,cycles:cycle.value}))
+function step(){cycle.value=Math.min(arrivals.length,cycle.value+1)}
+function reset(){cycle.value=0}
+function onKey(event){if(shouldHandleRootKey(event,['ArrowRight',' '])){event.preventDefault();step()}else if(shouldHandleRootKey(event,['Home'])){reset()}}
+</script>
+<template><section class="simq arch-overlay" tabindex="0" aria-label="SimQueue explorer" @keydown="onKey"><header><b>PUBLIC TEACHING ABSTRACTION</b><span>cycle {{state.cycle}}</span></header><div class="flow"><div><small>PENDING</small><b>{{state.pending}}</b><i>latency not elapsed</i></div><strong>→ visible →</strong><div><small>VISIBLE</small><b>{{state.visible}}</b><i>consumer may pop</i></div><strong>→</strong><div><small>COMPLETED</small><b>{{state.completed}}</b><i>left the queue</i></div></div><div class="meters"><label>capacity <input v-model.number="capacity" type="range" min="2" max="8"><b>{{capacity}}</b></label><label>latency <input v-model.number="latency" type="range" min="1" max="4"><b>{{latency}} cyc</b></label></div><footer><button @click="step">Advance 1 cycle</button><button @click="reset">Reset</button><span>stall seen: {{state.stallSeen?'yes':'no'}}</span><b :class="{stall:state.backpressured}">{{state.backpressured?'BACKPRESSURE NOW':'ACCEPTING NOW'}}</b></footer></section></template>
+<style scoped>.simq{right:0;bottom:-18px;width:720px;padding:18px;border-radius:20px;transform:scale(.92);transform-origin:bottom right}.simq header,.simq footer,.flow{display:flex;align-items:center;justify-content:space-between;gap:8px}.simq header{color:#9fb7ca;font-size:12px}.simq header b{color:#17d9ff}.flow{margin:16px 0}.flow div{flex:1;padding:12px;border:1px solid #ffffff18;border-radius:10px;background:#06152bd9}.flow small,.flow i{display:block;color:#8ca6bb;font-size:12px;font-style:normal}.flow b{display:block;color:#ffbe00;font-size:25px}.flow strong{color:#17d9ff;font-size:12px}.meters{display:grid;grid-template-columns:1fr 1fr;gap:12px}.meters label{display:grid;grid-template-columns:55px 1fr 50px;gap:8px;color:#adc3d8;font-size:12px}.simq footer{margin-top:14px;justify-content:flex-start}.simq footer>b{margin-left:auto;color:#b9ff33;font-size:12px}.simq footer>b.stall{color:#f16bb5}</style>

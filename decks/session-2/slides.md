@@ -1,1071 +1,645 @@
 ---
 theme: default
-title: Agent 时代的体系结构研究方法学 · 第二课
-info: LinxCore 模块案例、软硬件 trace crosscheck 与 Agent 设计探索
-transition: slide-left
+title: Agentic Model 与 PTO NPU Core · 第二课
+info: q_proj、trace、gfsim、PTO-ASL、NDF 与 pyCircuit 验证闭环
+transition: fade-out
 colorSchema: dark
 mdc: true
-favicon: /generated/session-2-hero.png
+favicon: /generated/slides/s29-keynote-page-27.png
 fonts:
-  sans: 'Inter, PingFang SC, Microsoft YaHei, sans-serif'
-  mono: 'SFMono-Regular, Menlo, monospace'
+  sans: "MiSans, Noto Sans SC, Microsoft YaHei, sans-serif"
+  mono: "SFMono-Regular, Menlo, monospace"
   provider: none
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Agentic Model
 
-# 模块化把复杂核变成**可审计实验**
-
-从 LinxCore 案例到软硬件 trace，再到 Agent 驱动的 Pareto 探索
-
-<div class="split">
-  <div>
-    <div class="visual-frame" style="padding:1.2rem">
-      <div class="flow">
-        <span class="flow-node">模块契约</span><span class="flow-arrow">→</span>
-        <span class="flow-node">跨层证据</span><span class="flow-arrow">→</span>
-        <span class="flow-node">受约束行动</span><span class="flow-arrow">→</span>
-        <span class="flow-node">决策记忆</span>
-      </div>
-    </div>
-    <p class="muted" style="margin-top:1.2rem">第二课 · 60 分钟 · LinxCore 仅作模块化处理器案例</p>
-  </div>
-  <img src="/generated/session-2-hero.png" alt="第二课模块化处理器与 Agent 研究闭环概念图" class="visual-frame" style="width:100%;max-height:420px;object-fit:cover" />
-</div>
+<KeynoteSourceStage background="/generated/slides/s29-keynote-page-27.png" title="Agentic Model" claim="Agentic Model" slide-id="S29" />
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-LRN-202, NDF-SRC-003
-Learning objective: 建立“模块契约—跨层证据—受约束行动—决策记忆”的第二课主线。
-Duration: 1 min
-Visual intent: class: hero；本地概念图承载开场氛围，四节点流程给出唯一叙事主线。
-Evidence: docs/NDF.md; experiments/artifacts/summary.json
-Interaction: 请听众记住一个问题：这个结论由谁裁决？
-Caveat: LinxCore 是课程案例，不是 PTO 官方实现，也不定义 PTO 语义。
+Slide-ID: S29
+Objective: 完整保留原 Keynote 第 27 页，开启 Agentic Model 章节。
+Timing: 1 min
+Visual: 原 Keynote 第 27 页完整画面，不增加任何观众可见覆盖层。
+Interaction: 章节转场，提示后续用一个 q_proj 贯穿模型与证据链。
+Sources: publish-keynote-page-27
+Boundary: 可见文字与图形直接来自演讲人提供的 Keynote。
+Narrative: 本章不把 Agent 当作结论生成器，而把它放进可执行、可复查的模型实验流程。
+Transition: 从章节标题进入一个可计算的 Transformer 投影切片。
 [Sources]
-- docs/NDF.md
-- materials/SOURCES.yaml
+- source: K27
+- catalog: publish-keynote-page-27
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# q_proj：从 Transformer 到一次 BF16 投影
 
-# 第二课把闭环落到**一个模块、一条 trace、一个决策**
-
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.3rem">
-  <div class="visual-frame" style="padding:1.1rem"><h2>模块</h2><p>谁拥有状态？<br>接口何时传输？</p></div>
-  <div class="visual-frame" style="padding:1.1rem"><h2>Trace</h2><p>软件与硬件<br>如何对齐？</p></div>
-  <div class="visual-frame" style="padding:1.1rem"><h2>决策</h2><p>哪个候选<br>值得保留？</p></div>
-</div>
-
-<div class="flow" style="margin-top:1.3rem">
-  <span class="flow-node">15 min 模块</span><span class="flow-arrow">→</span>
-  <span class="flow-node">16.5 min 证据</span><span class="flow-arrow">→</span>
-  <span class="flow-node">23.5 min 探索</span><span class="flow-arrow">→</span>
-  <span class="flow-node">5 min 收束</span>
-</div>
+<FullBleedStage background="/generated/slides/s30-qproj-transformer-scaling-v2.png" title="q_proj：从 Transformer 到一次 BF16 投影" claim="输入 activation × BF16 weight → GEMM → projected output；一次投影就是可追踪的垂直切片。" eyebrow="QWEN3-14B · WORKLOAD SLICE" slide-id="S30">
+  <template #diagram><div class="diagram-dock architecture-chain"><span>Input<br><small>activation tile</small></span><i>×</i><span>Weight<br><small>BF16 q_proj</small></span><i>→</i><span>GEMM</span><i>→</i><span>Output<br><small>query projection</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-LRN-202
-Learning objective: 说明本课三个可观察学习结果及其时间分配。
-Duration: 1.5 min
-Visual intent: class: architecture；三张责任卡与四段时间轴共同标定 60 分钟路线。
-Evidence: docs/NDF.md
-Interaction: 请听众选出自己当前最薄弱的一列，课末复核。
-Caveat: 时间分配含现场互动，不代表三个研究阶段的真实工程成本。
+Slide-ID: S30
+Objective: 把 Qwen3-14B 的 q_proj 缩小为一个可建模的 BF16 矩阵投影。
+Timing: 3 min
+Visual: Transformer block 聚焦 q_proj，前景展示 input、weight、GEMM、output 数据流。
+Interaction: 让学生指出 shape、dtype、layout 和数据搬运中哪些会改变执行代价。
+Sources: qproj-davincioo-lab; course-synthesis
+Boundary: 这是 q_proj 教学切片，不声称覆盖完整模型推理、量化或并行策略。
+Narrative: 研究从足够小但仍真实的工作负载开始。q_proj 同时包含权重搬运、activation 组织和矩阵计算，足以暴露跨层约束。
+Transition: 下一页把这次投影送入可复现的软件到模型链。
 [Sources]
-- docs/NDF.md
-- materials/agenda-2026.txt
+- catalog: qproj-davincioo-lab
+- catalog: course-synthesis
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 从 Python 到周期模型
 
-# 先钉死三条边界，才不会把**案例说成规范**
-
-| 对象 | 本课中的角色 | 本课不声称 |
-|---|---|---|
-| PTO executable architecture spec | 固定版本的 PTO 规范事实源 | 不规定 LinxCore 微架构 |
-| LinxCore | 模块化处理器与软硬件协同案例 | 不是 PTO 官方实现 |
-| TAO | v0.1 物理设计研究提案 | 不是已验证产品或既成流程 |
-
-<div class="visual-frame" style="padding:1rem 1.3rem;margin-top:1rem">
-  <div class="flow"><span class="flow-node">规范事实</span><span class="flow-arrow">≠</span><span class="flow-node">案例事实</span><span class="flow-arrow">≠</span><span class="flow-node">研究提案</span></div>
-</div>
+<FullBleedStage background="/generated/slides/s31-pypto-to-gfsim-chain-v2.png" title="从 Python 到周期模型" claim="每一层都保留可审计的中间产物，而不是把程序直接跳成一个性能数字。" eyebrow="REPRODUCIBLE PIPELINE" slide-id="S31">
+  <template #diagram><div class="diagram-dock architecture-chain"><span>pypto-lib<br><small>Python</small></span><i>→</i><span>.pto<br><small>MLIR PTO dialect</small></span><i>→</i><span>PTOAS<br><small>C++</small></span><i>→</i><span>host Trace Runner</span><i>→</i><span>.pto.trace<br><small>JSONL</small></span><i>→</i><span>gfsim</span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-SRC-001, NDF-SRC-003, NDF-MTH-003
-Learning objective: 准确区分 PTO 规范事实、LinxCore 案例事实与 TAO v0.1 研究假设。
-Duration: 1.5 min
-Visual intent: class: compare；三行边界表与“不等于”关系防止概念混层。
-Evidence: materials/SOURCES.yaml; docs/NDF.md
-Interaction: 快问快答：“TAO 内环可秒级运行”应归为哪类主张？
-Caveat: TAO 页只介绍提案中的可检验方向，不报告已取得的物理设计收益。
+Slide-ID: S31
+Objective: 建立 pypto-lib 到 gfsim 的完整、可审计实验流水线。
+Timing: 3 min
+Visual: 六段本地流水线明确标注 Python、MLIR PTO dialect、C++、host runner、JSONL 与 gfsim。
+Interaction: 点名每个中间产物可以回答的问题，以及失败时应回到哪一层定位。
+Sources: qproj-davincioo-lab; davincioo-public-docs
+Boundary: 流水线描述止于 host trace 与 gfsim replay，不推断未公开的部署格式。
+Narrative: 可复现性来自中间证据。程序、dialect、语义执行、trace 与模型输出分别形成可比较边界。
+Transition: 接着观察一条 q_proj 程序如何展开成 trace opcode。
 [Sources]
-- materials/SOURCES.yaml
-- materials/agentic_tao_physical_design_flow.md
-- https://github.com/PTO-ISA/pto-spec/tree/9574f0293929bf692517dd29de11a8354440c7dc
+- catalog: qproj-davincioo-lab
+- catalog: davincioo-public-docs
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# q_proj 展开成可调度事件
 
-# 模块不是文件夹，而是**状态、接口和证据的责任单元**
-
-<div class="split">
-  <div>
-    <div class="visual-frame" style="padding:1.2rem">
-      <div class="flow">
-        <span class="flow-node">唯一状态所有者</span><span class="flow-arrow">+</span>
-        <span class="flow-node">类型化事务</span><span class="flow-arrow">+</span>
-        <span class="flow-node">局部不变量</span><span class="flow-arrow">+</span>
-        <span class="flow-node">替换证据</span>
-      </div>
-    </div>
-    <p class="lede" style="margin-top:1.2rem">能单独说明、刺激、观察、否证，才是研究可用的边界。</p>
-  </div>
-  <img src="/generated/modular-processor.png" alt="模块化处理器概念图" class="visual-frame" style="width:100%;max-height:410px;object-fit:cover" />
-</div>
+<FullBleedStage background="/generated/slides/s32-program-unfolds-into-events-v2.png" title="q_proj 展开成可调度事件" claim="Trace 明示 input_tiles / output_tiles / scalar_inputs；dependency readiness 由 rename / scoreboard 推导。" eyebrow="PTO TRACE VOCABULARY" slide-id="S32">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#17d9ff">TASSIGN → TEXTRACT<small>input_tiles / output_tiles / scalar_inputs</small></span><span style="--layer:#b9ff33">TLOAD<small>数据进入可见 Tile 状态</small></span><span style="--layer:#ffbe00">TMATMUL → TMATMUL_ACC<small>首块计算与累加</small></span><span style="--layer:#f16bb5">TSTORE<small>readiness: rename / scoreboard derived</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-SRC-003
-Learning objective: 用四个责任维度定义研究可用的模块，而非按源码目录定义模块。
-Duration: 2 min
-Visual intent: class: section；本地模块化处理器概念图配合四项模块责任。
-Evidence: vendor/LinxCore/docs/spec/00-charter/scope.md
-Interaction: 让听众用四项标准判断“TOP 目录”是否天然是一个模块。
-Caveat: 四项标准是课程抽象；具体模块粒度仍受项目接口和验证成本约束。
+Slide-ID: S32
+Objective: 展示 q_proj PTO trace 中 TASSIGN、TEXTRACT、TLOAD、TMATMUL、TMATMUL_ACC、TSTORE 的角色。
+Timing: 3 min
+Visual: q_proj 数据流展开为六类 opcode，并标出 input_tiles、output_tiles、scalar_inputs。
+Interaction: 让学生根据 Tile 读写推导 load、extract、matmul-acc、store 的 readiness 顺序。
+Sources: qproj-davincioo-lab; pto-spec
+Boundary: opcode 组合来自已检查的 q_proj reference replay；不把一次展开推广成所有实现的唯一 lowering。
+Narrative: trace 不是汇编截图，而是模型能够消费的事件契约。记录保留 opcode、input_tiles、output_tiles、scalar_inputs；dependency/readiness edges 由 rename/scoreboard 推导。
+Transition: 下一页用交互式显微镜逐字段读取一条 JSONL 记录。
 [Sources]
-- vendor/LinxCore/docs/spec/00-charter/scope.md
-- vendor/LinxCore/docs/spec/10-architecture/ownership.md
+- catalog: qproj-davincioo-lab
+- catalog: pto-spec
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 一条 trace 记录的解剖
 
-# LinxCore 案例显示执行路径可以按**责任边界**拆开
-
-<script setup lang="ts">
-import LinxCoreModuleExplorer from '../../components/LinxCoreModuleExplorer.vue'
-</script>
-
-<LinxCoreModuleExplorer />
-
-<p class="muted" style="margin-top:.7rem">点击模块：先问“拥有哪类状态”，再问“输出哪种事务”。</p>
+<FullBleedStage background="/generated/slides/s33-jsonl-trace-microscope-v2.png" title="一条 trace 记录的解剖" claim="Tile metadata 可见；依赖由 rename / scoreboard 推导。" eyebrow="TRACE ANATOMY" slide-id="S33">
+  <template #diagram><TraceAnatomy /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-SRC-003
-Learning objective: 沿 LinxCore 案例路径识别模块职责、状态归属与相邻事务。
-Duration: 2.5 min
-Visual intent: class: architecture；共享 LinxCoreModuleExplorer 提供逐模块点击、播放和复位。
-Evidence: vendor/LinxCore/docs/spec/00-charter/scope.md; vendor/LinxCore/docs/spec/10-architecture/ownership.md
-Interaction: 依次点击 Fetch、BISQ、BROB；每次只说一个状态责任和一个接口责任。
-Caveat: 组件是教学概览，不能替代 LinxCore 当前源码、接口清单与稳定条款。
+Slide-ID: S33
+Objective: 交互检查 checked JSONL 的 sequence_id、opcode、engine、Tile address/shape/layout/dtype 与 scalar inputs。
+Timing: 3 min
+Visual: JSONL 显微镜与字段检查器并列，当前记录使用暖色高亮。
+Interaction: 点击记录或使用方向键切换，要求学生解释每个字段影响语义还是调度。
+Sources: qproj-davincioo-lab; course-model
+Boundary: 组件只显示 sanitized checked sample 的真实字段，不补造 deps；artifact 不可用时只显示明确标注的 teaching sample。
+Narrative: sequence_id 让不同工具对同一事件对齐；input/output Tile 保存 address、shape、layout、dtype。依赖由 rename 与 scoreboard 从资源读写中推导，不是显式 deps 字段。
+Transition: 有了记录后，需要一个明确时间可见性的队列语义。
 [Sources]
-- https://github.com/LinxISA/LinxCore
-- vendor/LinxCore/docs/spec/00-charter/scope.md
-- vendor/LinxCore/docs/spec/10-architecture/ownership.md
+- catalog: qproj-davincioo-lab
+- catalog: course-model
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# SimQueue：容量、延迟与可见性
 
-# 单一状态所有者让恢复与提交只有**一个裁决点**
-
-```mermaid
-flowchart LR
-  IFU[IFU\n局部推测状态] -->|typed transaction| OOO[OOO\nROB / commit / recovery owner]
-  IEX[IEX\n执行状态] -->|completion / fault| OOO
-  LSU[LSU\n内存局部状态] -->|completion / fault| OOO
-  OOO -->|recovery plan| IFU
-  OOO -->|recovery plan| IEX
-  OOO -->|recovery plan| LSU
-  OOO -.commit observation.-> DTU[DTU\nobserver only]
-```
-
-> 多个模块可以报告事实，但不能同时拥有同一项架构裁决。
+<FullBleedStage background="/generated/slides/s34-simqueue-tollgate-v2.png" title="SimQueue：容量、延迟与可见性" claim="push 先进入 pending；延迟到期才 visible；容量耗尽会把 backpressure 传回生产者。" eyebrow="PUBLIC TEACHING ABSTRACTION" slide-id="S34">
+  <template #diagram><SimQueueExplorer /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-MTH-002
-Learning objective: 解释为何 ROB、顺序提交和全局恢复必须有唯一状态所有者。
-Duration: 2 min
-Visual intent: class: architecture；确定性 Mermaid 权限图显示报告边与裁决边不同。
-Evidence: vendor/LinxCore/docs/spec/10-architecture/ownership.md
-Interaction: 请听众指出若 DTU 也能阻塞 commit，会新增哪条危险控制边。
-Caveat: 图省略 CTU、RENU 等细节，仅突出 ARC-TOP-020/022 的责任边界。
+Slide-ID: S34
+Objective: 用高层公开抽象解释 capacity、latency、pending/visible、stall 与 backpressure。
+Timing: 3 min
+Visual: 队列闸门把 pending、visible、completed 三种状态分开。
+Interaction: 调整容量和延迟，每次按键推进一周期，观察何时拒绝新 arrival。
+Sources: davincioo-public-docs; course-model
+Boundary: 不展示私有实现字段、调度规则或 timing constants；组件是教学模型。
+Narrative: 队列既储存数据也储存时间。pending 与 visible 的分离避免消费者提前看到尚未成熟的结果。
+Transition: 多个队列被拓扑连接后，才形成完整的 gfsim 数据路径。
 [Sources]
-- vendor/LinxCore/docs/spec/10-architecture/ownership.md
-- vendor/LinxCore/docs/spec/50-verification/contract-spine.md
+- catalog: davincioo-public-docs
+- catalog: course-model
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# DaVinci gfsim 的高层拓扑
 
-# ready/valid：一个**局部契约**就够了
-
-<script setup lang="ts">
-import CircuitDataflow from '../../components/CircuitDataflow.vue'
-</script>
-
-<CircuitDataflow />
+<FullBleedStage background="/generated/slides/s35-davincioo-pipeline-topology-v2.png" title="DaVinci gfsim 的高层拓扑" claim="TraceSource 供给事件，乱序窗口追踪依赖，四类执行资源完成工作并通过 wakeup 释放消费者。" eyebrow="HIGH-LEVEL MODEL TOPOLOGY" slide-id="S35">
+  <template #diagram><DaVinciTopology /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201
-Learning objective: 用 fire、稳定性和恰好一次传输定义队列接口不变量。
-Duration: 2 min
-Visual intent: class: circuit-focus；共享 CircuitDataflow 逐拍演示数据沿队列连接移动。
-Evidence: experiments/artifacts/05/queue_trace.csv
-Interaction: Play 后在任一阻塞拍暂停；指出哪些信号允许变化、哪些必须稳定。
-Caveat: 组件展示通用 queue-wired 模型；实验 05 才是本课确定性队列证据。
+Slide-ID: S35
+Objective: 建立 TraceSource→ROB→Rename→Dispatch→ReadyTable→IQ→执行资源→Wakeup 的公开高层图。
+Timing: 3 min
+Visual: 中央流水线连接 Scalar、Vector、Cube、TMA，返回弧表示 wakeup。
+Interaction: 点击 opcode 或使用左右键，查看它进入哪类执行资源。
+Sources: davincioo-public-docs; course-synthesis
+Boundary: 图不公开私有状态字段、选择策略或 timing constants，只表达教学层连接关系。
+Narrative: ROB 保存顺序，ReadyTable 与 IQ 组织可执行性，engine 建模资源占用，wakeup 把完成事件传播给依赖者。
+Transition: 下一页只公开时间公式与假设，不泄露实现常数。
 [Sources]
-- experiments/05_linxcore_queue/run.py
-- vendor/LinxCore/docs/spec/20-behavior/ifu.md
+- catalog: davincioo-public-docs
+- catalog: course-synthesis
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 三类执行时间模型
 
-# 8 周期队列 trace 把“不会丢数据”变成**可重放证据**
-
-| cycle | ready | before | push | pop | after |
-|---:|:---:|---|---:|---:|---|
-| 1 | false | `[3]` | 5 | — | `[3,5]` |
-| 2 | false | `[3,5]` | — | — | `[3,5]` |
-| 3 | true | `[3,5]` | 8 | 3 | `[5,8]` |
-| 7 | true | `[13]` | — | 13 | `[]` |
-
-<div class="visual-frame" style="padding:1rem;margin-top:.8rem">
-  <div class="flow"><span class="flow-node">sent [3,5,8,13]</span><span class="flow-arrow">=</span><span class="flow-node">received [3,5,8,13]</span><span class="flow-arrow">+</span><span class="flow-node">1 backpressure cycle</span></div>
-</div>
+<FullBleedStage background="/generated/slides/s36-execution-engine-time-model-v2.png" title="三类执行时间模型" claim="公式是可替换假设；参数必须来自公开配置、实验或明确的课程设定。" eyebrow="TIMING ASSUMPTIONS" slide-id="S36">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#b9ff33">TMA time = ceil(bytes / bandwidth)<small>再叠加公开的固定开销假设</small></span><span style="--layer:#17d9ff">Vector time = f(data volume, op class)<small>按数据量与操作类别分层</small></span><span style="--layer:#ffbe00">Cube time = ceil(M×N×K / MACs per cycle)<small>shape 与有效并行度进入模型</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-MTH-003
-Learning objective: 从 queue trace 复核保持、入队、出队与最终序列一致性。
-Duration: 2.5 min
-Visual intent: class: code-trace；真实 CSV 行与 summary 的发送/接收序列对齐。
-Evidence: experiments/artifacts/05/queue_trace.csv; experiments/artifacts/05/queue_summary.json
-Interaction: 请听众手算 cycle 3 的 queue_after，并解释同拍 push/pop 的顺序。
-Caveat: `backpressure_cycles=1` 是实验脚本的统计口径；trace 中 consumer_ready=false 的拍数不等同于该指标。
+Slide-ID: S36
+Objective: 给出 TMA、Vector、Cube 的时间公式和可审计假设边界。
+Timing: 3 min
+Visual: 三条公式分别连接 bytes/BW、data/op class、MACs/cycle。
+Interaction: 固定工作量，分别把带宽或 MACs/cycle 加倍，判断哪类时间会改变。
+Sources: davincioo-public-docs; course-model
+Boundary: 页面不披露私有 timing constants；公式只定义参数关系，不声称完成校准。
+Narrative: intrinsic latency 的价值是解释单个事件的服务时间，但它仍不是完整系统时间。
+Transition: 在计算延迟前，先明确每个 opcode 由哪类资源执行。
 [Sources]
-- experiments/artifacts/05/queue_trace.csv
-- experiments/artifacts/05/queue_summary.json
-- experiments/05_linxcore_queue/run.py
+- catalog: davincioo-public-docs
+- catalog: course-model
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Opcode 到执行资源的确定性路由
 
-# 背压传播必须停在接口，不能污染**架构语义**
-
-<script setup lang="ts">
-import TimingDiagram from '../../components/TimingDiagram.vue'
-</script>
-
-<TimingDiagram :cycles="8" />
-
-<p class="muted" style="margin-top:.4rem">时延可以变化；事务身份、顺序和值必须保持，架构结果才可比较。</p>
+<FullBleedStage background="/generated/slides/s37-opcode-resource-mapping-v2.png" title="Opcode 到执行资源的确定性路由" claim="这是 DaVinci gfsim implementation routing；PTO family 只定义语义类别，不规定同一资源映射。" eyebrow="IMPLEMENTATION CHOICE" slide-id="S37">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#b9ff33">TLOAD → TMA<small>数据搬运</small></span><span style="--layer:#17d9ff">TEXTRACT / TMOV → Vector<small>TMOV 是 PTO family；此处为 gfsim 路由</small></span><span style="--layer:#ffbe00">TMATMUL* → Cube<small>矩阵计算</small></span><span style="--layer:#f16bb5">management / sync → Scalar<small>管理与同步</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-LRN-102
-Learning objective: 区分允许变化的等待周期与必须保持的事务身份、顺序和值。
-Duration: 2 min
-Visual intent: class: code-trace；共享 TimingDiagram 用 valid、ready、fire 波形表现阻塞与唯一传输。
-Evidence: experiments/artifacts/05/queue_trace.csv
-Interaction: 让听众指出 ready=0 时若 payload 改变，会违反哪条局部不变量。
-Caveat: 活性、公平性和最大等待时间需额外性质；仅靠安全性不变量不能证明。
+Slide-ID: S37
+Objective: 明确 DaVinci gfsim 对 TLOAD、TEXTRACT、TMOV、TMATMUL 与管理同步类的确定性路由。
+Timing: 3 min
+Visual: 四条 opcode family 到 TMA、Vector、Cube、Scalar 的彩色映射。
+Interaction: 给出一组混合 trace，让学生统计四类 engine 的 arrival pressure。
+Sources: davincioo-public-docs; pto-spec
+Boundary: TMOV 被标为 PTO family；具体映射属于 DaVinci gfsim 实现而非 PTO 规范。
+Narrative: 把语义与资源路由分开，才能在不改变程序 effect 的情况下探索不同微架构。
+Transition: 确定路由后，用单周期播放观察状态如何迁移。
 [Sources]
-- experiments/artifacts/05/queue_trace.csv
-- vendor/LinxCore/docs/spec/20-behavior/ifu.md
+- catalog: davincioo-public-docs
+- catalog: pto-spec
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 一次只推进一个周期
 
-# 软硬件协同的共同语言是**可比较事件**，不是共享实现
-
-<div class="split">
-  <div>
-    <div class="visual-frame" style="padding:1.2rem">
-      <div class="flow">
-        <span class="flow-node">ELF 元数据</span><span class="flow-arrow">→</span>
-        <span class="flow-node">软件 trace</span><span class="flow-arrow">↔</span>
-        <span class="flow-node">硬件 trace</span><span class="flow-arrow">→</span>
-        <span class="flow-node">首个分歧</span>
-      </div>
-    </div>
-    <p class="lede" style="margin-top:1.2rem">实现可以不同；身份、顺序和架构副作用必须进入同一比较域。</p>
-  </div>
-  <img src="/generated/hw-sw-lab.png" alt="软硬件协同实验概念图" class="visual-frame" style="width:100%;max-height:410px;object-fit:cover" />
-</div>
+<FullBleedStage background="/generated/slides/s38-single-cycle-step-v2.png" title="一次只推进一个周期" claim="每次按键只做一次状态转移：dispatch、ready、issue、execute、complete、retire 都能被逐步检查。" eyebrow="CYCLE PLAYBACK" slide-id="S38">
+  <template #diagram><CyclePlayback /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-LRN-102
-Learning objective: 把软硬件协同理解为事件协议对齐，而非代码或内部周期对齐。
-Duration: 2 min
-Visual intent: class: section；本地软硬件实验概念图与四节点 crosscheck 管道进入证据章节。
-Evidence: experiments/artifacts/06/crosscheck.json
-Interaction: 请听众说出“软件模型与 RTL 必须相同”的一个错误比较维度。
-Caveat: 软件参考模型也可能有缺陷，因此仍需固定版本、独立测试与多源证据。
+Slide-ID: S38
+Objective: 逐周期观察 trace、ROB、IQ、execute、completion 与 retirement 状态。
+Timing: 3 min
+Visual: 六列状态视图把同一 sequence_id 的迁移保持可见。
+Interaction: 点击按钮、空格或右箭头每次推进一个周期；Home 回到初始状态。
+Sources: course-model; davincioo-public-docs
+Boundary: 播放器是确定性教学模型，不声称复制 gfsim 的全部内部事件顺序。
+Narrative: 单步执行迫使每个状态变化都有前因。依赖未满足不能 issue，完成也不等于已经按序退休。
+Transition: 下一页把单条 intrinsic latency 与端到端 system time 分开。
 [Sources]
-- experiments/06_trace_crosscheck/README.md
-- experiments/artifacts/06/crosscheck.json
+- catalog: course-model
+- catalog: davincioo-public-docs
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Intrinsic latency 不等于 system time
 
-# 从 ELF 到提交 trace，每层只承诺**自己知道的事实**
-
-| 层 | 可靠事实 | 不应越权推断 |
-|---|---|---|
-| ELF 元数据 | 入口地址、符号边界 | 动态提交顺序 |
-| QEMU / 软件模型 | 指令语义与架构状态变换 | RTL 内部 stage 时序 |
-| 硬件 commit trace | 实际提交事件与副作用 | 未暴露的内部因果 |
-
-<div class="visual-frame" style="padding:.9rem 1.2rem;margin-top:.8rem">
-  <div class="flow"><span class="flow-node">来源</span><span class="flow-arrow">→</span><span class="flow-node">字段 schema</span><span class="flow-arrow">→</span><span class="flow-node">允许的主张</span></div>
-</div>
+<FullBleedStage background="/generated/slides/s39-queueing-critical-path-v2.png" title="Intrinsic latency 不等于 system time" claim="系统时间还包含依赖等待、资源争用、ROB/IQ 容量、可重叠工作与最终 critical path。" eyebrow="QUEUEING + DEPENDENCIES" slide-id="S39">
+  <template #diagram><div class="diagram-dock evidence-strip"><span>Intrinsic<b>service time</b></span><span>Deps<b>ready wait</b></span><span>Contention<b>engine wait</b></span><span>Window<b>ROB / IQ</b></span><span>Overlap<b>hidden work</b></span><span>Result<b class="bottleneck">critical path</b></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-MTH-003
-Learning objective: 为 ELF、软件参考 trace 与硬件提交 trace 分配不重叠的证据责任。
-Duration: 1.5 min
-Visual intent: class: evidence；三层事实表限制每个来源能支持的主张范围。
-Evidence: experiments/06_trace_crosscheck/fixtures/elf_symbols.json; experiments/06_trace_crosscheck/fixtures/qemu_trace.csv; experiments/06_trace_crosscheck/fixtures/hardware_trace.csv
-Interaction: 快问快答：入口 PC 匹配能否证明所有指令语义匹配？
-Caveat: 本课 fixture 是最小教学输入，不代表完整 QEMU 或硅后验证覆盖。
+Slide-ID: S39
+Objective: 区分执行单元 intrinsic latency 与包含排队、依赖、容量和 overlap 的 system time。
+Timing: 3 min
+Visual: 同一事件的服务时间嵌在更长的依赖与排队时间轴中。
+Interaction: 比较一条独立 TLOAD 与一条 critical-path TLOAD，说明相同 intrinsic latency 为何有不同影响。
+Sources: course-model; davincioo-public-docs
+Boundary: 因果项是公开教学分类，不给出私有实现的精确等待分解。
+Narrative: 性能优化要缩短关键路径，而不是机械缩短每个局部延迟。足够的 overlap 可以隐藏长服务时间，容量不足又会把它暴露出来。
+Transition: 将这些结构参数放进受控 sweep，观察敏感性而非猜测等价。
 [Sources]
-- experiments/06_trace_crosscheck/README.md
-- experiments/06_trace_crosscheck/run.py
+- catalog: course-model
+- catalog: davincioo-public-docs
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 参数搜索：找敏感方向，不制造等价
 
-# Crosscheck 先固定输入身份，再比较**4 条提交事件**
-
-| instruction | PC | opcode | rd | value | matched |
-|---:|---|---|---|---:|:---:|
-| 0 | `0x80000000` | movi | r1 | 2 | ✓ |
-| 1 | `0x80000004` | movi | r2 | 5 | ✓ |
-| 2 | `0x80000008` | add | r3 | 7 | ✓ |
-| 3 | `0x8000000c` | halt | — | — | ✓ |
-
-<div class="visual-frame" style="padding:.85rem 1.2rem;margin-top:.65rem">
-  <div class="flow"><span class="flow-node">ELF entry = first PC</span><span class="flow-arrow">∧</span><span class="flow-node">mismatches = []</span><span class="flow-arrow">⇒</span><span class="flow-node">本 fixture 通过</span></div>
-</div>
+<FullBleedStage background="/generated/slides/s40-parameter-search-space-v2.png" title="参数搜索：找敏感方向，不制造等价" claim="同时观察 ROB depth、Tile tags、TMA BW、Cube MACs 与 engine counts；结果只支持候选方向。" eyebrow="PARAMETER SWEEP" slide-id="S40">
+  <template #diagram><ParameterSweep /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-LRN-102
-Learning objective: 读取实验 06 的归一化结果，并把“通过”限定在固定 fixture 与 4 条指令上。
-Duration: 2.5 min
-Visual intent: class: code-trace；直接呈现 normalized_trace.csv 的四条真实事件与 crosscheck 判定。
-Evidence: experiments/artifacts/06/normalized_trace.csv; experiments/artifacts/06/crosscheck.json
-Interaction: 让听众逐列说出 opcode、rd、value 中哪一项变化会构成首个架构分歧。
-Caveat: 4/4 匹配只证明该 fixture；不能外推为整个 ISA、整个核或所有异常路径正确。
+Slide-ID: S40
+Objective: 选择并检查 ROB、Tile tags、TMA bandwidth、Cube MACs/cycle 与 engine-count 的实际 OFAT points。
+Timing: 3 min
+Visual: checked qproj_sweep 点选择器直接显示 parameter、value、simulated_cycles、bottleneck_signal 与 speedup。
+Interaction: 选择 baseline 与各 OFAT point，比较实际 simulated_cycles 和 bottleneck_signal。
+Sources: qproj-davincioo-lab; experiment-artifacts; course-model
+Boundary: 组件只展示本地 qproj_sweep.json 的 checked points；artifact 不可用时明确显示 unavailable，不生成 q_proj 替代证据。
+Narrative: sweep 的任务是排除不敏感方向并产生下一轮问题。相同 cycle count 既不证明结构等价，也不证明参数无意义。
+Transition: 聚合数字还不够，下一页回到时间线上检查事件重叠。
 [Sources]
-- experiments/artifacts/06/normalized_trace.csv
-- experiments/artifacts/06/crosscheck.json
-- experiments/06_trace_crosscheck/run.py
+- catalog: qproj-davincioo-lab
+- catalog: experiment-artifacts
+- catalog: course-model
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 离线时间线：证据必须可浏览
 
-# Trace 不一致要先定位**首个分歧**，不要先解释全局
-
-<script setup lang="ts">
-import TraceComparator from '../../components/TraceComparator.vue'
-</script>
-
-<TraceComparator />
+<FullBleedStage background="/generated/slides/s41-perfetto-kanata-timeline-v2.png" title="离线时间线：证据必须可浏览" claim="按 opcode 与 engine 过滤 q_proj 事件，检查 issue、complete 与 retire 的相对位置。" eyebrow="PERFETTO / KANATA-STYLE" slide-id="S41">
+  <template #diagram><EvidenceTimeline /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-102, NDF-MTH-003
-Learning objective: 执行标准化、身份对齐、首个分歧定位和反例最小化的调试顺序。
-Duration: 2 min
-Visual intent: class: code-trace；共享 TraceComparator 用教学反例高亮 cycle 107 的地址生成分歧。
-Evidence: experiments/artifacts/06/crosscheck.json; components/TraceComparator.vue
-Interaction: Step 到 cycle 107，再打开 mismatches only；只描述首个可观察差异。
-Caveat: 组件内 cycle 107 不匹配是教学反例；实验 06 的真实 fixture 为 4/4 匹配、无 mismatch。
+Slide-ID: S41
+Objective: 用离线 Perfetto/Kanata-style 视图检查 q_proj timeline artifact。
+Timing: 3 min
+Visual: Scalar、TMA、Vector、Cube 轨道展示事件跨度与长尾 store。
+Interaction: 组合 opcode 与 engine filter，定位首个 Cube 工作和末尾 TSTORE。
+Sources: qproj-davincioo-lab; experiment-artifacts
+Boundary: 时间线读取本地 CSV，展示 reference_replay；不声称是新抓取的硬件波形。
+Narrative: 时间线让“为什么是这个周期数”变成可检查问题。过滤器帮助区分 engine 忙碌、依赖空洞和尾部拖延。
+Transition: 将 trace、summary、sweep 和 timeline 合并成一个可复述的实验结论。
 [Sources]
-- components/TraceComparator.vue
-- experiments/artifacts/06/crosscheck.json
-- vendor/LinxCore/docs/trace/linxtrace_v1.md
+- catalog: qproj-davincioo-lab
+- catalog: experiment-artifacts
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# q_proj 实验：可复述，也有边界
 
-# 稳定 UID 让乱序、重放和 flush 之后仍能**可靠对齐**
-
-<div class="visual-frame" style="padding:1rem">
-  <div class="flow">
-    <span class="flow-node"><code>uop_uid</code><br>动态微操作</span>
-    <span class="flow-node"><code>seq</code><br>架构提交次序</span>
-    <span class="flow-node"><code>block_uid</code><br>动态块</span>
-    <span class="flow-node"><code>uop_parent_uid</code><br>重放 / 展开谱系</span>
-    <span class="flow-arrow">→</span><span class="flow-node">可靠对齐</span>
-  </div>
-</div>
-
-| 情况 | 身份规则 |
-|---|---|
-| replay | 新 `uop_uid`，保留 `uop_parent_uid` |
-| flushed/trapped | 可有 `uop_uid`，但没有提交 `seq` |
-| block | `block_uid` 关联同一动态块生命周期 |
+<FullBleedStage background="/generated/slides/s42-candidate-design-point-v2.png" title="q_proj 实验：可复述，也有边界" claim="checked reference replay: 562 records / 11028 cycles。候选点来自敏感性，不代表结构等价。" eyebrow="REPRODUCIBLE EVIDENCE" slide-id="S42">
+  <template #diagram><div class="diagram-dock evidence-strip"><span>Trace<b>562 records</b></span><span>Opcode mix<b>281 / 160 / 40 / 1 / 79 / 1</b></span><span>Replay<b>11028 cycles</b></span><span>Artifact<b>reference_replay</b></span><span>Fresh capture<b class="bottleneck">not done</b></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-102
-Learning objective: 区分 uop_uid、seq、block_uid 与 uop_parent_uid 在 trace 对齐中的职责。
-Duration: 2.5 min
-Visual intent: class: architecture；身份汇聚图与三行边界表说明身份不是 PC 的同义词。
-Evidence: vendor/LinxCore/docs/trace/uid_contract.md
-Interaction: 给出 replay 场景，让听众判断旧、新 uop 是否应共享同一 uid。
-Caveat: 这些字段是 LinxCore trace 案例合同，不是 PTO 规范字段。
+Slide-ID: S42
+Objective: 准确陈述 q_proj checked reference artifact 与未完成的新 capture。
+Timing: 3 min
+Visual: 五个证据标签展示 record count、opcode mix、cycles、mode 与 capture 状态。
+Interaction: 要求学生把结论拆成 observation、candidate design point、sensitivity conclusion 与 unresolved question。
+Sources: qproj-davincioo-lab; experiment-artifacts
+Boundary: durable artifact 标为 reference_replay。一次 task-local gfsim re-simulation 曾重现 11028 cycles，但不是 checked live artifact，也不是 fresh PTO capture；不宣称等价。
+Narrative: checked reference replay 含 562 条记录，opcode mix 为 281/160/40/1/79/1，总计 11028 cycles；敏感性只支持候选设计方向。
+Transition: 从模型证据转向能够承载 PTO 的 NPU Core 设计。
 [Sources]
-- vendor/LinxCore/docs/trace/uid_contract.md
-- vendor/LinxCore/docs/trace/linxtrace_v1.md
+- catalog: qproj-davincioo-lab
+- catalog: experiment-artifacts
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# NPU Core for PTO
 
-# 观察者不能反向阻塞**被观察系统**
-
-```mermaid
-flowchart LR
-  C[Architectural commit] -->|event copy| T[Retained trace slot]
-  T --> D[DTU / renderer]
-  D -.backpressure.-> T
-  D -.禁止.-> C
-  C --> O[Architectural state]
-```
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.8rem">
-  <div class="visual-frame" style="padding:.9rem"><h2>允许</h2><p>阻塞一个 retained trace packet；必要时丢弃后续观察。</p></div>
-  <div class="visual-frame" style="padding:.9rem"><h2>禁止</h2><p>trace ready 反向决定 fetch、transfer 或 commit。</p></div>
-</div>
+<KeynoteSourceStage background="/generated/slides/s43-keynote-page-28.png" title="NPU Core for PTO" claim="NPU Core for PTO" slide-id="S43" />
 
 <!--
-NDF-ID: NDF-LRN-201, NDF-MTH-002
-Learning objective: 解释非阻塞 trace 如何隔离观察通道和架构进展。
-Duration: 2 min
-Visual intent: class: architecture；虚线 backpressure 明确终止于 retained trace slot。
-Evidence: vendor/LinxCore/docs/spec/20-behavior/ifu.md
-Interaction: 请听众指出 trace 丢包与阻塞 commit 两种策略各自影响的主张类型。
-Caveat: 非阻塞观察可能丢失事件；必须显式记录 drop 语义和覆盖限制。
+Slide-ID: S43
+Objective: 完整保留原 Keynote 第 28 页，开启 NPU Core for PTO 章节。
+Timing: 1 min
+Visual: 原 Keynote 第 28 页完整画面，不增加任何观众可见覆盖层。
+Interaction: 章节转场，把上一章的模型参数转成实现约束。
+Sources: publish-keynote-page-28
+Boundary: 可见文字与图形直接来自演讲人提供的 Keynote。
+Narrative: 模型给出问题方向，Core 设计必须把这些方向写成语义、接口、资源与验收契约。
+Transition: 先回到原稿的分层调度思想。
 [Sources]
-- vendor/LinxCore/docs/spec/20-behavior/ifu.md
-- vendor/LinxCore/docs/spec/10-architecture/ownership.md
+- source: K28
+- catalog: publish-keynote-page-28
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 分层调度
 
-# 正确性门必须在 PPA 测量之前**关闭错误分支**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">候选动作</span><span class="flow-arrow">→</span>
-    <span class="flow-node">编译 / elaboration</span><span class="flow-arrow">→</span>
-    <span class="flow-node">等价 / 不变量门</span><span class="flow-arrow">→</span>
-    <span class="flow-node">PPA 测量</span><span class="flow-arrow">→</span>
-    <span class="flow-node">决策写回</span>
-  </div>
-</div>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.2rem">
-  <blockquote><strong>Gate fail：</strong>保存反例，不进入性能比较。</blockquote>
-  <blockquote><strong>Gate pass：</strong>才允许生成候选指标。</blockquote>
-</div>
+<KeynoteSourceStage background="/generated/slides/s44-keynote-page-29.png" title="分层调度" claim="分层调度" slide-id="S44" />
 
 <!--
-NDF-ID: NDF-MTH-001, NDF-MTH-002, NDF-LRN-202
-Learning objective: 设计“正确性先于性能”的不可绕过门控顺序。
-Duration: 2 min
-Visual intent: class: experiment；单向门控流程阻止错误候选污染 PPA 数据集。
-Evidence: experiments/artifacts/summary.json
-Interaction: 给出“IPC +20%，trace 不匹配”，全班做 Reject 手势。
-Caveat: 通过功能门不等于通过活性、时序、功耗或物理签核门。
+Slide-ID: S44
+Objective: 完整保留原 Keynote 第 29 页的调度内容。
+Timing: 2 min
+Visual: 原 Keynote 第 29 页完整画面，不改变原始文字、图表或布局。
+Interaction: 沿原图说明不同层级为何需要不同粒度的调度决策。
+Sources: publish-keynote-page-29
+Boundary: 本页可见内容完全来自历史源稿，不追加当前实现结论。
+Narrative: 分层调度把长时间尺度的工作分配与短时间尺度的资源选择分开。
+Transition: 下一页继续保留原稿中的 PTO 多级调度层次。
 [Sources]
-- materials/agentic_circuit_optimizer.md
-- docs/NDF.md
-- experiments/artifacts/summary.json
+- source: K29
+- catalog: publish-keynote-page-29
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# PTO 多级调度层次
 
-# 故意越界并得到 exit 2，证明裁判会**拒绝候选**
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
-  <div class="visual-frame" style="padding:1.2rem">
-    <h2>输入</h2>
-    <p><span class="metric">allocated = 16 B</span></p>
-    <p><span class="metric">requested = 20 B</span></p>
-  </div>
-  <div class="visual-frame" style="padding:1.2rem">
-    <h2>预期证据</h2>
-    <p><span class="warm">exit code = 2</span></p>
-    <p><code>expected_failure_observed = true</code></p>
-  </div>
-</div>
-
-<div class="flow" style="margin-top:1.2rem"><span class="flow-node">触发指定不变量</span><span class="flow-arrow">→</span><span class="flow-node">得到指定错误</span><span class="flow-arrow">→</span><span class="flow-node">红灯测试通过</span></div>
+<KeynoteSourceStage background="/generated/slides/s45-keynote-page-30.png" title="PTO 多级调度层次" claim="PTO 多级调度层次" slide-id="S45" />
 
 <!--
-NDF-ID: NDF-MTH-002, NDF-LRN-202
-Learning objective: 用预期退出码、错误条件与结构化工件定义 intentional failure 的成功。
-Duration: 2 min
-Visual intent: class: experiment；左右卡片直接比较输入越界与预期裁判结果。
-Evidence: experiments/artifacts/07/expected_failure.json
-Interaction: 揭示右栏前，让听众先写下应观察到的退出码和失败原因。
-Caveat: 任意非零退出都不算成功；必须命中指定越界不变量和预期退出码。
+Slide-ID: S45
+Objective: 完整保留原 Keynote 第 30 页的 PTO 层次关系。
+Timing: 2 min
+Visual: 原 Keynote 第 30 页完整画面，不改变原始文字、图表或布局。
+Interaction: 指出原图中层次之间传递的是意图、约束还是具体调度动作。
+Sources: publish-keynote-page-30
+Boundary: 可见层次与术语完全来自历史源稿。
+Narrative: 多级结构为软件语义与硬件资源之间提供多个稳定边界。
+Transition: 下一页查看原稿中 PTO 与 MLIR 的源码表达。
 [Sources]
-- experiments/07_intentional_failure/run.py
-- experiments/artifacts/07/expected_failure.json
+- source: K30
+- catalog: publish-keynote-page-30
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# PTO / MLIR 源码表达
 
-# 失败工件是**设计知识**，不是日志垃圾
-
-| 应保存 | 作用 |
-|---|---|
-| 最小触发输入 | 复现与 delta-debugging |
-| 首个架构分歧 | 限定因果搜索范围 |
-| 候选 diff 与配置 | 归因到唯一动作 |
-| 退出码、stderr、结构化 JSON | 让机器可判定 |
-| 对应 NDF / 决策 ID | 防止下一轮重复犯错 |
-
-<div class="visual-frame" style="padding:.85rem 1.1rem;margin-top:.7rem">
-  <div class="flow"><span class="flow-node">失败</span><span class="flow-arrow">→</span><span class="flow-node">最小反例</span><span class="flow-arrow">→</span><span class="flow-node">负向约束</span><span class="flow-arrow">→</span><span class="flow-node">下一轮更小的搜索空间</span></div>
-</div>
+<KeynoteSourceStage background="/generated/slides/s46-keynote-page-31.png" title="PTO / MLIR 源码表达" claim="PTO / MLIR 源码表达" slide-id="S46" />
 
 <!--
-NDF-ID: NDF-MTH-002, NDF-MTH-003, NDF-LRN-202
-Learning objective: 把失败实验转换为可复现反例、负向约束与下一轮搜索记忆。
-Duration: 2 min
-Visual intent: class: evidence；五类失败工件表与“搜索空间收缩”流程相连。
-Evidence: experiments/artifacts/07/expected_failure.json
-Interaction: 请听众指出只保存截图而不保存输入时，哪一步无法重放。
-Caveat: 失败记忆也会过时；参考版本或不变量变化后必须重新验证。
+Slide-ID: S46
+Objective: 完整保留原 Keynote 第 31 页的 PTO 与 MLIR source capture。
+Timing: 2 min
+Visual: 原 Keynote 第 31 页完整画面，不重排或改写源码内容。
+Interaction: 在原图上识别程序意图、dialect 表达与实现映射的边界。
+Sources: publish-keynote-page-31
+Boundary: 源码截图是历史源稿内容；本页不声称已用当前工具链重新编译。
+Narrative: 可读源码让语义意图成为 review 对象，也为后续自动生成模型和测试提供输入。
+Transition: 下一页保留原稿中的历史性能结果。
 [Sources]
-- materials/agentic_circuit_optimizer.md
-- experiments/artifacts/07/expected_failure.json
-- docs/NDF.md
+- source: K31
+- catalog: publish-keynote-page-31
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 历史源稿性能结果
 
-# 体系结构 Agent 由**五项可审计合同**组成
-
-<div class="split">
-  <div>
-    <div class="visual-frame" style="padding:1.15rem">
-      <div class="flow">
-        <span class="flow-node">动作</span><span class="flow-arrow">×</span>
-        <span class="flow-node">传感器</span><span class="flow-arrow">×</span>
-        <span class="flow-node">裁判</span><span class="flow-arrow">×</span>
-        <span class="flow-node">记忆</span><span class="flow-arrow">×</span>
-        <span class="flow-node">接受规则</span>
-      </div>
-    </div>
-    <p class="lede" style="margin-top:1.2rem">Prompt 只表达意图；五项合同决定 Agent 能做什么、相信什么、何时停手。</p>
-  </div>
-  <img src="/generated/agent-loop.png" alt="体系结构 Agent 闭环概念图" class="visual-frame" style="width:100%;max-height:410px;object-fit:cover" />
-</div>
+<KeynoteSourceStage background="/generated/slides/s47-keynote-page-32.png" title="历史源稿性能结果" claim="历史源稿性能结果" slide-id="S47" />
 
 <!--
-NDF-ID: NDF-LRN-202, NDF-MTH-002
-Learning objective: 定义体系结构优化 Agent 的动作、传感器、裁判、记忆和接受规则。
-Duration: 2 min
-Visual intent: class: section；本地 Agent 闭环概念图与五项乘积关系强调缺一不可。
-Evidence: docs/NDF.md; materials/agentic_circuit_optimizer.md
-Interaction: 让听众为“调整队列深度”各说出五项合同中的一个字段。
-Caveat: 合同边界不能保证模型推理正确，但能限制副作用并暴露错误。
+Slide-ID: S47
+Objective: 完整保留原 Keynote 第 32 页的历史性能图表。
+Timing: 2 min
+Visual: 原 Keynote 第 32 页完整画面，所有数值和图例保持原样。
+Interaction: 让学生区分历史 source result 与本课程 q_proj replay evidence。
+Sources: publish-keynote-page-32
+Boundary: 性能图明确标为历史源稿结果，不作为本次环境新测量。
+Narrative: 历史结果提供设计动机，但当前结论必须由当前 artifact、版本与复现记录支撑。
+Transition: 下一页保留原稿对 Swizzle 的解释。
 [Sources]
-- docs/NDF.md
-- materials/agentic_circuit_optimizer.md
+- source: K32
+- catalog: publish-keynote-page-32
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Swizzle
 
-# 动作空间越结构化，实验的**因果归因**越可信
-
-| 动作 | 保持不变 | 主要风险 |
-|---|---|---|
-| 改 queue depth | transaction schema、顺序 | 活性、面积 |
-| 移 pipeline boundary | 架构观察结果 | bypass、stall |
-| 改 issue width | 提交语义 | 端口、相关性 |
-| 复制 / 共享 FU | opcode 结果与异常 | 争用、时序 |
-
-<div class="visual-frame" style="padding:.9rem 1.2rem;margin-top:.8rem">
-  <div class="flow"><span class="flow-node">参数化动作</span><span class="flow-arrow">→</span><span class="flow-node">最小 diff</span><span class="flow-arrow">→</span><span class="flow-node">单一假设</span><span class="flow-arrow">→</span><span class="flow-node">可解释结果</span></div>
-</div>
+<KeynoteSourceStage background="/generated/slides/s48-keynote-page-33.png" title="Swizzle" claim="Swizzle" slide-id="S48" />
 
 <!--
-NDF-ID: NDF-LRN-202, NDF-LRN-201
-Learning objective: 把自由代码编辑收缩为带不变量与风险标签的结构化微架构动作。
-Duration: 1.5 min
-Visual intent: class: compare；四类动作表与归因链说明动作不是无边界 patch。
-Evidence: materials/agentic_circuit_optimizer.md
-Interaction: 让听众把“让核更快”改写为表中的一个动作和一个保持项。
-Caveat: 结构性跳变不能伪装成参数微调；应新建 NDF 分支和对照基线。
+Slide-ID: S48
+Objective: 完整保留原 Keynote 第 33 页的 Swizzle source 与 mapping。
+Timing: 2 min
+Visual: 原 Keynote 第 33 页完整画面，不改变原始 mapping 或说明。
+Interaction: 沿原图说明逻辑 Tile layout 与物理访问分布之间的关系。
+Sources: publish-keynote-page-33
+Boundary: Swizzle 可见内容直接来自历史源稿，不延伸到未核实实现细节。
+Narrative: layout 变换可以在语义不变时改变 bank 分布、连续性与端口压力。
+Transition: 下一页保留对应的历史容量与性能结果。
 [Sources]
-- materials/agentic_circuit_optimizer.md
-- https://github.com/LinxISA/pyCircuit
+- source: K33
+- catalog: publish-keynote-page-33
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Swizzle 容量与性能
 
-# 旋钮只有绑定不变量后，才是**研究变量**
-
-<script setup lang="ts">
-import DesignSpaceExplorer from '../../components/DesignSpaceExplorer.vue'
-</script>
-
-<DesignSpaceExplorer />
+<KeynoteSourceStage background="/generated/slides/s49-keynote-page-34.png" title="Swizzle 容量与性能" claim="Swizzle 容量与性能" slide-id="S49" />
 
 <!--
-NDF-ID: NDF-LRN-202
-Learning objective: 为发射宽度、ROB、向量 lane 与频率旋钮同时指定合法域和正确性不变量。
-Duration: 2 min
-Visual intent: class: circuit-focus；共享 DesignSpaceExplorer 让听众观察旋钮与代理指标联动。
-Evidence: components/DesignSpaceExplorer.vue; experiments/artifacts/08/design_points.csv
-Interaction: 切换 Efficient 与 Performance；要求先说不变量，再读指标。
-Caveat: 组件数值是确定性教学启发式，不是 LinxCore 实测 PPA，也不来自实验 08 的真实表。
+Slide-ID: S49
+Objective: 完整保留原 Keynote 第 34 页的容量与性能内容。
+Timing: 2 min
+Visual: 原 Keynote 第 34 页完整画面，图表和数值保持原样。
+Interaction: 讨论容量变化、访问分布与历史性能曲线之间可能的因果链。
+Sources: publish-keynote-page-34
+Boundary: 所有数值明确属于历史源稿，不标为当前实验结果。
+Narrative: 容量与性能不是孤立参数；它们通过 layout、并发请求和端口冲突共同作用。
+Transition: 下面把模型结果系统地转写成设计约束。
 [Sources]
-- components/DesignSpaceExplorer.vue
-- materials/agentic_circuit_optimizer.md
-- experiments/artifacts/08/design_points.csv
+- source: K34
+- catalog: publish-keynote-page-34
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 从模型结果到设计约束
 
-# 代理指标适合**筛选**，不适合宣称真实 PPA
-
-```mermaid
-flowchart LR
-  C[大量候选] --> P[快速代理模型]
-  P -->|淘汰明显劣点| S[少量活跃点]
-  S --> R[综合 / 仿真 / 物理实现]
-  R --> G[真实测量]
-  G -.校准偏差.-> P
-```
-
-| 层级 | 适合回答 | 不适合回答 |
-|---|---|---|
-| 代理模型 | 哪些点值得继续 | 最终 PPA 结论 |
-| 真实工具 | 固定条件下的 QoR | 所有工作负载与工艺外推 |
+<FullBleedStage background="/generated/slides/s50-model-parameters-design-constraints-v2.png" title="从模型结果到设计约束" claim="每个敏感参数都要落到容量、端口、队列、带宽或延迟契约，并写出可验证的接受条件。" eyebrow="MODEL → DESIGN" slide-id="S50">
+  <template #diagram><div class="diagram-dock architecture-chain"><span>Model result</span><i>→</i><span>Capacity</span><i>·</i><span>Ports</span><i>·</i><span>Queues</span><i>·</i><span>Bandwidth</span><i>·</i><span>Latency</span><i>→</i><span>Acceptance</span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-202, NDF-MTH-003
-Learning objective: 区分快速代理筛选与真实综合、仿真、物理实现测量的证据强度。
-Duration: 1.5 min
-Visual intent: class: architecture；代理—真实工具—校准闭环防止把启发式数字冒充实测。
-Evidence: materials/agentic_circuit_optimizer.md; materials/agentic_tao_physical_design_flow.md
-Interaction: 请听众判断上一页 efficiency score 能否进入论文 PPA 主表。
-Caveat: 即使真实工具也只支持固定版本、配置、工艺与工作负载范围内的观察。
+Slide-ID: S50
+Objective: 把模型敏感性翻译为 capacity、ports、queues、bandwidth、latency 的设计约束。
+Timing: 3 min
+Visual: 参数结果经过约束分类器，最终进入可执行 acceptance。
+Interaction: 选择一个 sweep 信号，写出资源约束、可测指标与失败判据。
+Sources: course-synthesis; qproj-davincioo-lab
+Boundary: 敏感性用于形成候选约束，不直接决定实现尺寸或 PPA 最优点。
+Narrative: 设计约束必须比“加大队列”更具体：谁拥有容量、哪个端口承载流量、何时 backpressure、如何验收。
+Transition: 任何实现约束都必须先服从 PTO-ASL 的语义权威。
 [Sources]
-- materials/agentic_circuit_optimizer.md
-- materials/agentic_tao_physical_design_flow.md
+- catalog: course-synthesis
+- catalog: qproj-davincioo-lab
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# PTO-ASL 是语义权威
 
-# Pareto 前沿保留**不可比较的好设计**
-
-<script setup lang="ts">
-import ParetoFrontier from '../../components/ParetoFrontier.vue'
-</script>
-
-<ParetoFrontier />
-
-<img src="/generated/design-space.png" alt="设计空间概念图" style="position:absolute;right:4rem;top:4.4rem;width:165px;height:72px;object-fit:cover;border-radius:10px;opacity:.78" />
+<FullBleedStage background="/generated/slides/s51-pto-asl-semantics-v2.png" title="PTO-ASL 是语义权威" claim="实现可以改变队列与流水线，但不能悄悄改变 TLOAD、TMOV、TEXTRACT、TPUSH、TPOP 的软件可见 effect。" eyebrow="NORMATIVE SEMANTICS" slide-id="S51">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#17d9ff">TLOAD · TMOV · TEXTRACT<small>Tile 数据与布局语义</small></span><span style="--layer:#ffbe00">TPUSH · TPOP<small>架构状态交互</small></span><span style="--layer:#f16bb5">TPUT / TGET — DaVinciOO communication extensions — not normative PTO-ASL<small>GM → UB → GM</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-202
-Learning objective: 解释非支配关系，并保留高性能高成本与低性能低成本的不可比较候选。
-Duration: 2.5 min
-Visual intent: class: section；本地设计空间概念图衬底上使用共享 ParetoFrontier 逐点揭示前沿。
-Evidence: experiments/artifacts/08/pareto_frontier.json; components/ParetoFrontier.vue
-Interaction: Step 揭示全部点，再点 Highlight；让听众解释为何前沿不等于单一赢家。
-Caveat: 组件坐标是教学数据；实验 08 另用 latency、energy、area 三个最小化目标。
+Slide-ID: S51
+Objective: 以 PTO-ASL 约束 TLOAD、TMOV、TEXTRACT、TPUSH、TPOP 的语义，并隔离通信扩展。
+Timing: 3 min
+Visual: normative PTO-ASL 主区与醒目的 TPUT/TGET 扩展侧栏分离。
+Interaction: 给出一项性能优化，让学生判断它改变实现时序还是软件可见 effect。
+Sources: pto-spec; davincioo-public-docs; normative-language
+Boundary: TPUT/TGET 明确标为 DaVinciOO communication extensions，不属于 normative PTO-ASL。
+Narrative: 语义权威使不同模型与实现可以共享同一正确性目标。扩展必须单独命名，不能借用规范权威。
+Transition: NDF 把语义意图逐层转成实现机制与验收契约。
 [Sources]
-- components/ParetoFrontier.vue
-- experiments/artifacts/08/pareto_frontier.json
-- materials/agentic_circuit_optimizer.md
+- catalog: pto-spec
+- catalog: davincioo-public-docs
+- catalog: normative-language
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# NDF：从意图到可执行验收
 
-# 被支配点仍能解释搜索为什么**停止**
-
-| design | latency ↓ | energy ↓ | area ↓ | Pareto |
-|---|---:|---:|---:|:---:|
-| tiny | 20 | 6 | 2 | ✓ |
-| eco | 14 | 5 | 3 | ✓ |
-| balanced | 10 | 7 | 4 | ✓ |
-| fast | 7 | 10 | 6 | ✓ |
-| wasteful | 16 | 9 | 5 | ✗ |
-| oversized | 10 | 9 | 7 | ✗ |
-
-<div class="visual-frame" style="padding:.75rem 1.1rem;margin-top:.55rem">
-  <div class="flow"><span class="flow-node">balanced</span><span class="flow-arrow">支配</span><span class="flow-node">oversized</span><span class="flow-arrow">因为</span><span class="flow-node">同延迟、更低能耗、更小面积</span></div>
-</div>
+<FullBleedStage background="/generated/slides/s52-ndf-l0-l3-v2.png" title="NDF：从意图到可执行验收" claim="L0 intent → L1 contract → L2 mechanism → L3 executable acceptance；层间关系必须显式可追踪。" eyebrow="TRACEABLE DESIGN" slide-id="S52">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#17d9ff">L0 · Intent<small>为什么需要它</small></span><span style="--layer:#b9ff33">L1 · Contract<small>软件与邻接模块可依赖什么</small></span><span style="--layer:#ffbe00">L2 · Mechanism<small>资源与状态如何实现</small></span><span style="--layer:#f16bb5">L3 · Executable acceptance<small>current: draft test contract, not implementation</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-202, NDF-MTH-003
-Learning objective: 用实验 08 的三个最小化目标手工证明一个候选被支配。
-Duration: 2.5 min
-Visual intent: class: evidence；真实 design_points.csv 表与 balanced→oversized 支配证明对齐。
-Evidence: experiments/artifacts/08/design_points.csv; experiments/artifacts/08/pareto_frontier.json
-Interaction: 先遮住 Pareto 列，让听众找出 wasteful 和 oversized 的支配者。
-Caveat: 表中指标是微型确定性实验数据，不是 LinxCore 实测 PPA。
+Slide-ID: S52
+Objective: 解释 NDF L0–L3 与 refines、verifies、derived-from 三类追踪关系。
+Timing: 3 min
+Visual: 四层 NDF 垂直堆栈，双向链接标注 refines、verifies、derived-from。
+Interaction: 把“q_proj 不因 Tile tag 不足停顿”分别写成 L0、L1、L2、L3。
+Sources: ndf-course; normative-language
+Boundary: 当前 L3 明确是 draft test contract，不是已经存在的 implementation。
+Narrative: L0 说明意图，L1 固定接口契约，L2选择机制，L3 把验收写成可运行条件；追踪边让变化影响可计算。
+Transition: 用 q_proj vertical slice 给每个模块稳定 ID 与接口。
 [Sources]
-- experiments/artifacts/08/design_points.csv
-- experiments/artifacts/08/pareto_frontier.json
-- experiments/08_design_space_pareto/run.py
+- catalog: ndf-course
+- catalog: normative-language
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# q_proj vertical slice：稳定 ID 与接口
 
-# 接受规则必须同时约束**正确性、收益和可解释性**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">正确：硬门全过</span><span class="flow-arrow">∧</span>
-    <span class="flow-node">有益：非支配或过阈值</span><span class="flow-arrow">∧</span>
-    <span class="flow-node">可解释：动作与差异可归因</span><span class="flow-arrow">=</span>
-    <span class="flow-node">ACCEPT</span>
-  </div>
-</div>
-
-| 决策 | 条件 |
-|---|---|
-| Reject | 任一硬约束失败 |
-| Continue | 正确，但收益或证据尚不足 |
-| Accept | 三项合取成立并写回决策记录 |
+<FullBleedStage background="/generated/slides/s53-qproj-vertical-slice-v2.png" title="q_proj vertical slice：稳定 ID 与接口" claim="sequence_id 穿过 Trace、Tile Register、TMA、Extract、Matmul 与乱序窗口。" eyebrow="IMPLEMENTATION CONTRACT" slide-id="S53">
+  <template #diagram><div class="diagram-dock layer-stack"><span style="--layer:#17d9ff">TRACE-01 · Trace<small>input_tiles / output_tiles / scalar_inputs</small></span><span style="--layer:#b9ff33">TREG-01 · Tile Register<small>address / shape / layout / dtype</small></span><span style="--layer:#ffbe00">TMA-01 · VEX-01 · CUBE-01<small>TMA / Extract / Matmul</small></span><span style="--layer:#f16bb5">O3-01 · ROB / IQ / Scoreboard<small>readiness: rename / scoreboard derived</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-202, NDF-MTH-001, NDF-MTH-002
-Learning objective: 为 Agent 候选定义 Reject、Continue 与 Accept 三态规则。
-Duration: 2 min
-Visual intent: class: evidence；三项合取门和决策表共同防止“只看一个分数”。
-Evidence: experiments/artifacts/07/expected_failure.json; experiments/artifacts/08/design_points.csv
-Interaction: 对“trace 通过、延迟下降、能耗与面积上升”做三态投票并说明阈值缺口。
-Caveat: 多目标权衡没有脱离约束和使用场景的全局最优点。
+Slide-ID: S53
+Objective: 定义 q_proj vertical slice 的稳定 IDs、接口字段和 acceptance 边界。
+Timing: 3 min
+Visual: Trace 的 input_tiles/output_tiles/scalar_inputs 连接 Tile Register、TMA、Vector Extract、Cube Matmul 与 ROB/IQ/Scoreboard。
+Interaction: 选一个 sequence_id，逐模块说出输入、输出、状态所有者与验收检查。
+Sources: ndf-course; qproj-davincioo-lab; course-synthesis
+Boundary: IDs 是课程设计契约；不冒充已完成的生产实现或最终命名。
+Narrative: 稳定 ID 让 spec、模型、实现和测试讨论同一个对象；dependency/readiness edges 由 rename/scoreboard 从 Tile 读写推导，而非 trace 显式字段。
+Transition: 下一页把这些契约交给协作 Agent，并限定 pyCircuit 的角色。
 [Sources]
-- docs/NDF.md
-- materials/agentic_circuit_optimizer.md
-- experiments/artifacts/08/design_points.csv
+- catalog: ndf-course
+- catalog: qproj-davincioo-lab
+- catalog: course-synthesis
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Agent 协作落到 pyCircuit
 
-# 每轮只验证一个假设，结果才能写回**设计记忆**
-
-```mermaid
-flowchart LR
-  H[Claim + scope] --> A[One action]
-  A --> J{Correctness gate}
-  J -->|fail| F[Counterexample memory]
-  J -->|pass| M[Measure objectives]
-  M --> D{Pareto / threshold}
-  D -->|reject| F
-  D -->|accept or branch| R[Decision record]
-  F --> H
-  R --> H
-```
-
-<div class="visual-frame" style="padding:.8rem 1.1rem;margin-top:.55rem">
-  <div class="flow"><span class="flow-node">一轮一动作</span><span class="flow-arrow">+</span><span class="flow-node">正负结果都保存</span><span class="flow-arrow">+</span><span class="flow-node">下一轮只读已验证记忆</span></div>
-</div>
+<FullBleedStage background="/generated/slides/s54-agent-collaboration-pycircuit-v2.png" title="Agent 协作落到 pyCircuit" claim="spec、model、implementation、verification Agent 围绕同一 NDF 与 trace 工作；pyCircuit 是 pinned implementation target/source surface。" eyebrow="AGENT-DRIVEN COOPERATION" slide-id="S54">
+  <template #diagram><div class="diagram-dock architecture-chain"><span>Spec Agent</span><i>↔</i><span>Model Agent</span><i>↔</i><span>Implementation Agent</span><i>↔</i><span>Verification Agent</span><i>→</i><span>vendor/pyCircuit<br><small>pinned source · target</small></span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-001, NDF-LRN-202
-Learning objective: 构造单假设、双出口、正负结果都写回的 Agent 优化循环。
-Duration: 2 min
-Visual intent: class: experiment；Mermaid 闭环把失败反例和接受记录都反馈到下一轮。
-Evidence: experiments/artifacts/summary.json; materials/agentic_circuit_optimizer.md
-Interaction: 让听众指出若一轮同时改 width 与 queue depth，哪个箭头失去可解释性。
-Caveat: 因子实验可同时改变多个变量，但必须预先设计交互项与归因模型。
+Slide-ID: S54
+Objective: 说明 Agent 如何围绕 spec、model、implementation、verification 与 pyCircuit 协作。
+Timing: 3 min
+Visual: 四类 Agent 共享 NDF、trace 和 acceptance，输出指向仓内 pinned vendor/pyCircuit source surface。
+Interaction: 让学生为一个接口变更分配提案、模型影响、实现和验证责任。
+Sources: pycircuit; davincioo-public-docs; agentic-materials
+Boundary: pyCircuit 是 implementation target/source surface，不是 RTL 或 silicon；本页不声称已执行、已编译或已有 replay 结果。
+Narrative: Agent 的并行度来自稳定契约，而不是各自猜测。pinned vendor/pyCircuit 提供可审计的实现目标与源码面。
+Transition: 实现与 gfsim 必须消费同一 trace 才能形成闭环比较。
 [Sources]
-- materials/agentic_circuit_optimizer.md
-- experiments/artifacts/summary.json
-- docs/NDF.md
+- catalog: pycircuit
+- catalog: davincioo-public-docs
+- catalog: agentic-materials
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 闭环验证：先定义验收，再比较结果
 
-# 结构性跳变应开新分支，而不是伪装成**局部优化**
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
-  <div class="visual-frame" style="padding:1.15rem">
-    <h2>内环动作</h2>
-    <p>队列深度、流水边界、FU 配比、频率目标</p>
-    <p class="muted">同一合同下枚举</p>
-  </div>
-  <div class="visual-frame" style="padding:1.15rem">
-    <h2>结构提案</h2>
-    <p>新前端、超标量化、新预测器、跨层物理划分</p>
-    <p class="muted">新 NDF 分支 + 新对照</p>
-  </div>
-</div>
-
-<div class="flow" style="margin-top:1.1rem"><span class="flow-node">搜索空间定义权</span><span class="flow-arrow">≠</span><span class="flow-node">空间内枚举权</span></div>
+<FullBleedStage background="/generated/slides/s55-dual-model-closed-loop-validation-v2.png" title="闭环验证：先定义验收，再比较结果" claim="当前是 proposed acceptance design：同一 trace 进入 checked gfsim evidence 与 pyCircuit replay target；只定义验收项，不展示 pyCircuit 结果。" eyebrow="CLOSED-LOOP VERIFICATION" slide-id="S55">
+  <template #diagram><ClosedLoopVerification /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-202, NDF-LRN-101
-Learning objective: 区分合同内参数优化与需要新 NDF 分支的结构性跳变。
-Duration: 1.5 min
-Visual intent: class: compare；双栏对比内环动作与外层结构提案的不同治理方式。
-Evidence: materials/agentic_circuit_optimizer.md
-Interaction: 判断“从单发射改为双发射”应进入哪一栏，并说明为何。
-Caveat: 分界取决于既有合同；若接口与状态所有权变化，就不能当作普通旋钮。
+Slide-ID: S55
+Objective: 提出未来用同一 trace 比较 gfsim 与 pyCircuit target 的分层 acceptance design。
+Timing: 4 min
+Visual: proposed trace 分叉设计连接 checked gfsim artifact 与 pyCircuit replay target，五类验收项在下方汇合。
+Interaction: 上下键选择 coverage、order、resource trends、errors、perf envelope acceptance criterion。
+Sources: qproj-davincioo-lab; pycircuit; course-model
+Boundary: 本页是 proposed acceptance design；不声称 replay implementation 已存在或 pyCircuit 已产出结果。绝对 cycles 只有校准后才可比较。
+Narrative: 计划中的闭环不会要求两个模型内部一致，而会在共享观察点比较覆盖、顺序、资源趋势、错误与性能包络。
+Transition: 最后一页把闭环扩展成持续的体系结构研究飞轮。
 [Sources]
-- materials/agentic_circuit_optimizer.md
-- docs/NDF.md
+- catalog: qproj-davincioo-lab
+- catalog: pycircuit
+- catalog: course-model
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 体系结构研究的 Agent 飞轮
 
-# TAO v0.1 只是一条**待验证的物理设计研究路线**
-
-<div class="split">
-  <div>
-    <div class="visual-frame" style="padding:1.15rem">
-      <div class="flow">
-        <span class="flow-node">前端候选</span><span class="flow-arrow">→</span>
-        <span class="flow-node">物理动作</span><span class="flow-arrow">→</span>
-        <span class="flow-node">LEC + 签核</span><span class="flow-arrow">→</span>
-        <span class="flow-node">校准</span>
-      </div>
-    </div>
-    <p class="lede" style="margin-top:1.1rem">可检验主张：分层内环能否更快探索，同时由外环真实工具校准偏差。</p>
-  </div>
-  <img src="/generated/chapter-frontier.png" alt="研究前沿概念图" class="visual-frame" style="width:100%;max-height:410px;object-fit:cover" />
-</div>
+<FullBleedStage background="/generated/slides/s56-research-flywheel-v2.png" title="体系结构研究的 Agent 飞轮" claim="Agent 加速可执行证据循环；选择问题、划定语义边界和判断架构取舍仍是研究核心。" eyebrow="ARCHITECTURE JUDGMENT FIRST" slide-id="S56">
+  <template #diagram><div class="diagram-dock architecture-chain flywheel-chain"><span>Workload</span><i>→</i><span>PTO</span><i>→</i><span>Trace</span><i>→</i><span>Model</span><i>→</i><span>Explore</span><i>→</i><span>ASL / NDF</span><i>→</i><span>pyCircuit / Core</span><i>→</i><span>Evidence</span><i>↻</i><span>new questions</span></div></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-LRN-202, NDF-MTH-003
-Learning objective: 把 TAO v0.1 表述为可否证的代理—签核分层研究提案。
-Duration: 2.5 min
-Visual intent: class: section；本地 frontier 概念图配合前端—物理动作—签核—校准链。
-Evidence: materials/agentic_tao_physical_design_flow.md; materials/SOURCES.yaml
-Interaction: 让听众为“内环更快”补一个真实工具校准指标和停止条件。
-Caveat: TAO 文档状态为 research-proposal-v0.1；本课不宣称已实现、已签核或已取得 PPA 收益。
+Slide-ID: S56
+Objective: 总结 Workload→PTO→Trace→Model→Explore→ASL/NDF→pyCircuit/Core→Evidence→new questions 的研究闭环。
+Timing: 3 min
+Visual: 发光飞轮把九个研究阶段连成可重复循环，中心保留 architecture judgment。
+Interaction: 每位学生选择飞轮中的一个边，写下其输入证据、输出 artifact 与停止条件。
+Sources: agentic-materials; course-synthesis; qproj-davincioo-lab
+Boundary: Agent 是研究工具，不替代语义权威、实验边界或体系结构判断。
+Narrative: 好的 Agentic Circuit 流程缩短“提出假设到得到可审计反证”的时间。研究价值来自更快地产生新问题，而不是自动生成确定答案。
+Transition: 课程结束；回到自己的 workload，从一个可复现 vertical slice 开始下一轮。
 [Sources]
-- materials/agentic_tao_physical_design_flow.md
-- materials/SOURCES.yaml
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# 练习：用证据卡审计一个“更快”的候选
-
-<div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:1.2rem">
-  <div class="visual-frame" style="padding:1.05rem">
-    <h2>候选</h2>
-    <p>queue depth：2 → 4</p>
-    <p>代理 latency：10 → 8</p>
-    <p>一份 commit trace</p>
-  </div>
-  <div class="visual-frame" style="padding:1.05rem">
-    <h2>两人产出</h2>
-    <ol>
-      <li>一个架构不变量</li>
-      <li>一个 crosscheck 对齐键</li>
-      <li>一个 intentional failure</li>
-      <li>Reject / Continue / Accept 条件</li>
-    </ol>
-  </div>
-</div>
-
-<div class="flow" style="margin-top:.75rem"><span class="flow-node">90 秒设计</span><span class="flow-arrow">→</span><span class="flow-node">30 秒交换反证</span></div>
-
-<!--
-NDF-ID: NDF-LRN-201, NDF-LRN-202
-Learning objective: 综合模块不变量、trace 对齐、失败实验和接受规则审计候选设计。
-Duration: 1.5 min
-Visual intent: class: quiz；候选输入与四项交付物并排，内置 90+30 秒计时。
-Evidence: experiments/artifacts/05/queue_summary.json; experiments/artifacts/06/crosscheck.json; experiments/artifacts/07/expected_failure.json
-Interaction: 两人一组完成证据卡；交换后只能提出一个能推翻主张的反例。
-Caveat: 代理 latency 仅用于练习，不构成真实 LinxCore 性能结果。
-[Sources]
-- experiments/artifacts/05/queue_summary.json
-- experiments/artifacts/06/crosscheck.json
-- experiments/artifacts/07/expected_failure.json
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# 一张决策记录应让下一位研究者**复现选择**
-
-| 字段 | 本例内容 |
-|---|---|
-| Claim / Scope | depth 4 在固定输入下减少代理 latency |
-| Action | 仅修改 queue depth 2→4 |
-| Oracle | UID 对齐的 commit trace + queue invariant |
-| Evidence | 配置、命令、JSON/CSV、退出码、工具版本 |
-| Decision | Accept / Reject / Continue + 理由 |
-| Revisit | 真实综合或 workload 改变时重测 |
-
-<div class="visual-frame" style="padding:.8rem 1.1rem;margin-top:.65rem">
-  <div class="flow"><span class="flow-node">主张</span><span class="flow-arrow">→</span><span class="flow-node">行动</span><span class="flow-arrow">→</span><span class="flow-node">证据</span><span class="flow-arrow">→</span><span class="flow-node">裁决</span><span class="flow-arrow">→</span><span class="flow-node">重访条件</span></div>
-</div>
-
-<!--
-NDF-ID: NDF-LRN-202, NDF-MTH-003
-Learning objective: 编写包含主张、动作、裁判、证据、决策和重访条件的可重放记录。
-Duration: 2 min
-Visual intent: class: evidence；六字段决策表与线性追踪链给出可直接复用模板。
-Evidence: docs/NDF.md; experiments/artifacts/summary.json
-Interaction: 邀请一组用 20 秒读出自己的完整记录，另一组只检查缺失字段。
-Caveat: 文件存在不等于证据有效；仍需校验生成命令、schema、版本和内容哈希。
-[Sources]
-- docs/NDF.md
-- materials/agentic_circuit_optimizer.md
-- experiments/artifacts/summary.json
--->
-
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# 研究闭环的产物不是赢家，而是**可否证的决策历史**
-
-<div class="split">
-  <div>
-    <div class="visual-frame" style="padding:1.1rem">
-      <div class="flow">
-        <span class="flow-node">模块合同</span><span class="flow-arrow">→</span>
-        <span class="flow-node">crosscheck</span><span class="flow-arrow">→</span>
-        <span class="flow-node">失败反例</span><span class="flow-arrow">→</span>
-        <span class="flow-node">Pareto 档案</span><span class="flow-arrow">→</span>
-        <span class="flow-node">决策写回</span>
-      </div>
-    </div>
-    <p class="lede" style="margin-top:1.2rem"><strong>带走一句话：</strong>让 Agent 扩展探索，让合同、trace 和独立裁判决定什么值得相信。</p>
-  </div>
-  <img src="/generated/chapter-evidence.png" alt="证据闭环概念图" class="visual-frame" style="width:100%;max-height:410px;object-fit:cover" />
-</div>
-
-<!--
-NDF-ID: NDF-LRN-201, NDF-LRN-202, NDF-MTH-001, NDF-MTH-002, NDF-SRC-003
-Learning objective: 汇总模块设计、crosscheck、失败证据与 Pareto 探索的完整研究闭环。
-Duration: 1 min
-Visual intent: class: takeaway；本地证据章节图与五节点终局闭环回收全课。
-Evidence: experiments/artifacts/summary.json; docs/NDF.md
-Interaction: 回看第 2 页选择的薄弱列；用一句话说出现在可执行的下一步。
-Caveat: LinxCore 始终只是案例；TAO 始终是 v0.1 研究提案；PTO 规范事实只来自固定版本规范源。
-[Sources]
-- docs/NDF.md
-- materials/SOURCES.yaml
-- experiments/artifacts/summary.json
+- catalog: agentic-materials
+- catalog: course-synthesis
+- catalog: qproj-davincioo-lab
 -->

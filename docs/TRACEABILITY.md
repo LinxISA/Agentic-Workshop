@@ -1,65 +1,70 @@
 # Course Traceability Matrix
 
-Generated from deck speaker notes. This is a course-level NDF projection, not a PTO normative artifact.
+Generated from the authoritative deck contract. `COURSE-Sxx` identifiers are course slide records. The mappings below are separate verified examples; they are not presented as one cross-layer semantic chain.
 
-| Course requirement | Slide | Claim | Diagram/component | Experiment/evidence |
-|---|---:|---|---|---|
-| NDF-MTH-001, NDF-SRC-001 | session-1 · 1 | 先建立一条**不会自欺**的研究闭环 | class: hero | docs/NDF.md; materials/SOURCES.yaml |
-| NDF-MTH-002, NDF-MTH-003 | session-1 · 2 | Agent 放大的首先是**歧义**，不是生产力 | class: compare | experiments/artifacts/07/expected_failure.json |
-| NDF-LRN-101, NDF-LRN-102 | session-1 · 3 | 今天只练**四个判断动作** | class: architecture | docs/NDF.md |
-| NDF-MTH-001 | session-1 · 4 | 一项研究只有闭环，才配得上“可复现” | class: architecture | docs/NDF.md; experiments/artifacts/summary.json |
-| NDF-MTH-003 | session-1 · 5 | 先给每句话贴上**证据类型**，争论会立刻变短 | class: evidence | docs/NDF.md |
-| NDF-SRC-001 | session-1 · 6 | 可执行规范让语义进入**机器检查** | class: architecture | materials/SOURCES.yaml |
-| NDF-SRC-001, NDF-MTH-001 | session-1 · 7 | 五个操作就能形成第一条**端到端证据链** | class: experiment | experiments/artifacts/01/pto_trace.json |
-| NDF-LRN-101, NDF-MTH-001 | session-1 · 8 | NDF 把研究承诺**钉在规范上** | NdfTraceability | experiments/artifacts/02/ndf_projection.json |
-| NDF-VIS-001, NDF-LRN-102 | session-1 · 9 | 好的追踪链必须允许你**反向找到责任人** | class: evidence | docs/NDF.md; experiments/artifacts/04/comparison.json |
-| NDF-LRN-101 | session-1 · 10 | 分层不是增加文档，而是限制每层**可以说什么** | class: architecture | experiments/artifacts/02/ndf_projection.json |
-| NDF-SRC-003 | session-1 · 11 | LinxCore 是模块化案例，**不是 PTO 官方实现** | class: compare | materials/SOURCES.yaml; docs/NDF.md |
-| NDF-SRC-003, NDF-LRN-101 | session-1 · 12 | 模块化的关键是**唯一状态所有者** | LinxCoreModuleExplorer | vendor/LinxCore/docs/spec/10-architecture/ownership.md |
-| NDF-LRN-101, NDF-MTH-002 | session-1 · 13 | pyCircuit 把“改设计”压缩成**结构化行动空间** | class: circuit-focus | experiments/artifacts/03/pipeline_summary.json |
-| NDF-LRN-101, NDF-MTH-001 | session-1 · 14 | 编译链不是后端细节，而是每次行动的**可审计路径** | PipelineStepper | experiments/artifacts/03/pipeline_summary.json |
-| NDF-LRN-102 | session-1 · 15 | 队列把并发设计变成一个**局部可判定契约** | CircuitDataflow | experiments/artifacts/05/queue_summary.json |
-| NDF-LRN-102, NDF-MTH-003 | session-1 · 16 | 观察点应贴近**架构承诺**，而不是贴满内部信号 | class: evidence | experiments/artifacts/04/comparison.json |
-| NDF-LRN-102 | session-1 · 17 | 等价允许时序不同，但**承诺必须一致** | class: compare | experiments/artifacts/04/comparison.json |
-| NDF-LRN-102, NDF-MTH-003 | session-1 · 18 | Trace 对比先做**身份对齐**，再谈差异 | TraceComparator | experiments/artifacts/04/comparison.json; experiments/artifacts/06/crosscheck.json |
-| NDF-MTH-002 | session-1 · 19 | 故意失败，证明**裁判独立** | class: experiment | experiments/artifacts/07/expected_failure.json |
-| NDF-MTH-002 | session-1 · 20 | 优化者与裁判共享代码，就会共享**盲点** | class: architecture | experiments/artifacts/07/expected_failure.json |
-| NDF-MTH-003, NDF-OFF-001 | session-1 · 21 | 可审计证据不是一张图，而是一份**可重放包** | class: evidence | experiments/artifacts/summary.json |
-| NDF-MTH-003, NDF-LRN-102 | session-1 · 22 | 主张写成六格卡片，Agent 才知道**何时停手** | class: evidence | experiments/artifacts/04/comparison.json |
-| NDF-MTH-001, NDF-MTH-002 | session-1 · 23 | 每轮实验只改变一个**可解释维度** | class: experiment | experiments/artifacts/summary.json |
-| NDF-MTH-002, NDF-LRN-102 | session-1 · 24 | Agent 的边界是**五件事**，不是一条 prompt | class: architecture | experiments/artifacts/07/expected_failure.json; experiments/artifacts/08/design_points.csv |
-| NDF-MTH-001, NDF-MTH-003 | session-1 · 25 | 接受一个设计，需要同时回答**对、好、懂** | class: evidence | experiments/artifacts/04/comparison.json; experiments/artifacts/08/design_points.csv |
-| NDF-LRN-101, NDF-LRN-102 | session-1 · 26 | 练习：把“做一个更快流水线”改写成**可审计任务** | class: quiz | experiments/artifacts/03/pipeline_summary.json; experiments/artifacts/04/comparison.json; experiments/artifacts/07/expected_failure.json |
-| NDF-LRN-101, NDF-LRN-102, NDF-MTH-002 | session-1 · 27 | 一个合格答案，必须让陌生人**不用猜** | class: evidence | experiments/artifacts/04/comparison.json; experiments/artifacts/07/expected_failure.json |
-| NDF-MTH-001, NDF-MTH-002, NDF-MTH-003, NDF-SRC-003 | session-1 · 28 | 证据最终要写回**设计记忆** | class: hero | experiments/artifacts/summary.json; docs/NDF.md |
-| NDF-LRN-201, NDF-LRN-202, NDF-SRC-003 | session-2 · 1 | 模块化把复杂核变成**可审计实验** | class: hero | docs/NDF.md; experiments/artifacts/summary.json |
-| NDF-LRN-201, NDF-LRN-202 | session-2 · 2 | 第二课把闭环落到**一个模块、一条 trace、一个决策** | class: architecture | docs/NDF.md |
-| NDF-SRC-001, NDF-SRC-003, NDF-MTH-003 | session-2 · 3 | 先钉死三条边界，才不会把**案例说成规范** | class: compare | materials/SOURCES.yaml; docs/NDF.md |
-| NDF-LRN-201, NDF-SRC-003 | session-2 · 4 | 模块不是文件夹，而是**状态、接口和证据的责任单元** | class: section | vendor/LinxCore/docs/spec/00-charter/scope.md |
-| NDF-LRN-201, NDF-SRC-003 | session-2 · 5 | LinxCore 案例显示执行路径可以按**责任边界**拆开 | LinxCoreModuleExplorer | vendor/LinxCore/docs/spec/00-charter/scope.md; vendor/LinxCore/docs/spec/10-architecture/ownership.md |
-| NDF-LRN-201, NDF-MTH-002 | session-2 · 6 | 单一状态所有者让恢复与提交只有**一个裁决点** | class: architecture | vendor/LinxCore/docs/spec/10-architecture/ownership.md |
-| NDF-LRN-201 | session-2 · 7 | ready/valid：一个**局部契约**就够了 | CircuitDataflow | experiments/artifacts/05/queue_trace.csv |
-| NDF-LRN-201, NDF-MTH-003 | session-2 · 8 | 8 周期队列 trace 把“不会丢数据”变成**可重放证据** | class: code-trace | experiments/artifacts/05/queue_trace.csv; experiments/artifacts/05/queue_summary.json |
-| NDF-LRN-201, NDF-LRN-102 | session-2 · 9 | 背压传播必须停在接口，不能污染**架构语义** | TimingDiagram | experiments/artifacts/05/queue_trace.csv |
-| NDF-LRN-201, NDF-LRN-102 | session-2 · 10 | 软硬件协同的共同语言是**可比较事件**，不是共享实现 | class: section | experiments/artifacts/06/crosscheck.json |
-| NDF-LRN-201, NDF-MTH-003 | session-2 · 11 | 从 ELF 到提交 trace，每层只承诺**自己知道的事实** | class: evidence | experiments/06_trace_crosscheck/fixtures/elf_symbols.json; experiments/06_trace_crosscheck/fixtures/qemu_trace.csv; experiments/06_trace_crosscheck/fixtures/hardware_trace.csv |
-| NDF-LRN-201, NDF-LRN-102 | session-2 · 12 | Crosscheck 先固定输入身份，再比较**4 条提交事件** | class: code-trace | experiments/artifacts/06/normalized_trace.csv; experiments/artifacts/06/crosscheck.json |
-| NDF-LRN-102, NDF-MTH-003 | session-2 · 13 | Trace 不一致要先定位**首个分歧**，不要先解释全局 | TraceComparator | experiments/artifacts/06/crosscheck.json; components/TraceComparator.vue |
-| NDF-LRN-102 | session-2 · 14 | 稳定 UID 让乱序、重放和 flush 之后仍能**可靠对齐** | class: architecture | vendor/LinxCore/docs/trace/uid_contract.md |
-| NDF-LRN-201, NDF-MTH-002 | session-2 · 15 | 观察者不能反向阻塞**被观察系统** | class: architecture | vendor/LinxCore/docs/spec/20-behavior/ifu.md |
-| NDF-MTH-001, NDF-MTH-002, NDF-LRN-202 | session-2 · 16 | 正确性门必须在 PPA 测量之前**关闭错误分支** | class: experiment | experiments/artifacts/summary.json |
-| NDF-MTH-002, NDF-LRN-202 | session-2 · 17 | 故意越界并得到 exit 2，证明裁判会**拒绝候选** | class: experiment | experiments/artifacts/07/expected_failure.json |
-| NDF-MTH-002, NDF-MTH-003, NDF-LRN-202 | session-2 · 18 | 失败工件是**设计知识**，不是日志垃圾 | class: evidence | experiments/artifacts/07/expected_failure.json |
-| NDF-LRN-202, NDF-MTH-002 | session-2 · 19 | 体系结构 Agent 由**五项可审计合同**组成 | class: section | docs/NDF.md; materials/agentic_circuit_optimizer.md |
-| NDF-LRN-202, NDF-LRN-201 | session-2 · 20 | 动作空间越结构化，实验的**因果归因**越可信 | class: compare | materials/agentic_circuit_optimizer.md |
-| NDF-LRN-202 | session-2 · 21 | 旋钮只有绑定不变量后，才是**研究变量** | DesignSpaceExplorer | components/DesignSpaceExplorer.vue; experiments/artifacts/08/design_points.csv |
-| NDF-LRN-202, NDF-MTH-003 | session-2 · 22 | 代理指标适合**筛选**，不适合宣称真实 PPA | class: architecture | materials/agentic_circuit_optimizer.md; materials/agentic_tao_physical_design_flow.md |
-| NDF-LRN-202 | session-2 · 23 | Pareto 前沿保留**不可比较的好设计** | ParetoFrontier | experiments/artifacts/08/pareto_frontier.json; components/ParetoFrontier.vue |
-| NDF-LRN-202, NDF-MTH-003 | session-2 · 24 | 被支配点仍能解释搜索为什么**停止** | class: evidence | experiments/artifacts/08/design_points.csv; experiments/artifacts/08/pareto_frontier.json |
-| NDF-LRN-202, NDF-MTH-001, NDF-MTH-002 | session-2 · 25 | 接受规则必须同时约束**正确性、收益和可解释性** | class: evidence | experiments/artifacts/07/expected_failure.json; experiments/artifacts/08/design_points.csv |
-| NDF-MTH-001, NDF-LRN-202 | session-2 · 26 | 每轮只验证一个假设，结果才能写回**设计记忆** | class: experiment | experiments/artifacts/summary.json; materials/agentic_circuit_optimizer.md |
-| NDF-LRN-202, NDF-LRN-101 | session-2 · 27 | 结构性跳变应开新分支，而不是伪装成**局部优化** | class: compare | materials/agentic_circuit_optimizer.md |
-| NDF-LRN-202, NDF-MTH-003 | session-2 · 28 | TAO v0.1 只是一条**待验证的物理设计研究路线** | class: section | materials/agentic_tao_physical_design_flow.md; materials/SOURCES.yaml |
-| NDF-LRN-201, NDF-LRN-202 | session-2 · 29 | 练习：用证据卡审计一个“更快”的候选 | class: quiz | experiments/artifacts/05/queue_summary.json; experiments/artifacts/06/crosscheck.json; experiments/artifacts/07/expected_failure.json |
-| NDF-LRN-202, NDF-MTH-003 | session-2 · 30 | 一张决策记录应让下一位研究者**复现选择** | class: evidence | docs/NDF.md; experiments/artifacts/summary.json |
-| NDF-LRN-201, NDF-LRN-202, NDF-MTH-001, NDF-MTH-002, NDF-SRC-003 | session-2 · 31 | 研究闭环的产物不是赢家，而是**可否证的决策历史** | class: takeaway | experiments/artifacts/summary.json; docs/NDF.md |
+| Course record | Session | Claim | Overlay | Sources | Boundary |
+|---|---:|---|---|---|---|
+| COURSE-S01 | 1 | Architecture First · Agentic Circuit as a Research Instrument | AscendCover | `source-deck` | 背景为昇腾风格概念视觉，不表示具体产品内部结构。 |
+| COURSE-S02 | 1 | 姓名：周若愚 | KeynoteSourceStage | `publish-keynote-page-2` | 可见文字与图片直接来自演讲人提供的 Keynote。 |
+| COURSE-S03 | 1 | 什么是计算体系结构 | KeynoteSourceStage | `publish-keynote-page-3` | 可见文字与图形直接来自演讲人提供的 Keynote。 |
+| COURSE-S04 | 1 | 第一章 | KeynoteSourceStage | `publish-keynote-page-4` | 可见文字与装饰直接来自演讲人提供的 Keynote。 |
+| COURSE-S05 | 1 | Von Neumann bottleneck | KeynoteSourceStage | `publish-keynote-page-5` | 比喻与可见文字沿用演讲人原稿。 |
+| COURSE-S06 | 1 | 时间局部性与空间局部性 | KeynoteSourceStage | `publish-keynote-page-6` | 比喻与可见文字沿用演讲人原稿。 |
+| COURSE-S07 | 1 | 共享层级与并行 Lane | KeynoteSourceStage | `publish-keynote-page-7` | 可见文字与图形沿用演讲人原稿。 |
+| COURSE-S08 | 1 | 运力到达瓶颈，再加算力没有用处 | KeynoteSourceStage | `publish-keynote-page-8`, `roofline-paper` | 原稿可见内容保持不变；交互数值是确定性教学模型。 |
+| COURSE-S09 | 1 | Tile / CUBE 与本地仓库 | KeynoteSourceStage | `publish-keynote-page-9` | 可见文字、容量和带宽标注沿用演讲人原稿。 |
+| COURSE-S10 | 1 | CUBE 核的数据供给与计算闭环 | KeynoteSourceStage | `publish-keynote-page-10` | 页面是原稿 CUBE 核教学图，不补充私有实现细节。 |
+| COURSE-S11 | 1 | 计算、搬运与共享仓库协同 | KeynoteSourceStage | `publish-keynote-page-11` | 可见模块与连线按原稿保留，不推断未公开微架构时序。 |
+| COURSE-S12 | 1 | 复制、集中调度与统一规格 | KeynoteSourceStage | `publish-keynote-page-12` | 城市化是原稿教学隐喻，不对应具体芯片物理布局。 |
+| COURSE-S13 | 1 | 教学抽象，不是产品框图 | KeynoteSourceStage | `publish-keynote-page-13` | 教学抽象，非产品框图；不得据此推断真实产品内部结构。 |
+| COURSE-S14 | 1 | 从资源分区追到共享路径 | KeynoteSourceStage | `publish-keynote-page-14` | 叠加层只用于教学导航，不增加产品结构主张。 |
+| COURSE-S15 | 1 | 电梯连接不同规模的存储空间 | KeynoteSourceStage | `publish-keynote-page-15` | 信息时代城市化仍是教学隐喻，不声明实际拓扑。 |
+| COURSE-S16 | 1 | Q、K、V 与 Tile 数据流 | KeynoteSourceStage | `publish-keynote-page-16` | 数据流按原稿教学表达，不宣称唯一实现或固定时序。 |
+| COURSE-S17 | 1 | 芯片间通信也是体系结构资源 | KeynoteSourceStage | `publish-keynote-page-17` | 国际化是原稿通信隐喻，不对应具体互连协议。 |
+| COURSE-S18 | 1 | 计算、存储、互连、并发与控制共同解释性能。 | ArchitectureCoordinate | `course-synthesis`, `source-deck` | 五坐标是课程综合框架，不是特定 ISA 或产品规范。 |
+| COURSE-S19 | 1 | 从资源布局进入周期代价 | KeynoteSourceStage | `publish-keynote-page-18` | 可见文字与装饰直接来自演讲人提供的 Keynote。 |
+| COURSE-S20 | 1 | 时间 × 频率 = 周期数 | KeynoteSourceStage | `publish-keynote-page-19`, `course-model` | 换算器只做单位与周期数换算，不代表具体存储接口协议时序。 |
+| COURSE-S21 | 1 | 层级越远，等待跨度越大 | KeynoteSourceStage | `publish-keynote-page-20`, `course-model` | 天数是原稿尺度隐喻；交互延迟参数是教学值。 |
+| COURSE-S22 | 1 | RDMA 与 RPC 扩大时间尺度 | KeynoteSourceStage | `publish-keynote-page-21` | 原稿数字用于数量级教学，不能替代具体系统测量。 |
+| COURSE-S23 | 1 | 从 Scalar Operation 到 Tile Operation | KeynoteSourceStage | `publish-keynote-page-22` | 可见术语与容量范围按原稿保留；规范语义以后续 PTO-ASL 为准。 |
+| COURSE-S24 | 1 | 形状、布局与调度共同定义 Tile | KeynoteSourceStage | `publish-keynote-page-23` | 集装箱图是语义与调度隐喻，不规定物理 SRAM 形状。 |
+| COURSE-S25 | 1 | 语义路由到不同执行资源 | KeynoteSourceStage | `publish-keynote-page-24`, `pto-spec`, `davincioo-public-docs` | TPUT/TGET 是 DaVinciOO communication extensions — not normative PTO-ASL；不展示私有时序细节。 |
+| COURSE-S26 | 1 | 程序语义与机器资源相互映射 | KeynoteSourceStage | `publish-keynote-page-25` | 代码与抽象机器按原稿展示；具体规范效果以 PTO-ASL 为准。 |
+| COURSE-S27 | 1 | Tensor → Tile → Layout | KeynoteSourceStage | `publish-keynote-page-26` | 工厂图是原稿教学比喻；TLOAD/TSTORE 规范语义以 PTO-ASL 为准。 |
+| COURSE-S28 | 1 | 总时间 = 固有搬运 + 排队 + 同步。 | TransferTimeLab | `course-synthesis`, `pto-spec`, `davincioo-public-docs` | 公式是教学一阶模型；TPUT/TGET 是 DaVinciOO 通信扩展，不属于规范 PTO-ASL；不暴露私有 DaVinci 时序实现。 |
+| COURSE-S29 | 2 | Agentic Model | KeynoteSourceStage | `publish-keynote-page-27` | 可见文字与图形直接来自演讲人提供的 Keynote。 |
+| COURSE-S30 | 2 | 输入 activation × BF16 weight → GEMM → projected output；一次投影就是可追踪的垂直切片。 | PipelineStepper | `qproj-davincioo-lab`, `course-synthesis` | 这是 q_proj 教学切片，不声称覆盖完整模型推理、量化或并行策略。 |
+| COURSE-S31 | 2 | 每一层都保留可审计的中间产物，而不是把程序直接跳成一个性能数字。 | AGU/LQ/SQ/cache/miss path | `qproj-davincioo-lab`, `davincioo-public-docs` | 流水线描述止于 host trace 与 gfsim replay，不推断未公开的部署格式。 |
+| COURSE-S32 | 2 | Trace 明示 input_tiles / output_tiles / scalar_inputs；dependency readiness 由 rename / scoreboard 推导。 | QueuePressure | `qproj-davincioo-lab`, `pto-spec` | opcode 组合来自已检查的 q_proj reference replay；不把一次展开推广成所有实现的唯一 lowering。 |
+| COURSE-S33 | 2 | Tile metadata 可见；依赖由 rename / scoreboard 推导。 | TraceAnatomy | `qproj-davincioo-lab`, `course-model` | 组件只显示 sanitized checked sample 的真实字段，不补造 deps；artifact 不可用时只显示明确标注的 teaching sample。 |
+| COURSE-S34 | 2 | push 先进入 pending；延迟到期才 visible；容量耗尽会把 backpressure 传回生产者。 | SimQueueExplorer | `davincioo-public-docs`, `course-model` | 不展示私有实现字段、调度规则或 timing constants；组件是教学模型。 |
+| COURSE-S35 | 2 | TraceSource 供给事件，乱序窗口追踪依赖，四类执行资源完成工作并通过 wakeup 释放消费者。 | DaVinciTopology | `davincioo-public-docs`, `course-synthesis` | 图不公开私有状态字段、选择策略或 timing constants，只表达教学层连接关系。 |
+| COURSE-S36 | 2 | 公式是可替换假设；参数必须来自公开配置、实验或明确的课程设定。 | BaselineExperiment | `davincioo-public-docs`, `course-model` | 页面不披露私有 timing constants；公式只定义参数关系，不声称完成校准。 |
+| COURSE-S37 | 2 | 这是 DaVinci gfsim implementation routing；PTO family 只定义语义类别，不规定同一资源映射。 | InteractiveRoofline | `davincioo-public-docs`, `pto-spec` | TMOV 被标为 PTO family；具体映射属于 DaVinci gfsim 实现而非 PTO 规范。 |
+| COURSE-S38 | 2 | 每次按键只做一次状态转移：dispatch、ready、issue、execute、complete、retire 都能被逐步检查。 | CyclePlayback | `course-model`, `davincioo-public-docs` | 播放器是确定性教学模型，不声称复制 gfsim 的全部内部事件顺序。 |
+| COURSE-S39 | 2 | 系统时间还包含依赖等待、资源争用、ROB/IQ 容量、可重叠工作与最终 critical path。 | gap decomposition | `course-model`, `davincioo-public-docs` | 因果项是公开教学分类，不给出私有实现的精确等待分解。 |
+| COURSE-S40 | 2 | 同时观察 ROB depth、Tile tags、TMA BW、Cube MACs 与 engine counts；结果只支持候选方向。 | ParameterSweep | `qproj-davincioo-lab`, `experiment-artifacts`, `course-model` | 组件只展示本地 qproj_sweep.json 的 checked points；artifact 不可用时明确显示 unavailable，不生成 q_proj 替代证据。 |
+| COURSE-S41 | 2 | 按 opcode 与 engine 过滤 q_proj 事件，检查 issue、complete 与 retire 的相对位置。 | EvidenceTimeline | `qproj-davincioo-lab`, `experiment-artifacts` | 时间线读取本地 CSV，展示 reference_replay；不声称是新抓取的硬件波形。 |
+| COURSE-S42 | 2 | checked reference replay: 562 records / 11028 cycles。候选点来自敏感性，不代表结构等价。 | ArchitectureZoom | `qproj-davincioo-lab`, `experiment-artifacts` | durable artifact 标为 reference_replay。一次 task-local gfsim re-simulation 曾重现 11028 cycles，但不是 checked live artifact，也不是 fresh PTO capture；不宣称等价。 |
+| COURSE-S43 | 2 | NPU Core for PTO | KeynoteSourceStage | `publish-keynote-page-28` | 可见文字与图形直接来自演讲人提供的 Keynote。 |
+| COURSE-S44 | 2 | 分层调度 | KeynoteSourceStage | `publish-keynote-page-29` | 本页可见内容完全来自历史源稿，不追加当前实现结论。 |
+| COURSE-S45 | 2 | PTO 多级调度层次 | KeynoteSourceStage | `publish-keynote-page-30` | 可见层次与术语完全来自历史源稿。 |
+| COURSE-S46 | 2 | PTO / MLIR 源码表达 | KeynoteSourceStage | `publish-keynote-page-31` | 源码截图是历史源稿内容；本页不声称已用当前工具链重新编译。 |
+| COURSE-S47 | 2 | 历史源稿性能结果 | KeynoteSourceStage | `publish-keynote-page-32` | 性能图明确标为历史源稿结果，不作为本次环境新测量。 |
+| COURSE-S48 | 2 | Swizzle | KeynoteSourceStage | `publish-keynote-page-33` | Swizzle 可见内容直接来自历史源稿，不延伸到未核实实现细节。 |
+| COURSE-S49 | 2 | Swizzle 容量与性能 | KeynoteSourceStage | `publish-keynote-page-34` | 所有数值明确属于历史源稿，不标为当前实验结果。 |
+| COURSE-S50 | 2 | 每个敏感参数都要落到容量、端口、队列、带宽或延迟契约，并写出可验证的接受条件。 | deterministic HTML/CSS overlay | `course-synthesis`, `qproj-davincioo-lab` | 敏感性用于形成候选约束，不直接决定实现尺寸或 PPA 最优点。 |
+| COURSE-S51 | 2 | 实现可以改变队列与流水线，但不能悄悄改变 TLOAD、TMOV、TEXTRACT、TPUSH、TPOP 的软件可见 effect。 | deterministic HTML/CSS overlay | `pto-spec`, `davincioo-public-docs`, `normative-language` | TPUT/TGET 明确标为 DaVinciOO communication extensions，不属于 normative PTO-ASL。 |
+| COURSE-S52 | 2 | L0 intent → L1 contract → L2 mechanism → L3 executable acceptance；层间关系必须显式可追踪。 | deterministic HTML/CSS overlay | `ndf-course`, `normative-language` | 当前 L3 明确是 draft test contract，不是已经存在的 implementation。 |
+| COURSE-S53 | 2 | sequence_id 穿过 Trace、Tile Register、TMA、Extract、Matmul 与乱序窗口。 | deterministic HTML/CSS overlay | `ndf-course`, `qproj-davincioo-lab`, `course-synthesis` | IDs 是课程设计契约；不冒充已完成的生产实现或最终命名。 |
+| COURSE-S54 | 2 | spec、model、implementation、verification Agent 围绕同一 NDF 与 trace 工作；pyCircuit 是 pinned implementation target/source surface。 | deterministic HTML/CSS overlay | `pycircuit`, `davincioo-public-docs`, `agentic-materials` | pyCircuit 是 implementation target/source surface，不是 RTL 或 silicon；本页不声称已执行、已编译或已有 replay 结果。 |
+| COURSE-S55 | 2 | 当前是 proposed acceptance design：同一 trace 进入 checked gfsim evidence 与 pyCircuit replay target；只定义验收项，不展示 pyCircuit 结果。 | ClosedLoopVerification | `qproj-davincioo-lab`, `pycircuit`, `course-model` | 本页是 proposed acceptance design；不声称 replay implementation 已存在或 pyCircuit 已产出结果。绝对 cycles 只有校准后才可比较。 |
+| COURSE-S56 | 2 | Agent 加速可执行证据循环；选择问题、划定语义边界和判断架构取舍仍是研究核心。 | deterministic HTML/CSS overlay | `agentic-materials`, `course-synthesis`, `qproj-davincioo-lab` | Agent 是研究工具，不替代语义权威、实验边界或体系结构判断。 |
+
+## Verified mappings
+
+| Scope | Claim | Source | Evidence |
+|---|---|---|---|
+| separate example | PTO bundle-active state is implemented and directly asserted | `vendor/pto-spec/asl/bundle/state.asl` | `vendor/pto-spec/tests/asl/bundle-tests.asl` |
+| separate example | The pyCircuit IssueQueue build is instantiated by its testbench | `vendor/pyCircuit/designs/IssueQueue/issq.py` | `vendor/pyCircuit/designs/IssueQueue/tb_issq.py` |
+| separate example | LinxCore ROB control is wired into the ROB bank | `vendor/LinxCore/src/bcc/backend/rob.py` | `vendor/LinxCore/src/bcc/backend/modules/rob_bank.py` |

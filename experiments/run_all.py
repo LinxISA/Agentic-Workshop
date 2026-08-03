@@ -18,6 +18,9 @@ EXPERIMENTS = [
     ("06", "06_trace_crosscheck", 0),
     ("07", "07_intentional_failure", 2),
     ("08", "08_design_space_pareto", 0),
+    ("09", "09_roofline_bandwidth_sweep", 0),
+    ("10", "10_hierarchy_queue_sweep", 0),
+    ("11", "11_qproj_davincioo", 0),
 ]
 
 

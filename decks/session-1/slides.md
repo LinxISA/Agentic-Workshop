@@ -1,980 +1,624 @@
 ---
 theme: default
-title: Agent 时代的体系结构研究方法学 · 第一课
-info: PTO executable architecture spec、NDF、pyCircuit 与可审计证据
+title: 体系结构研究的第一性原理 · 第一课
+info: 从空间资源到数据移动时间
 transition: slide-left
 colorSchema: dark
 mdc: true
-background: /generated/session-1-hero.png
-class: imagegen-cover
-favicon: /generated/session-1-hero.png
+favicon: /generated/slides/s01-architecture-first.png
 fonts:
-  sans: "Inter, PingFang SC, Microsoft YaHei, sans-serif"
+  sans: "MiSans, Noto Sans SC, Microsoft YaHei, sans-serif"
   mono: "SFMono-Regular, Menlo, monospace"
   provider: none
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# Agent时代体系结构研究
 
-# 先建立一条**不会自欺**的研究闭环
-
-PTO executable architecture spec → 课程 NDF 投影 → pyCircuit 行动空间 → 可审计证据
-
-<div class="visual-frame" style="margin-top:3rem;padding:2rem">
-  <div class="flow">
-    <span class="flow-node">规范事实</span><span class="flow-arrow">→</span>
-    <span class="flow-node">设计承诺</span><span class="flow-arrow">→</span>
-    <span class="flow-node">可执行变体</span><span class="flow-arrow">→</span>
-    <span class="flow-node">独立裁判</span>
-  </div>
-</div>
-
-<p class="muted" style="margin-top:1.5rem">第一课 · 60 分钟 · 面向体系结构研究者与研究生</p>
+<AscendCover background="/generated/slides/s01-architecture-first.png" title="Agent时代体系结构研究" claim="Architecture First · Agentic Circuit as a Research Instrument" speaker="周若愚" affiliation="华为海思半导体" />
 
 <!--
-NDF-ID: NDF-MTH-001, NDF-SRC-001
-Learning objective: 建立本课的研究闭环与证据优先心智模型。
-Duration: 1 min
-Visual intent: class: hero；用四节点闭环代替传统“目录页”。
-Evidence: docs/NDF.md; materials/SOURCES.yaml
-Interaction: 请听众记住一个词：裁判。
-Caveat: 本课讲研究方法，不把任何案例实现冒充 PTO 规范。
+Slide-ID: S01
+Objective: 建立“体系结构优先、Agent 为研究工具”的课程定位。
+Timing: 1 min
+Visual: 沿用昇腾封面，计算芯片与带宽线路构成开场视觉。
+Interaction: 看到“432 TFLOPS”时，先追问哪个结构参数？
+Sources: source-deck
+Boundary: 背景为昇腾风格概念视觉，不表示具体产品内部结构。
+Narrative: 性能来自计算、数据移动、并发、队列与控制的共同作用。
+Transition: 从课程主张进入演讲人与课程背景。
 [Sources]
-- docs/GOAL_PROMPT.md
-- materials/SOURCES.yaml
+- source: K01
+- catalog: source-deck
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 自我介绍
 
-# Agent 放大的首先是**歧义**，不是生产力
-
-当自然语言、代码、波形和性能数字彼此矛盾时，Agent 会更快地产生更多“看似合理”的版本。
-
-<div class="split" style="height:270px">
-  <div>
-    <h2>传统风险</h2>
-    <p>一个人误解一个接口。</p>
-    <p>错误传播速度有限。</p>
-  </div>
-  <div class="visual-frame" style="padding:1.6rem">
-    <h2>Agent 时代风险</h2>
-    <div class="flow">
-      <span class="flow-node">模糊主张</span><span class="flow-arrow">×</span>
-      <span class="flow-node">高吞吐修改</span><span class="flow-arrow">=</span>
-      <span class="flow-node">系统性漂移</span>
-    </div>
-  </div>
-</div>
-
-> 第一原则：先让主张可判定，再让 Agent 可行动。
+<KeynoteSourceStage background="/generated/slides/s02-self-introduction.png" title="自我介绍" claim="姓名：周若愚" slide-id="S02" />
 
 <!--
-NDF-ID: NDF-MTH-002, NDF-MTH-003
-Learning objective: 解释为何 Agent 需要比人工流程更强的主张分类与独立裁判。
-Duration: 1.5 min
-Visual intent: class: compare；左右对比风险传播速度。
-Evidence: experiments/artifacts/07/expected_failure.json
-Interaction: 举手投票：你最近一次返工源于“写错”还是“理解错”？
-Caveat: Agent 不是错误的唯一来源；它改变的是扩散速度与规模。
+Slide-ID: S02
+Objective: 按原稿介绍演讲人背景与研究方向。
+Timing: 2 min
+Visual: 原 Keynote 第 2 页完整画面。
+Interaction: 演讲人口头补充个人经历。
+Sources: publish-keynote-page-2
+Boundary: 可见文字与图片直接来自演讲人提供的 Keynote。
+Narrative: 建立课程内容与演讲人体系结构实践之间的联系。
+Transition: 由个人背景转向本次暑期学校课程结构。
 [Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
+- source: K02
+- catalog: publish-keynote-page-2
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 本次暑期学校课程
 
-# 今天只练**四个判断动作**
-
-1. 判断一条话属于规范、实现、观察还是假设。
-2. 把规范条款投影成可追踪的 NDF 设计承诺。
-3. 在 pyCircuit 中定义有限、合法、可回滚的动作。
-4. 用独立证据决定接受、拒绝或继续探索。
-
-<div class="visual-frame" style="padding:1.25rem 2rem;margin-top:1.5rem">
-  <div class="flow">
-    <span class="flow-node">分类</span><span class="flow-arrow">→</span>
-    <span class="flow-node">投影</span><span class="flow-arrow">→</span>
-    <span class="flow-node">行动</span><span class="flow-arrow">→</span>
-    <span class="flow-node">裁决</span>
-  </div>
-</div>
+<KeynoteSourceStage background="/generated/slides/s03-course-outline.png" title="本次暑期学校课程" claim="什么是计算体系结构" slide-id="S03" />
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-LRN-102
-Learning objective: 说明本课结束时可观察、可检验的学习结果。
-Duration: 2 min
-Visual intent: class: architecture；四个动词构成学习路径。
-Evidence: docs/NDF.md
-Interaction: 邀请听众选一个最不熟悉的动作，课末回看。
-Caveat: 第一课不会完整展开 PPA 优化和 Pareto 搜索；第二课继续。
+Slide-ID: S03
+Objective: 保留原稿课程范围与处理器核示例组成。
+Timing: 2 min
+Visual: 原 Keynote 第 3 页完整画面。
+Interaction: 指出右图哪些关系属于计算、内存、互连与编程。
+Sources: publish-keynote-page-3
+Boundary: 可见文字与图形直接来自演讲人提供的 Keynote。
+Narrative: 本课先建立空间与时间的体系结构坐标，再进入 PTO 数据搬运。
+Transition: 进入第一章处理器体系结构。
 [Sources]
-- docs/NDF.md
+- source: K03
+- catalog: publish-keynote-page-3
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 计算机体系结构-处理器
 
-# 一项研究只有闭环，才配得上“可复现”
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">PTO 规范</span><span class="flow-arrow">→</span>
-    <span class="flow-node">NDF</span><span class="flow-arrow">→</span>
-    <span class="flow-node">微架构</span><span class="flow-arrow">→</span>
-    <span class="flow-node">验证 / trace</span><span class="flow-arrow">→</span>
-    <span class="flow-node">测量</span><span class="flow-arrow">→</span>
-    <span class="flow-node">Agent</span><span class="flow-arrow">→</span>
-    <span class="flow-node">决策写回</span>
-  </div>
-</div>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem">
-  <blockquote>前半环回答：<strong>什么不能变？</strong></blockquote>
-  <blockquote>后半环回答：<strong>什么值得变？</strong></blockquote>
-</div>
+<KeynoteSourceStage background="/generated/slides/s04-chapter-processor.png" title="计算机体系结构-处理器" claim="第一章" slide-id="S04" />
 
 <!--
-NDF-ID: NDF-MTH-001
-Learning objective: 能复述“规范→NDF→微架构→验证→测量→Agent→决策”的完整闭环。
-Duration: 3 min
-Visual intent: class: architecture；展示课程的单一总图，并强调决策写回。
-Evidence: docs/NDF.md; experiments/artifacts/summary.json
-Interaction: 顺时针点读闭环；让听众指出“写代码”位于哪一段。
-Caveat: 环中每个箭头都需要明确输入输出；图本身不是证据。
+Slide-ID: S04
+Objective: 完整保留原稿第一章章节分隔页。
+Timing: 1 min
+Visual: 原 Keynote 第 4 页完整画面。
+Interaction: 章节转场，无附加操作。
+Sources: publish-keynote-page-4
+Boundary: 可见文字与装饰直接来自演讲人提供的 Keynote。
+Narrative: 第一章从冯诺依曼结构的物流隐喻开始。
+Transition: 从章节标题进入农业时代的小农经济。
 [Sources]
-- docs/NDF.md
-- docs/GOAL_PROMPT.md
+- source: K04
+- catalog: publish-keynote-page-4
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·农业时代·小农经济
 
-# 先给每句话贴上**证据类型**，争论会立刻变短
-
-| 类型 | 典型句式 | 谁能推翻它 |
-|---|---|---|
-| 规范事实 | “实现 **MUST** 保持……” | 固定版本规范 |
-| 实现事实 | “当前模块把状态放在……” | 当前源码 / elaboration |
-| 实验观察 | “这个版本在该配置下……” | 同协议复现实验 |
-| 研究假设 | “增加队列深度可能……” | 新实验或反例 |
-
-<div class="visual-frame" style="padding:1rem 1.5rem;margin-top:1rem">
-  <div class="flow"><span class="flow-node">句子</span><span class="flow-arrow">→</span><span class="flow-node">类型</span><span class="flow-arrow">→</span><span class="flow-node">裁判</span></div>
-</div>
+<KeynoteSourceStage background="/generated/slides/s05-von-neumann-farm.png" title="冯诺依曼架构·农业时代·小农经济" claim="Von Neumann bottleneck" slide-id="S05" />
 
 <!--
-NDF-ID: NDF-MTH-003
-Learning objective: 能把研究陈述分类，并为每一类指定可接受的反证来源。
-Duration: 2 min
-Visual intent: class: evidence；用“句子→类型→裁判”强化分类动作。
-Evidence: docs/NDF.md
-Interaction: 快问快答：“双发射少 3 个周期”属于哪一类？
-Caveat: 同一句话可能混合多类主张，必要时拆句。
+Slide-ID: S05
+Objective: 用小农经济比喻解释冯诺依曼结构与传输瓶颈。
+Timing: 3 min
+Visual: 原 Keynote 第 5 页完整画面。
+Interaction: 沿村庄、道路、农田与指令卷轴讲解一次工作往返。
+Sources: publish-keynote-page-5
+Boundary: 比喻与可见文字沿用演讲人原稿。
+Narrative: 计算与存储分离后，信息传输率成为第一性约束。
+Transition: 当小路变成公路，局部性开始组织运输。
 [Sources]
-- docs/NDF.md
-- materials/SOURCES.yaml
+- source: K05
+- catalog: publish-keynote-page-5
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·工业时代
 
-# 可执行规范让语义进入**机器检查**
-
-<div class="split">
-  <div>
-    <p>PTO executable architecture spec 在本课中承担唯一角色：提供固定版本的规范事实。</p>
-    <div class="flow" style="justify-content:flex-start;margin-top:1rem">
-      <span class="flow-node">输入：Tile / GlobalTensor</span><span class="flow-arrow">→</span>
-      <span class="flow-node">转换：TLOAD / TADD</span><span class="flow-arrow">→</span>
-      <span class="flow-node">结果：Tile / Memory</span>
-    </div>
-    <blockquote style="margin-top:1.2rem">固定提交：<code>PTO-ISA/pto-spec@9574f029…</code></blockquote>
-  </div>
-  <img src="/generated/spec-to-circuit.png" alt="可执行规范经课程 NDF 投影走向微架构的概念图" class="visual-frame" style="width:100%;max-height:390px;object-fit:cover" />
-</div>
+<KeynoteSourceStage background="/generated/slides/s06-von-neumann-industry.png" title="冯诺依曼架构·工业时代" claim="时间局部性与空间局部性" slide-id="S06" />
 
 <!--
-NDF-ID: NDF-SRC-001
-Learning objective: 说明 executable architecture spec 在研究闭环中的责任边界。
-Duration: 2.5 min
-Visual intent: class: architecture；用输入—转换—结果的确定性标签配合本地 ImageGen 概念图，说明规范到实现的方向但不伪造精确连线。
-Evidence: materials/SOURCES.yaml
-Interaction: 请听众区分“操作结果”与“实现需要几个周期”。
-Caveat: 本页不声称规范固定任何特定微架构、时延或资源绑定。
+Slide-ID: S06
+Objective: 用城市、公路与分级仓库解释存储层级和局部性。
+Timing: 3 min
+Visual: 原 Keynote 第 6 页完整画面。
+Interaction: 沿运输路径说明每一级保存什么复用机会。
+Sources: publish-keynote-page-6
+Boundary: 比喻与可见文字沿用演讲人原稿。
+Narrative: 局部性用更近的仓库减少昂贵的远距离往返。
+Transition: 单个工厂扩展为多 Lane 的共享运输体系。
 [Sources]
-- https://github.com/PTO-ISA/pto-spec/tree/9574f0293929bf692517dd29de11a8354440c7dc
-- materials/SOURCES.yaml
+- source: K06
+- catalog: publish-keynote-page-6
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·工业时代·社会主义
 
-# 五个操作就能形成第一条**端到端证据链**
-
-```text
-TALLOC  →  TLOAD A  →  TLOAD B  →  TADD  →  TSTORE
-```
-
-<div class="visual-frame" style="padding:1.2rem;margin-top:1rem">
-  <div class="flow">
-    <span class="flow-node">GM [1,2,3,4]</span><span class="flow-arrow">→</span>
-    <span class="flow-node">Tile A + Tile B</span><span class="flow-arrow">→</span>
-    <span class="flow-node">GM [11,22,33,44]</span>
-  </div>
-</div>
-
-<p class="muted">这里展示的是操作序列，不是 PTO-AS 语法教程。</p>
+<KeynoteSourceStage background="/generated/slides/s07-von-neumann-socialism.png" title="冯诺依曼架构·工业时代·社会主义" claim="共享层级与并行 Lane" slide-id="S07" />
 
 <!--
-NDF-ID: NDF-SRC-001, NDF-MTH-001
-Learning objective: 用最小 PTO 操作链识别输入、状态变化与可观察输出。
-Duration: 2.5 min
-Visual intent: class: experiment；把实验 01 的操作序列与结果数组对齐。
-Evidence: experiments/artifacts/01/pto_trace.json
-Interaction: 逐步预测每个操作之后哪些值应当可见。
-Caveat: 文本是教学用语义链，不宣称为可直接汇编的 PTO-AS 源码。
+Slide-ID: S07
+Objective: 展示多计算 Lane、分级仓库和共享道路组织。
+Timing: 2 min
+Visual: 原 Keynote 第 7 页完整画面。
+Interaction: 从计算 Lane 到内存总仓逐级讲解共享与争用。
+Sources: publish-keynote-page-7
+Boundary: 可见文字与图形沿用演讲人原稿。
+Narrative: 共享提高资源利用率，也引入仲裁、拥塞与回压。
+Transition: 用 Roofline 把算力与运力放到同一张图。
 [Sources]
-- experiments/tests/test_smoke.py
-- https://github.com/PTO-ISA/pto-spec/tree/9574f0293929bf692517dd29de11a8354440c7dc
+- source: K07
+- catalog: publish-keynote-page-7
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 仓库管理：Roofline Model
 
-# NDF 把研究承诺**钉在规范上**
-
-<script setup lang="ts">
-import NdfTraceability from '../../components/NdfTraceability.vue'
-</script>
-
-<NdfTraceability />
-
-<p class="muted" style="margin-top:.55rem">NDF 提供结构、ID、关系和覆盖；它不替规范发明语义。</p>
+<KeynoteSourceStage background="/generated/slides/s08-warehouse-roofline.png" title="仓库管理：Roofline Model" claim="运力到达瓶颈，再加算力没有用处" slide-id="S08" />
+<details class="keynote-lab-drawer">
+  <summary aria-label="打开 Roofline 交互实验">交互实验</summary>
+  <InteractiveRoofline />
+</details>
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-MTH-001
-Learning objective: 解释 NDF 投影与原始规范之间的非替代关系。
-Duration: 3 min
-Visual intent: class: evidence；使用共享组件 NdfTraceability 展示条款、要求与验证的有向关系。
-Evidence: experiments/artifacts/02/ndf_projection.json
-Interaction: 点击或高亮一条链，口头读出“来源—承诺—裁判”。
-Caveat: 课程 NDF 是教学投影，不属于 PTO 规范。
+Slide-ID: S08
+Objective: 用原稿仓库隐喻和交互曲线解释 Roofline。
+Timing: 4 min
+Visual: 原 Keynote 第 8 页完整画面，右下叠加可调 Roofline。
+Interaction: 调节 Peak、BW、AI 与 Hit，观察瓶颈跨越 ridge point。
+Sources: publish-keynote-page-8; roofline-paper
+Boundary: 原稿可见内容保持不变；交互数值是确定性教学模型。
+Narrative: Arithmetic Intensity 与有效带宽共同决定工作点落在哪条屋顶。
+Transition: 把 Roofline 的局部性落实到 Da Vinci Tile 与仓库。
 [Sources]
-- docs/NDF.md
-- experiments/artifacts/02/ndf_projection.json
-- https://github.com/hengliao1972/normative_language/blob/main/normative_language.md
+- source: K08
+- catalog: publish-keynote-page-8
+- catalog: roofline-paper
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·工业时代·达芬奇文艺复兴
 
-# 好的追踪链必须允许你**反向找到责任人**
-
-<div class="visual-frame" style="padding:1.3rem">
-  <div class="flow">
-    <span class="flow-node">NDF-LRN-102</span><span class="flow-arrow">→</span>
-    <span class="flow-node">Slide 17</span><span class="flow-arrow">→</span>
-    <span class="flow-node">TraceComparator</span><span class="flow-arrow">→</span>
-    <span class="flow-node">Exp 04</span><span class="flow-arrow">→</span>
-    <span class="flow-node">comparison.json</span>
-  </div>
-</div>
-
-任何一个节点变化，都应该让追踪检查失败，而不是静默漂移。
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
-  <blockquote><strong>正向：</strong>要求有没有被教、被演示、被验证？</blockquote>
-  <blockquote><strong>反向：</strong>一个图、实验或数字为何存在？</blockquote>
-</div>
+<KeynoteSourceStage background="/generated/slides/s09-davinci-architecture.png" title="冯诺依曼架构·工业时代·达芬奇文艺复兴" claim="Tile / CUBE 与本地仓库" slide-id="S09" />
 
 <!--
-NDF-ID: NDF-VIS-001, NDF-LRN-102
-Learning objective: 能构造 requirement→slide→component→experiment→artifact 的双向追踪链。
-Duration: 2.5 min
-Visual intent: class: evidence；用一条真实课程链展示追踪粒度。
-Evidence: docs/NDF.md; experiments/artifacts/04/comparison.json
-Interaction: 隐去一个节点，让听众判断审计时最先出现什么告警。
-Caveat: 文件存在不等于证据有效；还需检查 schema、版本和生成命令。
+Slide-ID: S09
+Objective: 展示 Tile/CUBE 计算组织与 L0A、L0B、L0C 本地仓库。
+Timing: 3 min
+Visual: 原 Keynote 第 9 页完整画面。
+Interaction: 先追踪 Left、Right、ACC Tile，再追踪 256B/cycle 路径。
+Sources: publish-keynote-page-9
+Boundary: 可见文字、容量和带宽标注沿用演讲人原稿。
+Narrative: 阵列附近的数据复用决定算力能否持续获得操作数。
+Transition: 放大 CUBE 核内部的数据供给结构。
 [Sources]
-- docs/NDF.md
-- scripts/check-content.mjs
+- source: K09
+- catalog: publish-keynote-page-9
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·工业时代·CUBE核设计
 
-# 分层不是增加文档，而是限制每层**可以说什么**
-
-```mermaid
-flowchart LR
-  L0[来源与术语] --> L1[架构要求]
-  L1 --> L2[微架构机制]
-  L2 --> L3[实现与验证]
-  L3 -.证据回写.-> L1
-```
-
-| 层 | 合法问题 |
-|---|---|
-| L1 | 系统必须保持什么可观察行为？ |
-| L2 | 哪种机制满足它？ |
-| L3 | 当前实现与测试是否真的满足？ |
+<KeynoteSourceStage background="/generated/slides/s10-keynote-page-10.png" title="冯诺依曼架构·工业时代·CUBE核设计" claim="CUBE 核的数据供给与计算闭环" slide-id="S10" />
 
 <!--
-NDF-ID: NDF-LRN-101
-Learning objective: 能把架构要求、微架构机制和实现证据放入正确层级。
-Duration: 2 min
-Visual intent: class: architecture；用 L0–L3 精炼链表现约束逐层收紧。
-Evidence: experiments/artifacts/02/ndf_projection.json
-Interaction: 给出“队列深度为 32”，请听众判断它通常位于哪一层。
-Caveat: 层级编号是课程采用的投影方式，不宣称为 PTO 规范内部层级。
+Slide-ID: S10
+Objective: 按原稿讲解 CUBE 核、L0 仓库与片外层级连接。
+Timing: 3 min
+Visual: 原 Keynote 第 10 页 1920×1080 完整画面。
+Interaction: 从左侧输入依次追踪到 CUBE、二级仓库、三级仓库与 HBM。
+Sources: publish-keynote-page-10
+Boundary: 页面是原稿 CUBE 核教学图，不补充私有实现细节。
+Narrative: 局部供给能力与远端层级共同限制 CUBE 的持续吞吐。
+Transition: 从一个 CUBE 核扩展到完整 Da Vinci 架构。
 [Sources]
-- https://github.com/hengliao1972/normative_language/blob/main/normative_language.md
-- vendor/LinxCore/docs/spec/ndf.yaml
--->
-
----
-background: /generated/modular-processor.png
-class: imagegen-content
----
-
-<style>
-@import "../../styles/theme.css";
-</style>
-
-# LinxCore 是模块化案例，**不是 PTO 官方实现**
-
-<div class="split">
-  <div class="visual-frame" style="padding:1.5rem">
-    <h2>本课借它观察</h2>
-    <ul>
-      <li>模块边界与状态所有权</li>
-      <li>typed interface 与 backpressure</li>
-      <li>trace、验证和替换证据</li>
-    </ul>
-  </div>
-  <div>
-    <h2>本课绝不声称</h2>
-    <p>❌ LinxCore 定义 PTO 语义</p>
-    <p>❌ LinxCore 是 PTO 参考实现</p>
-    <p>❌ 案例参数等于规范要求</p>
-  </div>
-</div>
-
-<!--
-NDF-ID: NDF-SRC-003
-Learning objective: 明确 PTO 规范事实源与 LinxCore 案例的边界。
-Duration: 1 min
-Visual intent: class: compare；用“可借用 / 不可声称”双栏建立边界。
-Evidence: materials/SOURCES.yaml; docs/NDF.md
-Interaction: 全班复述边界句：“案例提供机制，不提供 PTO 规范权威。”
-Caveat: LinxCore 自身的 Linx 语义应由其 ISA 与稳定条款定义。
-[Sources]
-- materials/SOURCES.yaml
-- https://github.com/LinxISA/LinxCore
+- source: K10
+- catalog: publish-keynote-page-10
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·工业时代·达芬奇架构设计
 
-# 模块化的关键是**唯一状态所有者**
-
-<script setup lang="ts">
-import LinxCoreModuleExplorer from '../../components/LinxCoreModuleExplorer.vue'
-</script>
-
-<div style="transform:scale(.78);transform-origin:top left;width:128%;height:330px">
-  <LinxCoreModuleExplorer />
-</div>
-
-<p class="muted">点击模块时，问的不是“它叫什么”，而是“它拥有什么状态、接受什么事务、输出什么证据”。</p>
+<KeynoteSourceStage background="/generated/slides/s11-keynote-page-11.png" title="冯诺依曼架构·工业时代·达芬奇架构设计" claim="计算、搬运与共享仓库协同" slide-id="S11" />
 
 <!--
-NDF-ID: NDF-SRC-003, NDF-LRN-101
-Learning objective: 用状态所有权而非文件目录解释模块边界。
-Duration: 2 min
-Visual intent: class: architecture；使用共享组件 LinxCoreModuleExplorer 逐模块查看处理路径。
-Evidence: vendor/LinxCore/docs/spec/10-architecture/ownership.md
-Interaction: 点击 OOO / BROB；让听众指出 commit 与 recovery 的唯一所有者。
-Caveat: 组件是教学简化图；精确接口以固定版本源码和清单为准。
+Slide-ID: S11
+Objective: 按原稿展示 Da Vinci 架构的 CUBE、Vector 与搬运层级。
+Timing: 3 min
+Visual: 原 Keynote 第 11 页 1920×1080 完整画面。
+Interaction: 对照上下两条路径，指出计算与数据搬运的汇合点。
+Sources: publish-keynote-page-11
+Boundary: 可见模块与连线按原稿保留，不推断未公开微架构时序。
+Narrative: 多执行单元共享层级时，调度和带宽匹配比单元峰值更重要。
+Transition: 用城市化比喻抽象多个计算与运输单元的组织。
 [Sources]
-- vendor/LinxCore/docs/spec/00-charter/scope.md
-- vendor/LinxCore/docs/spec/10-architecture/ownership.md
+- source: K11
+- catalog: publish-keynote-page-11
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·工业时代·城市化
 
-# pyCircuit 把“改设计”压缩成**结构化行动空间**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">模块</span><span class="flow-node">端口</span>
-    <span class="flow-node">CycleAwareSignal</span><span class="flow-node">队列</span>
-    <span class="flow-node">参数</span><span class="flow-node">层次边界</span>
-  </div>
-</div>
-
-Agent 不应“随便改 RTL”；它应从受约束动作中选择：
-
-- 改参数，但保持接口 schema；
-- 替换模块，但保持状态所有权；
-- 调整流水深度，但保持架构观察等价；
-- 新增 trace 点，但不让观察者阻塞提交。
+<KeynoteSourceStage background="/generated/slides/s12-keynote-page-12.png" title="冯诺依曼架构·工业时代·城市化" claim="复制、集中调度与统一规格" slide-id="S12" />
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-MTH-002
-Learning objective: 把 pyCircuit 理解为可约束、可枚举的微架构行动空间。
-Duration: 2.5 min
-Visual intent: class: circuit-focus；以六类结构化对象代替自由文本修改。
-Evidence: experiments/artifacts/03/pipeline_summary.json
-Interaction: 请听众把一个“加深流水”的想法改写成参数、边界和不变量。
-Caveat: pyCircuit 的 Python 包导入名是 `pycircuit`；行动空间仍需项目约束定义。
+Slide-ID: S12
+Objective: 用城市化解释复制站点、集中调度与标准化。
+Timing: 2 min
+Visual: 原 Keynote 第 12 页 1920×1080 完整画面。
+Interaction: 找出图中复制、集中调度、统一规格与交通枢纽的对应结构。
+Sources: publish-keynote-page-12
+Boundary: 城市化是原稿教学隐喻，不对应具体芯片物理布局。
+Narrative: 扩展规模要求规则化接口和可预测的共享基础设施。
+Transition: 把城市化比喻投影到 Ascend SoC 教学图。
 [Sources]
-- https://github.com/LinxISA/pyCircuit
-- /Users/zhoubot/Documents/janus_top_level_documents/pyCircuit_checkout/docs/PyCircuit_V5_Spec.md
+- source: K12
+- catalog: publish-keynote-page-12
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·工业时代·昇腾950处理器
 
-# 编译链不是后端细节，而是每次行动的**可审计路径**
-
-<script setup lang="ts">
-import PipelineStepper from '../../components/PipelineStepper.vue'
-</script>
-
-<PipelineStepper />
-
-<div class="flow" style="margin-top:.8rem">
-  <span class="flow-node">Python DSL</span><span class="flow-arrow">→</span>
-  <span class="flow-node">Circuit IR / MLIR</span><span class="flow-arrow">→</span>
-  <span class="flow-node">RTL</span><span class="flow-arrow">→</span>
-  <span class="flow-node">测量</span>
-</div>
+<KeynoteSourceStage background="/generated/slides/s13-keynote-page-13.png" title="冯诺依曼架构·工业时代·昇腾950处理器" claim="教学抽象，不是产品框图" slide-id="S13" />
+<KeynoteInteractiveStage mode="disclaimer" />
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-MTH-001
-Learning objective: 识别一次 pyCircuit 修改在 Python、IR、RTL 和测量端的证据落点。
-Duration: 2 min
-Visual intent: class: circuit-focus；使用共享组件 PipelineStepper 演示逐级下降。
-Evidence: experiments/artifacts/03/pipeline_summary.json
-Interaction: Step/Play/Pause/Reset；每到一层说出应保存的工件。
-Caveat: 组件展示通用课程链；具体后端命令与版本由项目环境固定。
+Slide-ID: S13
+Objective: 通过原稿 Ascend SoC 教学图讨论核、共享缓存与 I/O 分区。
+Timing: 3 min
+Visual: 原 Keynote 第 13 页完整画面，并显式显示教学免责声明。
+Interaction: 沿 NPU/CPU 核、共享缓存、NoC 与 I/O 找资源边界。
+Sources: publish-keynote-page-13
+Boundary: 教学抽象，非产品框图；不得据此推断真实产品内部结构。
+Narrative: SoC 规划把复制的计算核连接到共享存储、互连和外部接口。
+Transition: 下一页在同一类 SoC 平面上追踪资源分区的因果路径。
 [Sources]
-- https://github.com/LinxISA/pyCircuit
-- /Users/zhoubot/Documents/janus_top_level_documents/pyCircuit_checkout/docs/PyCircuit_V5_Spec.md
+- source: K13
+- catalog: publish-keynote-page-13
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·工业时代·SoC规划
 
-# 队列把并发设计变成一个**局部可判定契约**
-
-<script setup lang="ts">
-import CircuitDataflow from '../../components/CircuitDataflow.vue'
-</script>
-
-<CircuitDataflow />
+<KeynoteSourceStage background="/generated/slides/s14-keynote-page-14.png" title="冯诺依曼架构·工业时代·SoC规划" claim="从资源分区追到共享路径" slide-id="S14" />
+<KeynoteInteractiveStage mode="plan" />
 
 <!--
-NDF-ID: NDF-LRN-102
-Learning objective: 用 valid/ready/fire 定义局部传输与 backpressure 观察点。
-Duration: 2 min
-Visual intent: class: circuit-focus；使用共享组件 CircuitDataflow 动态追踪队列传输。
-Evidence: experiments/artifacts/05/queue_summary.json
-Interaction: Play 后暂停；指出 blocked 周期中必须保持稳定的 payload。
-Caveat: 并非所有项目接口都采用同一命名，但传输条件必须可判定。
+Slide-ID: S14
+Objective: 用原稿 SoC 平面图建立核、共享缓存、NoC 与 I/O 的规划顺序。
+Timing: 3 min
+Visual: 原 Keynote 第 14 页完整画面，右下叠加可选资源路径。
+Interaction: 切换 NPU、CPU、NoC/共享缓存、DDR/I/O，追踪相邻约束。
+Sources: publish-keynote-page-14
+Boundary: 叠加层只用于教学导航，不增加产品结构主张。
+Narrative: 一个资源分区的变化会改变共享链路、缓存压力与外部带宽需求。
+Transition: 从物理 SoC 规划回到信息时代的空间抽象。
 [Sources]
-- experiments/tests/test_smoke.py
-- vendor/LinxCore/docs/spec/20-behavior/ifu.md
+- source: K14
+- catalog: publish-keynote-page-14
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·信息时代·城市化
 
-# 观察点应贴近**架构承诺**，而不是贴满内部信号
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-  <div class="visual-frame" style="padding:1.3rem">
-    <h2>优先观察</h2>
-    <p>接受 / 拒绝、提交、异常、恢复、内存副作用</p>
-  </div>
-  <div class="visual-frame" style="padding:1.3rem">
-    <h2>谨慎观察</h2>
-    <p>私有队列索引、临时 tag、实现特定 stage 名称</p>
-  </div>
-</div>
-
-<div class="flow" style="margin-top:1.5rem">
-  <span class="flow-node">输入事务</span><span class="flow-arrow">→</span>
-  <span class="flow-node">架构事件</span><span class="flow-arrow">→</span>
-  <span class="flow-node">最终状态</span>
-</div>
+<KeynoteSourceStage background="/generated/slides/s15-keynote-page-15.png" title="冯诺依曼架构·信息时代·城市化" claim="电梯连接不同规模的存储空间" slide-id="S15" />
 
 <!--
-NDF-ID: NDF-LRN-102, NDF-MTH-003
-Learning objective: 为流水线变体选择跨实现稳定的架构观察点。
-Duration: 2 min
-Visual intent: class: evidence；比较架构观察点与易漂移内部信号。
-Evidence: experiments/artifacts/04/comparison.json
-Interaction: 给出 `iq_head=7` 与 `commit pc=...`，让听众选择等价判据。
-Caveat: 内部信号对调试仍有价值，但不应默认成为跨实现等价定义。
+Slide-ID: S15
+Objective: 按原稿用建筑、电梯与存储空间解释层级跨度。
+Timing: 2 min
+Visual: 原 Keynote 第 15 页 1920×1080 完整画面。
+Interaction: 让学生指出同层访问与跨层访问分别需要哪些运输资源。
+Sources: publish-keynote-page-15
+Boundary: 信息时代城市化仍是教学隐喻，不声明实际拓扑。
+Narrative: 空间越远、容量越大，访问时间和运输能耗通常越高。
+Transition: Transformer 把这种层级运输变成可观察的数据流。
 [Sources]
-- vendor/LinxCore/docs/trace/linxtrace_v1.md
-- vendor/LinxCore/docs/spec/50-verification/contract-spine.md
+- source: K15
+- catalog: publish-keynote-page-15
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·信息时代·Transformer
 
-# 等价允许时序不同，但**承诺必须一致**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">Scalar：8 cycles</span>
-    <span class="flow-arrow">≠ 时序</span>
-    <span class="flow-node">Dual issue：5 cycles</span>
-    <span class="flow-arrow">= 架构结果</span>
-    <span class="flow-node">MATCH</span>
-  </div>
-</div>
-
-等价判据至少要写清：
-
-- 对齐键：指令 UID、提交序号或事务身份；
-- 比较域：结果、异常、内存副作用、最终状态；
-- 容许差异：周期、内部路径、暂态占用；
-- 终止条件：首个反例还是完整运行。
+<KeynoteSourceStage background="/generated/slides/s16-keynote-page-16.png" title="冯诺依曼架构·信息时代·Transformer" claim="Q、K、V 与 Tile 数据流" slide-id="S16" />
 
 <!--
-NDF-ID: NDF-LRN-102
-Learning objective: 编写一个允许微架构时序差异的架构等价判据。
-Duration: 2.5 min
-Visual intent: class: compare；把周期数差异与架构匹配放在同一视觉句中。
-Evidence: experiments/artifacts/04/comparison.json
-Interaction: 让听众补全一个等价判据中的“对齐键”。
-Caveat: 架构匹配不自动证明 PPA、活性或公平性满足要求。
+Slide-ID: S16
+Objective: 按原稿把 Transformer 张量操作映射到 Tile/CUBE/Vector 数据流。
+Timing: 4 min
+Visual: 原 Keynote 第 16 页 1920×1080 完整画面。
+Interaction: 沿 Q、K、V 输入追踪矩阵计算、向量处理与中间结果驻留。
+Sources: publish-keynote-page-16
+Boundary: 数据流按原稿教学表达，不宣称唯一实现或固定时序。
+Narrative: 算法图只有落到数据放置、运输和执行单元后才成为体系结构问题。
+Transition: 单芯片数据流继续扩展到芯片间通信。
 [Sources]
-- experiments/tests/test_smoke.py
-- vendor/LinxCore/docs/trace/uid_contract.md
+- source: K16
+- catalog: publish-keynote-page-16
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·信息时代·国际化
 
-# Trace 对比先做**身份对齐**，再谈差异
-
-<script setup lang="ts">
-import TraceComparator from '../../components/TraceComparator.vue'
-</script>
-
-<TraceComparator />
+<KeynoteSourceStage background="/generated/slides/s17-keynote-page-17.png" title="冯诺依曼架构·信息时代·国际化" claim="芯片间通信也是体系结构资源" slide-id="S17" />
 
 <!--
-NDF-ID: NDF-LRN-102, NDF-MTH-003
-Learning objective: 解释两份不同节拍 trace 的标准化、对齐与差异报告流程。
-Duration: 2.5 min
-Visual intent: class: code-trace；使用共享组件 TraceComparator 高亮首个架构分歧。
-Evidence: experiments/artifacts/04/comparison.json; experiments/artifacts/06/crosscheck.json
-Interaction: 切换 scalar / dual-issue trace，定位第一个未对齐事件。
-Caveat: 如果身份在源头复用或丢失，后处理无法可靠恢复因果关系。
+Slide-ID: S17
+Objective: 按原稿用航空与航运比喻芯片间通信和全局协同。
+Timing: 2 min
+Visual: 原 Keynote 第 17 页 1920×1080 完整画面。
+Interaction: 比较空运与海运路径对应的延迟、带宽和批量化取舍。
+Sources: publish-keynote-page-17
+Boundary: 国际化是原稿通信隐喻，不对应具体互连协议。
+Narrative: 系统边界扩大后，远程运输与同步成本成为一等架构参数。
+Transition: 汇总第一章，建立五个可复用的体系结构坐标。
 [Sources]
-- vendor/LinxCore/docs/trace/uid_contract.md
-- vendor/LinxCore/docs/trace/linxtrace_v1.md
-- experiments/tests/test_smoke.py
+- source: K17
+- catalog: publish-keynote-page-17
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 体系结构的五个坐标
 
-# 故意失败，证明**裁判独立**
-
-<div class="visual-frame" style="padding:1.4rem">
-  <div class="flow">
-    <span class="flow-node">Agent 修改候选</span><span class="flow-arrow">→</span>
-    <span class="flow-node">独立不变量检查</span><span class="flow-arrow">→</span>
-    <span class="flow-node warm">exit code 2</span><span class="flow-arrow">→</span>
-    <span class="flow-node">拒绝 + 保存反例</span>
-  </div>
-</div>
-
-<p style="margin-top:1.5rem"><strong>红灯成功条件：</strong>错误版本必须失败，而且失败原因必须是预期不变量。</p>
+<FullBleedStage background="/generated/slides/s18-architecture-city-five-coordinates-v2.png" title="体系结构的五个坐标" claim="计算、存储、互连、并发与控制共同解释性能。" eyebrow="ARCHITECTURE COORDINATES" slide-id="S18" focus="left">
+  <template #diagram><ArchitectureCoordinate /></template>
+</FullBleedStage>
 
 <!--
-NDF-ID: NDF-MTH-002
-Learning objective: 说明 intentional failure 如何验证裁判没有被候选实现同化。
-Duration: 2 min
-Visual intent: class: experiment；把非零退出码呈现为测试系统的正向证据。
-Evidence: experiments/artifacts/07/expected_failure.json
-Interaction: 先让听众预测退出码与 stderr，再揭示证据。
-Caveat: “任何失败”都不算成功；必须命中预期违反项。
+Slide-ID: S18
+Objective: 把第一章城市隐喻综合为五个可执行的体系结构追问。
+Timing: 4 min
+Visual: 新生成的处理器城市全景，叠加五坐标交互轨道。
+Interaction: 依次选择计算、存储、互连、并发、控制，为同一性能现象提出证据问题。
+Sources: course-synthesis; source-deck
+Boundary: 五坐标是课程综合框架，不是特定 ISA 或产品规范。
+Narrative: 任何性能数字都必须能回到至少一个坐标中的资源与状态变化。
+Transition: 第二章把空间资源换算为时间代价。
 [Sources]
-- experiments/tests/test_smoke.py
-- docs/NDF.md
+- catalog: course-synthesis
+- catalog: source-deck
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 第二章·空间和时间
 
-# 优化者与裁判共享代码，就会共享**盲点**
-
-```mermaid
-flowchart LR
-  A[Agent / optimizer] -->|propose patch| C[Candidate]
-  C --> J[Independent judge]
-  R[Fixed reference + invariants] --> J
-  J -->|accept / reject + evidence| M[Decision memory]
-  M --> A
-```
-
-三条隔离线：固定事实源、只读裁判、不可覆盖的失败工件。
+<KeynoteSourceStage background="/generated/slides/s19-keynote-page-18.png" title="第二章·空间和时间" claim="从资源布局进入周期代价" slide-id="S19" />
 
 <!--
-NDF-ID: NDF-MTH-002
-Learning objective: 画出候选生成器、参考模型与独立裁判的权限边界。
-Duration: 1.5 min
-Visual intent: class: architecture；用单向权限图解释为何裁判不能被优化 Agent 修改。
-Evidence: experiments/artifacts/07/expected_failure.json
-Interaction: 让听众指出图中最危险的一条反向写边。
-Caveat: 进程隔离不是充分条件；还需版本固定、权限和产物校验。
+Slide-ID: S19
+Objective: 完整保留原稿第二章“空间和时间”章节页。
+Timing: 2 min
+Visual: 原 Keynote 第 18 页 1920×1080 完整画面。
+Interaction: 章节转场，无附加操作。
+Sources: publish-keynote-page-18
+Boundary: 可见文字与装饰直接来自演讲人提供的 Keynote。
+Narrative: 空间回答资源在哪里，时间回答数据到达与操作完成需要多久。
+Transition: 从 SDR/DDR/QDR 信号边沿定义一个时钟周期。
 [Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
+- source: K18
+- catalog: publish-keynote-page-18
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·什么是芯片的一天？
 
-# 可审计证据不是一张图，而是一份**可重放包**
-
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
-  <div class="visual-frame" style="padding:1rem"><h2>Provenance</h2><p>commit<br>配置<br>工具版本</p></div>
-  <div class="visual-frame" style="padding:1rem"><h2>Execution</h2><p>命令<br>stdout/stderr<br>退出码</p></div>
-  <div class="visual-frame" style="padding:1rem"><h2>Result</h2><p>JSON/CSV<br>hash<br>判定</p></div>
-</div>
-
-<p style="margin-top:1.5rem">最小问题：<strong>另一个人能否在不知道结论的前提下，重放并得到同一字节结果？</strong></p>
+<KeynoteSourceStage background="/generated/slides/s20-keynote-page-19.png" title="冯诺依曼架构·什么是芯片的一天？" claim="时间 × 频率 = 周期数" slide-id="S20" />
+<ClockCycleConverter />
 
 <!--
-NDF-ID: NDF-MTH-003, NDF-OFF-001
-Learning objective: 列出可重放证据包的来源、执行和结果三类必需信息。
-Duration: 2 min
-Visual intent: class: evidence；三列展示证据包而非孤立截图。
-Evidence: experiments/artifacts/summary.json
-Interaction: 请听众指出自己项目的证据包还缺哪一列。
-Caveat: 字节级确定性适合本课微型实验；含随机性实验需记录种子与容差协议。
+Slide-ID: S20
+Objective: 用原稿 SDR/DDR/QDR 时序把人类时间换算为芯片周期。
+Timing: 4 min
+Visual: 原 Keynote 第 19 页完整画面，右下叠加时间—频率换算器。
+Interaction: 切换 ps/ns/day 与 MHz/GHz，比较同一时间跨度包含多少周期。
+Sources: publish-keynote-page-19; course-model
+Boundary: 换算器只做单位与周期数换算，不代表具体存储接口协议时序。
+Narrative: 周期是离散模型的共同时间坐标，但事件仍可能跨多个信号边沿。
+Transition: 用“天数”尺度比较不同存储层级的访问代价。
 [Sources]
-- experiments/tests/test_smoke.py
-- docs/GOAL_PROMPT.md
+- source: K19
+- catalog: publish-keynote-page-19
+- catalog: course-model
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·计算获取数据天数
 
-# 主张写成六格卡片，Agent 才知道**何时停手**
-
-| 字段 | 示例 |
-|---|---|
-| Claim | 双发射不改变架构结果 |
-| Scope | 4 条指令、固定初始状态 |
-| Oracle | 归一化提交 trace |
-| Metric | cycles；architectural_match |
-| Threshold | match=true 且 cycles 更少 |
-| Stop | 首个不匹配立即拒绝 |
-
-<div class="visual-frame" style="padding:.55rem 1rem;margin-top:.45rem">
-  <div class="flow"><span class="flow-node">Claim</span><span class="flow-arrow">+</span><span class="flow-node">Oracle</span><span class="flow-arrow">+</span><span class="flow-node">Stop</span><span class="flow-arrow">=</span><span class="flow-node">可执行研究任务</span></div>
-</div>
+<KeynoteSourceStage background="/generated/slides/s21-keynote-page-20.png" title="冯诺依曼架构·计算获取数据天数" claim="层级越远，等待跨度越大" slide-id="S21" />
+<details class="keynote-lab-drawer">
+  <summary aria-label="打开存储层级交互实验">交互实验</summary>
+  <MemoryHierarchyExplorer />
+</details>
 
 <!--
-NDF-ID: NDF-MTH-003, NDF-LRN-102
-Learning objective: 将模糊研究主张改写成含范围、裁判、阈值和停止条件的实验契约。
-Duration: 2 min
-Visual intent: class: evidence；六格主张模板对应实验 04 的真实字段。
-Evidence: experiments/artifacts/04/comparison.json
-Interaction: 30 秒改写：“这个设计应该更快。”
-Caveat: 阈值应在看结果前确定，避免事后移动球门。
+Slide-ID: S21
+Objective: 用原稿天数比喻与交互层级模型比较 L1、L2、L3、远端访问。
+Timing: 4 min
+Visual: 原 Keynote 第 20 页完整画面，右下叠加命中率与平均周期探索器。
+Interaction: 调节 L1/L2 hit rate，观察平均周期与片外访问比例。
+Sources: publish-keynote-page-20; course-model
+Boundary: 天数是原稿尺度隐喻；交互延迟参数是教学值。
+Narrative: 少量远端 miss 可以主导平均等待，因此命中率必须和代价共同建模。
+Transition: 将访问边界扩展到 RDMA 与 RPC。
 [Sources]
-- experiments/artifacts/04/comparison.json
-- docs/NDF.md
+- source: K20
+- catalog: publish-keynote-page-20
+- catalog: course-model
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# 冯诺依曼架构·计算获取数据天数·远程访问
 
-# 每轮实验只改变一个**可解释维度**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">固定基线</span><span class="flow-arrow">→</span>
-    <span class="flow-node">单一动作</span><span class="flow-arrow">→</span>
-    <span class="flow-node">正确性门</span><span class="flow-arrow">→</span>
-    <span class="flow-node">性能测量</span><span class="flow-arrow">→</span>
-    <span class="flow-node">写回决策</span>
-  </div>
-</div>
-
-- 先过正确性，再看性能；
-- 保存失败候选，不只保存赢家；
-- 每轮生成机器可读记录；
-- 下一轮只能读取已接受的设计记忆。
+<KeynoteSourceStage background="/generated/slides/s22-keynote-page-21.png" title="冯诺依曼架构·计算获取数据天数·远程访问" claim="RDMA 与 RPC 扩大时间尺度" slide-id="S22" />
 
 <!--
-NDF-ID: NDF-MTH-001, NDF-MTH-002
-Learning objective: 设计一个单变量、先正确性后性能的实验循环。
-Duration: 2 min
-Visual intent: class: experiment；线性门控流程强调失败不会进入测量与记忆。
-Evidence: experiments/artifacts/summary.json
-Interaction: 让听众指出“同时改队列深度和发射宽度”的归因问题。
-Caveat: 真实设计常有交互项；先建立单变量基线，再显式设计因子实验。
+Slide-ID: S22
+Objective: 按原稿比较片内层级、RDMA 与 RPC 的时间尺度。
+Timing: 2 min
+Visual: 原 Keynote 第 21 页 1920×1080 完整画面。
+Interaction: 找出从 ns 到 μs 的数量级跳变来自哪些边界。
+Sources: publish-keynote-page-21
+Boundary: 原稿数字用于数量级教学，不能替代具体系统测量。
+Narrative: 远程路径包含更多协议、队列、链路与同步阶段。
+Transition: 由标量操作转向以 Tile 为单位的并行操作。
 [Sources]
-- experiments/tests/test_smoke.py
-- docs/GOAL_PROMPT.md
+- source: K21
+- catalog: publish-keynote-page-21
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# PTO指令集：Parallel Tile Operation
 
-# Agent 的边界是**五件事**，不是一条 prompt
-
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem">
-  <div class="visual-frame" style="padding:.8rem"><h2>动作</h2><p>可改什么</p></div>
-  <div class="visual-frame" style="padding:.8rem"><h2>传感器</h2><p>能看什么</p></div>
-  <div class="visual-frame" style="padding:.8rem"><h2>裁判</h2><p>谁判对错</p></div>
-  <div class="visual-frame" style="padding:.8rem"><h2>记忆</h2><p>保留什么</p></div>
-  <div class="visual-frame" style="padding:.8rem"><h2>接受规则</h2><p>何时写回</p></div>
-</div>
-
-<p style="margin-top:1.5rem">缺少任何一项，Agent 都会把探索退化成“反复改代码”。</p>
+<KeynoteSourceStage background="/generated/slides/s23-keynote-page-22.png" title="PTO指令集：Parallel Tile Operation" claim="从 Scalar Operation 到 Tile Operation" slide-id="S23" />
 
 <!--
-NDF-ID: NDF-MTH-002, NDF-LRN-102
-Learning objective: 定义体系结构 Agent 的动作、传感器、裁判、记忆和接受规则。
-Duration: 2 min
-Visual intent: class: architecture；五栏能力契约为第二课 Agent 闭环埋点。
-Evidence: experiments/artifacts/07/expected_failure.json; experiments/artifacts/08/design_points.csv
-Interaction: 让听众为“加深 issue queue”各填一个字段。
-Caveat: 本课只定义框架；完整设计空间与 Pareto 探索在第二课展开。
+Slide-ID: S23
+Objective: 按原稿说明 PTO 以 Tile 为并行数据与操作单位。
+Timing: 2 min
+Visual: 原 Keynote 第 22 页 1920×1080 完整画面。
+Interaction: 比较 32-bit scalar 与 8KB–16KB Tile 对搬运和调度粒度的影响。
+Sources: publish-keynote-page-22
+Boundary: 可见术语与容量范围按原稿保留；规范语义以后续 PTO-ASL 为准。
+Narrative: 粒度变大提高批量复用，也放大容量、分块和尾块约束。
+Transition: Tile 不只是方块，还需要表达不同形状与布局。
 [Sources]
-- docs/NDF.md
-- docs/GOAL_PROMPT.md
+- source: K22
+- catalog: publish-keynote-page-22
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# PTO指令集：我们在设计不同形状的集装箱
 
-# 接受一个设计，需要同时回答**对、好、懂**
-
-<div class="visual-frame" style="padding:1.3rem">
-  <div class="flow">
-    <span class="flow-node">对：架构等价</span><span class="flow-arrow">∧</span>
-    <span class="flow-node">好：指标过线</span><span class="flow-arrow">∧</span>
-    <span class="flow-node">懂：差异可解释</span><span class="flow-arrow">=</span>
-    <span class="flow-node">ACCEPT</span>
-  </div>
-</div>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
-  <blockquote><strong>Reject：</strong>任何硬约束失败。</blockquote>
-  <blockquote><strong>Continue：</strong>正确但证据不足或收益不稳定。</blockquote>
-</div>
+<KeynoteSourceStage background="/generated/slides/s24-keynote-page-23.png" title="PTO指令集：我们在设计不同形状的集装箱" claim="形状、布局与调度共同定义 Tile" slide-id="S24" />
 
 <!--
-NDF-ID: NDF-MTH-001, NDF-MTH-003
-Learning objective: 区分接受、拒绝和继续探索三种决策。
-Duration: 2 min
-Visual intent: class: evidence；以三项合取门展示接受条件。
-Evidence: experiments/artifacts/04/comparison.json; experiments/artifacts/08/design_points.csv
-Interaction: 给出“更快但 trace 不匹配”，全班同时做 ACCEPT/REJECT 手势。
-Caveat: “可解释”不是要求机制简单，而是要求因果链可追踪。
+Slide-ID: S24
+Objective: 按原稿用集装箱比喻解释 Tile 形状、装载、运输与调度。
+Timing: 2 min
+Visual: 原 Keynote 第 23 页 1920×1080 完整画面。
+Interaction: 对同一矩阵讨论 8×8、长条和子区域容器对搬运次数的影响。
+Sources: publish-keynote-page-23
+Boundary: 集装箱图是语义与调度隐喻，不规定物理 SRAM 形状。
+Narrative: 形状必须同时满足算法访问、执行单元和本地容量。
+Transition: 把这些操作放进 PTO 抽象执行机器。
 [Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
+- source: K23
+- catalog: publish-keynote-page-23
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# PTO指令集：抽象执行机器
 
-# 练习：把“做一个更快流水线”改写成**可审计任务**
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-  <div class="visual-frame" style="padding:1.2rem">
-    <h2>输入</h2>
-    <p>一个 4 级标量流水线</p>
-    <p>候选动作：增加第二发射槽</p>
-    <p>现有证据：输入 / 提交 trace</p>
-  </div>
-  <div class="visual-frame" style="padding:1.2rem">
-    <h2>小组产出</h2>
-    <ol>
-      <li>1 条 NDF 要求</li>
-      <li>3 个架构观察点</li>
-      <li>1 个 intentional failure</li>
-      <li>接受 / 拒绝 / 停止条件</li>
-    </ol>
-  </div>
-</div>
-
-<p class="muted" style="margin-top:1rem">两人一组：2 分钟设计，1 分钟交换审计，1 分钟全班收敛。</p>
+<KeynoteSourceStage background="/generated/slides/s25-keynote-page-24.png" title="PTO指令集：抽象执行机器" claim="语义路由到不同执行资源" slide-id="S25" />
+<details class="keynote-lab-drawer">
+  <summary aria-label="打开 PTO 抽象机器交互实验">交互实验</summary>
+  <PtoMachineExplorer label="TLOAD TMOV TEXTRACT TPUSH TPOP · TPUT TGET · DaVinciOO communication extensions — not normative PTO-ASL" />
+</details>
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-LRN-102
-Learning objective: 综合运用分层、NDF、观察点、独立裁判和停止条件。
-Duration: 4 min
-Visual intent: class: quiz；输入与交付物双栏，方便现场计时和巡视。
-Evidence: experiments/artifacts/03/pipeline_summary.json; experiments/artifacts/04/comparison.json; experiments/artifacts/07/expected_failure.json
-Interaction: 2 人小组练习；讲师在 2:00 时要求交换审计。
-Caveat: 练习答案不唯一，但必须能被另一组执行和否证。
+Slide-ID: S25
+Objective: 在原稿抽象机器上区分 PTO-ASL 操作语义与 DaVinciOO 通信扩展。
+Timing: 4 min
+Visual: 原 Keynote 第 24 页完整画面，底部叠加操作—执行资源探索器。
+Interaction: 切换 TLOAD、TMOV、TEXTRACT、TPUSH/TPOP、TPUT/TGET，观察路径和引擎。
+Sources: publish-keynote-page-24; pto-spec; davincioo-public-docs
+Boundary: TPUT/TGET 是 DaVinciOO communication extensions — not normative PTO-ASL；不展示私有时序细节。
+Narrative: TLOAD 为 GM→Tile/TMA；TMOV 为形状匹配 Tile copy 并在 DaVinci gfsim 路由 Vector；TEXTRACT 为 Vector 子区域；TPUSH/TPOP 使用显式 handoff slot/capacity；扩展路径为 GM→UB→GM。
+Transition: 下一页观察 PTO 程序如何驱动抽象机器。
 [Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
+- source: K24
+- catalog: publish-keynote-page-24
+- catalog: pto-spec
+- catalog: davincioo-public-docs
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# PTO指令集：抽象执行机器与程序
 
-# 一个合格答案，必须让陌生人**不用猜**
-
-<div class="visual-frame" style="padding:1.2rem">
-  <div class="flow">
-    <span class="flow-node">要求：提交序列不变</span><span class="flow-arrow">→</span>
-    <span class="flow-node">观察：UID / result / exception</span><span class="flow-arrow">→</span>
-    <span class="flow-node">反例：交换两条依赖提交</span><span class="flow-arrow">→</span>
-    <span class="flow-node">门：match=true</span>
-  </div>
-</div>
-
-复核四问：
-
-1. 主张能否被反例推翻？
-2. 观察点是否跨微架构稳定？
-3. 裁判是否独立于候选修改？
-4. 证据能否从固定输入重放？
+<KeynoteSourceStage background="/generated/slides/s26-keynote-page-25.png" title="PTO指令集：抽象执行机器与程序" claim="程序语义与机器资源相互映射" slide-id="S26" />
 
 <!--
-NDF-ID: NDF-LRN-101, NDF-LRN-102, NDF-MTH-002
-Learning objective: 用四问清单审计小组练习答案。
-Duration: 2 min
-Visual intent: class: evidence；给出一条可执行参考链并配审计清单。
-Evidence: experiments/artifacts/04/comparison.json; experiments/artifacts/07/expected_failure.json
-Interaction: 邀请一组用 20 秒读出自己的完整链，另一组只提一个反例。
-Caveat: 参考答案展示方法，不规定唯一微架构方案。
+Slide-ID: S26
+Objective: 按原稿把 PTO 程序操作映射到抽象执行机器。
+Timing: 2 min
+Visual: 原 Keynote 第 25 页 1920×1080 完整画面。
+Interaction: 从一条 load/matmul/extract/store 链指出每步读写的架构状态。
+Sources: publish-keynote-page-25
+Boundary: 代码与抽象机器按原稿展示；具体规范效果以 PTO-ASL 为准。
+Narrative: 程序顺序表达语义依赖，实现可以用不同资源与调度策略完成效果。
+Transition: 放大最基础的 TLOAD/TSTORE 搬运链。
 [Sources]
-- docs/NDF.md
-- experiments/tests/test_smoke.py
+- source: K25
+- catalog: publish-keynote-page-25
 -->
 
 ---
 
-<style>
-@import "../../styles/theme.css";
-</style>
+# PTO指令集：TLOAD TSTORE
 
-# 证据最终要写回**设计记忆**
-
-<div class="visual-frame" style="padding:1.4rem">
-  <div class="flow">
-    <span class="flow-node">固定规范事实</span><span class="flow-arrow">→</span>
-    <span class="flow-node">可追踪 NDF</span><span class="flow-arrow">→</span>
-    <span class="flow-node">受约束 pyCircuit 行动</span><span class="flow-arrow">→</span>
-    <span class="flow-node">独立证据</span><span class="flow-arrow">→</span>
-    <span class="flow-node">决策记录</span>
-  </div>
-</div>
-
-> 下一课：把这套方法放进 LinxCore 小模块，连接软件 trace、硬件 trace 与设计空间探索。
-
-<p class="lede" style="margin-top:1.5rem"><strong>带走一句话：</strong>Agent 可以扩展行动，但不能替你定义真相。</p>
+<KeynoteSourceStage background="/generated/slides/s27-keynote-page-26.png" title="PTO指令集：TLOAD TSTORE" claim="Tensor → Tile → Layout" slide-id="S27" />
 
 <!--
-NDF-ID: NDF-MTH-001, NDF-MTH-002, NDF-MTH-003, NDF-SRC-003
-Learning objective: 汇总第一课方法，并为第二课的 LinxCore 与 Agent 设计探索建立接口。
-Duration: 2 min
-Visual intent: class: hero；回到开场闭环，以“决策记录”而非“代码”收束。
-Evidence: experiments/artifacts/summary.json; docs/NDF.md
-Interaction: 回看第 3 页自己选择的最陌生动作；用一句话说出现在的答案。
-Caveat: LinxCore 在下一课仍只作为模块化处理器案例，不是 PTO 官方实现。
+Slide-ID: S27
+Objective: 按原稿用工厂隐喻解释 Tensor、Tile 与 Layout 的装载过程。
+Timing: 2 min
+Visual: 原 Keynote 第 26 页 1920×1080 完整画面。
+Interaction: 逐步指出 Tensor 选择、Tile 分块与 Layout 排列分别解决什么问题。
+Sources: publish-keynote-page-26
+Boundary: 工厂图是原稿教学比喻；TLOAD/TSTORE 规范语义以 PTO-ASL 为准。
+Narrative: 数据搬运时间同时受分块次数、各段带宽、排队与同步影响。
+Transition: 用可计算实验分解一次数据移动的总周期。
 [Sources]
-- docs/NDF.md
-- materials/SOURCES.yaml
-- docs/GOAL_PROMPT.md
+- source: K26
+- catalog: publish-keynote-page-26
+-->
+
+---
+
+# 数据搬运时间实验
+
+<FullBleedStage background="/generated/slides/s28-data-movement-time-experiment-v2.png" title="数据搬运时间实验" claim="总时间 = 固有搬运 + 排队 + 同步。" eyebrow="SPACE → TIME" slide-id="S28" focus="left">
+  <template #diagram><TransferTimeLab /></template>
+</FullBleedStage>
+
+<!--
+Slide-ID: S28
+Objective: 用确定性公式把 Tile 分块、最窄带宽、排队和同步合成总周期。
+Timing: 4 min
+Visual: 新生成的数据移动实验场景，底部为可调计算实验室。
+Interaction: 切换 TLOAD、TMOV、TEXTRACT、TPUSH/TPOP、TPUT/TGET 并调节数据量、Tile 容量、链路带宽与排队成本。
+Sources: course-synthesis; pto-spec; davincioo-public-docs
+Boundary: 公式是教学一阶模型；TPUT/TGET 是 DaVinciOO 通信扩展，不属于规范 PTO-ASL；不暴露私有 DaVinci 时序实现。
+Narrative: chunks=ceil(data/tile)，有效带宽取源、链路、目的最小值；固有周期加上 queue 与 synchronization 才是可见总时间。
+Transition: 第一课结束；下一课把这些时间项落到可执行模型、队列与证据。
+[Sources]
+- catalog: course-synthesis
+- catalog: pto-spec
+- catalog: davincioo-public-docs
 -->

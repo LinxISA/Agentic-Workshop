@@ -1,0 +1,11 @@
+<script setup>
+import { computed, ref } from 'vue'
+import { advanceCycle, shouldHandleRootKey } from './session2Models.mjs'
+const initial=()=>({cycle:0,trace:[{sequence_id:1,opcode:'TLOAD',deps:[]},{sequence_id:2,opcode:'TEXTRACT',deps:[1]},{sequence_id:3,opcode:'TMATMUL',deps:[2]}],rob:[],iq:[],executing:[],completed:[],retired:[]})
+const state=ref(initial())
+const columns=computed(()=>[{name:'Trace',ops:state.value.trace},{name:'ROB',ops:state.value.rob},{name:'IQ',ops:state.value.iq},{name:'Execute',ops:state.value.executing},{name:'Complete',ops:state.value.completed},{name:'Retired',ops:state.value.retired.map(sequence_id=>({sequence_id,opcode:'done'}))}])
+function step(){state.value=advanceCycle(state.value)}function reset(){state.value=initial()}
+function onKey(event){if(shouldHandleRootKey(event,['ArrowRight',' '])){event.preventDefault();step()}else if(shouldHandleRootKey(event,['Home'])){reset()}}
+</script>
+<template><section class="play arch-overlay" tabindex="0" aria-label="Cycle playback" @keydown="onKey"><header><b>CYCLE {{state.cycle}}</b><span>one key / one button = exactly one cycle</span></header><div class="lanes"><div v-for="column in columns" :key="column.name"><strong>{{column.name}}</strong><span v-for="op in column.ops" :key="op.sequence_id">#{{op.sequence_id}}<small>{{op.opcode}}</small></span></div></div><footer><button @click="step">Advance 1 cycle</button><button @click="reset">Reset</button><span>Space / → advances · Home resets</span></footer></section></template>
+<style scoped>.play{right:0;bottom:-14px;width:770px;padding:16px;border-radius:20px}.play header,.play footer{display:flex;align-items:center;gap:10px;color:#9fb7ca;font-size:12px}.play header{justify-content:space-between}.play header b{color:#17d9ff;font-size:14px}.lanes{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:14px 0}.lanes>div{min-height:112px;padding:8px;border:1px solid #ffffff1c;border-radius:8px;background:#06152bd4}.lanes strong{display:block;color:#adc3d8;font-size:12px}.lanes span{display:block;margin-top:6px;padding:6px;border-left:3px solid #ffbe00;background:#ffbe0014;font:700  12px monospace}.lanes small{display:block;color:#f5f8ff;font-size:12px}.play footer span{margin-left:auto}</style>

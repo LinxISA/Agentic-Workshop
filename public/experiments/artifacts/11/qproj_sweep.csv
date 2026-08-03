@@ -1,0 +1,13 @@
+id,parameter,value,unit,rob_entries,tile_tags,tma_bandwidth_bytes_per_cycle,cube_macs_per_cycle_bf16,cube_engine_count,tma_engine_count,simulated_cycles,speedup_vs_reference,evidence_mode,interpretation,bottleneck_signal
+baseline,baseline,0,reference,64,4096,512,4096,1,1,11028,1.0,reference_replay,sensitivity_only,no_material_change
+rob_16,rob_entries,16,entries,16,4096,512,4096,1,1,13556,0.813514,reference_replay,sensitivity_only,observed_cycle_change
+rob_32,rob_entries,32,entries,32,4096,512,4096,1,1,11161,0.988084,reference_replay,sensitivity_only,observed_cycle_change
+rob_128,rob_entries,128,entries,128,4096,512,4096,1,1,11009,1.001726,reference_replay,sensitivity_only,no_material_change
+tags_32,tile_tags,32,tags,64,32,512,4096,1,1,11188,0.985699,reference_replay,sensitivity_only,observed_cycle_change
+tags_128,tile_tags,128,tags,64,128,512,4096,1,1,11028,1.0,reference_replay,sensitivity_only,no_material_change
+tma_bw_256,tma_bandwidth_bytes_per_cycle,256,bytes/cycle,64,4096,256,4096,1,1,11618,0.949217,reference_replay,sensitivity_only,observed_cycle_change
+tma_bw_1024,tma_bandwidth_bytes_per_cycle,1024,bytes/cycle,64,4096,1024,4096,1,1,10876,1.013976,reference_replay,sensitivity_only,observed_cycle_change
+cube_macs_2048,cube_macs_per_cycle_bf16,2048,MACs/cycle,64,4096,512,2048,1,1,16147,0.682975,reference_replay,sensitivity_only,observed_cycle_change
+cube_macs_8192,cube_macs_per_cycle_bf16,8192,MACs/cycle,64,4096,512,8192,1,1,8522,1.294062,reference_replay,sensitivity_only,observed_cycle_change
+cube_engines_2,engine_count,2,Cube engines,64,4096,512,4096,2,1,8097,1.361986,reference_replay,sensitivity_only,observed_cycle_change
+tma_engines_2,engine_count,2,TMA engines,64,4096,512,4096,1,2,11014,1.001271,reference_replay,sensitivity_only,no_material_change

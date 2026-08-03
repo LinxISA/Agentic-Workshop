@@ -1,0 +1,15 @@
+{
+  "claim_boundary": "Checked reference replay, not a fresh q_proj trace capture in this repository.",
+  "evidence_mode": "reference_replay",
+  "opcode_counts": {
+    "TASSIGN": 281,
+    "TEXTRACT": 160,
+    "TLOAD": 40,
+    "TMATMUL": 1,
+    "TMATMUL_ACC": 79,
+    "TSTORE": 1
+  },
+  "record_count": 562,
+  "simulated_cycles": 11028,
+  "source_kind": "DaVinciOO_reference_fixture"
+}

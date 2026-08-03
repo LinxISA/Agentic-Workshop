@@ -1,40 +1,24 @@
 import { readFile, writeFile } from 'node:fs/promises'
+import { readDeckContract } from './slide-contract.mjs'
 
-const decks = ['session-1', 'session-2']
-const rows = []
-const components = ['PipelineStepper', 'LinxCoreModuleExplorer', 'CircuitDataflow', 'TimingDiagram', 'TraceComparator', 'NdfTraceability', 'DesignSpaceExplorer', 'ParetoFrontier']
+const slides = await readDeckContract()
+const sourceCatalog = await readFile('content/architecture-sources.yaml', 'utf8')
+const sourceIds = new Set([...sourceCatalog.matchAll(/^  ([a-z0-9-]+):$/gm)].map(match => match[1]))
+const errors = []
+for (const slide of slides) for (const source of slide.sources) if (!sourceIds.has(source)) errors.push(`${slide.id}: undefined source ${source}`)
 
-for (const deck of decks) {
-  const path = `decks/${deck}/slides.md`
-  const source = await readFile(path, 'utf8')
-  const headings = [...source.matchAll(/^#\s+(.+)$/gm)]
-  for (let index = 0; index < headings.length; index += 1) {
-    const match = headings[index]
-    const end = headings[index + 1]?.index ?? source.length
-    const segment = source.slice(match.index, end)
-    const ids = segment.match(/NDF-ID:\s*([^\n]+)/)?.[1]?.trim() ?? 'MISSING'
-    const evidence = segment.match(/Evidence:\s*([^\n]+)/)?.[1]?.trim() ?? 'MISSING'
-    const used = components.filter((name) => segment.includes(`<${name}`))
-    const visual = used.length ? used.join(', ') : (segment.match(/Visual intent:\s*([^；\n]+)/)?.[1]?.trim() ?? 'deterministic HTML/CSS')
-    rows.push({ deck, slide: index + 1, title: match[1].replaceAll('|', '\\|'), ids, visual, evidence: evidence.replaceAll('|', '\\|') })
-  }
-}
-
-const lines = [
-  '# Course Traceability Matrix',
-  '',
-  'Generated from deck speaker notes. This is a course-level NDF projection, not a PTO normative artifact.',
-  '',
-  '| Course requirement | Slide | Claim | Diagram/component | Experiment/evidence |',
-  '|---|---:|---|---|---|',
-  ...rows.map((row) => `| ${row.ids} | ${row.deck} · ${row.slide} | ${row.title} | ${row.visual} | ${row.evidence} |`),
-  '',
+const mappings = [
+  { claim:'PTO bundle-active state is implemented and directly asserted', source:'vendor/pto-spec/asl/bundle/state.asl', sourcePattern:/readonly func BundleIsActive\(\)/, evidence:'vendor/pto-spec/tests/asl/bundle-tests.asl', evidencePattern:/assert BundleIsActive\(\)/ },
+  { claim:'The pyCircuit IssueQueue build is instantiated by its testbench', source:'vendor/pyCircuit/designs/IssueQueue/issq.py', sourcePattern:/def _select_oldest_ready\(/, evidence:'vendor/pyCircuit/designs/IssueQueue/tb_issq.py', evidencePattern:/from issq import build/ },
+  { claim:'LinxCore ROB control is wired into the ROB bank', source:'vendor/LinxCore/src/bcc/backend/rob.py', sourcePattern:/def build_rob_ctrl_stage\(/, evidence:'vendor/LinxCore/src/bcc/backend/modules/rob_bank.py', evidencePattern:/m\.new\(\s*build_rob_ctrl_stage,/ },
 ]
-
-if (rows.some((row) => row.ids === 'MISSING' || row.evidence === 'MISSING')) {
-  console.error('Traceability generation found missing NDF-ID or Evidence notes')
-  process.exit(1)
+for(const mapping of mappings){
+  const source=await readFile(mapping.source,'utf8').catch(()=>''),evidence=await readFile(mapping.evidence,'utf8').catch(()=>'')
+  if(!mapping.sourcePattern.test(source))errors.push(`missing mapped source symbol for: ${mapping.claim}`)
+  if(!mapping.evidencePattern.test(evidence))errors.push(`missing mapped evidence reference for: ${mapping.claim}`)
 }
+if(errors.length){for(const error of errors)console.error(error);process.exit(1)}
 
-await writeFile('docs/TRACEABILITY.md', `${lines.join('\n')}\n`)
-console.log(`Traceability matrix generated for ${rows.length} slides`)
+const lines=['# Course Traceability Matrix','','Generated from the authoritative deck contract. `COURSE-Sxx` identifiers are course slide records. The mappings below are separate verified examples; they are not presented as one cross-layer semantic chain.','','| Course record | Session | Claim | Overlay | Sources | Boundary |','|---|---:|---|---|---|---|',...slides.map(slide=>`| COURSE-${slide.id} | ${slide.session} | ${slide.claim.replaceAll('|','\\|')} | ${slide.overlay} | ${slide.sources.map(source=>`\`${source}\``).join(', ')} | ${slide.claimBoundary.replaceAll('|','\\|')} |`),'','## Verified mappings','','| Scope | Claim | Source | Evidence |','|---|---|---|---|',...mappings.map(mapping=>`| separate example | ${mapping.claim} | \`${mapping.source}\` | \`${mapping.evidence}\` |`)]
+await writeFile('docs/TRACEABILITY.md',`${lines.join('\n')}\n`)
+console.log(`Traceability matrix generated for ${slides.length} slides; ${mappings.length} explicit source/evidence mappings verified`)

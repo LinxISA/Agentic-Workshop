@@ -6,3 +6,7 @@ test-results/
 playwright-report/
 qa/rendered/
 qa/contact-sheets/
+tmp/
+qa/pdf-check/
+qa/interactions/
+.worktrees/

@@ -1,0 +1,43 @@
+{
+  "base_cycles": 1000,
+  "claim_boundary": "Course hierarchy/overlap model; omits PPA and detailed cache timing.",
+  "variants": {
+    "balanced": {
+      "dram_bytes": 512,
+      "hit_rate": 0.875,
+      "normalized_performance": 1.0,
+      "outstanding_misses": 16,
+      "queue_depth": 24,
+      "stall_cycles": 0,
+      "total_cycles": 1000
+    },
+    "baseline": {
+      "dram_bytes": 1024,
+      "hit_rate": 0.75,
+      "normalized_performance": 0.8389,
+      "outstanding_misses": 32,
+      "queue_depth": 8,
+      "stall_cycles": 192,
+      "total_cycles": 1192
+    },
+    "deeper_queue": {
+      "dram_bytes": 1024,
+      "hit_rate": 0.75,
+      "normalized_performance": 0.9398,
+      "outstanding_misses": 32,
+      "queue_depth": 24,
+      "stall_cycles": 64,
+      "total_cycles": 1064
+    },
+    "locality": {
+      "dram_bytes": 512,
+      "hit_rate": 0.875,
+      "normalized_performance": 0.9398,
+      "outstanding_misses": 16,
+      "queue_depth": 8,
+      "stall_cycles": 64,
+      "total_cycles": 1064
+    }
+  },
+  "workload_bytes": 4096
+}

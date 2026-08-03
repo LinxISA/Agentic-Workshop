@@ -1,0 +1,5 @@
+variant,hit_rate,queue_depth,dram_bytes,outstanding_misses,stall_cycles,total_cycles,normalized_performance
+baseline,0.75,8,1024,32,192,1192,0.8389
+locality,0.875,8,512,16,64,1064,0.9398
+deeper_queue,0.75,24,1024,32,64,1064,0.9398
+balanced,0.875,24,512,16,0,1000,1.0

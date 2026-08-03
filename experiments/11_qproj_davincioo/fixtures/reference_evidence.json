@@ -1,0 +1,247 @@
+{
+  "provenance": {
+    "derivation": "q_proj sequence_id 573..1134 extracted from the checked DaVinciOO Qwen3-14B decode-layer trace; baseline and OFAT sweep replayed with DaVinciOO gfsim",
+    "model_source": "DavinciOO/model",
+    "reference_document": "DavinciOO/model/scripts/README.md",
+    "source_trace": "model/tests/fixtures/traces/models_qwen3_14b_decode_layer.pto.trace"
+  },
+  "summary": {
+    "claim_boundary": "Checked reference replay, not a fresh q_proj trace capture in this repository.",
+    "evidence_mode": "reference_replay",
+    "opcode_counts": {
+      "TASSIGN": 281,
+      "TEXTRACT": 160,
+      "TLOAD": 40,
+      "TMATMUL": 1,
+      "TMATMUL_ACC": 79,
+      "TSTORE": 1
+    },
+    "record_count": 562,
+    "simulated_cycles": 11028,
+    "source_kind": "DaVinciOO_reference_fixture"
+  },
+  "sweep_cycles": {
+    "baseline": 11028,
+    "cube_engines_2": 8097,
+    "cube_macs_2048": 16147,
+    "cube_macs_8192": 8522,
+    "rob_128": 11009,
+    "rob_16": 13556,
+    "rob_32": 11161,
+    "tags_128": 11028,
+    "tags_32": 11188,
+    "tma_bw_1024": 10876,
+    "tma_bw_256": 11618,
+    "tma_engines_2": 11014
+  },
+  "timeline": [
+    {
+      "alloc_cycle": 0,
+      "engine": "SCALAR",
+      "engine_complete_cycle": 1,
+      "evidence_mode": "reference_replay",
+      "issue_cycle": 0,
+      "opcode": "TASSIGN",
+      "retire_cycle": 3,
+      "sequence_id": 573
+    },
+    {
+      "alloc_cycle": 2,
+      "engine": "TMA",
+      "engine_complete_cycle": 18,
+      "evidence_mode": "reference_replay",
+      "issue_cycle": 2,
+      "opcode": "TLOAD",
+      "retire_cycle": 21,
+      "sequence_id": 575
+    },
+    {
+      "alloc_cycle": 6,
+      "engine": "VEC",
+      "engine_complete_cycle": 28,
+      "evidence_mode": "reference_replay",
+      "issue_cycle": 20,
+      "opcode": "TEXTRACT",
+      "retire_cycle": 276,
+      "sequence_id": 579
+    },
+    {
+      "alloc_cycle": 14,
+      "engine": "CUBE",
+      "engine_complete_cycle": 544,
+      "evidence_mode": "reference_replay",
+      "issue_cycle": 412,
+      "opcode": "TMATMUL",
+      "retire_cycle": 546,
+      "sequence_id": 587
+    },
+    {
+      "alloc_cycle": 16,
+      "engine": "CUBE",
+      "engine_complete_cycle": 677,
+      "evidence_mode": "reference_replay",
+      "issue_cycle": 545,
+      "opcode": "TMATMUL_ACC",
+      "retire_cycle": 679,
+      "sequence_id": 589
+    },
+    {
+      "alloc_cycle": 10073,
+      "engine": "TMA",
+      "engine_complete_cycle": 11025,
+      "evidence_mode": "reference_replay",
+      "issue_cycle": 10993,
+      "opcode": "TSTORE",
+      "retire_cycle": 11027,
+      "sequence_id": 1134
+    }
+  ],
+  "trace_sample": [
+    {
+      "block_idx": 0,
+      "input_tiles": [],
+      "opcode": "TASSIGN",
+      "output_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "float32",
+          "layout": "outer=col_major,inner=row_major,fractal_size=1024",
+          "shape": [16, 256]
+        }
+      ],
+      "scalar_inputs": [{"dtype": "uint64", "value": "0"}],
+      "sequence_id": 573
+    },
+    {
+      "block_idx": 0,
+      "input_tiles": [
+        {
+          "address": "0xfffe81b5d000",
+          "dtype": "bfloat16",
+          "layout": "ND",
+          "shape": [1, 1, 1, 16, 256]
+        }
+      ],
+      "opcode": "TLOAD",
+      "output_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "bfloat16",
+          "layout": "outer=col_major,inner=row_major,fractal_size=512",
+          "shape": [16, 256]
+        }
+      ],
+      "scalar_inputs": [],
+      "sequence_id": 575
+    },
+    {
+      "block_idx": 0,
+      "input_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "bfloat16",
+          "layout": "outer=col_major,inner=row_major,fractal_size=512",
+          "shape": [16, 256]
+        }
+      ],
+      "opcode": "TEXTRACT",
+      "output_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "bfloat16",
+          "layout": "inner=row_major,fractal_size=512",
+          "shape": [16, 64]
+        }
+      ],
+      "scalar_inputs": [
+        {"dtype": "uint16", "value": "0"},
+        {"dtype": "uint16", "value": "0"}
+      ],
+      "sequence_id": 579
+    },
+    {
+      "block_idx": 0,
+      "input_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "bfloat16",
+          "layout": "inner=row_major,fractal_size=512",
+          "shape": [16, 64]
+        },
+        {
+          "address": "0x8000",
+          "dtype": "bfloat16",
+          "layout": "inner=col_major,fractal_size=512",
+          "shape": [64, 256]
+        }
+      ],
+      "opcode": "TMATMUL",
+      "output_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "float32",
+          "layout": "outer=col_major,inner=row_major,fractal_size=1024",
+          "shape": [16, 256]
+        }
+      ],
+      "scalar_inputs": [],
+      "sequence_id": 587
+    },
+    {
+      "block_idx": 0,
+      "input_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "float32",
+          "layout": "outer=col_major,inner=row_major,fractal_size=1024",
+          "shape": [16, 256]
+        },
+        {
+          "address": "0x800",
+          "dtype": "bfloat16",
+          "layout": "inner=row_major,fractal_size=512",
+          "shape": [16, 64]
+        },
+        {
+          "address": "0x0",
+          "dtype": "bfloat16",
+          "layout": "inner=col_major,fractal_size=512",
+          "shape": [64, 256]
+        }
+      ],
+      "opcode": "TMATMUL_ACC",
+      "output_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "float32",
+          "layout": "outer=col_major,inner=row_major,fractal_size=1024",
+          "shape": [16, 256]
+        }
+      ],
+      "scalar_inputs": [],
+      "sequence_id": 589
+    },
+    {
+      "block_idx": 0,
+      "input_tiles": [
+        {
+          "address": "0x0",
+          "dtype": "float32",
+          "layout": "outer=col_major,inner=row_major,fractal_size=1024",
+          "shape": [16, 256]
+        }
+      ],
+      "opcode": "TSTORE",
+      "output_tiles": [
+        {
+          "address": "0xfffc81b5d000",
+          "dtype": "float32",
+          "layout": "ND",
+          "shape": [1, 1, 1, 16, 256]
+        }
+      ],
+      "scalar_inputs": [],
+      "sequence_id": 1134
+    }
+  ]
+}

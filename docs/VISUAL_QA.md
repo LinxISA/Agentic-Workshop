@@ -3,49 +3,53 @@
 ## Scope
 
 - Session 1: 28 slides
-- Session 2: 31 slides
-- Total: 59 slides
-- Render viewport: 1920×1080, device scale factor 1
-- Contact sheets: `docs/visual-qa/session-1-contact-sheet.png`, `docs/visual-qa/session-2-contact-sheet.png`
-- Machine-readable report: `qa/audit.json`
+- Session 2: 28 slides
+- Total: 56 slides
+- Viewports: 1920×1080 and 1366×768, device scale factor 1
+- Machine-readable reports: `qa/audit-1920x1080.json`, `qa/audit-1366x768.json`
+- Contact sheets:
+  - `qa/contact-sheets/session-1-1920x1080.png`
+  - `qa/contact-sheets/session-2-1920x1080.png`
+  - `qa/contact-sheets/session-1-1366x768.png`
+  - `qa/contact-sheets/session-2-1366x768.png`
 
-## Automated gates
+## Final automated gates
 
-| Gate | Result |
-|---|---:|
-| slide render count | 59 / 59 |
-| remote runtime requests | 0 |
-| element overflow/crop candidates | 0 |
-| broken or distorted images | 0 |
-| content slides with NDF ID and evidence notes | 59 / 59 |
-| content slides with a meaningful visual | 59 / 59 |
-| built text assets with remote runtime dependencies | 0 |
+| Gate | 1920×1080 | 1366×768 |
+|---|---:|---:|
+| slide render count | 56 / 56 | 56 / 56 |
+| remote runtime requests | 0 | 0 |
+| geometry / overflow candidates | 0 | 0 |
+| title / diagram intersections | 0 | 0 |
+| broken or distorted images | 0 | 0 |
+| missing full-bleed backgrounds | 0 | 0 |
+| failed local asset responses | 0 | 0 |
+| contrast failures | 0 | 0 |
+| titles exceeding two lines | 0 | 0 |
+| text below 16 rendered px | 0 | 0 |
+| designated interactions exercised | 12 / 12 | 12 / 12 |
+
+The interaction runner also captured changed states on 14 pages per viewport. Closed drawers are excluded from default-layout geometry checks, then opened and exercised separately.
 
 ## Manual review
 
-Both contact sheets were reviewed as a complete sequence; cover, high-density, ImageGen, interactive-component, trace, timing, Pareto, quiz, and closing slides were also inspected at full 1920×1080 resolution. Slide transitions were excluded from captures by waiting 700 ms after navigation.
+All four final contact sheets were reviewed as complete sequences. Full-resolution inspection covered the Keynote migration pages, Roofline, memory hierarchy, PTO abstract machine, transfer-time lab, trace anatomy, SimQueue, cycle playback, parameter sweep, offline timeline, PTO-ASL/NDF separation, and the proposed gfsim↔pyCircuit acceptance loop.
 
-| Dimension | Session 1 | Session 2 | Minimum | Review note |
-|---|---:|---:|---:|---|
-| hierarchy | 4.5 / 5 | 4.6 / 5 | 4.5 | takeaway titles dominate; one narrative job per slide |
-| alignment | 4.5 / 5 | 4.6 / 5 | 4.5 | consistent 64 px canvas margins and component frames |
-| readability | 4.4 / 5 | 4.5 / 5 | 4.4 | body text remains readable at 1920×1080; dense data stays in structured tables |
-| visual relevance | 4.6 / 5 | 4.7 / 5 | 4.6 | visuals explain specification, queue, trace, module, evidence, or design-space claims |
-| technical accuracy | 4.6 / 5 | 4.6 / 5 | 4.6 | PTO / course NDF / LinxCore / proposal boundaries are explicit |
-| consistency | 4.7 / 5 | 4.7 / 5 | 4.7 | navy/cyan/green/orange system, shared type scale and connector semantics |
-| interaction clarity | 4.4 / 5 | 4.6 / 5 | 4.4 | step/play/reset controls repeat; presenter runbook states interaction intent |
-| presentation effect | 4.5 / 5 | 4.7 / 5 | 4.5 | ImageGen art is reserved for covers/transitions; exact diagrams remain deterministic |
+The accepted visual contract is:
 
-All dimensions exceed the 4/5 acceptance threshold. No slide is accepted solely on contact-sheet appearance: the browser audit enforces canvas geometry and network behavior per page, while representative full-size inspection covers every silhouette class and every shared interactive component.
+- each page has a full-bleed local visual, with deterministic SVG/Vue overlays for labels, formulas, traces, queues, and data paths;
+- the title and one-sentence claim remain in a high-contrast safe region;
+- interactive overlays do not cross title or footer safe areas;
+- 1366×768 retains at least 16 rendered pixels for visible teaching text;
+- animations and interactions explain state transitions or data flow; no decorative flashing frame is present;
+- no runtime request leaves localhost.
 
-## Fixes made during QA
+## Fixes made during final QA
 
-1. Disabled Google Fonts injection with `fonts.provider: none` and local font stacks.
-2. Replaced the default remote favicon with local generated PNGs.
-3. Waited for Slidev transitions before capture to avoid half-transition false images.
-4. Reworked the PTO executable-spec slide into a balanced split with a dedicated spec-to-circuit ImageGen concept image.
-5. Kept ImageGen away from exact signal wiring, timing, trace, state and Pareto data.
-6. Reduced the global slide padding and type scale only after full-resolution inspection, preserving readable projected sizes while restoring a consistent 5%–7% safe area.
-7. Removed repeated captions beneath interactive components so the diagram remains the dominant visual and no content crosses the lower canvas boundary.
-8. Shortened the `ready/valid` title, raised waveform and Pareto label contrast, and increased the smallest technical labels.
-9. Re-ran all 59 screenshots after the fixes; the final report contains zero geometry, image, contrast, title-wrap, or remote-request failures.
+1. Removed the final S33 trace-panel overlap and shortened its claim without changing semantics.
+2. Increased small-screen teaching labels to a 12 px logical minimum, which renders at or above 16 px at 1366×768.
+3. Repositioned SimQueue, cycle playback, evidence timeline, and closed-loop panels after the readability increase.
+4. Added minimum-font samples to the machine-readable audit for actionable diagnosis.
+5. Re-rendered 112 slide images and exercised both static and changed interaction states; both final audits contain zero failures.
+6. Verified the keyboard-help overlay at 1366×768 after its entrance transition: the dialog remains fully inside the viewport, all seven shortcut rows are visible, and Esc closes it without opening the overview.
+7. Verified `/session-1`, `/session-2`, and slide-number deep links against the built preview so no deck route falls back to the course index.

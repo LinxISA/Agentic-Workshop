@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="slidev-layout" :class="[`ss-${kind}`]">
+  <div class="slidev-layout ss-root-layout" :class="[`ss-${kind}`]">
     <img v-if="art" class="bg-art" :src="art" alt="" aria-hidden="true">
     <div v-if="scrim" class="bg-scrim" />
     <div class="ss-layout-body"><slot /></div>
@@ -16,6 +16,7 @@ defineProps({
 </template>
 
 <style scoped>
+.ss-root-layout { position: relative; padding: 0; overflow: hidden; }
 .ss-layout-body { position: relative; z-index: 1; height: 100%; }
 .ss-layout-foot { position: absolute; z-index: 2; left: 64px; right: 64px; bottom: 18px; color: var(--ss-muted); font-size: 11px; }
 .ss-hero .ss-layout-body, .ss-section .ss-layout-body { display: flex; flex-direction: column; justify-content: center; }

@@ -1,0 +1,11 @@
+{
+  "generator": "OpenAI ImageGen",
+  "date": "2026-08-02",
+  "slide": "S01",
+  "operation": "reference-guided edit",
+  "reference_path": "external-input/codex-clipboard-31ac834e-ff13-40ac-9858-0e4d903d9dfa.png",
+  "generated_original": "external-output/imagegen-s01-ascend-cover.png",
+  "final_path": "assets/generated/slides/s01-architecture-first.png",
+  "sha256": "c68acba9aac7926ef191c6462cf86d269cd988127a69178b8a0e9fbc7507b5d3",
+  "prompt": "Edit the supplied 16:9 presentation cover into a premium, text-free background for a Chinese computer-architecture keynote. Preserve the reference composition: a processor in the left 32–36%, calm dark-navy negative space in the right 52–58%, and electric-blue PCB traces that fade before the title zone. Replace the generic chip with a physically plausible HiSilicon Ascend-inspired datacenter AI accelerator: matte graphite-black ceramic package, beveled metal edges, dense gold contacts, subtle die detail, realistic PCB mounting, a restrained red abstract HiSilicon-inspired geometric emblem without letters, and integrated compute-tile, memory-controller, NoC-routing, and bandwidth cues. Remove all typography, numbers, logos, watermarks, UI, borders, ARM branding, and pseudo-text. Use a cinematic deep navy/cyan palette, crisp left-side micro-detail, controlled volumetric glow, a smooth dark right-side gradient for readable Slidev text, and edge-to-edge 16:9 artwork."
+}
