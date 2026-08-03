@@ -1,4 +1,6 @@
 import { spawnSync } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
+import { resolve } from 'node:path'
 
 import { deckBase } from './pages-paths.mjs'
 
@@ -7,18 +9,28 @@ const config = {
   'session-2': { entry: 'decks/session-2/slides.md', out: 'dist/session-2' },
 }
 
-const session = process.argv[2]
-if (!Object.hasOwn(config, session)) {
-  throw new TypeError(`Unknown deck session: ${session ?? '(missing)'}`)
+function sessionConfig(session) {
+  if (!Object.hasOwn(config, session)) {
+    throw new TypeError(`Unknown deck session: ${session ?? '(missing)'}`)
+  }
+
+  return config[session]
 }
 
-const { entry, out } = config[session]
-const result = spawnSync('slidev', ['build', entry, '--base', deckBase(session), '--out', out], {
-  stdio: 'inherit',
-})
-
-if (result.error) {
-  throw result.error
+export function buildArgs(session, workspace = process.cwd()) {
+  const { entry, out } = sessionConfig(session)
+  return ['build', entry, '--base', deckBase(session), '--out', resolve(workspace, out)]
 }
 
-process.exitCode = result.status ?? 1
+export function buildDeck(session, workspace = process.cwd()) {
+  return spawnSync('slidev', buildArgs(session, workspace), { stdio: 'inherit' })
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const result = buildDeck(process.argv[2])
+  if (result.error) {
+    throw result.error
+  }
+
+  process.exitCode = result.status ?? 1
+}
