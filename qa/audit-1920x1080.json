@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T11:05:18.382Z",
+  "generatedAt": "2026-08-03T14:50:43.259Z",
   "viewport": [
     1920,
     1080
@@ -8,7 +8,7 @@
   "decks": [
     {
       "id": "session-1",
-      "count": 35,
+      "count": 37,
       "remoteRequests": [],
       "failedResponses": [],
       "slides": [
@@ -18,57 +18,14 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 33.3,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "ascend-cover__claim",
-              "text": "Architecture First · Agentic Circuit as a Research Instrument",
-              "px": 33.3
-            },
-            {
-              "tag": "MAIN",
-              "cls": "ascend-cover full-bleed-stage",
-              "text": "Agent时代体系结构研究Architecture First · Agentic Circuit as a Research Instrument演讲人：周若",
-              "px": 34.4
-            },
-            {
-              "tag": "SECTION",
-              "cls": "ascend-cover__copy",
-              "text": "Agent时代体系结构研究Architecture First · Agentic Circuit as a Research Instrument",
-              "px": 34.4
-            },
-            {
-              "tag": "FOOTER",
-              "cls": "ascend-cover__presenter",
-              "text": "演讲人：周若愚华为海思半导体",
-              "px": 34.4
-            },
-            {
-              "tag": "P",
-              "cls": "",
-              "text": "华为海思半导体",
-              "px": 35.2
-            },
-            {
-              "tag": "P",
-              "cls": "",
-              "text": "演讲人：周若愚",
-              "px": 41.1
-            },
-            {
-              "tag": "H1",
-              "cls": "",
-              "text": "Agent时代体系结构研究",
-              "px": 105.7
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s01-architecture-first.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-01.png\")",
           "focusFrameVisible": false
         },
         {
@@ -84,7 +41,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s02-keynote-page-2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-02.png\")",
           "focusFrameVisible": false
         },
         {
@@ -100,7 +57,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s03-keynote-page-3.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-03.png\")",
           "focusFrameVisible": false
         },
         {
@@ -116,7 +73,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s04-keynote-page-4.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-04.png\")",
           "focusFrameVisible": false
         },
         {
@@ -132,7 +89,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s05-keynote-page-5.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-05.png\")",
           "focusFrameVisible": false
         },
         {
@@ -148,7 +105,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s06-keynote-page-6.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-06.png\")",
           "focusFrameVisible": false
         },
         {
@@ -164,7 +121,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s07-keynote-page-7.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-07.png\")",
           "focusFrameVisible": false
         },
         {
@@ -180,7 +137,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s08-keynote-page-8.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-08.png\")",
           "focusFrameVisible": false
         },
         {
@@ -196,7 +153,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s09-keynote-page-9.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-09.png\")",
           "focusFrameVisible": false
         },
         {
@@ -212,7 +169,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s10-keynote-page-10.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-10.png\")",
           "focusFrameVisible": false
         },
         {
@@ -228,7 +185,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s11-keynote-page-11.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-11.png\")",
           "focusFrameVisible": false
         },
         {
@@ -244,7 +201,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s12-keynote-page-12.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-12.png\")",
           "focusFrameVisible": false
         },
         {
@@ -260,7 +217,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s13-keynote-page-13.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-13.png\")",
           "focusFrameVisible": false
         },
         {
@@ -276,7 +233,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s14-keynote-page-14.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-14.png\")",
           "focusFrameVisible": false
         },
         {
@@ -292,7 +249,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s15-keynote-page-15.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-15.png\")",
           "focusFrameVisible": false
         },
         {
@@ -308,7 +265,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s16-keynote-page-16.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-16.png\")",
           "focusFrameVisible": false
         },
         {
@@ -317,86 +274,30 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "ASIDE",
-              "cls": "keynote-disclaimer",
-              "text": "教学抽象 · 非产品框图",
-              "px": 23.5
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s17-keynote-page-17.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-17.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 18,
           "expectedInteraction": false,
-          "interactionTested": true,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "TEACHING PLAN OVERLAY",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "active",
-              "text": "NPU clusters",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "CPU clusters",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "NoC / shared cache",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "DDR / I/O",
-              "px": 23.5
-            },
-            {
-              "tag": "P",
-              "cls": "",
-              "text": "NPU clusters从资源分区追到共享链路，再追到数据入口。",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "NPU clusters",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "从资源分区追到共享链路，再追到数据入口。",
-              "px": 23.5
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s18-keynote-page-18.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-18.png\")",
           "focusFrameVisible": false
         },
         {
@@ -412,7 +313,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s19-keynote-page-19.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-19.png\")",
           "focusFrameVisible": false
         },
         {
@@ -428,7 +329,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s20-keynote-page-20.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-20.png\")",
           "focusFrameVisible": false
         },
         {
@@ -444,7 +345,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s21-keynote-page-21.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-21.png\")",
           "focusFrameVisible": false
         },
         {
@@ -460,76 +361,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s22-keynote-page-22.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-22.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 23,
-          "expectedInteraction": false,
-          "interactionTested": true,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "ARCHITECTURE COORDINATES",
-              "px": 23.5
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "COORDINATE 1 / 5",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "active",
-              "text": "计算",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "存储",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "互连",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "并发",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "控制",
-              "px": 23.5
-            },
-            {
-              "tag": "FOOTER",
-              "cls": "full-bleed-stage__footer",
-              "text": "S23",
-              "px": 23.5
-            }
-          ],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s23-architecture-city-five-coordinates-v2.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 24,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -541,11 +377,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s24-keynote-page-23.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-23.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 25,
+          "number": 24,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -606,11 +442,11 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s25-keynote-page-24.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-24.png\")",
           "focusFrameVisible": false
         },
         {
-          "number": 26,
+          "number": 25,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -622,7 +458,23 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s26-keynote-page-25.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-25.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 26,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-26.png\")",
           "focusFrameVisible": false
         },
         {
@@ -638,7 +490,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s27-keynote-page-26.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-27.png\")",
           "focusFrameVisible": false
         },
         {
@@ -654,7 +506,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s28-keynote-page-27.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-28.png\")",
           "focusFrameVisible": false
         },
         {
@@ -670,7 +522,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s29-keynote-page-28.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-29.png\")",
           "focusFrameVisible": false
         },
         {
@@ -686,7 +538,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s30-keynote-page-29.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-30.png\")",
           "focusFrameVisible": false
         },
         {
@@ -702,7 +554,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s31-keynote-page-30.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-31.png\")",
           "focusFrameVisible": false
         },
         {
@@ -718,7 +570,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s32-keynote-page-31.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-32.png\")",
           "focusFrameVisible": false
         },
         {
@@ -734,7 +586,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s33-keynote-page-32.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-33.png\")",
           "focusFrameVisible": false
         },
         {
@@ -750,79 +602,62 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s34-keynote-page-33.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-34.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 35,
-          "expectedInteraction": true,
-          "interactionTested": true,
+          "expectedInteraction": false,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "SPACE → TIME",
-              "px": 23.5
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "TRANSFER-TIME LAB",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "cycles total",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "active",
-              "text": "TLOAD",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "TMOV",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "TEXTRACT",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "TPUSH/TPOP",
-              "px": 23.5
-            },
-            {
-              "tag": "BUTTON",
-              "cls": "",
-              "text": "TPUT/TGET",
-              "px": 23.5
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/slides/s35-data-movement-time-experiment-v2.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-35.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 36,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-36.png\")",
+          "focusFrameVisible": false
+        },
+        {
+          "number": 37,
+          "expectedInteraction": false,
+          "interactionTested": false,
+          "missingLayout": false,
+          "overflow": [],
+          "fontMinPx": null,
+          "fontSamples": [],
+          "imageIssues": [],
+          "contrastIssues": [],
+          "titleWrapped": false,
+          "overlapIssues": [],
+          "backgroundLoaded": true,
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-1/generated/keynote-latest/page-37.png\")",
           "focusFrameVisible": false
         }
       ]
     },
     {
       "id": "session-2",
-      "count": 41,
+      "count": 34,
       "remoteRequests": [],
       "failedResponses": [],
       "slides": [
@@ -839,7 +674,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s36-keynote-page-34.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-38.png\")",
           "focusFrameVisible": false
         },
         {
@@ -855,7 +690,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s37-keynote-page-35.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-39.png\")",
           "focusFrameVisible": false
         },
         {
@@ -871,7 +706,7 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s38-keynote-page-36.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-40.png\")",
           "focusFrameVisible": false
         },
         {
@@ -887,72 +722,23 @@
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s39-keynote-page-37.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-41.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 5,
-          "expectedInteraction": true,
-          "interactionTested": true,
+          "expectedInteraction": false,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "npu_city.py",
-              "px": 23.5
-            },
-            {
-              "tag": "PRE",
-              "cls": "",
-              "text": "@system\ndef NPUCity(m, cfg):\n  scheduler = m.scheduler(scheduler)\n  l2 = m.stora",
-              "px": 23.5
-            },
-            {
-              "tag": "CODE",
-              "cls": "",
-              "text": "@system\ndef NPUCity(m, cfg):\n  scheduler = m.scheduler(scheduler)\n  l2 = m.stora",
-              "px": 23.5
-            },
-            {
-              "tag": "EM",
-              "cls": "",
-              "text": "@system",
-              "px": 23.5
-            },
-            {
-              "tag": "Q",
-              "cls": "",
-              "text": "scheduler",
-              "px": 23.5
-            },
-            {
-              "tag": "Q",
-              "cls": "",
-              "text": "shared_l2",
-              "px": 23.5
-            },
-            {
-              "tag": "Q",
-              "cls": "",
-              "text": "cluster_{i}",
-              "px": 23.5
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s40-python-construction-backdrop.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-42.png\")",
           "focusFrameVisible": false
         },
         {
@@ -961,63 +747,14 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "I",
-              "cls": "",
-              "text": "control_bus",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "cluster_0",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "cluster_1",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "cluster_2",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "cluster_3",
-              "px": 23.5
-            },
-            {
-              "tag": "I",
-              "cls": "",
-              "text": "cluster_bus",
-              "px": 23.5
-            },
-            {
-              "tag": "P",
-              "cls": "",
-              "text": "Cluster instance → ComputeCluster__sp_8f31a2",
-              "px": 23.5
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s41-npucity-hierarchy-backdrop.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-43.png\")",
           "focusFrameVisible": false
         },
         {
@@ -1026,193 +763,46 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "FOOTER",
-              "cls": "full-bleed-stage__footer",
-              "text": "S42",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "S42",
-              "px": 23.5
-            },
-            {
-              "tag": "P",
-              "cls": "stage-claim",
-              "text": "层级只在需要复用、独立状态和独立编译时保留；辅助逻辑应当展开或只在编译期执行。",
-              "px": 29.3
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "顶层架构入口",
-              "px": 31.3
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "参数化、保留层级",
-              "px": 31.3
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "展开到调用者",
-              "px": 31.3
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "纯编译期计算",
-              "px": 31.3
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s42-template-decorators-backdrop.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-44.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 8,
-          "expectedInteraction": true,
-          "interactionTested": true,
+          "expectedInteraction": false,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "H3",
-              "cls": "",
-              "text": "Static：改变架构形态",
-              "px": 23.5
-            },
-            {
-              "tag": "LABEL",
-              "cls": "",
-              "text": "Core 数量 4",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "4",
-              "px": 23.5
-            },
-            {
-              "tag": "LABEL",
-              "cls": "agc-switch",
-              "text": "enable_dma",
-              "px": 23.5
-            },
-            {
-              "tag": "DT",
-              "cls": "",
-              "text": "banks",
-              "px": 23.5
-            },
-            {
-              "tag": "DD",
-              "cls": "",
-              "text": "16",
-              "px": 23.5
-            },
-            {
-              "tag": "DT",
-              "cls": "",
-              "text": "queue_depth",
-              "px": 23.5
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s43-static-runtime-backdrop.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-45.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 9,
-          "expectedInteraction": true,
-          "interactionTested": true,
+          "expectedInteraction": false,
+          "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "Python frontend",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "Source Contract Scan",
-              "px": 23.5
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "Python frontend",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "JIT Elaboration",
-              "px": 23.5
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "Python frontend",
-              "px": 23.5
-            },
-            {
-              "tag": "B",
-              "cls": "",
-              "text": "Template Specialization",
-              "px": 23.5
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "Python frontend",
-              "px": 23.5
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s44-jit-elaboration-backdrop.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-46.png\")",
           "focusFrameVisible": false
         },
         {
@@ -1221,327 +811,18 @@
           "interactionTested": false,
           "missingLayout": false,
           "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "FOOTER",
-              "cls": "full-bleed-stage__footer",
-              "text": "S45",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "S45",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "模板全限定名称",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "Python source hash",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "Static 参数规范化",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "依赖 hash",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "AGC Dialect 版本",
-              "px": 25.4
-            }
-          ],
+          "fontMinPx": null,
+          "fontSamples": [],
           "imageIssues": [],
           "contrastIssues": [],
           "titleWrapped": false,
           "overlapIssues": [],
           "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s45-specialization-key-backdrop.png\")",
+          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/keynote-latest/page-47.png\")",
           "focusFrameVisible": false
         },
         {
           "number": 11,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "FOOTER",
-              "cls": "full-bleed-stage__footer",
-              "text": "S46",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "S46",
-              "px": 23.5
-            },
-            {
-              "tag": "P",
-              "cls": "stage-claim",
-              "text": "规范化结果必须可比较、可序列化、可排序、可 hash；不可控对象在进入 AGC IR 前就被拒绝。",
-              "px": 29.3
-            },
-            {
-              "tag": "P",
-              "cls": "",
-              "text": "int · bool · str · Enum",
-              "px": 29.3
-            },
-            {
-              "tag": "P",
-              "cls": "",
-              "text": "tuple · frozen valueclass",
-              "px": 29.3
-            },
-            {
-              "tag": "P",
-              "cls": "",
-              "text": "上述类型的嵌套结构",
-              "px": 29.3
-            },
-            {
-              "tag": "P",
-              "cls": "",
-              "text": "可变对象 · lambda · 文件句柄",
-              "px": 29.3
-            }
-          ],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s46-canonical-static-backdrop.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 12,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "PRE",
-              "cls": "",
-              "text": "agc.module @Cluster__sp_8f31a2 {\n  %core = agc.compute @core_0\n}\n\nagc.module @NP",
-              "px": 23.5
-            },
-            {
-              "tag": "CODE",
-              "cls": "",
-              "text": "agc.module @Cluster__sp_8f31a2 {\n  %core = agc.compute @core_0\n}\n\nagc.module @NP",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "1 × 特化类定义",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "4 × 独立实例状态",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "清晰 C++ SimObject 层级",
-              "px": 23.5
-            },
-            {
-              "tag": "FOOTER",
-              "cls": "full-bleed-stage__footer",
-              "text": "S47",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "S47",
-              "px": 23.5
-            }
-          ],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s47-agc-ir-hierarchy-backdrop.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 13,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "FOOTER",
-              "cls": "full-bleed-stage__footer",
-              "text": "S48",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "S48",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "Pythonm.link(...,bw=512, depth=8)",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "AGC IRagc.link { bw=512,latency=1, depth=8 }",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "materialize-queuesSimQueue<Transfer>capacity = 8",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "C++ Runtimecycle · stallarbitration · backpressure",
-              "px": 25.4
-            },
-            {
-              "tag": "P",
-              "cls": "stage-claim",
-              "text": "Python 用户描述 bandwidth、latency、queue_depth；agc-materialize-queues 生成周期可见的运行时缓冲与回压",
-              "px": 29.3
-            }
-          ],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s48-lowering-pipeline-backdrop.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 14,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": 23.5,
-          "fontSamples": [
-            {
-              "tag": "P",
-              "cls": "stage-eyebrow",
-              "text": "AGC · 设计提案",
-              "px": 23.5
-            },
-            {
-              "tag": "FOOTER",
-              "cls": "full-bleed-stage__footer",
-              "text": "S49",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "S49",
-              "px": 23.5
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "Python构造顺序 · 循环 · 条件 · 层级",
-              "px": 25.4
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "构造顺序 · 循环 · 条件 · 层级",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "Template JITStatic 参数 · 特化 · 缓存",
-              "px": 25.4
-            },
-            {
-              "tag": "SMALL",
-              "cls": "",
-              "text": "Static 参数 · 特化 · 缓存",
-              "px": 25.4
-            },
-            {
-              "tag": "SPAN",
-              "cls": "",
-              "text": "AGC IR模块 · 端口 · 拓扑 · 约束",
-              "px": 25.4
-            }
-          ],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s49-responsibility-boundary-backdrop.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 15,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1575,13 +856,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S50",
+              "text": "S48",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S50",
+              "text": "S48",
               "px": 23.5
             },
             {
@@ -1606,7 +887,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 16,
+          "number": 12,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1646,13 +927,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S51",
+              "text": "S49",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S51",
+              "text": "S49",
               "px": 23.5
             },
             {
@@ -1671,7 +952,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 17,
+          "number": 13,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1711,13 +992,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S52",
+              "text": "S50",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S52",
+              "text": "S50",
               "px": 23.5
             },
             {
@@ -1736,7 +1017,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 18,
+          "number": 14,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -1801,7 +1082,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 19,
+          "number": 15,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -1866,7 +1147,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 20,
+          "number": 16,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -1931,7 +1212,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 21,
+          "number": 17,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -1965,13 +1246,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S56",
+              "text": "S54",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S56",
+              "text": "S54",
               "px": 23.5
             },
             {
@@ -1996,7 +1277,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 22,
+          "number": 18,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2036,13 +1317,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S57",
+              "text": "S55",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S57",
+              "text": "S55",
               "px": 23.5
             },
             {
@@ -2061,7 +1342,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 23,
+          "number": 19,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -2126,7 +1407,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 24,
+          "number": 20,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2178,7 +1459,7 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S59",
+              "text": "S57",
               "px": 23.5
             }
           ],
@@ -2191,7 +1472,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 25,
+          "number": 21,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -2256,7 +1537,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 26,
+          "number": 22,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -2321,7 +1602,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 27,
+          "number": 23,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2367,13 +1648,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S62",
+              "text": "S60",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S62",
+              "text": "S60",
               "px": 23.5
             }
           ],
@@ -2386,7 +1667,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 28,
+          "number": 24,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2402,55 +1683,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 29,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s64-keynote-page-39.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 30,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s65-keynote-page-40.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 31,
-          "expectedInteraction": false,
-          "interactionTested": false,
-          "missingLayout": false,
-          "overflow": [],
-          "fontMinPx": null,
-          "fontSamples": [],
-          "imageIssues": [],
-          "contrastIssues": [],
-          "titleWrapped": false,
-          "overlapIssues": [],
-          "backgroundLoaded": true,
-          "backgroundImage": "url(\"http://127.0.0.1:4173/session-2/generated/slides/s66-keynote-page-41.png\")",
-          "focusFrameVisible": false
-        },
-        {
-          "number": 32,
+          "number": 25,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2466,7 +1699,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 33,
+          "number": 26,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2482,7 +1715,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 34,
+          "number": 27,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2498,7 +1731,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 35,
+          "number": 28,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2514,13 +1747,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S70",
+              "text": "S65",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S70",
+              "text": "S65",
               "px": 23.5
             },
             {
@@ -2563,7 +1796,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 36,
+          "number": 29,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2597,13 +1830,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S71",
+              "text": "S66",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S71",
+              "text": "S66",
               "px": 23.5
             },
             {
@@ -2628,7 +1861,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 37,
+          "number": 30,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2668,13 +1901,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S72",
+              "text": "S67",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S72",
+              "text": "S67",
               "px": 23.5
             },
             {
@@ -2693,7 +1926,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 38,
+          "number": 31,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2733,13 +1966,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S73",
+              "text": "S68",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S73",
+              "text": "S68",
               "px": 23.5
             },
             {
@@ -2758,7 +1991,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 39,
+          "number": 32,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,
@@ -2780,13 +2013,13 @@
             {
               "tag": "FOOTER",
               "cls": "full-bleed-stage__footer",
-              "text": "S74",
+              "text": "S69",
               "px": 23.5
             },
             {
               "tag": "SPAN",
               "cls": "",
-              "text": "S74",
+              "text": "S69",
               "px": 23.5
             },
             {
@@ -2823,7 +2056,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 40,
+          "number": 33,
           "expectedInteraction": true,
           "interactionTested": true,
           "missingLayout": false,
@@ -2888,7 +2121,7 @@
           "focusFrameVisible": false
         },
         {
-          "number": 41,
+          "number": 34,
           "expectedInteraction": false,
           "interactionTested": false,
           "missingLayout": false,

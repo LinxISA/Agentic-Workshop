@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises'
 
 const decks = [
-  { path: 'decks/session-1/slides.md', session: 1, count: 35, offset: 0 },
-  { path: 'decks/session-2/slides.md', session: 2, count: 41, offset: 35 },
+  { path: 'decks/session-1/slides.md', session: 1, count: 37, offset: 0 },
+  { path: 'decks/session-2/slides.md', session: 2, count: 34, offset: 37 },
 ]
 const noteFields = ['Slide-ID:', 'Objective:', 'Transition:', 'Timing:', 'Visual:', 'Interaction:', 'Boundary:', '[Sources]']
 const fullBleedStages = ['FullBleedStage', 'AscendCover', 'KeynoteSourceStage']
@@ -30,7 +30,8 @@ for (const deck of decks) {
     const actualId = noteText.match(/Slide-ID:\s*(S\d{2})/)?.[1]
     if (actualId !== expectedId) errors.push(`${expectedId}: speaker-note Slide-ID is ${actualId ?? 'missing'}`)
     if (!fullBleedStages.some(component => slide.includes(`<${component}`))) errors.push(`${expectedId}: missing approved full-bleed stage`)
-    if (!slide.includes(`/generated/slides/${expectedId.toLowerCase()}-`)) errors.push(`${expectedId}: missing unique local slide background`)
+    const background = slide.match(/background="([^"]+)"/)?.[1]
+    if (!background || !/^\/generated\/(?:slides\/s\d{2}-[a-z0-9-]+|keynote-latest\/page-\d{2})\.png$/.test(background)) errors.push(`${expectedId}: missing valid local slide background`)
     for (const field of noteFields) {
       if (!noteText.includes(field)) errors.push(`${expectedId}: missing speaker-note field ${field}`)
     }
@@ -51,7 +52,7 @@ for (const deck of decks) {
   }
 }
 
-const expectedKeynoteIds = Array.from({ length: 44 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
+const expectedKeynoteIds = Array.from({ length: 71 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
 const mappingCounts = new Map()
 for (const { sourceId } of keynoteMappings) mappingCounts.set(sourceId, (mappingCounts.get(sourceId) ?? 0) + 1)
 const missingKeynoteIds = expectedKeynoteIds.filter(sourceId => !mappingCounts.has(sourceId))

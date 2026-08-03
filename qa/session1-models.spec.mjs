@@ -22,11 +22,11 @@ function visibleText(slide) {
     .replace(/\s+/g, ' ')}`
 }
 
-test('Session 1 contains exactly S01-S35 and totals 75 minutes', async () => {
+test('Session 1 contains exactly S01-S37 and totals 75 minutes', async () => {
   const slides = await sessionOneSlides()
-  assert.equal(slides.length, 35)
+  assert.equal(slides.length, 37)
   assert.deepEqual(slides.map(slide => notes(slide).match(/Slide-ID:\s*(S\d{2})/)?.[1]),
-    Array.from({ length: 35 }, (_, index) => `S${String(index + 1).padStart(2, '0')}`))
+    Array.from({ length: 37 }, (_, index) => `S${String(index + 1).padStart(2, '0')}`))
   assert.equal(slides.reduce((total, slide) => total + Number(notes(slide).match(/Timing:\s*(\d+)\s*min/)?.[1]), 0), 75)
 })
 
@@ -39,22 +39,17 @@ test('every Session 1 slide carries the complete teaching-note contract', async 
   }
 })
 
-test('Keynote pages map exactly to their approved Session 1 positions', async () => {
+test('latest Keynote pages K01-K37 map exactly to Session 1', async () => {
   const slides = await sessionOneSlides()
   const sourceFor = slide => notes(slide).match(/Sources:\s*([^\n]+)/)?.[1] ?? ''
-  assert.match(sourceFor(slides[0]), /\bsource-deck\b/)
-  for (let page = 2; page <= 22; page += 1) assert.match(sourceFor(slides[page - 1]), new RegExp(`\\bpublish-keynote-page-${page}\\b`))
-  assert.match(sourceFor(slides[22]), /\bcourse-synthesis\b/)
-  for (let page = 23; page <= 33; page += 1) assert.match(sourceFor(slides[page]), new RegExp(`\\bpublish-keynote-page-${page}\\b`))
-  assert.match(sourceFor(slides[34]), /\bcourse-synthesis\b/)
   const mappingFor = slide => [...notes(slide).matchAll(/^\s*-\s*source:\s*(K\d{2})\s*$/gm)].map(match => match[1])
-  for (let page = 1; page <= 22; page += 1) assert.deepEqual(mappingFor(slides[page - 1]), [`K${String(page).padStart(2, '0')}`])
-  assert.deepEqual(mappingFor(slides[22]), [])
-  for (let page = 23; page <= 33; page += 1) assert.deepEqual(mappingFor(slides[page]), [`K${String(page).padStart(2, '0')}`])
-  assert.deepEqual(mappingFor(slides[34]), [])
+  for (let page = 1; page <= 37; page += 1) {
+    assert.match(sourceFor(slides[page - 1]), /\bpublish-keynote-latest\b/)
+    assert.deepEqual(mappingFor(slides[page - 1]), [`K${String(page).padStart(2, '0')}`])
+  }
 })
 
-for (const [index, component] of [[7, 'InteractiveRoofline'], [24, 'ClockCycleConverter'], [25, 'MemoryHierarchyExplorer'], [31, 'PtoMachineExplorer'], [34, 'TransferTimeLab']]) {
+for (const [index, component] of [[7, 'InteractiveRoofline'], [23, 'ClockCycleConverter'], [24, 'MemoryHierarchyExplorer'], [31, 'PtoMachineExplorer']]) {
   test(`S${String(index + 1).padStart(2, '0')} visibly mounts ${component}`, async () => {
     const slides = await sessionOneSlides()
     assert.match(slides[index].replace(/<!--[\s\S]*?-->/g, ''), new RegExp(`<${component}\\b`))
@@ -143,7 +138,7 @@ test('PTO operation table separates semantic effects from DaVinci gfsim routing'
 
 test('source-page labs are closed drawers with accessible triggers by default', async () => {
   const slides = await sessionOneSlides()
-  for (const [index, component] of [[7, 'InteractiveRoofline'], [25, 'MemoryHierarchyExplorer'], [31, 'PtoMachineExplorer']]) {
+  for (const [index, component] of [[7, 'InteractiveRoofline'], [24, 'MemoryHierarchyExplorer'], [31, 'PtoMachineExplorer']]) {
     const audience = slides[index].replace(/<!--[\s\S]*?-->/g, '')
     assert.match(audience, new RegExp(`<details class="keynote-lab-drawer">[\\s\\S]*?<summary[^>]*aria-label="[^"]+"[^>]*>[\\s\\S]*?<${component}\\b`))
     assert.doesNotMatch(audience, /<details[^>]*\sopen(?:\s|>)/)

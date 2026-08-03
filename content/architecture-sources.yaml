@@ -1,4 +1,8 @@
 sources:
+  publish-keynote-latest:
+    type: local-keynote-deck
+    path_env: SUMMERSCHOOL_KEYNOTE
+    use: exact 71-page Keynote revision supplied by the presenter on 2026-08-03; page order and deletions are authoritative for the website
   source-deck:
     type: local-presentation
     path_env: SUMMERSCHOOL_SOURCE_DECK

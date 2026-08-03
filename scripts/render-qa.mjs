@@ -4,8 +4,8 @@ import { resolve } from 'node:path'
 
 const base = process.env.SUMMERSCHOOL_PREVIEW_URL || 'http://127.0.0.1:4173'
 const allDecks = [
-  { id: 'session-1', source: 'decks/session-1/slides.md', interactive: [8,25,26,32,35] },
-  { id: 'session-2', source: 'decks/session-2/slides.md', interactive: [5,8,9,18,19,20,23,25,26,40] },
+  { id: 'session-1', source: 'decks/session-1/slides.md', interactive: [8,24,25,32] },
+  { id: 'session-2', source: 'decks/session-2/slides.md', interactive: [14,15,16,19,21,22,33] },
 ]
 const selected = new Set((process.env.SUMMERSCHOOL_QA_DECKS || 'session-1,session-2').split(','))
 const decks = allDecks.filter((deck) => selected.has(deck.id))

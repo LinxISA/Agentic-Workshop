@@ -1,4 +1,4 @@
-const slideAssetPattern = /^\/generated\/slides\/s\d{2}-[a-z0-9-]+\.png$/
+const slideAssetPattern = /^\/generated\/(?:slides\/s\d{2}-[a-z0-9-]+|keynote-latest\/page-\d{2})\.png$/
 
 export function buildStageStyle(background, position = 'center', base = '/') {
   if (!slideAssetPattern.test(background)) {
