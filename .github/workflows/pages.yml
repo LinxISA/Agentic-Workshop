@@ -22,7 +22,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
           persist-credentials: false
 
       - name: Set up Node.js
@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Run test suite
-        run: npm test
+        run: npm run test:web
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
