@@ -132,6 +132,14 @@ After deployment, verify:
 - representative local images and experiment artifacts;
 - keyboard navigation in a real browser.
 
+The public URL is a hard delivery gate, not merely an expected output. Before reporting completion:
+
+- `https://linxisa.github.io/SummerSchool/` must return HTTP 200 over HTTPS;
+- its document title and visible heading must identify the Summer School course, rather than GitHub, an Actions artifact, or a generic 404 page;
+- both course cards must resolve to the deployed Session 1 and Session 2 Slidev decks;
+- representative first and last slide deep links in both decks must return Slidev HTML and render a visible slide;
+- the final handoff link must be the verified live course URL, not the repository URL or workflow-run URL.
+
 ## Failure Handling and Rollback
 
 - A failed build cannot reach the deploy job.
