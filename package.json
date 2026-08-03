@@ -6,8 +6,8 @@
   "scripts": {
     "dev:1": "slidev decks/session-1/slides.md --open",
     "dev:2": "slidev decks/session-2/slides.md --open",
-    "build:1": "slidev build decks/session-1/slides.md --base /session-1/ --out ../../dist/session-1",
-    "build:2": "slidev build decks/session-2/slides.md --base /session-2/ --out ../../dist/session-2",
+    "build:1": "node scripts/build-deck.mjs session-1",
+    "build:2": "node scripts/build-deck.mjs session-2",
     "build:index": "node scripts/build-index.mjs",
     "build": "npm run clean && npm run build:1 && npm run build:2 && npm run build:index",
     "clean": "node scripts/clean.mjs",
