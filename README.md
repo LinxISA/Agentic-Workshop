@@ -1,10 +1,14 @@
 # LinxISA Summer School 2026
 
-两段各 60 分钟、可离线运行的交互式 Slidev 教程：
+两段各 75 分钟、各 28 页、可离线运行的交互式 Slidev 教程：
 
-> Agent 时代的体系结构研究：从 Roofline、访存层级到可执行微架构模型
+> Agent 时代的体系结构研究：从空间资源、时间代价到可执行 NPU Core
 
-课程主角是计算机体系结构：第一课从工作负载、Roofline、局部性、访存层级、并发和片上数据流建立宏观性能模型；第二课进入 LinxCore 的前端、调度、执行、访存、提交和背压，再用 NDF、pyCircuit 与可复现实验形成证据闭环。Agentic Circuit 是建模与探索工具，不是课程研究对象。
+课程主角始终是计算机体系结构。第一课用“芯片城市”解释达芬奇核、昇腾 SoC、存储层级、互联、容量与带宽，再用 PTO Tile 操作把空间结构转成时间成本。第二课以 Qwen3-14B `q_proj` 为贯穿案例，从 PTO Trace、DaVinciOO gfsim/SimQueue 和参数搜索走到 PTO-ASL、NDF 与 pyCircuit 纵向切片。Agentic Circuit 是提出、执行和验证体系结构假设的工具，不是课程研究对象。
+
+核心叙事：
+
+`空间资源 → 时间代价 → 可执行模型 → 参数搜索 → 规范约束 → Agent 驱动实现 → 实验证据`
 
 ## 本地运行
 
@@ -26,6 +30,11 @@ npm run preview
 
 浏览器入口为 `http://127.0.0.1:4173/`。所有运行时资源均打入 `dist/`；实验的预生成结果位于 `experiments/artifacts/`。
 
+- Local: [http://127.0.0.1:4173/](http://127.0.0.1:4173/)
+- Public: [https://linxisa.github.io/SummerSchool/](https://linxisa.github.io/SummerSchool/)
+
+GitHub Pages 从 `main` 自动构建并发布。发布构建使用 `/SummerSchool` 作为资源与路由前缀；本地构建保持空前缀，所以同一套源码既能在根路径预览，也能部署到 organization Pages 的仓库子路径。
+
 完整视觉检查会逐页渲染两个 deck：
 
 ```bash
@@ -37,20 +46,20 @@ npm run qa:contact
 
 ## 课程边界
 
-- 不使用 Arm ASL、Sail Arm 或 Isla。
-- PTO-AS/ASL1 统一称为“PTO executable architecture spec”。
-- NDF、pyCircuit、LinxCore、PPA 与 Agent 闭环是本课程的研究方法层，不冒充 PTO 规范组成。
-- LinxCore 是模块化处理器与软硬件协同案例，不宣称是 PTO 的官方实现。
+- 不使用 ARM ISA 或 ARM ASL；本课程的 ASL 指 PTO 仓库内的可执行语义。
+- PTO-ASL、DaVinciOO 通信扩展、gfsim 实现映射、NDF 和 pyCircuit 分属不同证据层，不互相冒充规范来源。
+- `TPUT`/`TGET` 明确标为 DaVinciOO communication extensions，不属于 normative PTO-ASL。
+- 562 条 Trace / 11028 cycles 是可重放 q_proj 证据；扫参只支持当前 Trace/配置下的敏感性结论，不证明硬件等价。
 - ImageGen 只生成背景与概念插图；精确电路、时序、状态机、trace 和数据图均由本仓确定性代码生成。
 
 ## 目录
 
-- `decks/session-1/`：Roofline、局部性、访存层级、NoC 与 Tile 数据流
-- `decks/session-2/`：LinxCore 微架构、NDF、pyCircuit、实验与 Pareto 探索
+- `decks/session-1/`：芯片城市、Roofline、达芬奇/昇腾层级与 PTO 搬运时间
+- `decks/session-2/`：q_proj Trace、gfsim/SimQueue、扫参、PTO-ASL、NDF 与 pyCircuit
 - `components/`：Slidev 交互组件
 - `experiments/`：可复现实验和预生成证据
 - `materials/`：课程输入材料与来源清单
-- `vendor/`：固定提交的 PTO spec、pyCircuit 和 LinxCore submodules
+- `vendor/`：固定提交的 PTO spec、pyCircuit 与既有参考 submodules
 - `assets/generated/`：ImageGen 原始资产及提示词记录
 - `public/generated/`：构建时使用的本地图片
 - `docs/GOAL_PROMPT.md`：可直接交给 Codex Goal 的完整课件制作 prompt

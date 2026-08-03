@@ -72,3 +72,19 @@ test('root index links to the prefixed sessions and hero image', async () => {
     new RegExp(`url\\('${escapeRegExp(expectedBasePath)}/generated/main-hero\\.png'\\)`),
   )
 })
+
+test('GitHub Pages workflow deploys the verified prefixed artifact from main', async () => {
+  const workflow = await readFile('.github/workflows/pages.yml', 'utf8')
+
+  assert.match(workflow, /push:\s*\n\s+branches:\s*\[main\]/)
+  assert.match(workflow, /workflow_dispatch:/)
+  assert.match(workflow, /submodules:\s*recursive/)
+  assert.match(workflow, /contents:\s*read/)
+  assert.match(workflow, /pages:\s*write/)
+  assert.match(workflow, /id-token:\s*write/)
+  assert.match(workflow, /SUMMERSCHOOL_BASE_PATH:\s*\/SummerSchool/)
+  assert.match(workflow, /actions\/configure-pages@v5/)
+  assert.match(workflow, /actions\/upload-pages-artifact@v4/)
+  assert.match(workflow, /actions\/deploy-pages@v4/)
+  assert.match(workflow, /path:\s*dist/)
+})
