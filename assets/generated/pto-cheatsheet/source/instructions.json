@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "workbook": "PTO-ISA-保留指令列表.xlsx",
+    "range": "Sheet1!A1:C125",
+    "opcodeCount": 124,
+    "excludedPlanningEntries": ["TPOW", "TPOWS"]
+  },
+  "posters": [
+    {
+      "id": "compute",
+      "title": "PTO ISA CHEATSHEET",
+      "subtitle": "计算与数据并行",
+      "categories": [
+        {
+          "id": "binary-elementwise",
+          "name": "逐元素双目运算",
+          "accent": "#46D9FF",
+          "visual": "两条 Tile 传送带进入双入口运算机",
+          "groups": [
+            {
+              "sourceName": "算术运算",
+              "label": "算术运算",
+              "opcodes": ["TADD", "TSUB", "TMUL", "TMAX", "TMIN"]
+            },
+            {
+              "sourceName": "逻辑运算",
+              "label": "逻辑运算",
+              "opcodes": ["TAND", "TOR", "TXOR", "TSHL", "TSHR", "TCMP", "TSEL"]
+            }
+          ]
+        },
+        {
+          "id": "unary-elementwise",
+          "name": "逐元素单目运算",
+          "accent": "#7BE0FF",
+          "visual": "单条 Tile 流穿过逐元素变换机",
+          "groups": [
+            {
+              "sourceName": null,
+              "label": "指令",
+              "opcodes": ["TABS", "TNOT", "TNEG", "TRELU"]
+            }
+          ]
+        },
+        {
+          "id": "transcendental",
+          "name": "逐元素超越函数",
+          "accent": "#B28CFF",
+          "visual": "带曲线机械路径的非线性反应器",
+          "groups": [
+            {
+              "sourceName": null,
+              "label": "指令",
+              "opcodes": ["TDIV", "TREM", "TSQRT", "TLOG", "TRECIP", "TEXP", "TRSQRT"]
+            }
+          ]
+        },
+        {
+          "id": "scalar-elementwise",
+          "name": "逐元素与标量运算",
+          "accent": "#FFB54A",
+          "visual": "标量胶囊向 Tile 阵列注入统一参数",
+          "groups": [
+            {
+              "sourceName": "算术运算",
+              "label": "算术运算",
+              "opcodes": ["TADDS", "TAXPY", "TSUBS", "TMULS", "TDIVS", "TMINS", "TMAXS", "TREMS"]
+            },
+            {
+              "sourceName": "逻辑运算",
+              "label": "逻辑运算",
+              "opcodes": ["TANDS", "TORS", "TXORS", "TCMPS", "TSELS", "TSHLS", "TSHRS"]
+            }
+          ]
+        },
+        {
+          "id": "reduction",
+          "name": "归约运算",
+          "accent": "#58E09B",
+          "visual": "多行多列 Tile 通过漏斗汇聚为单行或单列",
+          "groups": [
+            {
+              "sourceName": "归约为一列",
+              "label": "归约为一列",
+              "opcodes": ["TROWSUM", "TROWPROD", "TROWMAX", "TROWMIN", "TROWARGMAX", "TROWARGMIN"]
+            },
+            {
+              "sourceName": "归约为一行",
+              "label": "归约为一行",
+              "opcodes": ["TCOLSUM", "TCOLPROD", "TCOLMAX", "TCOLMIN", "TCOLARGMAX", "TCOLARGMIN"]
+            }
+          ]
+        },
+        {
+          "id": "broadcast",
+          "name": "广播运算",
+          "accent": "#66E36F",
+          "visual": "中央分发塔向规则 Tile 阵列广播行列数据",
+          "groups": [
+            {
+              "sourceName": "按行广播",
+              "label": "按行广播",
+              "opcodes": ["TROWEXPAND", "TROWEXPANDADD", "TROWEXPANDSUB", "TROWEXPANDMUL", "TROWEXPANDDIV", "TROWEXPANDMAX", "TROWEXPANDMIN", "TROWEXPANDEXPDIF"]
+            },
+            {
+              "sourceName": "按列广播",
+              "label": "按列广播",
+              "opcodes": ["TCOLEXPAND", "TCOLEXPANDADD", "TCOLEXPANDSUB", "TCOLEXPANDMUL", "TCOLEXPANDDIV", "TCOLEXPANDMAX", "TCOLEXPANDMIN", "TCOLEXPANDEXPDIF"]
+            }
+          ]
+        },
+        {
+          "id": "matrix",
+          "name": "矩阵运算",
+          "accent": "#FFC857",
+          "visual": "两组矩阵货架进入 CUBE 工厂",
+          "groups": [
+            {
+              "sourceName": "矩阵乘矩阵",
+              "label": "矩阵乘矩阵",
+              "opcodes": ["TMATMUL", "TMATMUL_BIAS", "TMATMUL_ACC", "TMATMUL_MX"]
+            },
+            {
+              "sourceName": "矩阵乘向量",
+              "label": "矩阵乘向量",
+              "opcodes": ["TGEMV", "TGEMV_BIAS", "TGEMV_ACC", "TGEMV_MX"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-system",
+      "title": "PTO ISA CHEATSHEET",
+      "subtitle": "数据流动与系统协作",
+      "categories": [
+        {
+          "id": "memory",
+          "name": "数据搬运与访存",
+          "accent": "#42D6FF",
+          "visual": "港口仓库连接规则道路与分叉取货路径",
+          "groups": [
+            {
+              "sourceName": "规则访存",
+              "label": "规则访存",
+              "opcodes": ["TLOAD", "TSTORE", "TPREFETCH"]
+            },
+            {
+              "sourceName": "不规则访存",
+              "label": "不规则访存",
+              "opcodes": ["MGATHER", "MSCATTER"]
+            }
+          ]
+        },
+        {
+          "id": "complex-transform",
+          "name": "复杂变换计算",
+          "accent": "#FFB84D",
+          "visual": "包含五个相连工位的大型 Tile 加工中心",
+          "groups": [
+            {
+              "sourceName": "初始化",
+              "label": "初始化",
+              "opcodes": ["TEXPANDS", "TCI", "TTRI", "TRANDOM", "TFILLPAD"]
+            },
+            {
+              "sourceName": "数据类型转换",
+              "label": "数据类型转换",
+              "opcodes": ["TCVT", "TQUANT", "TDEQUANT"]
+            },
+            {
+              "sourceName": "布局变换",
+              "label": "布局变换",
+              "opcodes": ["TEXTRACT", "TINSERT", "TGATHER", "TSCATTER", "TCONCAT", "TTRANS", "TIMG2COL", "TMOV", "TGATHERB", "TDEINTERLEAVE", "TINTERLEAVE", "TRESHAPE"]
+            },
+            {
+              "sourceName": "排序",
+              "label": "排序",
+              "opcodes": ["TSORT32", "TMRGSORT", "THISTOGRAM"]
+            },
+            {
+              "sourceName": "Union计算",
+              "label": "Union 计算",
+              "opcodes": ["TPARTADD", "TPARTMUL", "TPARTMAX", "TPARTMIN", "TPARTARGMAX", "TPARTARGMIN"]
+            }
+          ]
+        },
+        {
+          "id": "system-control",
+          "name": "系统与控制",
+          "accent": "#65E3A1",
+          "visual": "控制塔、生命周期仓位与同步闸门",
+          "groups": [
+            {
+              "sourceName": "调试",
+              "label": "调试",
+              "opcodes": ["TASSIGN", "TPRINT"]
+            },
+            {
+              "sourceName": "CV通信",
+              "label": "CV 通信",
+              "opcodes": ["TPUSH", "TPOP", "TALLOC", "TFREE"]
+            },
+            {
+              "sourceName": "同步",
+              "label": "同步",
+              "opcodes": ["SYNCALL"]
+            }
+          ]
+        },
+        {
+          "id": "communication",
+          "name": "通信",
+          "accent": "#E87DFF",
+          "visual": "两座 Tile 城市通过同步桥梁和异步通道连接",
+          "groups": [
+            {
+              "sourceName": "同步通信",
+              "label": "同步通信",
+              "opcodes": ["TPUT", "TGET", "TBROADCAST", "TREDUCE", "TNOTIFY", "TWAIT", "TTEST"]
+            },
+            {
+              "sourceName": "异步通信",
+              "label": "异步通信",
+              "opcodes": ["TPUT_ASYNC", "TGET_ASYNC"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
