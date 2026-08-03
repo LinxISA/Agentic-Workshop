@@ -142,72 +142,98 @@ sources:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 29
-    use: exact updated Keynote page: PTO指令集：抽象执行机器
+    use: exact updated Keynote page: PTO ISA CHEATSHEET：计算与数据并行
   publish-keynote-page-30:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 30
-    use: exact updated Keynote page: PTO指令集：抽象执行机器与程序
+    use: exact updated Keynote page: PTO ISA CHEATSHEET：数据流动与系统协作
   publish-keynote-page-31:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 31
-    use: exact updated Keynote page: PTO指令集：TLOAD TSTORE
+    use: exact updated Keynote page: PTO指令集：抽象执行机器
   publish-keynote-page-32:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 32
-    use: exact updated Keynote page: Agentic Model
+    use: exact updated Keynote page: PTO指令集：抽象执行机器与程序
   publish-keynote-page-33:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 33
-    use: exact updated Keynote page: Agentic Architecture Model：基本仿真组件
+    use: exact updated Keynote page: PTO指令集：TLOAD TSTORE
   publish-keynote-page-34:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 34
-    use: exact updated Keynote page: Agentic Architecture Model：MLIR架构方言
+    use: exact updated Keynote page: Agentic Model
   publish-keynote-page-35:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 35
-    use: exact updated Keynote page: Agentic Architecture Model：让Agent准确建模体系结构
+    use: exact updated Keynote page: Agentic Architecture Model：基础仿真组件
   publish-keynote-page-36:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 36
-    use: exact updated Keynote page: NPU Core for PTO
+    use: exact updated Keynote page: Agentic Architecture Model：基于MLIR的架构方言
   publish-keynote-page-37:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 37
-    use: exact updated Keynote page: 分层调度
+    use: exact updated Keynote page: Agentic Architecture Model
   publish-keynote-page-38:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 38
-    use: exact updated Keynote page: PTO 多级调度层次
+    use: exact updated Keynote page: NPU Core for PTO
   publish-keynote-page-39:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 39
-    use: exact updated Keynote page: PTO / MLIR 源码表达
+    use: exact updated Keynote page: 950芯片上存在着大大小小的调度
   publish-keynote-page-40:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 40
-    use: exact updated Keynote page: 历史源稿性能结果
+    use: exact updated Keynote page: PTO：多层级的系统调度
   publish-keynote-page-41:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 41
-    use: exact updated Keynote page: Swizzle
+    use: exact updated Keynote page: PTO示例：如何用好432 FP16 TFLOPS矩阵算力
   publish-keynote-page-42:
     type: local-keynote-page
     path_env: SUMMERSCHOOL_KEYNOTE
     page: 42
-    use: exact updated Keynote page: Swizzle 容量与性能
+    use: exact updated Keynote page: PTO示例：开箱性能
+  publish-keynote-page-43:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 43
+    use: exact updated Keynote page: PTO示例：Swizzle Matmul
+  publish-keynote-page-44:
+    type: local-keynote-page
+    path_env: SUMMERSCHOOL_KEYNOTE
+    page: 44
+    use: exact updated Keynote page: PTO示例：Swizzle Matmul
+  pyc-pipeline:
+    type: pinned-submodule-document
+    path: vendor/pyCircuit/docs/PIPELINE.md
+    use: source scan, JIT elaboration, specialization, manifest, hierarchy policy, and C++/Verilog backend evidence
+  pyc-frontend-api:
+    type: pinned-submodule-document
+    path: vendor/pyCircuit/docs/FRONTEND_API.md
+    use: module/function/const decorators, m.new, m.array, valueclass, and runtime value-param evidence
+  pyc-ir-spec:
+    type: pinned-submodule-document
+    path: vendor/pyCircuit/docs/IR_SPEC.md
+    use: hierarchy-preserving pyc.instance and strict module boundary evidence
+  course-agc-design:
+    type: course-design
+    path: docs/superpowers/specs/2026-08-03-agentic-circuit-expansion-design.md
+    use: proposed AGC API, Static/Runtime split, specialization key, passes, and responsibility boundaries
   agenda:
     type: local-text
     path: materials/agenda-2026.txt

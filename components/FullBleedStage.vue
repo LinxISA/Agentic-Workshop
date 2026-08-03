@@ -11,6 +11,7 @@ const props = defineProps({
   focus: { type: String, default: 'left' },
   position: { type: String, default: 'center' },
   overlayTone: { type: String, default: 'cyan' },
+  compact: { type: Boolean, default: false },
 })
 
 const stageStyle = computed(() => buildStageStyle(props.background, props.position, import.meta.env.BASE_URL))
@@ -18,7 +19,7 @@ const scrimStyle = computed(() => buildScrimStyle(props.focus))
 </script>
 
 <template>
-  <main class="full-bleed-stage" :class="[`focus-${focus}`, `tone-${overlayTone}`]" :style="stageStyle">
+  <main class="full-bleed-stage" :class="[`focus-${focus}`, `tone-${overlayTone}`, { 'compact-copy': compact }]" :style="stageStyle">
     <div class="full-bleed-stage__scrim" :style="scrimStyle" />
     <div class="full-bleed-stage__texture" aria-hidden="true" />
 
@@ -76,6 +77,7 @@ const scrimStyle = computed(() => buildScrimStyle(props.focus))
   z-index: 3;
   top: 42px;
   width: min(700px, 58%);
+  pointer-events: none;
 }
 
 .focus-left .full-bleed-stage__copy { left: 68px; text-align: left; }
@@ -113,6 +115,11 @@ h1 {
 
 .focus-right .stage-claim { margin-left: auto; }
 .focus-full .stage-claim { margin-left: auto; margin-right: auto; }
+
+.compact-copy .full-bleed-stage__copy { top: 30px; }
+.compact-copy .stage-eyebrow { margin-bottom: 7px; font-size: 12px; }
+.compact-copy h1 { font-size: 32px; line-height: 1.02; letter-spacing: -.025em; }
+.compact-copy .stage-claim { margin-top: 8px; max-width: 860px; font-size: 15px; line-height: 1.22; }
 
 .full-bleed-stage__diagram {
   position: absolute;

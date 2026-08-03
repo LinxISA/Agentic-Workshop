@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises'
 
 const decks = [
-  { path: 'decks/session-1/slides.md', session: 1, count: 33, offset: 0 },
-  { path: 'decks/session-2/slides.md', session: 2, count: 31, offset: 33 },
+  { path: 'decks/session-1/slides.md', session: 1, count: 35, offset: 0 },
+  { path: 'decks/session-2/slides.md', session: 2, count: 41, offset: 35 },
 ]
 const noteFields = ['Slide-ID:', 'Objective:', 'Transition:', 'Timing:', 'Visual:', 'Interaction:', 'Boundary:', '[Sources]']
 const fullBleedStages = ['FullBleedStage', 'AscendCover', 'KeynoteSourceStage']
@@ -51,7 +51,7 @@ for (const deck of decks) {
   }
 }
 
-const expectedKeynoteIds = Array.from({ length: 42 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
+const expectedKeynoteIds = Array.from({ length: 44 }, (_, index) => `K${String(index + 1).padStart(2, '0')}`)
 const mappingCounts = new Map()
 for (const { sourceId } of keynoteMappings) mappingCounts.set(sourceId, (mappingCounts.get(sourceId) ?? 0) + 1)
 const missingKeynoteIds = expectedKeynoteIds.filter(sourceId => !mappingCounts.has(sourceId))

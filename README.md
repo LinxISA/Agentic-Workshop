@@ -1,14 +1,14 @@
 # LinxISA Summer School 2026
 
-两段各 75 分钟、共 64 页（第一段 33 页、第二段 31 页）、可离线运行的交互式 Slidev 教程：
+两段各 75 分钟、共 76 页（第一段 35 页、第二段 41 页）、可离线运行的交互式 Slidev 教程：
 
 > Agent 时代的体系结构研究：从空间资源、时间代价到可执行 NPU Core
 
-课程主角始终是计算机体系结构。第一课用“芯片城市”解释达芬奇核、昇腾 SoC、存储层级、互联、容量与带宽，再用 PTO Tile 操作把空间结构转成时间成本。第二课以 Qwen3-14B `q_proj` 为贯穿案例，从 PTO Trace、DaVinciOO gfsim/SimQueue 和参数搜索走到 PTO-ASL、NDF 与 pyCircuit 纵向切片。Agentic Circuit 是提出、执行和验证体系结构假设的工具，不是课程研究对象。
+课程主角始终是计算机体系结构。第一课用“芯片城市”解释达芬奇核、昇腾 SoC、存储层级、互联、容量与带宽，再用 PTO Tile 操作把空间结构转成时间成本。第二课先把 Agentic Circuit 设计成可执行的 Python 架构生成语言，再以 Qwen3-14B `q_proj` 为贯穿案例，从 PTO Trace、DaVinciOO gfsim/SimQueue 和参数搜索走到 PTO-ASL、NDF 与 pyCircuit 纵向切片。Agentic Circuit 是提出、执行和验证体系结构假设的工具，不替代体系结构判断。
 
 核心叙事：
 
-`空间资源 → 时间代价 → 可执行模型 → 参数搜索 → 规范约束 → Agent 驱动实现 → 实验证据`
+`空间资源 → 时间代价 → 可执行模型 → Agentic Circuit → 参数搜索 → 规范约束 → Agent 驱动实现 → 实验证据`
 
 ## 本地运行
 
@@ -55,7 +55,7 @@ npm run qa:contact
 ## 目录
 
 - `decks/session-1/`：芯片城市、Roofline、达芬奇/昇腾层级与 PTO 搬运时间
-- `decks/session-2/`：q_proj Trace、gfsim/SimQueue、扫参、PTO-ASL、NDF 与 pyCircuit
+- `decks/session-2/`：Agentic Circuit、q_proj Trace、gfsim/SimQueue、扫参、PTO-ASL、NDF 与 pyCircuit
 - `components/`：Slidev 交互组件
 - `experiments/`：可复现实验和预生成证据
 - `materials/`：课程输入材料与来源清单

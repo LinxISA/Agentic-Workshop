@@ -124,7 +124,7 @@ Transition: 当小路变成公路，局部性开始组织运输。
 <!--
 Slide-ID: S06
 Objective: 用城市、公路与分级仓库解释存储层级和局部性。
-Timing: 3 min
+Timing: 2 min
 Visual: 更新版 Keynote 第 6 页 1920×1080 确定性整页渲染。
 Interaction: 沿运输路径说明每一级保存什么复用机会。
 Sources: publish-keynote-page-6
@@ -145,7 +145,7 @@ Transition: 单个工厂扩展为多 Lane 的共享运输体系。
 <!--
 Slide-ID: S07
 Objective: 展示多计算 Lane、分级仓库和共享道路组织。
-Timing: 3 min
+Timing: 2 min
 Visual: 更新版 Keynote 第 7 页 1920×1080 确定性整页渲染。
 Interaction: 从计算 Lane 到内存总仓逐级讲解共享与争用。
 Sources: publish-keynote-page-7
@@ -170,7 +170,7 @@ Transition: 用 Roofline 把算力与运力放到同一张图。
 <!--
 Slide-ID: S08
 Objective: 用原稿仓库隐喻和交互曲线解释 Roofline。
-Timing: 3 min
+Timing: 2 min
 Visual: 更新版 Keynote 第 8 页 1920×1080 确定性整页渲染。
 Interaction: 调节 Peak、BW、AI 与 Hit，观察瓶颈跨越 ridge point。
 Sources: publish-keynote-page-8; roofline-paper
@@ -192,7 +192,7 @@ Transition: 把 Roofline 的局部性落实到 Da Vinci Tile 与仓库。
 <!--
 Slide-ID: S09
 Objective: 展示 Tile/CUBE 计算组织与 L0A、L0B、L0C 本地仓库。
-Timing: 3 min
+Timing: 2 min
 Visual: 更新版 Keynote 第 9 页 1920×1080 确定性整页渲染。
 Interaction: 先追踪 Left、Right、ACC Tile，再追踪 256B/cycle 路径。
 Sources: publish-keynote-page-9
@@ -637,27 +637,69 @@ Transition: 把这些操作放进 PTO 抽象执行机器。
 
 ---
 
+# PTO ISA CHEATSHEET：计算与数据并行
+
+<KeynoteSourceStage background="/generated/slides/s30-keynote-page-29.png" title="PTO ISA CHEATSHEET：计算与数据并行" claim="严格保留更新版 Keynote 第 29 页文字、图片与构图" slide-id="S30" />
+
+<!--
+Slide-ID: S30
+Objective: 按更新版 Keynote 原页讲解“PTO ISA CHEATSHEET：计算与数据并行”。
+Timing: 2 min
+Visual: 更新版 Keynote 第 29 页 1920×1080 确定性整页渲染。
+Interaction: 按方向键推进；观察原页中的指令分类、图示与体系结构关系。
+Sources: publish-keynote-page-29
+Boundary: 本页逐字逐图保留更新版 Keynote；指令语义以 PTO-ASL 规范为准。
+Narrative: 先建立 PTO 指令族的整体地图，再进入抽象执行机器和程序。
+Transition: 沿新版源稿顺序进入下一层体系结构问题。
+[Sources]
+- source: K29
+- catalog: publish-keynote-page-29
+-->
+
+---
+
+# PTO ISA CHEATSHEET：数据流动与系统协作
+
+<KeynoteSourceStage background="/generated/slides/s31-keynote-page-30.png" title="PTO ISA CHEATSHEET：数据流动与系统协作" claim="严格保留更新版 Keynote 第 30 页文字、图片与构图" slide-id="S31" />
+
+<!--
+Slide-ID: S31
+Objective: 按更新版 Keynote 原页讲解“PTO ISA CHEATSHEET：数据流动与系统协作”。
+Timing: 2 min
+Visual: 更新版 Keynote 第 30 页 1920×1080 确定性整页渲染。
+Interaction: 按方向键推进；观察原页中的指令分类、图示与体系结构关系。
+Sources: publish-keynote-page-30
+Boundary: 本页逐字逐图保留更新版 Keynote；指令语义以 PTO-ASL 规范为准。
+Narrative: 先建立 PTO 指令族的整体地图，再进入抽象执行机器和程序。
+Transition: 沿新版源稿顺序进入下一层体系结构问题。
+[Sources]
+- source: K30
+- catalog: publish-keynote-page-30
+-->
+
+---
+
 # PTO指令集：抽象执行机器
 
-<KeynoteSourceStage background="/generated/slides/s30-keynote-page-29.png" title="PTO指令集：抽象执行机器" claim="语义路由到不同执行资源" slide-id="S30" />
+<KeynoteSourceStage background="/generated/slides/s32-keynote-page-31.png" title="PTO指令集：抽象执行机器" claim="语义路由到不同执行资源" slide-id="S32" />
 <details class="keynote-lab-drawer">
   <summary aria-label="打开 PTO 抽象机器交互实验">交互实验</summary>
   <PtoMachineExplorer label="TLOAD TMOV TEXTRACT TPUSH TPOP · TPUT TGET · DaVinciOO communication extensions — not normative PTO-ASL" />
 </details>
 
 <!--
-Slide-ID: S30
+Slide-ID: S32
 Objective: 在原稿抽象机器上区分 PTO-ASL 操作语义与 DaVinciOO 通信扩展。
 Timing: 2 min
-Visual: 更新版 Keynote 第 29 页 1920×1080 确定性整页渲染。
+Visual: 更新版 Keynote 第 31 页 1920×1080 确定性整页渲染。
 Interaction: 切换 TLOAD、TMOV、TEXTRACT、TPUSH/TPOP、TPUT/TGET，观察路径和引擎。
-Sources: publish-keynote-page-29; pto-spec; davincioo-public-docs
+Sources: publish-keynote-page-31; pto-spec; davincioo-public-docs
 Boundary: TPUT/TGET 是 DaVinciOO communication extensions — not normative PTO-ASL；不展示私有时序细节。
 Narrative: TLOAD 为 GM→Tile/TMA；TMOV 为形状匹配 Tile copy 并在 DaVinci gfsim 路由 Vector；TEXTRACT 为 Vector 子区域；TPUSH/TPOP 使用显式 handoff slot/capacity；扩展路径为 GM→UB→GM。
 Transition: 下一页观察 PTO 程序如何驱动抽象机器。
 [Sources]
-- source: K29
-- catalog: publish-keynote-page-29
+- source: K31
+- catalog: publish-keynote-page-31
 - catalog: pto-spec
 - catalog: davincioo-public-docs
 -->
@@ -666,54 +708,54 @@ Transition: 下一页观察 PTO 程序如何驱动抽象机器。
 
 # PTO指令集：抽象执行机器与程序
 
-<KeynoteSourceStage background="/generated/slides/s31-keynote-page-30.png" title="PTO指令集：抽象执行机器与程序" claim="程序语义与机器资源相互映射" slide-id="S31" />
+<KeynoteSourceStage background="/generated/slides/s33-keynote-page-32.png" title="PTO指令集：抽象执行机器与程序" claim="程序语义与机器资源相互映射" slide-id="S33" />
 
 <!--
-Slide-ID: S31
+Slide-ID: S33
 Objective: 按原稿把 PTO 程序操作映射到抽象执行机器。
 Timing: 2 min
-Visual: 更新版 Keynote 第 30 页 1920×1080 确定性整页渲染。
+Visual: 更新版 Keynote 第 32 页 1920×1080 确定性整页渲染。
 Interaction: 从一条 load/matmul/extract/store 链指出每步读写的架构状态。
-Sources: publish-keynote-page-30
+Sources: publish-keynote-page-32
 Boundary: 代码与抽象机器按原稿展示；具体规范效果以 PTO-ASL 为准。
 Narrative: 程序顺序表达语义依赖，实现可以用不同资源与调度策略完成效果。
 Transition: 放大最基础的 TLOAD/TSTORE 搬运链。
 [Sources]
-- source: K30
-- catalog: publish-keynote-page-30
+- source: K32
+- catalog: publish-keynote-page-32
 -->
 
 ---
 
 # PTO指令集：TLOAD TSTORE
 
-<KeynoteSourceStage background="/generated/slides/s32-keynote-page-31.png" title="PTO指令集：TLOAD TSTORE" claim="Tensor → Tile → Layout" slide-id="S32" />
+<KeynoteSourceStage background="/generated/slides/s34-keynote-page-33.png" title="PTO指令集：TLOAD TSTORE" claim="Tensor → Tile → Layout" slide-id="S34" />
 
 <!--
-Slide-ID: S32
+Slide-ID: S34
 Objective: 按原稿用工厂隐喻解释 Tensor、Tile 与 Layout 的装载过程。
 Timing: 2 min
-Visual: 更新版 Keynote 第 31 页 1920×1080 确定性整页渲染。
+Visual: 更新版 Keynote 第 33 页 1920×1080 确定性整页渲染。
 Interaction: 逐步指出 Tensor 选择、Tile 分块与 Layout 排列分别解决什么问题。
-Sources: publish-keynote-page-31
+Sources: publish-keynote-page-33
 Boundary: 工厂图是原稿教学比喻；TLOAD/TSTORE 规范语义以 PTO-ASL 为准。
 Narrative: 数据搬运时间同时受分块次数、各段带宽、排队与同步影响。
 Transition: 用可计算实验分解一次数据移动的总周期。
 [Sources]
-- source: K31
-- catalog: publish-keynote-page-31
+- source: K33
+- catalog: publish-keynote-page-33
 -->
 
 ---
 
 # 数据搬运时间实验
 
-<FullBleedStage background="/generated/slides/s33-data-movement-time-experiment-v2.png" title="数据搬运时间实验" claim="总时间 = 固有搬运 + 排队 + 同步。" eyebrow="SPACE → TIME" slide-id="S33" focus="left">
+<FullBleedStage background="/generated/slides/s35-data-movement-time-experiment-v2.png" title="数据搬运时间实验" claim="总时间 = 固有搬运 + 排队 + 同步。" eyebrow="SPACE → TIME" slide-id="S35" focus="left">
   <template #diagram><TransferTimeLab /></template>
 </FullBleedStage>
 
 <!--
-Slide-ID: S33
+Slide-ID: S35
 Objective: 用确定性公式把 Tile 分块、最窄带宽、排队和同步合成总周期。
 Timing: 2 min
 Visual: 新生成的数据移动实验场景，底部为可调计算实验室。

@@ -4,13 +4,14 @@ import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 
 const manifestPath = 'assets/generated/prompts.yaml'
-const expectedSlides = Array.from({ length: 64 }, (_, index) => `S${String(index + 1).padStart(2, '0')}`)
-const newImageGenSlides = ['S23', 'S33', ...Array.from({ length: 13 }, (_, index) => `S${index + 38}`), ...Array.from({ length: 7 }, (_, index) => `S${index + 58}`)]
+const expectedSlides = Array.from({ length: 76 }, (_, index) => `S${String(index + 1).padStart(2, '0')}`)
+const retainedImageGenSlides = ['S23', 'S35', ...Array.from({ length: 13 }, (_, index) => `S${index + 50}`), ...Array.from({ length: 7 }, (_, index) => `S${index + 70}`)]
+const agcBackdropSlides = Array.from({ length: 10 }, (_, index) => `S${index + 40}`)
 const sourcePageBySlide = new Map([
   ...Array.from({ length: 22 }, (_, index) => [`S${String(index + 1).padStart(2, '0')}`, index + 1]),
-  ...Array.from({ length: 9 }, (_, index) => [`S${index + 24}`, index + 23]),
-  ...Array.from({ length: 4 }, (_, index) => [`S${index + 34}`, index + 32]),
-  ...Array.from({ length: 7 }, (_, index) => [`S${index + 51}`, index + 36]),
+  ...Array.from({ length: 11 }, (_, index) => [`S${index + 24}`, index + 23]),
+  ...Array.from({ length: 4 }, (_, index) => [`S${index + 36}`, index + 34]),
+  ...Array.from({ length: 7 }, (_, index) => [`S${index + 63}`, index + 38]),
 ])
 
 const digest = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -24,11 +25,11 @@ async function loadManifest() {
   return JSON.parse(await readFile(manifestPath, 'utf8'))
 }
 
-test('manifest covers exactly S01-S64 with one unique, reviewed, offline asset per slide', async () => {
+test('manifest covers exactly S01-S76 with one unique, reviewed, offline asset per slide', async () => {
   const manifest = await loadManifest()
   assert.equal(manifest.schema_version, 2)
   assert.deepEqual(manifest.assets.map(item => item.slide).sort(), expectedSlides)
-  assert.equal(new Set(manifest.assets.map(item => item.asset)).size, 64)
+  assert.equal(new Set(manifest.assets.map(item => item.asset)).size, 76)
 
   for (const item of manifest.assets) {
     assert.equal(item.page, Number(item.slide.slice(1)))
@@ -45,11 +46,11 @@ test('manifest covers exactly S01-S64 with one unique, reviewed, offline asset p
   }
 })
 
-test('source-page mapping permits each K01-K42 exactly once without mislabeling the S01 generator', async () => {
+test('source-page mapping permits each K01-K44 exactly once without mislabeling the S01 generator', async () => {
   const manifest = await loadManifest()
   const mapped = manifest.assets.filter(item => item.source_page !== null)
-  assert.equal(mapped.length, 42)
-  assert.deepEqual(mapped.map(item => item.source_page).sort((a, b) => a - b), Array.from({ length: 42 }, (_, index) => index + 1))
+  assert.equal(mapped.length, 44)
+  assert.deepEqual(mapped.map(item => item.source_page).sort((a, b) => a - b), Array.from({ length: 44 }, (_, index) => index + 1))
 
   for (const item of manifest.assets) {
     assert.equal(item.source_page, sourcePageBySlide.get(item.slide) ?? null, `${item.slide}: unexpected Keynote source page`)
@@ -63,9 +64,9 @@ test('source-page mapping permits each K01-K42 exactly once without mislabeling 
   assert.match(cover.prompt_record, /not retained/i)
 
   const sourceRenders = manifest.assets.filter(item => item.generator === 'Keynote PDF render')
-  assert.equal(sourceRenders.length, 41)
+  assert.equal(sourceRenders.length, 43)
   for (const item of sourceRenders) {
-    assert.ok(item.source_page >= 2 && item.source_page <= 42)
+    assert.ok(item.source_page >= 2 && item.source_page <= 44)
     assert.match(item.prompt, /^Source-render contract:/)
     assert.equal(item.provenance_status, 'deterministic_source_render')
     assert.equal(item.original_prompt_available, null)
@@ -79,7 +80,7 @@ test('ImageGen provenance distinguishes the legacy cover from 22 retained origin
   const manifest = await loadManifest()
   const promptLedger = JSON.parse(await readFile('assets/generated/v2-prompts.yaml', 'utf8'))
   const newRecords = manifest.assets.filter(item => item.generation_batch === 'v2')
-  assert.deepEqual(newRecords.map(item => item.slide).sort(), newImageGenSlides.sort())
+  assert.deepEqual(newRecords.map(item => item.slide).sort(), retainedImageGenSlides.sort())
   assert.equal(newRecords.length, 22)
 
   for (const item of newRecords) {
@@ -99,6 +100,19 @@ test('ImageGen provenance distinguishes the legacy cover from 22 retained origin
   )
 })
 
+test('ten AGC pages use reviewed local source-derived backdrops', async () => {
+  const manifest = await loadManifest()
+  const records = manifest.assets.filter(item => item.generation_batch === 'agc-v1')
+  assert.deepEqual(records.map(item => item.slide).sort(), agcBackdropSlides.sort())
+  assert.equal(records.length, 10)
+  for (const item of records) {
+    assert.equal(item.generator, 'Keynote-derived backdrop')
+    assert.equal(item.provenance_status, 'deterministic_source_derivative')
+    assert.equal(item.source_page, null)
+    assert.deepEqual([item.width, item.height], [1920, 1080])
+  }
+})
+
 test('manifest hashes and dimensions match both project and public copies', async () => {
   const manifest = await loadManifest()
   for (const item of manifest.assets) {
@@ -107,7 +121,7 @@ test('manifest hashes and dimensions match both project and public copies', asyn
     assert.equal(digest(runtime), item.sha256, `${item.slide}: public hash`)
     assert.deepEqual(pngDimensions(source), { width: item.width, height: item.height }, `${item.slide}: project dimensions`)
     assert.deepEqual(pngDimensions(runtime), { width: item.width, height: item.height }, `${item.slide}: public dimensions`)
-    if (item.generator === 'Keynote PDF render') assert.deepEqual([item.width, item.height], [1920, 1080])
-    else assert.deepEqual([item.width, item.height], [1672, 941])
+    if (item.generator === 'OpenAI ImageGen') assert.deepEqual([item.width, item.height], [1672, 941])
+    else assert.deepEqual([item.width, item.height], [1920, 1080])
   }
 })

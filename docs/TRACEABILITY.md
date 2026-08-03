@@ -33,41 +33,53 @@ Generated from the authoritative deck contract. `COURSE-Sxx` identifiers are cou
 | COURSE-S27 | 1 | RDMA 与 RPC 扩大时间尺度 | KeynoteSourceStage | `publish-keynote-page-26` | 原稿数字用于数量级教学，不能替代具体系统测量。 |
 | COURSE-S28 | 1 | 从 Scalar Operation 到 Tile Operation | KeynoteSourceStage | `publish-keynote-page-27` | 可见术语与容量范围按原稿保留；规范语义以后续 PTO-ASL 为准。 |
 | COURSE-S29 | 1 | 形状、布局与调度共同定义 Tile | KeynoteSourceStage | `publish-keynote-page-28` | 集装箱图是语义与调度隐喻，不规定物理 SRAM 形状。 |
-| COURSE-S30 | 1 | 语义路由到不同执行资源 | KeynoteSourceStage | `publish-keynote-page-29`, `pto-spec`, `davincioo-public-docs` | TPUT/TGET 是 DaVinciOO communication extensions — not normative PTO-ASL；不展示私有时序细节。 |
-| COURSE-S31 | 1 | 程序语义与机器资源相互映射 | KeynoteSourceStage | `publish-keynote-page-30` | 代码与抽象机器按原稿展示；具体规范效果以 PTO-ASL 为准。 |
-| COURSE-S32 | 1 | Tensor → Tile → Layout | KeynoteSourceStage | `publish-keynote-page-31` | 工厂图是原稿教学比喻；TLOAD/TSTORE 规范语义以 PTO-ASL 为准。 |
-| COURSE-S33 | 1 | 总时间 = 固有搬运 + 排队 + 同步。 | TransferTimeLab | `course-synthesis`, `pto-spec`, `davincioo-public-docs` | 公式是教学一阶模型；TPUT/TGET 是 DaVinciOO 通信扩展，不属于规范 PTO-ASL；不暴露私有 DaVinci 时序实现。 |
-| COURSE-S34 | 2 | Agentic Model | KeynoteSourceStage | `publish-keynote-page-32` | 可见文字与图形直接来自演讲人提供的 Keynote。 |
-| COURSE-S35 | 2 | 严格保留更新版 Keynote 第 33 页文字、图片与构图 | KeynoteSourceStage | `publish-keynote-page-33` | 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。 |
-| COURSE-S36 | 2 | 严格保留更新版 Keynote 第 34 页文字、图片与构图 | KeynoteSourceStage | `publish-keynote-page-34` | 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。 |
-| COURSE-S37 | 2 | 严格保留更新版 Keynote 第 35 页文字、图片与构图 | KeynoteSourceStage | `publish-keynote-page-35` | 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。 |
-| COURSE-S38 | 2 | 输入 activation × BF16 weight → GEMM → projected output；一次投影就是可追踪的垂直切片。 | CyclePlayback | `qproj-davincioo-lab`, `course-synthesis` | 这是 q_proj 教学切片，不声称覆盖完整模型推理、量化或并行策略。 |
-| COURSE-S39 | 2 | 每一层都保留可审计的中间产物，而不是把程序直接跳成一个性能数字。 | gap decomposition | `qproj-davincioo-lab`, `davincioo-public-docs` | 流水线描述止于 host trace 与 gfsim replay，不推断未公开的部署格式。 |
-| COURSE-S40 | 2 | Trace 明示 input_tiles / output_tiles / scalar_inputs；dependency readiness 由 rename / scoreboard 推导。 | ParameterSweep | `qproj-davincioo-lab`, `pto-spec` | opcode 组合来自已检查的 q_proj reference replay；不把一次展开推广成所有实现的唯一 lowering。 |
-| COURSE-S41 | 2 | Tile metadata 可见；依赖由 rename / scoreboard 推导。 | TraceAnatomy | `qproj-davincioo-lab`, `course-model` | 组件只显示 sanitized checked sample 的真实字段，不补造 deps；artifact 不可用时只显示明确标注的 teaching sample。 |
-| COURSE-S42 | 2 | push 先进入 pending；延迟到期才 visible；容量耗尽会把 backpressure 传回生产者。 | SimQueueExplorer | `davincioo-public-docs`, `course-model` | 不展示私有实现字段、调度规则或 timing constants；组件是教学模型。 |
-| COURSE-S43 | 2 | TraceSource 供给事件，乱序窗口追踪依赖，四类执行资源完成工作并通过 wakeup 释放消费者。 | DaVinciTopology | `davincioo-public-docs`, `course-synthesis` | 图不公开私有状态字段、选择策略或 timing constants，只表达教学层连接关系。 |
-| COURSE-S44 | 2 | 公式是可替换假设；参数必须来自公开配置、实验或明确的课程设定。 | KeynoteSourceStage | `davincioo-public-docs`, `course-model` | 页面不披露私有 timing constants；公式只定义参数关系，不声称完成校准。 |
-| COURSE-S45 | 2 | 这是 DaVinci gfsim implementation routing；PTO family 只定义语义类别，不规定同一资源映射。 | KeynoteSourceStage | `davincioo-public-docs`, `pto-spec` | TMOV 被标为 PTO family；具体映射属于 DaVinci gfsim 实现而非 PTO 规范。 |
-| COURSE-S46 | 2 | 每次按键只做一次状态转移：dispatch、ready、issue、execute、complete、retire 都能被逐步检查。 | CyclePlayback | `course-model`, `davincioo-public-docs` | 播放器是确定性教学模型，不声称复制 gfsim 的全部内部事件顺序。 |
-| COURSE-S47 | 2 | 系统时间还包含依赖等待、资源争用、ROB/IQ 容量、可重叠工作与最终 critical path。 | KeynoteSourceStage | `course-model`, `davincioo-public-docs` | 因果项是公开教学分类，不给出私有实现的精确等待分解。 |
-| COURSE-S48 | 2 | 同时观察 ROB depth、Tile tags、TMA BW、Cube MACs 与 engine counts；结果只支持候选方向。 | ParameterSweep | `qproj-davincioo-lab`, `experiment-artifacts`, `course-model` | 组件只展示本地 qproj_sweep.json 的 checked points；artifact 不可用时明确显示 unavailable，不生成 q_proj 替代证据。 |
-| COURSE-S49 | 2 | 按 opcode 与 engine 过滤 q_proj 事件，检查 issue、complete 与 retire 的相对位置。 | EvidenceTimeline | `qproj-davincioo-lab`, `experiment-artifacts` | 时间线读取本地 CSV，展示 reference_replay；不声称是新抓取的硬件波形。 |
-| COURSE-S50 | 2 | checked reference replay: 562 records / 11028 cycles。候选点来自敏感性，不代表结构等价。 | deterministic HTML/CSS overlay | `qproj-davincioo-lab`, `experiment-artifacts` | durable artifact 标为 reference_replay。一次 task-local gfsim re-simulation 曾重现 11028 cycles，但不是 checked live artifact，也不是 fresh PTO capture；不宣称等价。 |
-| COURSE-S51 | 2 | NPU Core for PTO | KeynoteSourceStage | `publish-keynote-page-36` | 可见文字与图形直接来自演讲人提供的 Keynote。 |
-| COURSE-S52 | 2 | 分层调度 | KeynoteSourceStage | `publish-keynote-page-37` | 本页可见内容完全来自历史源稿，不追加当前实现结论。 |
-| COURSE-S53 | 2 | PTO 多级调度层次 | KeynoteSourceStage | `publish-keynote-page-38` | 可见层次与术语完全来自历史源稿。 |
-| COURSE-S54 | 2 | PTO / MLIR 源码表达 | KeynoteSourceStage | `publish-keynote-page-39` | 源码截图是历史源稿内容；本页不声称已用当前工具链重新编译。 |
-| COURSE-S55 | 2 | 历史源稿性能结果 | KeynoteSourceStage | `publish-keynote-page-40` | 性能图明确标为历史源稿结果，不作为本次环境新测量。 |
-| COURSE-S56 | 2 | Swizzle | KeynoteSourceStage | `publish-keynote-page-41` | Swizzle 可见内容直接来自历史源稿，不延伸到未核实实现细节。 |
-| COURSE-S57 | 2 | Swizzle 容量与性能 | KeynoteSourceStage | `publish-keynote-page-42` | 所有数值明确属于历史源稿，不标为当前实验结果。 |
-| COURSE-S58 | 2 | 每个敏感参数都要落到容量、端口、队列、带宽或延迟契约，并写出可验证的接受条件。 | deterministic HTML/CSS overlay | `course-synthesis`, `qproj-davincioo-lab` | 敏感性用于形成候选约束，不直接决定实现尺寸或 PPA 最优点。 |
-| COURSE-S59 | 2 | 实现可以改变队列与流水线，但不能悄悄改变 TLOAD、TMOV、TEXTRACT、TPUSH、TPOP 的软件可见 effect。 | deterministic HTML/CSS overlay | `pto-spec`, `davincioo-public-docs`, `normative-language` | TPUT/TGET 明确标为 DaVinciOO communication extensions，不属于 normative PTO-ASL。 |
-| COURSE-S60 | 2 | L0 intent → L1 contract → L2 mechanism → L3 executable acceptance；层间关系必须显式可追踪。 | deterministic HTML/CSS overlay | `ndf-course`, `normative-language` | 当前 L3 明确是 draft test contract，不是已经存在的 implementation。 |
-| COURSE-S61 | 2 | sequence_id 穿过 Trace、Tile Register、TMA、Extract、Matmul 与乱序窗口。 | deterministic HTML/CSS overlay | `ndf-course`, `qproj-davincioo-lab`, `course-synthesis` | IDs 是课程设计契约；不冒充已完成的生产实现或最终命名。 |
-| COURSE-S62 | 2 | spec、model、implementation、verification Agent 围绕同一 NDF 与 trace 工作；pyCircuit 是 pinned implementation target/source surface。 | deterministic HTML/CSS overlay | `pycircuit`, `davincioo-public-docs`, `agentic-materials` | pyCircuit 是 implementation target/source surface，不是 RTL 或 silicon；本页不声称已执行、已编译或已有 replay 结果。 |
-| COURSE-S63 | 2 | 当前是 proposed acceptance design：同一 trace 进入 checked gfsim evidence 与 pyCircuit replay target；只定义验收项，不展示 pyCircuit 结果。 | ClosedLoopVerification | `qproj-davincioo-lab`, `pycircuit`, `course-model` | 本页是 proposed acceptance design；不声称 replay implementation 已存在或 pyCircuit 已产出结果。绝对 cycles 只有校准后才可比较。 |
-| COURSE-S64 | 2 | Agent 加速可执行证据循环；选择问题、划定语义边界和判断架构取舍仍是研究核心。 | deterministic HTML/CSS overlay | `agentic-materials`, `course-synthesis`, `qproj-davincioo-lab` | Agent 是研究工具，不替代语义权威、实验边界或体系结构判断。 |
+| COURSE-S30 | 1 | 严格保留更新版 Keynote 第 29 页文字、图片与构图 | KeynoteSourceStage | `publish-keynote-page-29` | 本页逐字逐图保留更新版 Keynote；指令语义以 PTO-ASL 规范为准。 |
+| COURSE-S31 | 1 | 严格保留更新版 Keynote 第 30 页文字、图片与构图 | KeynoteSourceStage | `publish-keynote-page-30` | 本页逐字逐图保留更新版 Keynote；指令语义以 PTO-ASL 规范为准。 |
+| COURSE-S32 | 1 | 语义路由到不同执行资源 | KeynoteSourceStage | `publish-keynote-page-31`, `pto-spec`, `davincioo-public-docs` | TPUT/TGET 是 DaVinciOO communication extensions — not normative PTO-ASL；不展示私有时序细节。 |
+| COURSE-S33 | 1 | 程序语义与机器资源相互映射 | KeynoteSourceStage | `publish-keynote-page-32` | 代码与抽象机器按原稿展示；具体规范效果以 PTO-ASL 为准。 |
+| COURSE-S34 | 1 | Tensor → Tile → Layout | KeynoteSourceStage | `publish-keynote-page-33` | 工厂图是原稿教学比喻；TLOAD/TSTORE 规范语义以 PTO-ASL 为准。 |
+| COURSE-S35 | 1 | 总时间 = 固有搬运 + 排队 + 同步。 | TransferTimeLab | `course-synthesis`, `pto-spec`, `davincioo-public-docs` | 公式是教学一阶模型；TPUT/TGET 是 DaVinciOO 通信扩展，不属于规范 PTO-ASL；不暴露私有 DaVinci 时序实现。 |
+| COURSE-S36 | 2 | Agentic Model | KeynoteSourceStage | `publish-keynote-page-34` | 可见文字与图形直接来自演讲人提供的 Keynote。 |
+| COURSE-S37 | 2 | 严格保留更新版 Keynote 第 33 页文字、图片与构图 | KeynoteSourceStage | `publish-keynote-page-35` | 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。 |
+| COURSE-S38 | 2 | 严格保留更新版 Keynote 第 34 页文字、图片与构图 | KeynoteSourceStage | `publish-keynote-page-36` | 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。 |
+| COURSE-S39 | 2 | 严格保留更新版 Keynote 第 35 页文字、图片与构图 | KeynoteSourceStage | `publish-keynote-page-37` | 本页逐字逐图保留更新版 Keynote；图中参数与结构按原稿教学语境解释。 |
+| COURSE-S40 | 2 | 串行语句只定义构造顺序；生成的 Compute、Storage、Bus 与 DMA 在 C++ Runtime 中并发运行。 | AgcElaborationExplorer | `pyc-pipeline`, `pyc-frontend-api`, `course-agc-design` | AGC API 是设计提案；JIT elaboration 与层级元编程基础来自 pyCircuit 文档。 |
+| COURSE-S41 | 2 | 4 个同参数 Cluster 共享一种特化模块定义，却拥有独立队列、计数器、Storage 状态与统计。 | TraceAnatomy | `pyc-frontend-api`, `pyc-ir-spec`, `course-agc-design` | 模块名和 AGC IR 语法是设计提案；层级实例概念对应 pyCircuit 的 pyc.instance。 |
+| COURSE-S42 | 2 | 层级只在需要复用、独立状态和独立编译时保留；辅助逻辑应当展开或只在编译期执行。 | SimQueueExplorer | `pyc-pipeline`, `pyc-frontend-api`, `course-agc-design` | @template/@system 是 AGC 设计提案；@module/@function/@const 是 pyCircuit 现有基础。 |
+| COURSE-S43 | 2 | Core 数、端口数、Bank、Queue 深度和 DMA 存在性进入特化键；frequency、trace_enable、fault_rate 不进入。 | AgcSpecializationExplorer | `pyc-pipeline`, `pyc-frontend-api`, `course-agc-design` | Static/Runtime 注解和 AGC key 是设计提案；pyCircuit value_params 证明运行时边界可与特化身份分离。 |
+| COURSE-S44 | 2 | 首次遇到一组 Static 参数时执行生成器；缓存命中时直接复用已经验证的 agc.module。 | AgcPipelineStepper | `pyc-pipeline`, `course-agc-design` | AGC pass 名称与目标 lowering 是设计提案；两阶段 frontend/backend 结构来自 pyCircuit。 |
+| COURSE-S45 | 2 | 只 hash 参数会错误复用旧模块；source hash、依赖 hash、Dialect 版本和 Runtime ABI 都必须参与身份。 | KeynoteSourceStage | `pyc-pipeline`, `course-agc-design` | key 组成和符号命名是 AGC 设计提案；确定性 manifest 与每特化一份 IR 来自 pyCircuit。 |
+| COURSE-S46 | 2 | 规范化结果必须可比较、可序列化、可排序、可 hash；不可控对象在进入 AGC IR 前就被拒绝。 | CyclePlayback | `pyc-frontend-api`, `course-agc-design` | AGC 的禁止列表是设计提案；@spec.valueclass 是 pyCircuit 现有前端机制。 |
+| COURSE-S47 | 2 | 一份 agc.module 定义可以被多个 agc.instance 复用；后端无需把整座 NPU 城市拍平成巨型 C++ 文件。 | KeynoteSourceStage | `pyc-ir-spec`, `course-agc-design` | agc.module/agc.instance 语法是设计提案；层级保留对应 pyCircuit 的 pyc.instance 和 strict hierarchy policy。 |
+| COURSE-S48 | 2 | Python 用户描述 bandwidth、latency、queue_depth；agc-materialize-queues 生成周期可见的运行时缓冲与回压。 | ParameterSweep | `pyc-pipeline`, `course-agc-design` | agc-materialize-queues 与 SimQueue lowering 是设计提案；pyCircuit 的 frontend/backend 分工是参考基础。 |
+| COURSE-S49 | 2 | Python 组织架构，Template JIT 生成特化，AGC IR 保存确定图，C++ Runtime 执行并发周期行为。 | EvidenceTimeline | `pyc-pipeline`, `pyc-frontend-api`, `pyc-ir-spec`, `course-agc-design` | 完整 AGC 工具链仍是设计提案；借用的是 pyCircuit 已验证的元编程与层级编译路线。 |
+| COURSE-S50 | 2 | 输入 activation × BF16 weight → GEMM → projected output；一次投影就是可追踪的垂直切片。 | deterministic HTML/CSS overlay | `qproj-davincioo-lab`, `course-synthesis` | 这是 q_proj 教学切片，不声称覆盖完整模型推理、量化或并行策略。 |
+| COURSE-S51 | 2 | 每一层都保留可审计的中间产物，而不是把程序直接跳成一个性能数字。 | KeynoteSourceStage | `qproj-davincioo-lab`, `davincioo-public-docs` | 流水线描述止于 host trace 与 gfsim replay，不推断未公开的部署格式。 |
+| COURSE-S52 | 2 | Trace 明示 input_tiles / output_tiles / scalar_inputs；dependency readiness 由 rename / scoreboard 推导。 | KeynoteSourceStage | `qproj-davincioo-lab`, `pto-spec` | opcode 组合来自已检查的 q_proj reference replay；不把一次展开推广成所有实现的唯一 lowering。 |
+| COURSE-S53 | 2 | Tile metadata 可见；依赖由 rename / scoreboard 推导。 | TraceAnatomy | `qproj-davincioo-lab`, `course-model` | 组件只显示 sanitized checked sample 的真实字段，不补造 deps；artifact 不可用时只显示明确标注的 teaching sample。 |
+| COURSE-S54 | 2 | push 先进入 pending；延迟到期才 visible；容量耗尽会把 backpressure 传回生产者。 | SimQueueExplorer | `davincioo-public-docs`, `course-model` | 不展示私有实现字段、调度规则或 timing constants；组件是教学模型。 |
+| COURSE-S55 | 2 | TraceSource 供给事件，乱序窗口追踪依赖，四类执行资源完成工作并通过 wakeup 释放消费者。 | DaVinciTopology | `davincioo-public-docs`, `course-synthesis` | 图不公开私有状态字段、选择策略或 timing constants，只表达教学层连接关系。 |
+| COURSE-S56 | 2 | 公式是可替换假设；参数必须来自公开配置、实验或明确的课程设定。 | KeynoteSourceStage | `davincioo-public-docs`, `course-model` | 页面不披露私有 timing constants；公式只定义参数关系，不声称完成校准。 |
+| COURSE-S57 | 2 | 这是 DaVinci gfsim implementation routing；PTO family 只定义语义类别，不规定同一资源映射。 | KeynoteSourceStage | `davincioo-public-docs`, `pto-spec` | TMOV 被标为 PTO family；具体映射属于 DaVinci gfsim 实现而非 PTO 规范。 |
+| COURSE-S58 | 2 | 每次按键只做一次状态转移：dispatch、ready、issue、execute、complete、retire 都能被逐步检查。 | CyclePlayback | `course-model`, `davincioo-public-docs` | 播放器是确定性教学模型，不声称复制 gfsim 的全部内部事件顺序。 |
+| COURSE-S59 | 2 | 系统时间还包含依赖等待、资源争用、ROB/IQ 容量、可重叠工作与最终 critical path。 | deterministic HTML/CSS overlay | `course-model`, `davincioo-public-docs` | 因果项是公开教学分类，不给出私有实现的精确等待分解。 |
+| COURSE-S60 | 2 | 同时观察 ROB depth、Tile tags、TMA BW、Cube MACs 与 engine counts；结果只支持候选方向。 | ParameterSweep | `qproj-davincioo-lab`, `experiment-artifacts`, `course-model` | 组件只展示本地 qproj_sweep.json 的 checked points；artifact 不可用时明确显示 unavailable，不生成 q_proj 替代证据。 |
+| COURSE-S61 | 2 | 按 opcode 与 engine 过滤 q_proj 事件，检查 issue、complete 与 retire 的相对位置。 | EvidenceTimeline | `qproj-davincioo-lab`, `experiment-artifacts` | 时间线读取本地 CSV，展示 reference_replay；不声称是新抓取的硬件波形。 |
+| COURSE-S62 | 2 | checked reference replay: 562 records / 11028 cycles。候选点来自敏感性，不代表结构等价。 | deterministic HTML/CSS overlay | `qproj-davincioo-lab`, `experiment-artifacts` | durable artifact 标为 reference_replay。一次 task-local gfsim re-simulation 曾重现 11028 cycles，但不是 checked live artifact，也不是 fresh PTO capture；不宣称等价。 |
+| COURSE-S63 | 2 | NPU Core for PTO | KeynoteSourceStage | `publish-keynote-page-38` | 可见文字与图形直接来自演讲人提供的 Keynote。 |
+| COURSE-S64 | 2 | 分层调度 | KeynoteSourceStage | `publish-keynote-page-39` | 本页可见内容完全来自历史源稿，不追加当前实现结论。 |
+| COURSE-S65 | 2 | PTO 多级调度层次 | KeynoteSourceStage | `publish-keynote-page-40` | 可见层次与术语完全来自历史源稿。 |
+| COURSE-S66 | 2 | PTO / MLIR 源码表达 | KeynoteSourceStage | `publish-keynote-page-41` | 源码截图是历史源稿内容；本页不声称已用当前工具链重新编译。 |
+| COURSE-S67 | 2 | 历史源稿性能结果 | KeynoteSourceStage | `publish-keynote-page-42` | 性能图明确标为历史源稿结果，不作为本次环境新测量。 |
+| COURSE-S68 | 2 | Swizzle | KeynoteSourceStage | `publish-keynote-page-43` | Swizzle 可见内容直接来自历史源稿，不延伸到未核实实现细节。 |
+| COURSE-S69 | 2 | Swizzle 容量与性能 | KeynoteSourceStage | `publish-keynote-page-44` | 所有数值明确属于历史源稿，不标为当前实验结果。 |
+| COURSE-S70 | 2 | 每个敏感参数都要落到容量、端口、队列、带宽或延迟契约，并写出可验证的接受条件。 | deterministic HTML/CSS overlay | `course-synthesis`, `qproj-davincioo-lab` | 敏感性用于形成候选约束，不直接决定实现尺寸或 PPA 最优点。 |
+| COURSE-S71 | 2 | 实现可以改变队列与流水线，但不能悄悄改变 TLOAD、TMOV、TEXTRACT、TPUSH、TPOP 的软件可见 effect。 | deterministic HTML/CSS overlay | `pto-spec`, `davincioo-public-docs`, `normative-language` | TPUT/TGET 明确标为 DaVinciOO communication extensions，不属于 normative PTO-ASL。 |
+| COURSE-S72 | 2 | L0 intent → L1 contract → L2 mechanism → L3 executable acceptance；层间关系必须显式可追踪。 | deterministic HTML/CSS overlay | `ndf-course`, `normative-language` | 当前 L3 明确是 draft test contract，不是已经存在的 implementation。 |
+| COURSE-S73 | 2 | sequence_id 穿过 Trace、Tile Register、TMA、Extract、Matmul 与乱序窗口。 | deterministic HTML/CSS overlay | `ndf-course`, `qproj-davincioo-lab`, `course-synthesis` | IDs 是课程设计契约；不冒充已完成的生产实现或最终命名。 |
+| COURSE-S74 | 2 | spec、model、implementation、verification Agent 围绕同一 NDF 与 trace 工作；pyCircuit 是 pinned implementation target/source surface。 | deterministic HTML/CSS overlay | `pycircuit`, `davincioo-public-docs`, `agentic-materials` | pyCircuit 是 implementation target/source surface，不是 RTL 或 silicon；本页不声称已执行、已编译或已有 replay 结果。 |
+| COURSE-S75 | 2 | 当前是 proposed acceptance design：同一 trace 进入 checked gfsim evidence 与 pyCircuit replay target；只定义验收项，不展示 pyCircuit 结果。 | ClosedLoopVerification | `qproj-davincioo-lab`, `pycircuit`, `course-model` | 本页是 proposed acceptance design；不声称 replay implementation 已存在或 pyCircuit 已产出结果。绝对 cycles 只有校准后才可比较。 |
+| COURSE-S76 | 2 | Agent 加速可执行证据循环；选择问题、划定语义边界和判断架构取舍仍是研究核心。 | deterministic HTML/CSS overlay | `agentic-materials`, `course-synthesis`, `qproj-davincioo-lab` | Agent 是研究工具，不替代语义权威、实验边界或体系结构判断。 |
 
 ## Verified mappings
 
