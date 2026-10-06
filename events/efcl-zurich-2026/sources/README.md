@@ -1,3 +1,6 @@
 # Sources
 
-Public source citations will be added as workshop content is prepared. No private implementation, invitation, identity or travel information is included.
+- [Related work](related-work.md): six primary studies, exact paper versions and comparison limits.
+- [Reference entry guidance](pycircuit-reference-entries.md): source-selection and disclosure instructions for later authors.
+
+Detailed local source maps and private implementation material are excluded. Select accurate, approved references before adding code excerpts or performance claims.

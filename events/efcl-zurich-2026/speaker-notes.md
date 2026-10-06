@@ -1,5 +1,5 @@
 # Speaker notes
 
-EFCL Zurich Workshop · ETH Zurich · 12 October 2026
+Use the [PyCircuit/NDF outline](notes/pycircuit-outline.md) as the authoritative narrative and the [checklist](notes/slide-authoring-checklist.md) for later production. No slide count or duration is fixed.
 
-In preparation. Duration and agenda have not been announced here.
+The [authoring background](notes/pycircuit-section-brief.md) separates the intended flow from current implementation claims. [Governance Q&A](notes/pycircuit-ndf-discussion.md) contains open proposals. Local-only implementation provenance is not part of these public materials.

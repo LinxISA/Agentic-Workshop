@@ -2,10 +2,15 @@
 
 **12 October 2026 · ETH Zurich**
 
-Slides and speaker notes are in preparation. The official session title, duration and agenda will be confirmed before publication of the talk. All new workshop materials will be in English.
+English-language slides remain in preparation. The title, duration and final agenda are not fixed by these authoring notes.
 
 - [Placeholder](index.html)
 - [Slides](slides.md)
 - [Speaker notes](speaker-notes.md)
-- [Assets](assets/README.md)
+- [PyCircuit/NDF outline](notes/pycircuit-outline.md)
+- [Authoring background](notes/pycircuit-section-brief.md)
+- [Governance Q&A](notes/pycircuit-ndf-discussion.md)
+- [Slide-authoring checklist](notes/slide-authoring-checklist.md)
+- [LaTeX source-layout plan](notes/latex-source-layout.md)
 - [Sources](sources/README.md)
+- [Assets](assets/README.md)
