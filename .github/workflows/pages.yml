@@ -43,12 +43,12 @@ jobs:
       - name: Build Pages artifact
         run: npm run build
         env:
-          SUMMERSCHOOL_BASE_PATH: /SummerSchool
+          SUMMERSCHOOL_BASE_PATH: /Agentic-Workshop
 
       - name: Verify Pages artifact
         run: npm run test:pages
         env:
-          SUMMERSCHOOL_EXPECTED_BASE_PATH: /SummerSchool
+          SUMMERSCHOOL_EXPECTED_BASE_PATH: /Agentic-Workshop
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

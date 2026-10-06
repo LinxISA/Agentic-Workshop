@@ -10,3 +10,7 @@ tmp/
 qa/pdf-check/
 qa/interactions/
 .worktrees/
+
+# Local presentation originals; not approved for publication.
+/publish
+/events/*/publish/
