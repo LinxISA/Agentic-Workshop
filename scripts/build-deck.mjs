@@ -1,3 +1,4 @@
+import { existsSync, realpathSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -29,7 +30,7 @@ export function buildArgs(session, workspace = workspaceRoot) {
   const { entry, out } = sessionConfig(session)
   return [
     'build',
-    resolve(workspace, entry),
+    existsSync(resolve(workspace, entry)) ? realpathSync(resolve(workspace, entry)) : resolve(workspace, entry),
     '--base',
     deckBase(session),
     '--out',
