@@ -14,3 +14,9 @@ English-language slides remain in preparation. The title, duration and final age
 - [LaTeX source-layout plan](notes/latex-source-layout.md)
 - [Sources](sources/README.md)
 - [Assets](assets/README.md)
+
+## Independent talks
+
+- [Talk index](talks/README.md): PyCircuit/NDF and Superscalar NPU are sibling talks.
+- [Superscalar NPU outline](talks/superscalar-npu/outline.md)
+- [Eight-problem review summary](talks/superscalar-npu/problem-summary.md)
