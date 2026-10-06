@@ -43,12 +43,12 @@ Record the problem first. Architecture-by-architecture comparison and mechanism 
 **Mixed-precision quantization data-layout overhead and SIMD/SIMT utilization**
 
 - **Origin / status:** Third user-described candidate; format, workload and evidence remain to be clarified.
-- **Scenario:** A workload moves between 32-bit and 8/4-bit representations, including scale metadata, while computation uses fixed vector/lane widths.
+- **Scenario:** A workload moves between 32-bit and 8/4-bit representations, including scale metadata, while computation uses target-specific vector/lane widths and operand organizations (including scalable-vector implementations).
 - **Trigger:** Representation widths and mixed-format layout do not naturally match the execution width or operand organization.
 - **Symptom:** The compiler may need packing, unpacking, shuffling and other data-organization transformations. These can complicate efficient lane use and add work beyond useful arithmetic.
 - **Possible consequence:** Conversion/layout overhead and reduced effective arithmetic utilization may affect throughput, bandwidth or programming/compiler effort in the relevant workload.
 - **Clarification needed:** The spoken format names do not yet establish FP versus INT. Scale granularity, storage and algorithm are unspecified. The spoken transformation name “roof rolling” is unclear; loop unrolling is only a possible interpretation, not a confirmed requirement.
-- **Scope boundary:** This is a candidate issue for specified formats and workloads, not a claim that all SIMD/SIMT execution is inefficient. No representation-specific behavior or numerical loss is assumed, and no solution is selected.
+- **Scope boundary:** U003 concerns representation/layout/scale preparation and compute-width adaptation; U005 concerns execution bottlenecks inside vector/reduction operations. This is a candidate issue for specified formats and workloads, not a claim that all SIMD/SIMT execution is inefficient. No representation-specific behavior or numerical loss is assumed, and no solution is selected.
 - **Future evidence placeholder:** Exact representation and scale layout, target vector/lane width, an annotated workload/compiler transformation sequence, useful arithmetic versus layout/conversion work, and measured utilization under a named configuration. Not collected.
 
 ## User-described problem: NPU-U-004
