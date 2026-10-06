@@ -1,0 +1,24 @@
+# Related work: LLM-assisted hardware design
+
+Primary-source research supplied for this workshop, current through **6 October 2026**. Results below are author-reported and have not been reproduced here. Compare specification structure and traceability, generation level, oracle provenance, authority to revise specifications, and collaboration/scale.
+
+| Work and version | Method and reported scope | Comparison boundary |
+| --- | --- | --- |
+| [SpecLLM v1](https://arxiv.org/html/2401.13266v1), 24 January 2024; [repository](https://github.com/hkust-zhiyao/SpecLLM) | Generates and reviews hierarchical HAS/MAS/LAS specifications across 46 documents. | Hierarchical specification authoring is an established precedent. The study does not establish a complete specification–implementation loop with independent tool-based acceptance. |
+| [MAGE v1](https://arxiv.org/html/2412.07822v1), 10 December 2024; DAC 2025; [repository](https://github.com/stable-lab/MAGE) | Testbench, RTL, Judge and Debug roles use simulation, checkpoints and rollback. Reports 95.7% pass@1 on VerilogEvalV2 for the complete sampling workflow. | Golden testbenches can be used in the workflow and internal testbenches can be regenerated. Do not describe the entire process as strictly independent held-out verification, or the result as a single unassisted generation. |
+| [Spec2RTL-Agent v2](https://arxiv.org/html/2506.13905v2), 8 September 2025 | Referenced subfunctions from the original specification → pseudocode → Python → C++ / Stratus HLS. Reflection can revise upstream instructions. AES/DSS/HMAC cases report 4/6/3 human interventions. | Generation extends beyond direct RTL and feedback can change upstream instructions. Tests derive from specifications, generated code or self-checking mechanisms; independence is not uniform. |
+| [CRADLE v1](https://arxiv.org/html/2508.08709v1), 12 August 2025; ISOCC 2025 | User PPA/architecture choices guide optimizer and rewriter agents with ModelSim, Yosys and nextpnr. Optimizes 50 RTLLM designs with existing RTL/testbenches for ECP5; o4-mini averages 48% fewer LUTs and 40% fewer FFs. | Architecture exploration and physical implementation feedback already appear in related work. These results concern the evaluated FPGA optimization scope, not complex-core architectural correctness or universal PPA improvement. |
+| [FormalRTL v1](https://arxiv.org/html/2603.08738v1); abstract-page submission date 25 February 2026 | C reference plus specification, Clang AST dependency extraction, RTL/harness generation and hw-cbmc counterexample repair. FP16/HiFloat8 units reach approximately 1.1k RTL lines including dependencies. | Formal conclusions depend on the reference, harness, assumptions and temporal scope. The arXiv identifier's month is not used to infer the submission date. |
+| [Hierarchical IRs and End-to-End Multi-Agent Workflow v1](https://arxiv.org/html/2608.30659v1), 31 August 2026 | Architectural Sketch describes modules/connections; Operational Specification describes operations, interfaces and transfers. Generates RTL, software reference and a deterministic testbench suite, with Probe/Analyzer/Fixer feedback. Seven systems, 29 submodules, including RISC-V/vector cases; GPT-5.4 reports 7/7 in a human-golden final evaluation. | Internal oracles share planner provenance; distinguish them from the final human-golden evaluation. The RISC-V example has 514 RTL lines and four submodules, not the scale of a large complex core. |
+
+## Positioning the workshop proposal
+
+Do not claim that previous work only generates RTL, lacks hierarchical representations or multi-agent feedback, or excludes architecture exploration. These capabilities have clear precedents. Do not claim priority for them.
+
+Our proposal combines stable NDF identities, L0–L3 contract refinement and H1–H3 hardware hierarchy, dependency/code/evidence links, fixed task closures, edit authority and oracle boundaries with architect/Agent refinement into typed `struct` / `module` / `Rule`, IR checks/linking and C++/Verilog outputs. The emphasis is an auditable system-design workflow: distinguish implementation repair from authorized contract or architecture revision, and track when changes invalidate acceptance evidence.
+
+Rule ownership/conflict checking provides concrete implementation support. The complete governance and feedback loop remains a research objective. Compiler-checked contracts are not a proof of formal correctness; shared generation of implementation and oracle is not independent acceptance.
+
+**The question is how to preserve design intent, editing authority, and acceptance evidence as humans and agents refine a hardware system.**
+
+For later slides, cite the exact linked version and retain the reported evaluation scope beside each quantitative result. Keep proposal claims separate from demonstrated current capabilities.
