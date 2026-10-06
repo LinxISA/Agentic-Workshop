@@ -24,3 +24,5 @@ This handoff requests later mechanism research; it contains no newly collected p
 
 - [ ] Include the accepted U001 low-concurrency/short-task scenario: launch, data preparation, synchronization, critical dependency waits and fine-grained scheduling overhead in end-to-end latency; relate cross-card synchronization to U006 without generalizing all decode workloads. Evidence remains pending.
 - [ ] Apply the [shared whole-core evaluation dimension](problem-list.md#shared-whole-core-evaluation-dimension) across U001–U008: dynamic-control window/tag/state/comparison/arbitration/recovery costs versus reduced waiting, SRAM reservation and data movement; ledger throughput, task latency, area, power, energy, storage and timing. Use the same scale for our design and alternatives, with measurements and assumptions labeled separately. Accepted for problem outline; evidence pending.
+
+- [ ] Use the [functional control inventory](../../sources/control-logic-inventory.md) when discussing coordination cost; distinguish hardware from software/compiler state and retain unknown public details. Do not infer area or rank designs from mechanism counts.

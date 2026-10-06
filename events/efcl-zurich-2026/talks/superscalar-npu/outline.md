@@ -10,6 +10,8 @@ Working hypothesis: bounded dynamic control can reduce resource waiting by match
 
 ## Comparison background
 
+See the [concise U001 architecture comparison](../../sources/U001-comparison.md#concise-per-architecture-summary) for the six-category mechanism and responsibility summary.
+
 The three comparison families are NVIDIA GPGPU, TPU / compiler-directed static scheduling, and Tenstorrent / dataflow architectures. Select specific generations, software stacks and scheduling mechanisms later. Do not assume Tenstorrent is purely static or lacks dynamic mechanisms. For each problem, choose the comparison group and match workload, precision, resource budget and architectural level. See the [recorded scope](problem-list.md#comparison-scope); no performance ranking is asserted.
 
 For each agreed problem/context, compare NVIDIA GPGPU, TPU / compiler-directed scheduling, Tenstorrent / dataflow and our superscalar NPU in that order. Explain each mechanism, applicable conditions, advantages and costs/limitations before drawing any conclusion. Other architectures have solutions; our advantage is a hypothesis to examine, not the premise. Use the [fair comparison template](problem-list.md#fair-mechanism-comparison-template).
@@ -90,3 +92,5 @@ Later comparison research must identify generation/product, compiler/runtime/con
 ## Open discussion
 
 When does dynamic control repay its cost? How can late allocation preserve forward progress? What establishes safe last-consumer release under aliasing and recovery? How should prefetch yield to demand and backpressure? Discuss tradeoffs without claiming universal superiority or already solved mechanisms.
+
+Control discussion reference: [functional control-logic inventory](../../sources/control-logic-inventory.md), separating hardware/model mechanisms from software bookkeeping without size or PPA claims.
