@@ -90,3 +90,5 @@ Later comparison research must identify generation/product, compiler/runtime/con
 ## Open discussion
 
 When does dynamic control repay its cost? How can late allocation preserve forward progress? What establishes safe last-consumer release under aliasing and recovery? How should prefetch yield to demand and backpressure? Discuss tradeoffs without claiming universal superiority or already solved mechanisms.
+
+Reviewed U003 entry: [seven-architecture mechanism and remaining-cost summary](../../sources/U003-comparison.md#reviewed-seven-architecture-summary), distinguishing representation/layout/scale preparation from U005 internal execution and fixed AVX/NEON from SVE VLA. See [compiler optimization boundaries](../../sources/U003-compiler-optimizations.md).
