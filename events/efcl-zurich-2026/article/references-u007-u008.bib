@@ -1,0 +1,244 @@
+@article{u007_smith_pleszkun,
+  author = {Smith, James E. and Pleszkun, Andrew R.},
+  title = {Implementing Precise Interrupts in Pipelined Processors},
+  journal = {IEEE Transactions on Computers},
+  volume = {37},
+  number = {5},
+  pages = {562--573},
+  year = {1988},
+  url = {https://american.cs.ucdavis.edu/academic/readings/papers/smithpleszkun.pdf}
+}
+
+@misc{u007_ptx,
+  author = {{NVIDIA}},
+  title = {{PTX ISA} 9.4: Memory Consistency Model},
+  year = {2026},
+  howpublished = {NVIDIA developer documentation},
+  url = {https://docs.nvidia.com/cuda/parallel-thread-execution/#memory-consistency-model},
+  note = {Live manual checked 7 October 2026; architecture and instruction restrictions apply}
+}
+
+@misc{u007_cuda_context,
+  author = {{NVIDIA}},
+  title = {{CUDA Driver API} 13.4: Context Management},
+  year = {2026},
+  howpublished = {NVIDIA developer documentation},
+  url = {https://docs.nvidia.com/cuda/cuda-driver-api/cuda_driver_api/group__CUDA__CTX.html},
+  note = {Live manual checked 7 October 2026; asynchronous error reporting notes}
+}
+
+@misc{u007_cuda_async,
+  author = {{NVIDIA}},
+  title = {{CUDA Programming Guide}: Asynchronous Execution},
+  year = {2026},
+  howpublished = {NVIDIA developer documentation},
+  url = {https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html},
+  note = {Live manual checked 7 October 2026}
+}
+
+@misc{u007_compute_sanitizer,
+  author = {{NVIDIA}},
+  title = {{Compute Sanitizer} User Manual},
+  year = {2026},
+  howpublished = {NVIDIA developer documentation},
+  url = {https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html},
+  note = {Live manual checked 7 October 2026; tool coverage and error-action settings are release dependent}
+}
+
+@misc{u007_cuda_gdb,
+  author = {{NVIDIA}},
+  title = {{CUDA-GDB} 13.4 Documentation},
+  year = {2026},
+  howpublished = {NVIDIA developer documentation},
+  url = {https://docs.nvidia.com/cuda/cuda-gdb/index.html},
+  note = {Live manual checked 7 October 2026; precise attribution and autostep sections}
+}
+
+@misc{u007_ascend_sync,
+  author = {{Huawei Technologies}},
+  title = {{Ascend C CANN} 8.5: Introduction to Synchronization Control},
+  year = {2026},
+  howpublished = {Ascend developer documentation},
+  url = {https://www.hiascend.com/doc_center/source/en/CANNCommunityEdition/850/API/ascendcopapi/atlasascendc_api_07_0179.html},
+  note = {Versioned documentation checked 7 October 2026; product-specific pipeline restrictions apply}
+}
+
+@misc{u007_ascend_sanitizer,
+  author = {{Ascend}},
+  title = {{MindStudio Sanitizer} User Guide},
+  year = {2026},
+  howpublished = {Author-maintained repository},
+  url = {https://github.com/Ascend/mssanitizer/blob/master/docs/en/user_guide/mssanitizer_user_guide.md},
+  note = {Mutable master branch checked 7 October 2026; racecheck coverage is product and release dependent}
+}
+
+@misc{u007_ascend_debug,
+  author = {{Ascend}},
+  title = {{MindStudio Debugger} User Guide},
+  year = {2026},
+  howpublished = {Author-maintained repository},
+  url = {https://github.com/Ascend/msdebug/blob/master/docs/en/user_guide/msdebug_user_guide.md},
+  note = {Mutable master branch checked 7 October 2026; core-dump exception and snapshot limitations}
+}
+
+@misc{u007_xla_tokens,
+  author = {{OpenXLA Project}},
+  title = {Operation Semantics: {AfterAll}},
+  year = {2026},
+  howpublished = {OpenXLA documentation},
+  url = {https://openxla.org/xla/operation_semantics#afterall},
+  note = {Live documentation checked 7 October 2026; compiler-IR semantics}
+}
+
+@misc{u007_pallas_pipeline,
+  author = {{JAX Authors}},
+  title = {{TPU} Pipelining},
+  year = {2026},
+  howpublished = {JAX Pallas documentation},
+  url = {https://docs.jax.dev/en/latest/pallas/tpu/pipelining.html},
+  note = {Live documentation checked 7 October 2026; Pallas TPU programming interface}
+}
+
+@misc{u007_pallas_distributed,
+  author = {{JAX Authors}},
+  title = {Distributed Computing in {Pallas} for {TPUs}},
+  year = {2026},
+  howpublished = {JAX documentation},
+  url = {https://docs.jax.dev/en/latest/pallas/tpu/distributed.html},
+  note = {Live documentation checked 7 October 2026; DMA completion, capacity, barriers, and failure modes}
+}
+
+@misc{u007_pallas_debug,
+  author = {{JAX Authors}},
+  title = {{Pallas} Debugging Guide},
+  year = {2026},
+  howpublished = {Author-maintained repository},
+  url = {https://github.com/jax-ml/jax/blob/main/jax/experimental/pallas/g3doc/debugging.md},
+  note = {Mutable main branch checked 7 October 2026; interpreted race detection and compiler dumps}
+}
+
+@misc{u007_tt_ordering,
+  author = {{Tenstorrent}},
+  title = {{TT-Metalium}: Ordering ({NOC}, {CMD\_BUF}, {VC})},
+  year = {2026},
+  howpublished = {TT-Metalium developer documentation},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/kernel_apis/data_movement/ordering.html},
+  note = {Live documentation checked 7 October 2026; stated NoC operation scope}
+}
+
+@misc{u007_tt_ethernet,
+  author = {{Tenstorrent}},
+  title = {Basic {Ethernet} Guide},
+  year = {2026},
+  howpublished = {Author-maintained TT-Metal repository},
+  url = {https://github.com/tenstorrent/tt-metal/blob/main/tech_reports/EthernetMultichip/BasicEthernetGuide.md},
+  note = {Mutable main branch checked 7 October 2026; cited flow-control discussion scoped to Wormhole}
+}
+
+@misc{u007_tt_watcher,
+  author = {{Tenstorrent}},
+  title = {{TT-Metalium Watcher}},
+  year = {2026},
+  howpublished = {TT-Metalium developer documentation},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tools/watcher.html},
+  note = {Live documentation checked 7 October 2026; hardware-exception PC/cause reporting marked Quasar only}
+}
+
+@misc{u007_tt_noc_debug,
+  author = {{Tenstorrent}},
+  title = {{TT-Metalium NOC Debug Dump}},
+  year = {2026},
+  howpublished = {TT-Metalium developer documentation},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tools/noc_debug_dump.html},
+  note = {Live documentation checked 7 October 2026; experimental checker with timing and overhead limitations}
+}
+
+@misc{u008_sorensen,
+  author = {Sorensen, Tyler and Salvador, Lucas F. and Raval, Harmit and Evrard, Hugues and Wickerson, John and Martonosi, Margaret and Donaldson, Alastair F.},
+  title = {Specifying and Testing {GPU} Workgroup Progress Models},
+  year = {2021},
+  howpublished = {arXiv:2109.06132},
+  url = {https://arxiv.org/abs/2109.06132},
+  note = {Submitted 13 September 2021; progress-model formalization, not certification of later architectures}
+}
+
+@misc{u008_cuda_guide,
+  author = {{NVIDIA}},
+  title = {{CUDA C++ Programming Guide} 13.0},
+  year = {2025},
+  howpublished = {NVIDIA archived developer documentation},
+  url = {https://docs.nvidia.com/cuda/archive/13.0.0/cuda-c-programming-guide/index.html},
+  note = {Checked 7 October 2026; thread hierarchy, cooperative grid synchronization, and programmatic dependent launch}
+}
+
+@misc{u008_nccl,
+  author = {{NVIDIA}},
+  title = {{NCCL} 2.26.5: Creating a Communicator},
+  year = {2025},
+  howpublished = {NVIDIA archived developer documentation},
+  url = {https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2265/user-guide/docs/usage/communicators.html},
+  note = {Checked 7 October 2026; concurrent communicator ordering and asynchronous error handling}
+}
+
+@misc{u008_ascend_tque,
+  author = {{Huawei Technologies}},
+  title = {{Ascend C}: Programming Principles of the {TPipe--TQue} Framework},
+  year = {2026},
+  howpublished = {Ascend C documentation},
+  url = {https://asc.gitcode.com/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E5%9F%BA%E4%BA%8ETPipe-TQue%E6%A1%86%E6%9E%B6%E7%BC%96%E7%A8%8B/TPipe-TQue%E6%A1%86%E6%9E%B6%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86.html},
+  note = {Chinese-language master-branch developer preview checked 7 October 2026; AI Core SIMD programming model}
+}
+
+@misc{u008_ascend_batch,
+  author = {{Huawei Technologies}},
+  title = {{CANN} 9.0: {SIMD} Built-In Keywords},
+  year = {2026},
+  howpublished = {Ascend developer documentation},
+  url = {https://www.hiascend.com/document/detail/en/CANNCommunityEdition/900/programug/Ascendcopdevg/atlas_ascendc_10_10053.html},
+  note = {Checked 7 October 2026; normal and batch scheduling modes, subject to product support}
+}
+
+@misc{u008_ascend_syncall,
+  author = {{Huawei Technologies}},
+  title = {{Ascend C SyncAll}},
+  year = {2026},
+  howpublished = {Ascend C API documentation},
+  url = {https://asc.gitcode.com/api/SIMD-API/basic_api/sync_control/inter_core_sync/SyncAll.html},
+  note = {Chinese-language developer preview checked 7 October 2026; page identifies master build 5c07153f668d with uncommitted changes; logical-block and physical-core constraints}
+}
+
+@misc{u008_pallas_async,
+  author = {{JAX Authors}},
+  title = {{Pallas} Async Operations},
+  year = {2026},
+  howpublished = {JAX Pallas design documentation},
+  url = {https://docs.jax.dev/en/latest/pallas/design/async_note.html},
+  note = {Experimental design note checked 7 October 2026; asynchronous dependency and lifetime representation}
+}
+
+@misc{u008_tt_cb,
+  author = {{Tenstorrent}},
+  title = {{TT-Metalium} Circular Buffer APIs},
+  year = {2026},
+  howpublished = {TT-Metalium developer documentation},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/kernel_apis/circular_buffers/circular_buffers.html},
+  note = {Live documentation checked 7 October 2026; bounded producer/consumer model}
+}
+
+@misc{u008_tt_reserve,
+  author = {{Tenstorrent}},
+  title = {{TT-Metalium cb\_reserve\_back}},
+  year = {2026},
+  howpublished = {TT-Metalium kernel API documentation},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/kernel_apis/circular_buffers/cb_reserve_back.html},
+  note = {Live documentation checked 7 October 2026; capacity poll and pointer behavior}
+}
+
+@misc{u008_tt_pop,
+  author = {{Tenstorrent}},
+  title = {{TT-Metalium cb\_pop\_front}},
+  year = {2026},
+  howpublished = {TT-Metalium kernel API documentation},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/kernel_apis/circular_buffers/cb_pop_front.html},
+  note = {Live documentation checked 7 October 2026; consumer release contract}
+}

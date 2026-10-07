@@ -1,0 +1,149 @@
+\section{U004 Irregular access sparse computation and atomic updates}
+\label{sec:u004}
+
+Irregular work couples data-dependent addresses to control, storage ownership, and synchronization. An embedding lookup reads rows selected at runtime. A histogram updates bins whose destinations can collide. A routing or top-$k$ stage may use an atomic counter's old value to allocate an output slot, then pass the collected values to a regular vector or matrix computation. These operations cannot be understood from peak matrix throughput, but neither do they require one universal execution model. The central question is who prepares addresses, groups traffic, resolves collisions, and establishes that the next consumer can safely proceed.
+
+Three capabilities must remain separate. Structured sparse matrix computation consumes a supported sparsity pattern and its metadata inside a matrix path. Unstructured indexed memory performs gathers or scatters at runtime-selected addresses. Collision-sensitive updates add an atomicity and ordering contract. A machine may offer all three through different engines or APIs; support for one is not evidence for another. In particular, ordinary scatter overwrites destinations, a returning atomic read--modify--write can provide an observed old value, and a no-return atomic reduction updates memory without producing such a result. Histogram construction is also different from scanning a histogram whose bins have already been built.
+
+For SSNPU, the target discussed here includes the intended integration of scalar control, typed and shaped Tiles, indexed and masked memory, and supported atomic operations. Submitted compiler or model coverage is evidence about reachability and implementation, not the architectural ceiling. The argument has three levels: expressibility of a workload, convenience of programming it, and measured efficiency. The first two do not establish the third.
+
+\subsection{A worked example: counts, slot allocation, and output publication}
+
+Let eight candidate elements have bin indices
+\begin{equation}
+ b=[3,1,3,7,1,3,2,7],\qquad
+ m=[1,1,1,0,1,1,0,1],
+ \label{eq:u004_example_indices}
+\end{equation}
+where $m_i$ indicates participation. A count-only histogram computes
+\begin{equation}
+ H_j^{\mathrm{new}}=H_j^{\mathrm{old}}
+                   +\sum_{i:m_i=1}\mathbf{1}[b_i=j].
+ \label{eq:u004_histogram}
+\end{equation}
+For initially zero bins, the nonzero results are $H_1=2$, $H_3=3$, and $H_7=1$. Six active requests target only three distinct destinations. Replacing atomic increments with independent load/add/store sequences is incorrect under collisions: several requesters can observe the same old value and overwrite one another's increments. Ordinary scatter of six ones is also not a histogram, even if a particular implementation chooses a predictable duplicate winner.
+
+A slot-allocation variant requires more information. Each active element executes an atomic fetch-add of one on its bin and uses the returned old value $o_i$ as an index into that bin's output segment:
+\begin{equation}
+ o_i=\operatorname{fetch\_add}(H_{b_i},1),\qquad
+ P[\mathrm{base}(b_i)+o_i]=x_i.
+ \label{eq:u004_slot_allocation}
+\end{equation}
+If requests to bin 3 serialize in some legal order, their returned values are 0, 1, and 2, assigned according to that order. Atomicity alone does not assign these values in increasing lane order. If the algorithm requires stable ordering, it needs an additional construction, such as an ordered local prefix within a group. Stability across groups additionally requires assigning their segment offsets in the required group order; unordered atomic reservation alone does not provide that guarantee. A count-only no-return reduction cannot directly substitute for fetch-add when the individual old values are required.
+
+Nor does reservation imply publication. The counter can reflect a reserved slot before its payload store completes. A consumer using that counter as a ready count needs a correct publication protocol, with ordering and synchronization in the relevant memory scope. This is an example of the distinction between atomicity, visibility, completion, and reuse developed in Section~\ref{sec:u007}. The example assumes sufficient output capacity and no counter overflow; neither property is created by the atomic instruction.
+
+There are several legitimate algorithms. Direct atomics preserve each request. Local grouping can reduce count updates to one addition per distinct destination. Privatized histograms defer contention to a merge. Sorting and segmented reduction can improve locality at the cost of preprocessing and temporary storage. If old values are used for slot allocation, an aggregated reservation can still work, but it must distribute the reserved interval among contributors and preserve any required ordering. The comparison must charge this additional work rather than assume that a count-only optimization automatically preserves every downstream use.
+
+\subsection{Locality and duplicates define different bottlenecks}
+
+Locality concerns how many transfers are needed; duplication concerns whether updates compete for the same state. For a batch of $n$ active addresses, a simple idealized transfer model counts $L$ distinct cachelines and a duplicate model counts $U$ distinct update destinations. Neither $L$ nor $U$ determines the other. Many distinct counters can share one line and contend in its memory path, while repeated reads of one location may be cheap if the system can reuse fetched data. A coalescer can combine traffic without changing the semantics of multiple atomic effects.
+
+For independent uniformly distributed bin choices among $B$ bins, the expected number of distinct bins is
+\begin{equation}
+ \mathbb{E}[U]=B\left[1-\left(1-\frac{1}{B}\right)^n\right].
+ \label{eq:u004_unique_bins}
+\end{equation}
+This follows by summing the probability that each bin appears at least once. It is an illustrative distribution model, not a benchmark or a predictor for skewed real workloads. A local grouping algorithm might reduce $n$ count updates to $U$, but first pays to identify and combine duplicates. Under a hot-bin distribution the potential reduction can be large; with mostly distinct destinations it may be small. The optimal batching window also depends on scratch capacity, latency requirements, and whether downstream consumers need results before the full batch arrives.
+
+The minimal accounting therefore includes index and mask preparation, address arithmetic, useful data bytes, transferred bytes, request setup, local grouping, synchronization, return values, and final merging. Wide indices can dominate narrow payloads: a four-byte index accompanying a one-byte value costs more logical bytes than the value itself before any alignment overhead. Mask density changes useful work, but inactive lanes still influence whatever index, mask, and descriptor representation the chosen interface requires. Dynamic scheduling may overlap eligible requests; it cannot erase a hot-address dependency chain or manufacture locality.
+
+\subsection{GPU execution: flexible threads and optimized aggregation}
+
+CUDA threads naturally form runtime addresses, take data-dependent branches, and issue supported atomic operations. Their programming model is particularly convenient for independent long-running loops and divergent state machines. A warp can also cooperate to aggregate repeated destinations, or blocks can maintain private histograms and merge them later. The CUDA 13.0.3 contract distinguishes atomic operand types and scopes: traditional unsuffixed atomics have device scope and relaxed ordering, while floating-point addition and other operations have architecture-specific availability. Atomic access is not automatically a synchronization protocol for unrelated payload stores~\citep{u004_cuda}.
+
+Hardware manages warp participation, dependency readiness, memory request execution, and the supported atomic memory path. The kernel and compiler choose how many elements a thread owns, whether to group duplicates, where to place private state, and how to hand results to regular compute. CUTLASS's producer--consumer pipelines and warp specialization illustrate that GPU software can organize asynchronous handoff rather than simply wait at a global barrier after every stage~\citep{u004_cutlass_pipeline}. The comparison with SSNPU must allow such optimized baselines.
+
+Aggregation benefits depend on the grouping cost and distribution. Private bins occupy storage, introduce initialization and merge work, and can affect occupancy. Register-heavy grouping raises live-state demand. Scattered addresses increase memory transactions, while repeated atomic destinations serialize through the applicable service mechanism. GPU flexibility thus has a resource price, but it is not a claim that every element always requires independent software coordination. Structured sparse MMA is a separate facility with prescribed metadata and operand constraints; it does not provide a general irregular-memory or histogram instruction merely because its name includes sparsity~\citep{u004_ptx_sparse}.
+
+\subsection{Ascend: local gather/scatter and two distinct atomic routes}
+
+Ascend illustrates why API scope and memory space cannot be omitted. The CANN 9.1 \texttt{Gather} interface reads from a LocalTensor in Unified Buffer (UB), using a local offset tensor and byte-addressed offsets. A2/A3 support selected 16- and 32-bit operand types; the 950 family includes additional 8- and 64-bit forms. The cited \texttt{Scatter} interface is available on 950 and selected inference products, not A2/A3, and requires unique destination offsets. Its duplicate behavior cannot be used to implement a collision-sensitive reduction~\citep{u004_ascend_gather,u004_ascend_scatter}.
+
+These local operations do not themselves establish arbitrary indexed GM access. The kernel stages data, chooses partitions, and performs the necessary GM transfers. Separate DMA atomic modes, including \texttt{SetAtomicAdd}, configure supported subsequent writes to GM. The documented source-buffer paths and legal data types vary by generation; the kernel must manage destination selection, transfer completion, and the lifetime of the selected atomic mode~\citep{u004_ascend_dma_atomic}. Local accumulation can reduce the number of GM updates, but it introduces UB capacity, movement, and merge obligations.
+
+CANN 9.1 also documents scalar GM \texttt{AtomicAdd} on 950, with int32, uint32, float, int64, and uint64 forms returning the old value. This is a separate route from the DMA mode and is not supported on A2/A3. Dependencies between these scalar operations and MTE2/MTE3 transfers require explicit synchronization in the documented cases; the scalar atomic bypasses DCache, so cache consistency also needs attention~\citep{u004_ascend_scalar_atomic}. An instruction with the right arithmetic result is insufficient if a later transfer can observe the wrong version.
+
+For histogram-like work, the 950 register-vector \texttt{Histograms} facility operates on uint8 input and uint16 bins, with separate 128-bin halves and overflow considerations. It can help form local counts but does not resolve concurrent GM collisions by itself~\citep{u004_ascend_histograms}. Overall, algorithm and kernel software own partitioning, staging, and merge policy; APIs expose the available movement, arithmetic, and synchronization mechanisms; hardware performs their execution. The applicable opportunity is to exploit local regularity and reduce shared updates. The remaining costs include fragmented movement, local banks, temporary capacity, synchronization, and hot GM addresses. This is a division of work, not evidence that Ascend cannot express irregular algorithms. The public 3510 architecture preview further documents SIMT warp schedulers, a SIMT register file, and a GM data-cache path sharing UB capacity. Thus the local-vector and atomic API examples above are not an exhaustive model of newer Ascend execution. A selected SIMT route needs its own programming-contract comparison, including thread state and the capacity tradeoff with UB~\citep{u003_ascend_3510}.
+
+\subsection{TPU: runtime block indexing and a separate SparseCore path}
+
+A compiler-directed tensor program need not have only compile-time-known addresses. Pallas scalar prefetch moves index information into scalar memory before the main pipeline, allowing block maps to select data-dependent blocks and skip irrelevant work. The documented block-sparse tutorial demonstrates this mechanism on a TPU v5 lite path. Block shapes, alignment, memory capacity, and pipeline preparation still constrain the implementation~\citep{u004_pallas_sparse}. Static array shapes and dynamic block selection are compatible concepts.
+
+SparseCore is a distinct route for irregular workloads. Pallas documents scalar/vector subcore execution, indexed HBM transfers from VMEM-held indices, and operations useful for sorting, uniqueness, histograms, and ragged processing. Generation and interface availability must be named. The documented indexed DMA transfers are natively 32-bit; 16-bit gathering uses packed 32-bit transfers followed by selection/unpacking in VMEM. Its scatter example writes indexed output locations and is not a general atomic-add contract~\citep{u004_pallas_sparsecore}.
+
+For large embedding workloads, OpenXLA describes a broader division of labor. Host preprocessing transforms and partitions IDs; the compiler plans buffers and schedules; SparseCores execute local gather/reduction and exchange work as required by the partition. Limits on IDs and unique IDs determine resource requirements and can motivate minibatching or a specified overflow policy. The cost includes preprocessing, HBM and VMEM movement, temporary capacity, routing, synchronization, and skewed partitions~\citep{u004_xla_sparsecore}. These are practical mechanisms for irregularity, not reasons to equate TPU with a purely static dense matrix machine.
+
+A fair sparse-to-compute comparison should include the handoff to the regular tensor path and the lifetime of its intermediate representation. Eliminating duplicate IDs before gathering can avoid downstream work if reuse justifies the preprocessing. Conversely, a small batch or rapidly changing distribution may offer less amortization. The proposed SSNPU must be compared with the appropriate TPU path for that workload, rather than only with a dense operation forced to emulate all irregular processing.
+
+\subsection{Tenstorrent and CPU vector ownership}
+
+Tenstorrent data-movement kernels construct NoC addresses and issue asynchronous reads or writes between DRAM, remote L1, and locally owned buffers. The device API includes mechanisms for reusing request configuration in repeated reads. This supports software-defined indexed transfers, without establishing the presence of a SIMD gather opcode~\citep{u004_tt_movement}. Reader, compute, and writer roles coordinate circular-buffer capacity and completion. An owner-local accumulation followed by explicit merge is a natural algorithmic strategy, provided partitioning gives that owner the intended updates.
+
+Small scattered requests can pay address/setup and transaction costs, while larger grouped transfers improve useful bytes per request at the price of grouping and latency. Buffers cannot be consumed before the relevant completion condition or reused while a transfer still references them. The documented \texttt{noc\_semaphore\_inc} performs a remote-L1 uint32 synchronization operation with its own alignment and wrap semantics; it is not evidence of a general floating-point or vector atomic reduction~\citep{u004_tt_semaphore}. Hardware provides NoC execution and engine control, while kernels choose address grouping, local accumulation, and the merge protocol. Undocumented internals should remain unknown rather than being filled in by analogy to another machine.
+
+CPU vector ISAs expose a related split. AVX2 provides gather, and AVX-512 adds masked scatter and, with AVX-512CD, conflict detection. Detecting that two lanes in one vector target the same index permits software to batch conflict-free groups; it does not protect those accesses from another thread. Shared updates still need an applicable atomic mechanism or private accumulation and merge~\citep{u004_intel_conflict}. Gather/scatter support cannot be relabeled as vector atomic reduction.
+
+Arm SVE supports predicated gather/scatter with defined addressing forms. Predication and vector-length-agnostic loops help represent active elements and tails; they do not by themselves provide collision-sensitive RMW semantics. Scalar atomic facilities, local partitioning, or another explicitly supported mechanism must supply those semantics~\citep{u004_arm_acle}. Across CPUs, the compiler selects vectorization, conflict handling, and decomposition, while hardware performs lane address generation, cache access, and applicable scalar atomics. Useful-lane occupancy, register pressure, cacheline ownership, retries, and contention remain workload-dependent costs.
+
+\subsection{SSNPU address generation: byte offsets and explicit TLEA}
+
+The SSNPU target separates logical indexing from indexed memory addressing. The recorded specification baseline already defines signed or unsigned byte displacements and execution-mask state. The proposed TLEA integration does not introduce either capability. Its role is to convert a supported logical integer index into a 64-bit byte offset for an accessed element width of 8, 16, 32, or 64 bits~\citep{u004_spec_address,u004_spec_masks,u004_spec_tlea}.
+
+For index $i$, element size $e$ bytes, and a selected signed/unsigned extension rule, the conceptual operation is
+\begin{equation}
+ o=\left(\operatorname{Extend}(i)\,e\right)\bmod 2^{64},
+ \qquad a=\mathrm{base}+o.
+ \label{eq:u004_tlea}
+\end{equation}
+The first expression is TLEA's offset calculation. The second belongs to the memory address path and its architectural checking rules. TLEA does not add the GM base or consume a row stride. For a two-dimensional array whose row stride is 96 elements, accessing $(r,c)=(2,7)$ first forms $i=2\cdot96+7=199$. A four-byte element then produces $o=796$. Supplying 199 directly to byte-offset indexed memory would address the wrong location; multiplying 796 a second time would also be wrong.
+
+Signed extension matters for negative offsets. A signed index of $-1$ for a four-byte element has a modulo-$2^{64}$ byte-offset representation corresponding to $-4$. This arithmetic alone does not establish that the eventual address is legal, aligned, or within an intended object. Nor does an element width of four bits fit this byte-element TLEA contract: subbyte transfers require a separate packing and selector contract rather than an assumed fractional-byte multiplier. The source review's earlier logical-element versus byte-address mismatch arose from combining older snapshots and is not a reason to add implicit scaling to the target AGU.
+
+Execution masks belong to the operation contract rather than to address scaling. They determine participation in the indexed operation; TLEA is not an atomic operation, a collision detector, or a mask generator. The old inspected frontend's rejection of masked scatter describes that implementation snapshot, not absence of the target architectural mask state. A correct implementation must preserve the selected active set through address checking, request generation, and result handling.
+
+The distinction carries a concrete cost. Indices must be generated or loaded, extended, and scaled if they are not already byte offsets. Masks and data are also operands with readiness and storage requirements. The compiler may fold reusable address arithmetic or retain a suitable offset representation, but a semantic instruction does not synthesize arbitrary index arrays for free. Hardware still must admit requests, group supported accesses, track returned fragments, and assemble their logical results.
+
+\subsection{The atomic contract is finite and stronger than ordinary scatter}
+
+At target specification revision \texttt{cab1978f}, every valid active atomic request is an intrinsic atomic event. Duplicate addresses serialize in an implementation-defined order, and every valid active request takes effect. Atom forms return the value observed before their individual update; reduction forms produce no return Tile. Alignment, page, and read/write-address checks are preflighted before atomic effects and local result publication~\citep{u004_spec_atomic,u004_spec_atomic_execution}. This provides a defined basis for the count and allocation examples, but does not impose row-major duplicate order.
+
+The supported type matrix is intentionally finite:
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+Operation & Operand types in the reviewed target contract \\
+\midrule
+ADD & FP16, BF16, FP32, FP64, S32, U32, U64 \\
+MIN / MAX & S32, S64, U32, U64 \\
+CAS & U16, U32, U64 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Thus S64 addition, U8 atomics, and floating-point MIN/MAX must not be inferred from another entry. A source benchmark using FP32 CAS is not compatible evidence for this unsigned CAS signature unless its distinct dependency and contract are established. The type and operation must be traced through the intended API, compiler, and implementation rather than inferred from a similarly named template.
+
+Ordering is also bounded. Acquire and release selectors choose relaxed, acquire, release, or acquire-release behavior; the reviewed interface has no sequentially consistent selector. Tile/IndexedGenerated requests are IntraCore-shareable in the cited memory model. Portable coherence covers exact address-and-size matches, while partial mixed-size overlap fails closed. These conditions do not establish unrestricted cross-core Tile synchronization~\citep{u004_spec_ordering,u004_spec_coherence}.
+
+Per-request atomicity must be separated from the optional whole-block \texttt{B.CATR atom=1} contract. Normatively, that flag requests a non-interleavable, all-or-nothing block including memory and register outputs. The reviewed executable ASL records the flag, but the generated reader reports no operation consuming \texttt{CurrentBundleAtomic}. Enforcement of the whole-block property is therefore not demonstrated by that executable path~\citep{u004_spec_bcatr}. Preflight prevents the specified fault cases from occurring after some effects have begun; by itself it does not prove transactional visibility of an entire block to observers. General fairness and forward-progress guarantees also remain separate evidence obligations.
+
+These qualifications preserve the actual design argument. There are defined masks, duplicate semantics, returned values, ordering choices, and fault rules; they should not be described as absent. At the same time, a normative contract does not establish that every compiler form, timing path, or hardware realization implements it correctly.
+
+\subsection{Implementation evidence and sparse-to-compute handoff}
+
+The submitted integration spans specification, API, compiler, benchmarks, and model. The candidate model at \texttt{aa91094d} adds descriptor-based 64-bit index assembly, explicit TLEA execution, and a bounded active-lane U32 RMW/coherence path. Its reviewed timing evidence is limited to a single-thread development profile and an exact U32 M32 $32\times1$ \texttt{MGATHER.ADD} form. That does not establish generic atomic MIN/MAX, arbitrary shapes, or all no-return reductions, and it does not narrow the target ISA to that profile~\citep{u004_model_candidate}.
+
+Compiler recognition is similarly versioned. The previously inspected LLVM revision \texttt{05a1e626} recognized particular fixed-trip loops and a tightly constrained conditional fetch-add pattern. Those observations are historical, not a current-compiler verdict. Integration metadata recorded on 7 October identifies LLVM \#117 at \texttt{74c93843} and API \#249 at \texttt{a70915a5}; the broader U32 SSA path at the newer compiler head has not received complete validation in this article.\footnote{The recorded API head is \texttt{a70915a5e18e109d680d82068622a42e3a24138e}, observed at 05:28 UTC on 7 October 2026. These revision notes identify evidence boundaries, not an assertion that the changes are deployed or that their PR status defines the intended architecture.} The benchmark integration supplies source-level examples and previously reported evidence, not tests rerun for this comparison~\citep{u004_compiler_integration,u004_api_integration,u004_bench_integration}.
+
+The proposed programming advantage appears at the transition from irregular work to regular compute. A scalar phase describes data-dependent loops or partitions; indexed and masked operations fill supported typed Tiles; dependency tracking can make a ready Tile available to a vector or matrix consumer. Logical tags and physical binding, discussed in Section~\ref{sec:u002}, can let storage ownership follow actual progress. Typed geometry, discussed in Section~\ref{sec:u003}, tells the consumer how to interpret the result. Where supported, this can reduce explicit producer/consumer role assignment, barriers, and buffer-lifecycle code.
+
+However, the software still selects the algorithm, partitions work, supplies dependencies, and requests any required synchronization. Irregular loops with independently evolving long-lived state may be more naturally expressed as GPU threads. Translating them into scalar/Tile phases or work queues can add compaction, scheduling, and temporary-storage work. A shaped operation does not create a program counter for every element, nor is such a program counter necessary for every irregular algorithm. The expressibility claim must be stated for the actual operation, memory-scope, and progress contracts rather than as unrestricted equivalence between execution models.
+
+Hardware takes on the displaced coordination: tag and generation tracking, readiness selection, physical-capacity admission, address mapping, return buffers, atomic arbitration, and completion. The historical ordinary gather path groups requests within bounded index-read windows and reconstructs logical output order from returned byte ranges. It does not imply whole-Tile deduplication or unlimited outstanding requests. Scattered addresses still multiply requests, and incomplete destinations still occupy return or assembly state. Bounded queues introduce backpressure; recovery and runnable drain paths must preserve liveness, as examined in Section~\ref{sec:u008}.
+
+\subsection{Conditions for a useful architectural improvement}
+
+A defensible evaluation starts with a specified index width and unit, data type, mask density, locality distribution, duplicate distribution, contention scope, output requirement, and fault/ordering policy. The same workload should be implemented with direct updates and with competent alternatives such as local grouping, privatization, and segmented reduction. The sparse-to-compute consumer and its required publication event belong in the measurement interval.
+
+The SSNPU opportunity is strongest when irregular phases produce regular typed blocks, dynamic arrival makes static ownership conservative, and dependency/resource management replaces substantial explicit coordination without adding more critical-path control than it removes. It is weaker when one hot address dominates, little regular work follows, or independent divergent loops dominate the algorithm. Similar distribution-sensitive conditions govern GPU aggregation, Ascend local staging, TPU preprocessing, and Tenstorrent ownership partitioning.
+
+Measurements must include end-to-end latency, useful throughput, transferred bytes, temporary storage and lifetimes, contention, control work, and hardware implementation costs. Fewer source-level barriers or roles can demonstrate a convenience improvement; they cannot alone demonstrate speed, utilization, energy, or PPA. The architectural conclusion is therefore conditional: dynamic dependency and resource management can make supported irregular-to-regular pipelines easier to coordinate, provided its atomic, ordering, capacity, recovery, and progress contracts are both precise and enforced.

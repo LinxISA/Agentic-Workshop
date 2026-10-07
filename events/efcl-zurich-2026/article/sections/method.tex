@@ -1,0 +1,51 @@
+\section{Evidence and comparison method}
+\label{sec:method}
+
+\subsection{Four kinds of statements}
+
+The article distinguishes four evidence levels. A \emph{public contract} specifies software-visible legality, numerical behavior, ordering, or supported use. A \emph{pinned implementation observation} establishes that a particular source revision contains a mechanism or lowering path, within its reviewed scope. A \emph{reported measurement} belongs to the authors, configuration, and methodology of the cited study; it is not a measurement performed for this article. A \emph{conditional design inference} explains what a mechanism could do if its stated assumptions hold. A future design alternative belongs to the last category until an implementation and validation establish more.
+
+These levels are not interchangeable. An opcode in a specification does not prove a production compiler can emit it, that a model computes it accurately, that RTL implements it, or that silicon achieves a particular rate. A compiler recognizer's limited coverage does not shrink an ISA's architectural expressibility. A functional simulation establishes neither a cycle count nor a clock frequency. A timing model's host execution speed is not the modeled machine's performance. An area estimate for one selector is not a whole-core PPA result.
+
+The Superscalar NPU discussion uses the public PTO contract where available and the bounded project-inspection records assembled with the workshop source packet. The timing-model and typed bring-up records concern separate implementation paths; they must not be combined into one demonstrated complete-core implementation. Their inspection supports functional statements about dependency, ownership, and recovery structures, rather than a physical block diagram with verified area or timing. Public documentation whose branch or \texttt{latest} path can change is access-dated; exact revisions are used for claims that depend on a particular contract.
+
+The target architecture includes functionality in submitted integration work once that work is merged. A pending change is therefore not described as architecturally nonexistent merely because of its merge status. At the same time, target intent does not establish new-head validation. Date-stamped implementation notes are retained where they explain a real limitation; they do not define the thesis. No private implementation sources or source-location maps are reproduced.
+
+\subsection{Comparison across five layers}
+
+A comparison begins with the same logical workload and numerical contract, then records where each responsibility is placed.
+\begin{description}[style=nextline,leftmargin=0em,labelwidth=0em]
+ \item[Algorithm.] Define decomposition, independent work, sparse representation, reduction order, and required results. Algorithmic changes that reduce useful work or alter accuracy must be exposed rather than credited to scheduling alone.
+ \item[Instruction set or programming contract.] Specify which operands, layouts, masks, types, atomics, synchronization scopes, and asynchronous lifetimes the interface permits. A high-level API can expand to many instructions; an ISA instruction can execute for many cycles.
+ \item[Compiler and kernel.] Record tiling, vectorization, role assignment, layout propagation, prefetch distance, conversion placement, and inserted synchronization. Compare optimized kernels, including transformations that eliminate or amortize apparent source-level overhead.
+ \item[Runtime and libraries.] Include allocation, launch, communicator construction, buffer pools, event namespaces, library composition, device placement, and teardown. Setup can be amortized across repeated calls, but still matters for short or infrequent work.
+ \item[Hardware.] Identify the execution, storage, dependency, arbitration, movement, and completion functions that must exist. An undocumented internal circuit remains unknown; it is not assumed absent.
+\end{description}
+
+For example, a direct Tile reduction and a warp shuffle sequence can express the same mathematical operation at different abstraction levels. Counting one mnemonic against several source operations measures interface compression, not necessarily execution cost. Conversely, placing an entire row in one thread can remove communication that a nominally wider primitive would otherwise need. Ownership and lowering matter as much as the operation name.
+
+\subsection{A whole-core cost ledger}
+
+Let a workload execution perform useful work $W$ and take end-to-end time $T$. Useful throughput is $W/T$, with $W$ defined consistently across the alternatives. Reported utilization must name its denominator: a matrix unit's peak, an instruction issue rate, a memory bandwidth, or another resource. A high matrix utilization can coexist with poor task latency or excess energy if additional work was introduced to keep the matrix unit busy.
+
+A useful accounting record contains at least the following quantities:
+\begin{equation}
+ \mathcal{C}=\bigl(T,\ W/T,\ S(t),\ D,\ C_{\rm ctrl},\ A,\ P,\ E,\ f,\ \mathcal{S},\ \mathcal{L}\bigr).
+\end{equation}
+Here $S(t)$ is storage occupancy over time, $D$ is movement at each relevant interface, $C_{\rm ctrl}$ is control state and work, $A$ is area, $P$ is power, $E$ is energy, $f$ is attainable clock frequency, and $\mathcal{S}$ and $\mathcal{L}$ denote required safety and liveness properties. This tuple is a ledger, not a scalar objective with invented weights. The article can reason about functional obligations and derived byte counts without having measured every component. Unmeasured components must remain unmeasured.
+
+For a conservative first-order performance bound, let $W_r$ be the work offered to resource $r$ and $\mu_r$ an upper bound on its service capacity in the stated analytical model and access pattern. A measured average rate alone need not bound short bursts. Ignoring setup and interference gives
+\begin{equation}
+ T\ \geq\ \max_r\frac{W_r}{\mu_r},\qquad
+ T\ \geq\ T_{\rm dependency}.
+ \label{eq:resource-bound}
+\end{equation}
+These lower bounds do not imply that all resources can operate at their isolated peaks simultaneously. Shared ports, banking, issue bandwidth, and live storage can couple them. Overlap shortens exposed elapsed time only if those coupled constraints allow concurrent execution. It does not make the overlapped arithmetic, traffic, or energy disappear.
+
+\subsection{Control functions to account for}
+
+A dynamic core may require a front end, finite issue queues, dependency tags, rename mappings, generation counters, readiness bits, issue selection, storage admission, bank arbitration, and completion/retirement state. The inspected timing-model record includes examples of such functions but does not verify a particular Age Matrix selector or exact physical organization. A CPU-style speculative memory subsystem is not assumed. The typed bring-up path has its own identity, binding, completion, and recovery contracts, which require separate validation.
+
+The alternatives also contain control. GPUs maintain execution state, scoreboards, eligible-warp selection, barriers, and asynchronous pipeline ownership. Ascend APIs expose queues and events around hardware engines. TPU compilers plan lifetimes and DMA synchronization while hardware still advances transfers and execution. Tenstorrent controllers and circular-buffer protocols manage readiness and ownership. Published deterministic streaming designs still need instruction execution, routing, timing alignment, and synchronization. It would be misleading to compare named blocks on one side with an empty box labeled ``static'' on the other.
+
+The important question is which control can be eliminated by static knowledge, which is amortized over larger work, which is hidden behind independent activity, and which remains on the critical path. These categories are used throughout the chapters. They allow a favorable case to be stated without claiming that its mechanism has no cost.

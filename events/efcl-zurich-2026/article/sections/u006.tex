@@ -1,0 +1,98 @@
+\section{U006 Scalar and event orchestration}
+\label{sec:u006}
+
+\subsection{Fusion changes the rate at which control must be performed}
+
+A fused pipeline can remove intermediate launches and unnecessary memory boundaries while creating more frequent interactions between its internal stages. For every tile, an implementation may calculate addresses, prepare descriptors, reserve storage, submit work, publish readiness, handle a completion, and return credits. These operations are useful work in the control path. If they cannot keep up, independent compute and communication engines can wait even though their payload bandwidth is not saturated.
+
+Consider a steady stream of tiles. Let $c$ denote the required scalar/control instructions per tile, $\mu_s$ the sustainable control service rate in instructions per unit time, $t_m$ matrix service time per tile, $t_v$ vector service time, and $t_d$ movement/communication service time. Under ideal overlap with independent resources, a necessary lower bound on the steady-state initiation interval is
+\begin{equation}
+ I\ \geq\ \max\left(t_m,t_v,t_d,\frac{c}{\mu_s}\right).
+ \label{eq:u006-control}
+\end{equation}
+If two stages use the same non-overlappable resource, their demand must be combined rather than placed in separate terms of the maximum. A dependency chain or insufficient buffering can raise $I$ further. The equation is an analytical accounting device, not a model calibrated to a particular processor.
+
+Smaller tiles can reduce the delay before a consumer sees useful output, but they generally increase the number of control episodes per useful byte. If a tile carries $b$ bytes and requires $e$ events, the event density is $e/b$. Reducing $b$ while retaining the same protocol can increase this density even when the arithmetic work scales proportionally. The crossover depends on scalar issue capacity, event hardware, message aggregation, buffer size, and the independence available to cover latency. ``Fuse more'' is therefore incomplete guidance unless the control path is included.
+
+\subsection{Four scopes and five milestones}
+
+Within a compute core, scalar control can submit matrix, vector, and copy operations and coordinate local dependencies. Across cores on one chip, communication can use a local NoC, shared global memory, hardware flags, or remote local-memory operations. Across devices, it may use peer loads/stores, remote DMA, NIC queues, or a collective protocol. Host/runtime setup allocates resources, registers memory, constructs communicators, launches work, and tears it down. These scopes have different agents, ordering rules, and failure modes.
+
+For one transfer, at least five milestones should be distinguished:
+\begin{enumerate}
+ \item The command was accepted or issued
+ \item The source is no longer read by the local transfer machinery
+ \item The destination payload is visible within the required recipient scope
+ \item The consumer has observed the readiness event and consumed the value
+ \item The storage and protocol identity can be safely reused
+\end{enumerate}
+A particular API may combine some milestones, but no combination should be inferred from the word ``complete.'' A flush that permits local source reuse is not necessarily a remote-consumption acknowledgement. An event announcing a byte count is not necessarily an acquire for unrelated memory. Safe tag reuse may additionally require that stale events from an earlier generation cannot match the new owner. These distinctions connect directly to U007's ordering and U008's reclamation obligations.
+
+\begin{figure}[tb]
+\centering
+\input{figures/u006-events}
+\caption{A conceptual producer--transfer--consumer protocol. Vertical arrows are required causal edges; horizontal spacing is illustrative and is not a latency measurement. Source reuse, destination readiness, and credit return can require different events and progressing agents.}
+\label{fig:u006-events}
+\end{figure}
+
+An event that travels through device memory is not automatically a host round trip. PCIe is an interconnect, not an execution agent: a supported peer or NIC path can use PCIe without host software submitting every message. Similarly, an accelerator-side service processor is not the host CPU. A claimed weak-scalar or host-event bottleneck must identify the actual processor, path, and trace rather than generalizing to every NPU.
+
+\subsection{NVIDIA distributes control through roles and device communication APIs}
+
+For on-chip pipelines, Hopper TMA allows a thread to initiate bulk asynchronous movement while other work proceeds. Warp-specialized kernels distribute producer, matrix-consumer, and epilogue work across roles, each with barrier and buffer ownership. CUTLASS contains concrete producer/consumer pipeline implementations. Dedicated roles avoid placing every instruction in one thread's immediate sequence, but consume resident state, registers, barrier phases, and issue opportunities. Thread-block clusters add a bounded cross-block shared-memory scope; they do not make every block in an arbitrary grid simultaneously resident.~\citep{u006-hopper,u006-cutlass}
+
+Across devices, the NCCL device API distinguishes local-access mechanisms using peer connectivity from network-oriented GIN operations. Its archived 2.28.7 documentation covers symmetric memory windows and device communication contexts, including puts, signals, waits, and flushes. These mechanisms require setup and transport support. In particular, local input reuse after a flush must not be conflated with the remote readiness/signaling obligation. The exact facility must be selected from the topology and library version rather than inferred from the GPU's marketing family.~\citep{u006-nccl}
+
+NVSHMEM provides another division of responsibility. Traditional IBRC uses a CPU proxy; IBGDA permits GPU construction of NIC work-queue entries, doorbell updates, and completion handling in GPU memory. CPU-assisted variants place parts of the work differently. Device initiation therefore names a control capability, not one universal data path. The vendor's performance guidance explicitly discusses the cost of GPU WQE construction, contention when issuers share queue pairs, and the resource/fence cost of more queues. Moving submission to the GPU can expose parallel issuing but does not establish a lower single-message latency in every configuration.~\citep{u006-nvshmem-ibgda,u006-nvshmem-performance}
+
+For a fused kernel, the relevant accounting includes communication-role occupancy, scalar instructions in the prologue and epilogue, polling or atomic traffic, staging memory, and NIC queue pressure. The GPU scheduler can select other eligible warps while one waits, but only resident work with available resources can benefit. Synchronizing persistent or collective kernels must follow the library's launch and progress requirements; NVSHMEM documents collective-launch constraints for applicable synchronization/collective use. Ignoring those requirements would compare a correct bounded protocol against an inadmissible one.~\citep{u006-nvshmem-using}
+
+\subsection{Ascend separates pipeline events from communication service}
+
+Ascend C describes scalar control as responsible for scheduling and instruction transmission and advises reducing unnecessary scalar computation and branching. This supports the possibility of scalar pressure in a specified kernel; it does not prove a universal single-thread bottleneck across every Ascend generation. Intra-core \texttt{SetFlag}/\texttt{WaitFlag} operations use pipeline event state, and the receiving pipeline waits for the corresponding event. They are not inherently host or PCIe events. Event identifiers are finite and pairing is part of the programming contract.~\citep{u006-ascend-architecture,u006-ascend-flags}
+
+For supported separate-mode products, cross-core flags provide AIC/AIV synchronization with product- and mode-specific rules. CANN 8.5 documents modes spanning AIC/AIV groups and warns that high-level Matmul internally owns some synchronization resources. A hand-written fused kernel must therefore avoid conflicting with library-owned event IDs. Correctness is a composition problem involving the compiler, library, runtime, and explicit user synchronization, even though the underlying event operation is hardware controlled.~\citep{u006-ascend-crosscore}
+
+For cross-device work, the CANN 9.0 HCCL kernel interface uses an AI Core client and an AI CPU or CCU server, depending on supported hardware and configuration. A Prepare operation supplies the collective description; Commit authorizes execution when dependencies allow it; completion and finalization have separate roles. Descriptor preparation can be moved before compute so that some setup overlaps, while Commit must still respect data readiness. The AI CPU is accelerator-side, so its participation alone does not imply a host-CPU round trip.~\citep{u006-hccl}
+
+This organization pays for client scalar instructions, server work, handles, queues, communication workspace, and synchronization. Repeated use must maintain the documented Commit/Wait accounting, and finalization cannot race slower participating cores. The useful question is whether preparation, server execution, and completion service stay ahead of the tile stream, not whether the API name contains ``asynchronous.'' A server queue that fills can return pressure to the client, while a client that waits too early can fail to prepare later independent work. Product-specific traces are needed to determine which case limits an actual kernel.
+
+\subsection{TPU uses asynchronous DMA with explicit completion ownership}
+
+Pallas TPU has scalar control and scalar memory for control operands, distinct from vector and matrix computation. Its documented grid execution and memory movement model differs from GPU warp oversubscription: the compiler arranges local-memory transfers and supported multicore partitioning is explicit. Asynchronous engines can advance while scalar control performs other work, but that fact does not create a second independently executing scalar instruction stream.~\citep{u005-pallas-details}
+
+The distributed Pallas interface exposes device-issued asynchronous push DMA within a TPU pod. A descriptor includes distinct send and receive semaphores. Starting the copy can be followed by independent work; the send completion protects local source reuse, while the receive completion protects destination use. The distributed guide demonstrates buffering and pipelining and warns that mismatched waits or counts can cause hangs, crashes, or corruption. These are explicit device-side communication capabilities, so a model that routes every TPU tile exchange through host software would be an unfair baseline.~\citep{u006-pallas-distributed}
+
+The newer core-specific interface exposes physical core meshes, per-core storage/semaphores, and remote-copy examples between cores. It is a distinct interface from older Megacore guidance; their assumptions should not be silently merged. Multiple cores can split control responsibility, but the partition adds ownership, balance, and communication obligations.~\citep{u006-pallas-coremap}
+
+A custom fused Pallas kernel may also obscure opportunities that XLA's higher-level scheduling could exploit. Its local benefit must be compared with the compiler-managed baseline, including asynchronous collective scheduling and neighboring fusion. The retained-state ledger includes VMEM/SMEM, DMA descriptors, semaphore values, in-flight buffers, and ICI contention. An independently progressing DMA protects progress only for work already submitted with adequate destinations and matching completion behavior. It cannot prepare a future descriptor that the stalled scalar program has not issued.
+
+\subsection{Tenstorrent gives data movement dedicated control roles}
+
+TT-Metalium's data-movement programming example assigns separate kernels to the two data-movement RISC-V processors in a Tensix core. Reader, compute, and writer work can therefore be expressed as different roles. Circular buffers provide explicit producer/consumer capacity and readiness operations. This division can reduce competition for the compute role's instruction sequence while preserving dependencies through buffer ownership. The cost includes controller instruction/code state, circular-buffer memory, and the protocol connecting those roles.~\citep{u006-tt-roles,u006-tt-migration}
+
+Within a chip, NoC commands, barriers, and remote semaphore updates move data and coordinate consumers. Ordering is scoped by the chosen NoC, command buffers, and virtual channels. Separate NoCs or VCs do not gain a single total order merely because one controller issued commands in source order. A producer must establish the payload-before-signal edge using the appropriate ordered path or completion operation.~\citep{u006-tt-ordering}
+
+Across chips, the Wormhole/Blackhole Ethernet guide describes staging through Ethernet-core L1 and asynchronous sends. The low-level send primitive does not itself supply the full receiver-completion and source-reuse protocol. Queue-busy handling, acknowledgements or credits, and teardown must be implemented or supplied by a higher-level fabric/collective facility. The guide recommends fabric infrastructure for managing Ethernet cores; comparing only link bandwidth would omit movement between Tensix and Ethernet storage and the resources consumed by fabric workers.~\citep{u006-tt-ethernet}
+
+This approach makes control agents visible and programmable, which can be advantageous for known streaming graphs and explicit placement. More stages, however, mean more protocol state, fill/drain work, and potential recovery boundaries. A dedicated reader can still block on a full circular buffer; a writer can still need credits returned by another participant. Dedicated controllers make independent progress possible but do not prove it under all backpressure conditions.
+
+\subsection{Superscalar NPU alternatives and their limits}
+
+The reviewed local timing-model record establishes readiness and bounded resource management within its scope. It does not establish the number of independently progressing scalar contexts, a complete network DMA protocol, or a cross-card event fabric. Those capabilities must therefore be treated as alternatives to design and evaluate, not as inherited properties of the word ``superscalar.'' Four approaches address different parts of the problem.
+
+First, a stronger scalar front end can process independent address, descriptor, and loop-control operations faster. Its benefit depends on available instruction-level parallelism and shared issue resources. It cannot remove a true wait dependency, a saturated server queue, or a missing remote credit. A wider front end also requires evidence about code footprint, operand dependencies, execution units, and attainable clock frequency.
+
+Second, multiple contexts or dedicated controllers can separate compute orchestration, communication submission, and completion service. Each requires a program counter or equivalent state, registers, queues, and a scheduling policy. A blocked context must not hold every resource needed by its unblocking agent. Fair arbitration of shared memory and descriptor ports remains necessary. Context count is therefore a resource and progress decision, not a free multiplier on scalar throughput.
+
+Third, event and DMA offload can let hardware or firmware advance already-described transfers and dependency updates. This can lower instruction overhead per tile and keep progress independent of a compute wait. It requires explicit ordering scopes, source-lifetime and destination-visibility semantics, finite event allocation, generation-safe reuse, and error/cancellation behavior. Offloading an incorrectly specified dependency can make a race faster rather than making it correct.
+
+Fourth, the compiler can generate asynchronous roles and place waits late, using resource-aware buffer planning. Static knowledge remains valuable even in a dynamically scheduled machine: constant descriptors, repetitive routes, and known shape constraints can be hoisted or amortized. The ISA/runtime contract must define which layer owns event IDs, queues, and buffer handles, especially when a library and a custom kernel compose. Dynamic hardware can select among ready operations while the compiler still limits the offered working set.
+
+A useful conditional combination is a compiler-planned pipeline with hardware-managed local dependencies and an independent bounded completion path. It could reduce explicit polling and barrier bookkeeping while avoiding unnecessary stalls on variable local readiness. Its proof obligations extend beyond average throughput: completion must still progress when compute is blocked, queues fill, or a peer arrives late. The next two chapters address those obligations.
+
+\subsection{What a matched evaluation must observe}
+
+A credible experiment would record the control instructions and events per tile, time spent preparing and issuing work, outstanding descriptors, queue-full stalls, live buffers, and the agent responsible for each wait. It would separately measure fill, steady state, and drain across tile sizes and rank counts. Register or local-memory growth from added roles must be included, as must host/runtime setup when it is not amortized. No fixed orchestration penalty or cross-platform speedup is inferred here.
+
+The decision rule is whether the chosen control organization lets every necessary event arrive soon enough without excessive state or interference. Fusion removes some boundaries and brings others inside a kernel. The architecture succeeds when it makes those internal boundaries inexpensive, precise, and live under the actual resource limits, rather than merely invisible in source code.

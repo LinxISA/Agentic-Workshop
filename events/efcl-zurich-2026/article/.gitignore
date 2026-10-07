@@ -1,0 +1,5 @@
+.build/
+review/*
+!review/superscalar-npu-eight-problems.pdf
+!review/REVIEW.md
+*.synctex.gz
