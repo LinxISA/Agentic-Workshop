@@ -6,8 +6,12 @@ The supplied review PDF is919651 bytes and matches SHA256 `ebbd5356eef0b8302a11b
 
 Static checks found152 unique bibliography keys,152 cited keys, no unresolved citation keys, and all LaTeX input files present. Public-path hygiene and git diff --check passed. No processor/model/compiler tests, benchmarks or synthesis were run.
 
-## Local build limitation
+## Local build verification and search coverage
 
-Mac has Tectonic0.15.0 but no configured pdfLaTeX/BibTeX. A temporary copy removed only the pdfTeX-specific `\pdfoutput=1` line to permit a Tectonic engine attempt; the published source and supplied PDF were not changed. The `--only-cached --untrusted` build stopped because `size11.clo` is absent from the existing cache. No software or TeX resource was installed/downloaded. The supplied72-page PDF therefore remains the reviewed build artifact; a successful independent Mac rebuild is pending an appropriate installed/cached TeX environment.
+The document targets pdfLaTeX plus BibTeX: its preamble uses `\pdfoutput=1`, and `build.sh` runs pdfLaTeX, BibTeX, and two further pdfLaTeX passes. On this Mac, `latexmk`, `pdflatex`, `bibtex`, `xelatex`, `lualatex`, and `kpsewhich` were not found on PATH. The standard MacTeX entry point `/Library/TeX/texbin` does not exist. A filesystem-name search (including symlinks) of the standard system, Homebrew, application, and user TeX locations, supplemented by Spotlight and user/cache/temp searches, did not identify another engine installation. The user TeX tree is empty; an existing older document build script also selects Tectonic. These observations describe the searched locations, not proof that no other environment exists anywhere.
+
+Running the unmodified article `build.sh` stopped at its prerequisite check: `Missing pdflatex. Use an existing TeX Live installation.` No TeX compilation began in that attempt. A user-specified executable path or additional environment location can be checked independently; Tectonic is not a requirement for this article.
+
+The earlier Tectonic0.15.0 attempt used a temporary copy with only the pdfTeX-specific `\pdfoutput=1` line removed. Its `--only-cached --untrusted` build stopped because `size11.clo` is absent from that engine's existing cache. This is a Tectonic-specific failure, not a result for other engines. No software or TeX resources were installed/downloaded. The published source and supplied72-page PDF remain unchanged, and the PDF rendering/static checks above still apply. An independent Mac rebuild has not yet succeeded.
 
 This article is a review draft. No merge is requested. Latest U004 source is not present in the imported ZIP and remains a separate pending publication task.
