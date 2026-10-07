@@ -29,3 +29,13 @@ This handoff requests later mechanism research; it contains no newly collected p
 
 - [ ] For U002, use the [reviewed lifecycle/cost summary](../../sources/U002-comparison.md#reviewed-five-architecture-summary): separate request/return storage, pools and live values; do not infer that slot reuse frees a pool or every static schedule reserves worst-case capacity.
 - [ ] For U004, use the [workload-view comparison](../../sources/U004-comparison.md#workload-view-for-slides-three-approaches-beside-our-path): distinguish indexed movement, collision-sensitive updates and structured sparse compute. Label TLEA integration as pending/OPEN and the old snapshot as historical; record exact dtype/address/scope/ordering/profile boundaries.
+
+
+## U005 reduction and ownership review
+
+- [ ] U005: distinguish independent complete groups on four PEs from four local partials of one global group; show local compression, shared publication, read/merge, optional broadcast, and safe reuse
+- [ ] U005: compare GPU register/shuffle, same-SM shared memory, supported cluster and wider cross-SM scopes fairly against the actual four-PE target; shared Tile Register does not imply an identical physical tier, zero synchronization, or guaranteed higher performance
+- [ ] U005: include effective bandwidth/latency, ports/banks/arbitration, readiness, slowest-participant delay, broadcast, and physical allocation; retain generation-scoped Ascend GM/SyncAll and TPU DMA/semaphore distinctions
+- [ ] U005: preserve exact typed ordered `TROWSUM` versus separately permitted reassociation; show exp/broadcast/normalization costs and do not infer FP32 reduction accumulation from matrix accumulation
+
+Source: [U005 comparison](../../sources/U005-comparison.md).

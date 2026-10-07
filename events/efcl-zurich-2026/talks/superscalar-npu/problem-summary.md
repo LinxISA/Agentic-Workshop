@@ -29,3 +29,20 @@ For each applicable problem, compare NVIDIA GPGPU → TPU/compiler-directed sche
 Use throughput, end-to-end task latency, utilization, storage, bandwidth, control cost and energy as applicable, with correctness and liveness as explicit evaluation requirements. The [shared whole-core ledger](problem-list.md#shared-whole-core-evaluation-dimension) also includes area, power and clock timing: account for windows, tags/state, comparisons, arbitration and recovery alongside potential reductions in waiting, SRAM reservation and data movement. Apply the same scale to all designs and distinguish measured evidence, assumptions and pending questions.
 
 Unresolved terms/scopes: FP versus INT and scale layout; “roof rolling”; “MHC” and “ingram”; scalar execution-context semantics; exact device-memory/PCIe paths; exception semantics and ISA memory ordering. No new evidence, performance ranking or implementation decision is supplied by this review.
+
+
+## U005 — Execute reductions efficiently across shapes and ownership scopes
+
+**Question:** Which groups are complete within one owner, which are only partials, and what communication and numerical contract is required to finish the reduction?
+
+| Approach | Mechanism and price |
+| --- | --- |
+| NVIDIA GPU | Separate register-local combines, warp shuffle exchange, same-SM CTA shared-memory merges, and wider cross-SM communication. Pinned FlashAttention code delays one cross-thread row-sum merge until normalization; OneFlow and CUB examples expose shared publication, barriers, merge, and optional broadcast separately. GPU shared memory is already on-chip handoff storage; its name does not imply an off-chip path. |
+| Ascend | Local BlockReduceSum/WholeReduceSum stages compose according to shape. Cross-core partials need movement and synchronization; documented GM/SyncAll examples and hardware/software synchronization support are generation-scoped. A barrier is not the partial-data transfer. |
+| TPU | The local reduced axis interacts with 2D vector topology. Across cores/devices, DMA, send/receive semaphores, and compiler/runtime collectives add separate movement, lifetime, and merge obligations; these are not a shared Tile Register. |
+| Tenstorrent | FPU tile-reduction APIs and separate SFPU work operate through CB/Dst ownership; tile/axis mapping, packing, capacity, and cross-tile/core merges remain. |
+| Our conditional design | Four PEs owning independent complete groups can produce final results locally. Four PEs owning pieces of one global group produce partials: local compression → shared Tile Register publication → read/merge → optional distribution. The shared-register facility is a author-described target design, not a validated topology or measured performance result. |
+
+**Costs and benefit conditions:** Compare effective bandwidth, producer-to-consumer latency, read/write ports, banks, arbitration, readiness, slowest-participant delay, result broadcast, and physical allocation. A high-bandwidth, low-latency, dependency-aware Tile handoff could avoid a farther path or conservative waits, but GPU shared memory/shuffles are competent baselines. Short independent groups favor a local mapping when enough balanced work exists; splitting a long or otherwise under-parallelized group can help when merge costs and numerics permit it. No universal winner is established.
+
+**Numerical boundary:** Pinned `TROWSUM` at `e182c9b` is a typed increasing-column fold from zero. Independent groups may proceed in parallel; independently folded pieces plus a merge generally reassociate a floating-point group and need separate permission. Shared storage still requires visibility, readiness, consumption, and reuse ordering. Softmax additionally requires maximum, exponentials, sum, normalization, and any statistic distribution. [Full reduction comparison](../../sources/U005-comparison.md)

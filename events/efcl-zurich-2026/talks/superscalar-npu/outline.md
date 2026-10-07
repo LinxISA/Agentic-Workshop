@@ -98,3 +98,18 @@ U002 preparation: [reviewed five-architecture lifecycle/cost summary](../../sour
 U004 preparation: [workload-view mechanism/strength/cost summary](../../sources/U004-comparison.md#workload-view-for-slides-three-approaches-beside-our-path) compares GPU threads/aggregation, compiler/runtime blocking and vendor-specific sparse paths, TT reader/compute/CB/NoC, and our indexed TLSU. Retain the [OPEN TLEA correction](../../sources/U004-comparison.md#correction-existing-tlea--byte-abi-integration-is-under-review) and seven-way details; no performance ranking.
 
 Continuation entry: [eight-question cloud handoff checkpoint](../../sources/research-handoff-20261006.md).
+
+
+## U005 — Where does a reduction communicate and retain state?
+
+- **Problem:** Reduction length, independent outputs, ownership, and axes determine internal execution efficiency
+- **Compare:** GPU register/lane/warp/CTA hierarchy; Ascend staged local reductions; TPU axis-dependent vector topology; TT tile reduction and partial merges; supported typed row/column operations
+- **Four-PE ownership:** Keep independent complete groups local when that mapping supplies enough balanced work; four PEs reducing disjoint pieces of the same global group produce partials, which still need a merge
+- **Shared Tile Register target:** Explain local compression → shared publication → read/merge → optional result broadcast. Shared storage enables a larger work partition and Tile handoff; it does not remove synchronization. This is the author-described target design, not verified implementation evidence
+- **Figure:** Independent local groups versus a distributed global group across four PEs; mark local combines, shared writes/reads, readiness, merge, and any broadcast
+- **Cost to expose:** Add/max versus exp/divide service, masks/tails, buffers, numerical order, and retained softmax state; shared-register bandwidth, ports, arbitration, readiness, slowest-participant delay, and result distribution
+- **Numerical boundary:** Current `TROWSUM` fixes a typed increasing-column fold from zero. Parallel independent groups preserve that contract; independently folded partials of one floating-point group plus a merge generally reassociate it and require separate numerical permission
+- **Scope-matched comparison:** Separate GPU register-local arithmetic, warp shuffle, same-SM CTA shared memory, supported cluster distributed shared memory, and wider cross-SM merging. Shared Tile Register and GPU shared memory are comparable on-chip handoff functions, not proven identical physical tiers or a name-based speed ranking
+- **Ascend and TPU:** Keep local Block/WholeReduceSum composition distinct from generation-scoped GM/SyncAll merging; keep TPU 2D vector-axis reduction distinct from inter-core/device DMA, semaphores, and collectives
+- **Takeaway:** One reduction opcode cannot erase the softmax dependency chain; a wider matrix peak does not establish a wider vector peak
+- **Evidence:** [U005](../../sources/U005-comparison.md), with representation boundary in U003
