@@ -92,3 +92,9 @@ Later comparison research must identify generation/product, compiler/runtime/con
 When does dynamic control repay its cost? How can late allocation preserve forward progress? What establishes safe last-consumer release under aliasing and recovery? How should prefetch yield to demand and backpressure? Discuss tradeoffs without claiming universal superiority or already solved mechanisms.
 
 Reviewed U003 entry: [seven-architecture mechanism and remaining-cost summary](../../sources/U003-comparison.md#reviewed-seven-architecture-summary), distinguishing representation/layout/scale preparation from U005 internal execution and fixed AVX/NEON from SVE VLA. See [compiler optimization boundaries](../../sources/U003-compiler-optimizations.md).
+
+U002 preparation: [reviewed five-architecture lifecycle/cost summary](../../sources/U002-comparison.md#reviewed-five-architecture-summary) and [source-grounded programming examples](../../sources/U002-programming-examples.md). Separate metadata, return buffers, allocated pools and live values; physical pool allocation differs from slot ownership/reuse.
+
+U004 preparation: [workload-view mechanism/strength/cost summary](../../sources/U004-comparison.md#workload-view-for-slides-three-approaches-beside-our-path) compares GPU threads/aggregation, compiler/runtime blocking and vendor-specific sparse paths, TT reader/compute/CB/NoC, and our indexed TLSU. Retain the [OPEN TLEA correction](../../sources/U004-comparison.md#correction-existing-tlea--byte-abi-integration-is-under-review) and seven-way details; no performance ranking.
+
+Continuation entry: [eight-question cloud handoff checkpoint](../../sources/research-handoff-20261006.md).
