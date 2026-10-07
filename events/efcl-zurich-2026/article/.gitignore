@@ -4,3 +4,4 @@ review/*
 !review/REVIEW.md
 !review/MAC-IMPORT-CHECKS.md
 *.synctex.gz
+!review/U006-REVISION-REVIEW.md

@@ -15,3 +15,7 @@ Running the unmodified article `build.sh` stopped at its prerequisite check: `Mi
 The earlier Tectonic0.15.0 attempt used a temporary copy with only the pdfTeX-specific `\pdfoutput=1` line removed. Its `--only-cached --untrusted` build stopped because `size11.clo` is absent from that engine's existing cache. This is a Tectonic-specific failure, not a result for other engines. No software or TeX resources were installed/downloaded. The published source and supplied72-page PDF remain unchanged, and the PDF rendering/static checks above still apply. An independent Mac rebuild has not yet succeeded.
 
 This article is a review draft. No merge is requested. Latest U004 source is not present in the imported ZIP and remains a separate pending publication task.
+
+## U006 source revision
+
+**Source/PDF divergence:** U006 source and bibliography were revised on 7 October after the frozen PDF was imported. The supplied PDF remains the earlier 72-page artifact and does not contain this revision; no successful local rebuild is claimed. See [U006 revision review](U006-REVISION-REVIEW.md).

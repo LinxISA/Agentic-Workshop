@@ -58,3 +58,7 @@ Focused independent review checked the new code descriptions, generation/scope b
 The shared Tile Register remains an author-described target facility. No measured SSNPU speedup, shared-register latency/bandwidth, four-way scaling result, or PPA advantage is established. High bandwidth, short latency, and dependency-aware partial handoff are conditional benefit requirements, evaluated alongside competent GPU local/shuffle/shared-memory baselines.
 
 Changed and reflowed PDF pages were rendered and visually reviewed before replacing the existing Library versions. No model or implementation tests were run.
+
+## U006 source revision
+
+**Source/PDF divergence:** U006 source and bibliography were revised on 7 October after the frozen PDF was imported. The supplied PDF remains the earlier 72-page artifact and does not contain this revision; no successful local rebuild is claimed. See [U006 revision review](U006-REVISION-REVIEW.md).

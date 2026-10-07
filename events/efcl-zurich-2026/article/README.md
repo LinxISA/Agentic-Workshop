@@ -2,6 +2,8 @@
 
 A substantive English LaTeX article covering all eight architectural problems. This is an article, not a Beamer deck. The earlier [source analyses](../sources/README.md) and [talk outline](../talks/superscalar-npu/outline.md) remain intact.
 
+**Source/PDF divergence:** U006 source and bibliography were revised on 7 October after the frozen PDF was imported. The supplied PDF remains the earlier 72-page artifact and does not contain this revision; no successful local rebuild is claimed. See [U006 revision review](review/U006-REVISION-REVIEW.md).
+
 ## Read
 
 - [Review PDF](review/superscalar-npu-eight-problems.pdf)

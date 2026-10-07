@@ -275,7 +275,7 @@
   title = {{Basic Ethernet Guide}},
   year = {n.d.},
   howpublished = {\url{https://github.com/tenstorrent/tt-metal/blob/main/tech_reports/EthernetMultichip/BasicEthernetGuide.md}},
-  note = {Wormhole and Blackhole scope; mutable main branch; retrieved 7 October 2026}
+  note = {Historical/outdated low-level guide; recommends fabric infrastructure; Wormhole and Blackhole scope; retrieved 7 October 2026}
 }
 
 
@@ -317,4 +317,84 @@
   year = {2026},
   howpublished = {\url{https://docs.nvidia.com/cuda/archive/13.0.3/cuda-c-programming-guide/index.html#distributed-shared-memory}},
   note = {CUDA 13.0.3; sections 5.2 and 6.2.4--6.2.5; retrieved 7 October 2026}
+}
+
+@misc{u006-nccl-fusion,
+  author = {{NVIDIA}},
+  title = {{NCCL computation and communication fusion examples}},
+  year = {n.d.},
+  howpublished = {\url{https://github.com/NVIDIA/nccl/blob/master/docs/examples/07_kernel_fusion/README.md}},
+  note = {Mutable master; NCCL 2.30+ teaching example, not performance maximum; reviewed 7 October 2026}
+}
+
+@misc{u006-cuda-scopes,
+  author = {{NVIDIA}},
+  title = {{CUDA C++ Programming Guide}},
+  year = {n.d.},
+  howpublished = {\url{https://docs.nvidia.com/cuda/archive/12.8.0/cuda-c-programming-guide/index.html}},
+  note = {Archived 12.8; synchronization and residency scopes; reviewed 7 October 2026}
+}
+
+@misc{u006-hccl-aiv,
+  author = {{Huawei}},
+  title = {{AIV task orchestration}},
+  year = {n.d.},
+  howpublished = {\url{https://www.hiascend.com/doc_center/source/zh/canncommercial/900/programug/commopdev/hcclopdev_000026.html}},
+  note = {CANN commercial 9.0; GM flags and local staging; reviewed 7 October 2026}
+}
+
+@misc{u006-tt-riscv,
+  author = {{Tenstorrent}},
+  title = {{RISC-V Guide}},
+  year = {n.d.},
+  howpublished = {\url{https://docs.tenstorrent.com/tt-vscode-toolkit/riscv-guide/}},
+  note = {Illustrated five-controller design; do not generalize generations; reviewed 7 October 2026}
+}
+
+@misc{u006-tt-cb,
+  author = {{Tenstorrent}},
+  title = {{cb reserve back}},
+  year = {n.d.},
+  howpublished = {\url{https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/kernel_apis/circular_buffers/cb_reserve_back.html}},
+  note = {Mutable latest; blocking polling capacity wait; reviewed 7 October 2026}
+}
+
+@misc{u006-pto-fields,
+  author = {{PTO-ISA}},
+  title = {{Scalar ALU field contracts}},
+  year = {n.d.},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/tree/e182c9b70d54a3a264bac54af9b915a0e43bb519/docs/scalar/alu}},
+  note = {HL.BFI, BXU, BXS, HL.CCAT; generated normative ASL; reviewed 7 October 2026}
+}
+
+@misc{u006-pto-sys,
+  author = {{PTO-ISA}},
+  title = {{Scalar system executable semantics}},
+  year = {n.d.},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/e182c9b70d54a3a264bac54af9b915a0e43bb519/docs/scalar/model/sys/semantics.md}},
+  note = {PTO v0 nonblocking scheduling-request handoff; reviewed 7 October 2026}
+}
+
+@misc{u006-pto-gqm,
+  author = {{PTO-ISA}},
+  title = {{General queue management}},
+  year = {n.d.},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/e182c9b70d54a3a264bac54af9b915a0e43bb519/docs/arch/programming-model/general-queue-management.md}},
+  note = {One 64-bit entry; release/acquire defaults and explicit failures; reviewed 7 October 2026}
+}
+
+@misc{u006-linx-hac,
+  author = {{LinxISA}},
+  title = {{Historical HAC interface}},
+  year = {n.d.},
+  howpublished = {\url{https://github.com/LinxISA/linx-isa/blob/c7cb8d93edc7d32de17fa99165ee22ba53976260/docs/isa/custom/hac_intf.md}},
+  note = {Historical legacy encoding; not current implementation evidence; reviewed 7 October 2026}
+}
+
+@misc{u006-linx-msgb,
+  author = {{LinxISA}},
+  title = {{Historical MSGB registers}},
+  year = {n.d.},
+  howpublished = {\url{https://github.com/LinxISA/linx-isa/blob/c7cb8d93edc7d32de17fa99165ee22ba53976260/docs/isa/register/ssr/MSGB.md}},
+  note = {Historical message registers; not a current protocol proof; reviewed 7 October 2026}
 }
