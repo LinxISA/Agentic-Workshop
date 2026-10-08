@@ -13,3 +13,5 @@ Detailed local source maps and private implementation material are excluded. Sel
 - [U002 lifecycle and cost review](U002-comparison.md#reviewed-five-architecture-summary) and [pinned programming examples](U002-programming-examples.md).
 - [U004 workload-view comparison](U004-comparison.md#workload-view-for-slides-three-approaches-beside-our-path), [seven-architecture detail](U004-comparison.md#seven-approaches-mechanisms-and-costs), and [OPEN TLEA integration](U004-comparison.md#correction-existing-tlea--byte-abi-integration-is-under-review).
 - [Cloud handoff checkpoint](research-handoff-20261006.md): eight-question status, public deliverables and next-work boundaries.
+
+- [U005 reduction and ownership review](U005-comparison.md): exact typed folds, CELL geometry, four-PE partials/shared handoff and scope-matched vendor costs.
