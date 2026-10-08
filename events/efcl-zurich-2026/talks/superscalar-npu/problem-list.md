@@ -23,6 +23,8 @@ Current focus: problem discovery, followed by discussion and gradual evidence ga
 - **Scope boundary:** NPU and Tenstorrent/dataflow implementations may be relevant, but this record does not establish that every architecture is affected or that every shape change requires recompilation. No particular shape, precision or numerical result is assumed.
 - **Future evidence placeholder:** A specified Attention decomposition; producer/consumer timing, intermediate bandwidth, on-chip data movement and locality; fine-grained task launch/issue/synchronization costs; matched shape/tile/schedule variants; and a record of which changes require recompilation versus runtime configuration. Not collected.
 
+Discussion reference: [U001 six-architecture comparison](../../sources/U001-comparison.md#concise-per-architecture-summary) and [functional control inventory](../../sources/control-logic-inventory.md).
+
 Record the problem first. Architecture-by-architecture comparison and mechanism selection come later; no superscalar solution is assigned here.
 
 ## User-described problem: NPU-U-002

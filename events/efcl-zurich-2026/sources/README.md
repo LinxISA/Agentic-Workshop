@@ -7,6 +7,10 @@ Detailed local source maps and private implementation material are excluded. Sel
 
 - [Superscalar NPU provenance and evidence boundaries](superscalar-npu.md)
 
+- [U001 architecture comparison](U001-comparison.md): six-category mechanisms, granularity and responsibility boundaries.
+- [U001 granularity evidence](U001-granularity-evidence.md): bounded source sample; no attributable performance comparison.
+- [Functional control inventory](control-logic-inventory.md): hardware/model versus software/compiler responsibilities.
+
 - [U003 seven-architecture review](U003-comparison.md#reviewed-seven-architecture-summary): formats, layouts, typed axes, compute-width adaptation and remaining costs.
 - [U003 compiler baseline](U003-compiler-optimizations.md): distinguish eliminated, amortized, hidden and remaining representation work.
 
