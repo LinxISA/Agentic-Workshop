@@ -1,0 +1,157 @@
+\section{U008 Forward progress under finite resource constraints}
+\label{sec:u008}
+
+Correct dependency tracking does not ensure that a dependent operation will ever execute. A producer can own a valid tag and a correctly counted destination reference while waiting indefinitely for storage; the operation that would release that storage can itself be unable to enter the machine. Backpressure preserves a capacity limit by stopping admission or movement, but can also propagate a wait to the only useful releaser. The architectural question is therefore specific: what may admitted work retain while blocked, who can remove the blocking condition, and why can that agent obtain every resource it needs?
+
+This question spans the layers already encountered in U002 and U006. The algorithm creates dependencies and determines whether a consumer can run without another input. The ISA and API define waits, completion, ownership, and permitted execution scopes. The compiler chooses live ranges, buffering, and stage order. The runtime admits kernels, assigns participants, and manages communication epochs. Hardware allocates finite entries and arbitrates service. Static scheduling, dynamic readiness selection, and explicit dataflow distribute these tasks differently; each still needs a capacity and progress argument.
+
+\subsection{State the property before selecting a mechanism}
+
+A safety property forbids an invalid event, such as overwriting a live tile or accepting a stale completion. A liveness property requires a useful event eventually to occur. The difference matters because a machine can protect every live value by waiting forever. Four progress outcomes should be kept distinct:
+\begin{description}[style=nextline]
+\item[Deadlock freedom] No reachable unfinished state contains a permanently blocked set under the stated environment and execution assumptions. A closed circular resource wait is one cause of deadlock; waiting for a signal that no participant will ever produce is another.
+\item[System-wide useful progress] Useful operations continue to complete while work remains. This can hold while one particular operation is indefinitely bypassed.
+\item[Starvation freedom] Every admitted operation within the promised scope eventually receives the service required to complete, assuming its external prerequisites satisfy the contract.
+\item[Bounded completion latency] Completion occurs within a specified bound. Eventual service alone supplies no finite numerical upper bound.
+\end{description}
+A long stall can be legal if its producer or external service eventually responds. Livelock is different again: retries, cancellations, or state changes continue, but no useful result completes. A timeout detects an exceeded waiting interval; without additional evidence it does not identify which of these conditions occurred.
+
+Progress is relative to a scope and model. A resident thread, a workgroup, a complete kernel, a device, and a distributed collective need different assumptions. Research on GPU workgroup progress formalizes how termination depends on the selected relative-progress model \citep{u008_sorensen}. That distinction is useful here; historical experiments on particular devices are not certification of every later scheduler. Similarly, an eventual-service assumption for the network excludes a permanently failed peer. A fault-tolerant claim must say how such a failure changes the goal from normal completion to detected failure, resource recovery, or job restart.
+
+\subsection{A capacity ledger and a resource-wait graph}
+
+For each finite pool $r$, partition its capacity into occupied storage $O_r$, reservations for future occupancy $V_r$, and unassigned capacity $F_r$:
+\begin{equation}
+ C_r=O_r+V_r+F_r,\qquad O_r,V_r,F_r\geq 0.
+ \label{eq:u008-capacity}
+\end{equation}
+These categories are disjoint. An arriving payload converts an existing reservation into occupancy; it must not consume a second credit for the same slot. If in-flight data has no destination reservation, some other documented buffer or backpressure rule must be able to retain it. ``The load has not bound its final tile'' says nothing by itself about where the returned bytes wait. Logical identities, payload slots, transfer descriptors, completion records, and execution contexts are separate pools even when a particular implementation couples their allocation.
+
+A useful wait-for graph has operations and resource instances, not merely data dependencies. An edge from an operation to a resource means that the operation needs that resource to advance. An edge from a resource to an operation identifies its holder or the operation that must run to release it. Signals can be represented through their producing operations. For multi-instance pools, a cycle in a coarse graph is only a warning: a free instance, a preemptible holder, or another release route can break it. A deadlock claim needs a reachable state, the actual capacity counts, and evidence that every relevant route is blocked.
+
+Acyclic algorithmic dataflow does not eliminate these resource edges. Two independent subgraphs can contend for a shared command pool and turn an otherwise straightforward schedule into hold-and-wait. Conversely, cyclic algorithmic dataflow can be live with the correct initial tokens and capacity. The relevant graph must therefore include the initial state, allocation order, release conditions, and any independent completion mechanism. Counting only matrix and vector operations omits the control work on which their continued issue depends.
+
+\subsection{A worked saturation example}
+\label{sec:u008-example}
+
+The following small machine is an illustrative construction, not a report of a defect in any vendor product or the supplied project model. It has two physical payload slots $P_0,P_1$, two normal command entries $Q_0,Q_1$, and two return-buffer slots $R_0,R_1$. At the chosen point, $P_0$ and $P_1$ contain completed outputs $x$ and $y$. Both are safe to publish and have no remaining local consumers. Each output can release its payload slot after a drain transfer has finished reading it. A drain requires a normal command entry in the baseline machine.
+
+Now admit two independent loads, $L_0$ and $L_1$. Each retains its command entry until its returned value has been bound into a physical payload slot. Their returns $z_0,z_1$ have arrived and occupy $R_0,R_1$. The loads wait for free payload slots; draining $x$ or $y$ waits for a command entry. The allocation policy allowed these two loads to consume the last normal command entries before admitting either drain. No cancellation, spill, preemption, or alternate command path exists in this hypothetical baseline.
+
+\begin{table}[tbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}p{0.15\linewidth}p{0.15\linewidth}XX@{}}
+\toprule
+Pool & Capacity & Occupancy at the blocked state & Condition needed for release \\
+\midrule
+Payload $P$ & 2 tiles & Completed outputs $x,y$ & A drain obtains a command entry and finishes reading \\
+Commands $Q$ & 2 entries & Loads $L_0,L_1$ & A return binds into a free payload slot \\
+Returns $R$ & 2 tiles & Returned values $z_0,z_1$ & The corresponding value binds into $P$ \\
+\bottomrule
+\end{tabularx}
+\caption{Illustrative saturated state. The example's release rules are assumptions, not inferred hardware policies.}
+\label{tab:u008-blocked}
+\end{table}
+
+There is a concrete circular wait:
+\begin{equation}
+ \text{loads hold }Q
+ \;\longrightarrow\;
+ \text{loads need }P
+ \;\longrightarrow\;
+ \text{drains must release }P
+ \;\longrightarrow\;
+ \text{drains need }Q.
+ \label{eq:u008-cycle}
+\end{equation}
+The return buffers are full but are not the essential cycle in this construction. Increasing their depth alone cannot make a command entry or payload slot available. Fair selection among the loads also cannot help: both are ineligible for the missing capacity. Nor does a larger instruction window help if every newly visible drain must acquire the same exhausted $Q$ pool. The failure is a resource-admission and release-path problem, despite the absence of a data dependency from $x$ or $y$ to either new load.
+
+Several repairs are possible. Admission could keep one normal command entry available for drains. The scheduler could issue the drains before allowing the loads to occupy all command entries. Command identity could be decoupled from the resource retained during return binding, provided some other completion-tracking capacity is guaranteed. A completed output could be spilled through an independently provisioned path. Each repair changes a particular hold-and-wait edge and has a cost. Merely adding a retry loop changes no edge.
+
+\subsection{An escape path with a conditional progress argument}
+
+For a more explicit repair, add one escape command entry $Q_E$ and one escape completion record $E_E$, unavailable to ordinary loads. An escape drain can read an already publishable payload directly, transmit it to a sink with prearranged capacity, and release its payload after source-read completion. Its descriptor, arbitration, completion notification, and capacity return do not require $Q$ or $R$. The drain may use a shared data path only if it is guaranteed eventual service there. A reserved descriptor is ineffective if the request subsequently joins a blocked normal completion queue.
+
+Temporarily stop admitting new work at saturation, and give the escape path a finite batch of already admitted work to retire. For this example, assume all four payloads $x,y,z_0,z_1$ are terminal outputs, each safely drainable once resident. An allowed sequence is shown in Table~\ref{tab:u008-drain}. A dash denotes a free slot; entries show the state after each macrostep, rather than a cycle-accurate timing trace.
+\begin{table}[tbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}p{0.43\linewidth}XXX@{}}
+\toprule
+Completed macrostep & Payload $P$ & Normal $Q$ & Returns $R$ \\
+\midrule
+Initial blocked state & $x,y$ & $L_0,L_1$ & $z_0,z_1$ \\
+Escape-drain $x$ & $-,y$ & $L_0,L_1$ & $z_0,z_1$ \\
+Bind $z_0$ and finish $L_0$ & $z_0,y$ & $-,L_1$ & $-,z_1$ \\
+Escape-drain $y$ & $z_0,-$ & $-,L_1$ & $-,z_1$ \\
+Bind $z_1$ and finish $L_1$ & $z_0,z_1$ & $-,-$ & $-,-$ \\
+Drain $z_0$ and $z_1$ & $-,-$ & $-,-$ & $-,-$ \\
+\bottomrule
+\end{tabularx}
+\caption{One feasible drain sequence for the explicitly bounded example. The existence of this sequence is supplemented by service and scheduling assumptions in the text.}
+\label{tab:u008-drain}
+\end{table}
+
+A feasible sequence alone proves only reachability of completion. To obtain a liveness argument, specify the controller and its service assumptions. It retains a selected drain until that drain completes; the selected drain's remaining local and external steps receive eventual service. When a return and a free payload slot coexist, binding receives eventual service, and its bookkeeping can release $Q$ and $R$ without allocating from either pool. There is no new admission or rollback during this finite drain phase. These assumptions rule out indefinite bypass as well as circular capacity waits in the stated scope.
+
+Let $b$ count the two admitted loads whose binding remains unfinished, and let $d$ count the four output drains that remain unfinished, including outputs not yet bound. Define
+\begin{equation}
+ \Phi=b+d.
+ \label{eq:u008-ranking}
+\end{equation}
+Every completed bind reduces $b$; every completed drain reduces $d$; neither step increases the other count because all admitted outputs were counted initially. If $P$ contains a value, an escape drain is available under the example's terminal-output assumption. If $P$ is empty and $b>0$, a returned value can bind. The selected macrostep eventually finishes under the service assumptions, so $\Phi$ strictly decreases after finite intervals until it reaches zero. Intermediate transfer states need not decrease $\Phi$; their eventual completion is an explicit premise. This establishes finite-batch local draining and reclamation for the example, without asserting a cycle bound. If a drain releases its source before destination arrival, remote delivery remains an outstanding obligation: its transport records and destination reservation must survive local reclamation. Proving receiver completion requires including that obligation and its eventual-service assumption in the progress measure or in a separate composed argument.
+
+The argument does not cover an arbitrary computation graph. A resident tile might still be speculative, needed by an unfinished consumer, or impossible to drain without another local operand. A remote sink might need the same saturated network path to return a credit. Those cases require a different invariant or a larger protected resource set. Reserving one entry is sufficient only after proving that one entry plus its complete dependency chain can advance. The reserve also consumes capacity that ordinary work could otherwise use, and a drain phase can reduce normal overlap. Its benefit is saturation robustness under this explicit contract.
+
+\subsection{NVIDIA GPU residency and collective ordering}
+
+CUDA's ordinary blocks must support independent execution, including sequential scheduling. A resident block therefore cannot assume that an arbitrary nonresident block will execute while it waits. Cooperative grid synchronization uses an occupancy-bounded cooperative launch; compute-capability-9.0 clusters add a co-scheduled group whose scope is the cluster. Independent Thread Scheduling does not supply arbitrary inter-block progress, and Programmatic Dependent Launch explicitly treats concurrency as opportunistic rather than a correctness guarantee \citep{u008_cuda_guide}.
+
+This divides ownership cleanly. The algorithm must use a legal synchronization structure. Compiler-selected register and shared-memory footprints influence residency. The runtime validates or arranges the supported launch, and hardware schedules within that contract. A change in resource footprint can invalidate an informal argument based on a previous occupancy estimate. Phase-separated kernels can avoid an in-kernel global wait, at the cost of another boundary; cooperative admission can keep required participants resident, at the cost of limiting the admitted grid. Neither mechanism proves a user lock protocol or mismatched barrier correct.
+
+Distributed execution adds ordering among communication operations. NCCL 2.26 introduced optional implicit ordering between communicators on a device, while requiring consistent host launch order across devices; its documented error handling includes asynchronous-error polling and communicator abort/recreation \citep{u008_nccl}. These are software-contract mechanisms for a bounded class of interactions. They cannot be replaced by an assumption that every queued GPU kernel or collective will run concurrently. The control costs include launch and participant state, resident execution resources, events, and recovery coordination; exact undocumented scheduler fairness is not inferred.
+
+\subsection{Ascend lifetimes and core admission}
+
+The live Ascend C developer-preview documentation describes a TPipe--TQue model that separates stage handoff from storage reuse. Enqueue/dequeue operations connect producer and consumer stages, while tensor allocation and release govern slots in local pools \citep{u008_ascend_tque}. The compiler and framework can implement regular stage protocols, but their composition must still fit the finite buffer and synchronization resources. A released tensor slot is useful only if the stage that performs the release can execute.
+
+CANN 9.0 documents an additional admission boundary. Normal scheduling may launch an operator in parts as physical cores become available. The \texttt{\_\_schedmode\_\_(1)} qualifier enables batch mode, which waits for the required physical cores before launching the kernel. The documentation recommends this mode for the specified concurrent inter-core-synchronizing scenario to avoid partial operators waiting on one another's unavailable cores. The illustrated cost is lost overlap between those operators \citep{u008_ascend_batch}. The live SyncAll developer-preview API also constrains logical block count relative to the physical cores available to the operator \citep{u008_ascend_syncall}.
+
+This is a useful example of preventing a residency cycle before it forms. It is scoped to supported products and the documented scheduling mode, not a claim that every Ascend task is gang scheduled. Algorithm authors and libraries choose participants and pair synchronization; the compiler preserves stage dependencies; runtime admission secures the cohort; pipeline hardware advances events and movement. Local queue correctness and cohort admission solve different parts of the problem. Additional buffering may absorb stage imbalance but consumes local memory and lengthens live intervals. Batch admission may simplify an inter-core proof while reducing overlap, and still needs a fair policy among waiting kernels if starvation freedom is promised.
+
+\subsection{TPU compiler lifetimes and distributed capacity}
+
+Pallas exposes asynchronous unit coordination through compiler-managed pipelines, buffers, and semaphores. Multibuffering consumes local capacity to let movement run ahead of computation \citep{u007_pallas_pipeline}. The Pallas asynchronous-operation design also makes lifetime preservation across split start/done operations explicit, including synchronization resources that remain live until completion \citep{u008_pallas_async}. A compiler can reason about these intervals only when outstanding work remains represented after its start operation has issued.
+
+Across devices, Pallas documents capacity semaphores or additional slots to restrict producer run-ahead, unmatched-wait failure modes, and barrier-identity discipline across invocations \citep{u007_pallas_distributed}. Capacity control and transfer completion serve different purposes. A received payload can still occupy a slot until its consumer releases it. An old invocation's signal must not satisfy a later invocation's rendezvous merely because the same semaphore resource is reused.
+
+The algorithm supplies matching communication and the consumer's dependency structure. The compiler manages visible local schedules and lifetimes; kernel or library code supplies the distributed protocol; runtime invocation identity and hardware service complete the contract. The benefit of static planning is strongest when shapes and communication structure permit a dependable capacity schedule. Dynamic latency still requires waits or spare slots, and a local schedule does not establish remote service. Costs include VMEM or other scratch occupancy, semaphore and epoch state, scalar control instructions, and startup/drain work. More slots permit skew at a memory cost; stronger per-step synchronization restricts skew by sacrificing overlap. Neither choice is universally preferable.
+
+\subsection{Tenstorrent queue and fabric composition}
+
+TT-Metalium circular buffers expose bounded producer/consumer ownership. The producer checks capacity before writing and publishing; the consumer waits for available pages and releases them after use. In particular, \texttt{cb\_reserve\_back} is documented as a blocking capacity poll that does not advance a pointer, so its name should not be read as an atomic allocator spanning arbitrary producers \citep{u008_tt_cb,u008_tt_reserve,u008_tt_pop}. Correct page accounting prevents overwrite; it does not prove that a downstream actor can be scheduled or acquire its other inputs.
+
+The Wormhole Ethernet guide describes higher-level flow control using acknowledgments and receiver buffer availability, together with startup and teardown coordination for asynchronously executing programs \citep{u007_tt_ethernet}. The dependency chain includes the controller processing credits and the lifetime of the remote program, not only the payload link. A queue protocol that is live while both programs run can fail to compose with teardown if one side stops before servicing the other's final acknowledgment.
+
+Algorithm and placement determine graph topology, initial tokens, and buffer depth. Kernels or fabric libraries arrange producer/consumer protocols; controllers and communication engines provide execution and movement; runtime setup establishes participating programs and resources. This explicit decomposition helps expose where capacity is held. It also makes control work visible in RISC instructions, circular-buffer counters, semaphores, routing buffers, and acknowledgments. Increasing L1 buffering can absorb imbalance but cannot repair an unmatched receive or a closed wait involving controllers. The relevant benefit condition is a graph and placement whose local queues and communication lifetimes compose under finite capacity, not an assumption that every dataflow graph is inherently live.
+
+\subsection{The proposed superscalar NPU needs a completion proof}
+
+The supplied timing-model inspection distinguishes logical tile identity from physical payload binding. A conditional local-load path can defer binding until returned data is ready, while ordinary issue-time binding remains. Guarded release checks consumers, a non-flush boundary, aliases, and physical references. These are useful mechanisms for shortening some holding intervals, with a clearly limited evidence scope. They do not establish that every instruction can bind late, every partial read frees storage, or every admitted operation eventually completes.
+
+Late binding removes an early claim on one pool but extends dependence on another. The unbound operation still needs logical identity, request tracking, return retention, and a future binding opportunity. If it holds an entry needed by a storage-releasing operation, the hypothetical cycle above explains the form of proof required, without asserting that the reviewed model contains that cycle. A dynamic scheduler can exploit a ready releaser only if it is represented in the reachable window, passes ordering gates, and can acquire the resources on its completion path.
+
+Generation tags and reference accounting primarily establish safety. They prevent a stale response from modifying a recycled entry or an old consumer from decrementing a new value's count. A liveness argument additionally needs eventual servicing of bind requests, completion records, reference decrements, and releases. A precise-state design from U007 can prolong retention because an old version remains recoverable until retirement; a progress repair must not free that version merely to break a wait. Recovery and liveness therefore constrain the same physical storage, rather than being independent features added after scheduling.
+
+One defensible design method is to enumerate, for each admission class, the resources held before issue, during execution, while awaiting return, and through architectural commitment. Then identify at least one legal route from every admitted unfinished state to useful completion or reclamation, and establish that the permitted scheduler cannot avoid such progress indefinitely. The route can be a compiler-certified phase, a resource-order discipline, reserved completion capacity, or an escape protocol. Its proof must include ordinary and conditional late-binding paths, not only the favorable path drawn in an example. If a retry or rollback is involved, repeated attempts need an argument that excludes unbounded recovery churn.
+
+\subsection{Fairness and cost complete the contract}
+
+Weak fairness requires eventual service for an action that remains continuously enabled. It does not generally protect an action that repeatedly becomes eligible and loses a short-lived opportunity. Stronger fairness assumptions or a bounded-overtaking policy may be needed when binding and arbitration interact. Aging an instruction can affect selection among eligible candidates, but does not allocate a missing buffer or make a nonresident participant runnable. Admission fairness, issue fairness, network service, and completion/reclamation fairness must be stated at their own boundaries.
+
+A numerical latency claim requires stronger premises still. In a finite batch, if every selected macrostep has a bounded service time and the scheduler bounds the number of overtaking operations, a completion-time bound can be constructed from those limits. Replacing either bound by ``eventually'' leaves only eventual completion. In an open system with unbounded arrivals, even a deadlock-free queue needs admission or service-rate assumptions before a finite waiting bound is meaningful. These are mathematical conditions for a claim, not performance measurements of the architectures discussed here.
+
+The common ledger includes reserved-but-idle capacity, queue and credit state, generation checks, arbitration and aging, completion bandwidth, extra buffer residence, and the overlap lost to phase or gang admission. A global acquisition order can remove circular hold-and-wait but constrain scheduling freedom. Releasing before waiting can remove an edge but require reconstructible state and safe reacquisition. Escape capacity can secure a drain path but reduces ordinary usable capacity. Timeouts and aborts can bound fault detection or trigger recovery only when recovery itself has a runnable path and a defined effect on outstanding traffic.
+
+A credible forward-progress claim therefore names its participants, capacities, initial state, failure assumptions, release paths, and fairness obligations. Public GPU, Ascend, TPU, and Tenstorrent interfaces provide concrete mechanisms for parts of this contract. The superscalar proposal changes resource lifetimes and selection opportunities, which may reduce stalls under suitable conditions. It must meet the same standard: admitted work retains a complete, safely reclaiming path that the specified execution policy will eventually service. No architecture-wide or distributed guarantee follows solely from backpressure, additional buffering, a ROB, or a larger instruction window.

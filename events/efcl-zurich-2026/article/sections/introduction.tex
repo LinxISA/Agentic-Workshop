@@ -1,0 +1,44 @@
+\section{The architectural question}
+\label{sec:introduction}
+
+The useful work of a neural processor is seldom one isolated matrix product. A matrix result may feed normalization, indexing, selection, format conversion, another matrix product, or communication with another device. These stages differ in execution width, latency, physical layout, numerical behavior, and ownership. Their interfaces can therefore determine an operator's latency even when the individual arithmetic engines are fast. An architecture must decide when a value is ready, where it lives, who may overwrite it, and which agent can advance the next dependency. These decisions remain necessary whether they are expressed in a compiler schedule, a GPU kernel, a dataflow protocol, or a dynamic scheduler.
+
+This article asks whether a bounded superscalar organization is a useful way to manage some of those decisions in an NPU. Here, ``superscalar'' denotes the possibility of identifying independent ready operations within a finite window and issuing them to available resources. The term does not imply an unbounded instruction window, a CPU-sized general-purpose core, unrestricted speculative memory execution, or a thread context for every tensor element. The proposed programming surface combines scalar control with shaped, typed Tiles. Hardware can track operation dependencies and the availability of finite execution and storage resources. A Tile is an architectural value with a descriptor and a logical valid region; it is not necessarily one indivisible physical transfer, execution step, or storage allocation.
+
+The proposal must be judged against competent alternatives. GPU kernels can distribute control among threads and specialized warps, use asynchronous matrix and copy engines, and compile sophisticated software pipelines. Ascend exposes matrix/vector pipelines, local memories, queues, and events whose composition depends on the product. TPU combines compiler-directed placement with scalar, vector, matrix, and DMA facilities, including low-level programmable asynchronous pipelines. Tenstorrent makes data-movement and compute roles, buffers, and explicit communication central to the programming model. Static scheduling can eliminate substantial dynamic control when shapes, routes, and execution times are predictable. Dynamic scheduling can exploit readiness variation only when work is present and admissible. Neither fact establishes a universal winner.
+
+\subsection{A running example with explicit boundaries}
+
+For the dense example, let a tile of queries $Q\in\mathbb{R}^{M\times D}$ attend to keys $K\in\mathbb{R}^{N\times D}$ and values $V\in\mathbb{R}^{N\times D_v}$. The logical computation is
+\begin{align}
+ S &= \alpha QK^T + B, \\
+ P_{ij} &= \frac{\exp(S_{ij}-m_i)}{\sum_{k=0}^{N-1}\exp(S_{ik}-m_i)},\qquad
+ m_i=\max_{0\leq k<N}S_{ik},\\
+ O &= PV.
+\end{align}
+Here $B$ represents an explicitly defined bias or masking rule. The equations describe real-arithmetic intent. A complete implementation additionally chooses input, accumulator, and output types, rounding and exceptional-value behavior, a permitted reduction order, and handling of empty or fully masked rows. These choices affect both numerical results and the schedules that are legal.
+
+The matrix stages produce and consume blocks of scores or probabilities. The middle stage performs reductions and elementwise functions, and it may require retaining scores, exponentials, or partial statistics. If $M$ is small, the implementation has fewer independent rows with which to cover these dependencies. This is a stated low-concurrency case, not a claim that every decoding workload has low concurrency: batch size, heads, parallel sequences, splitting, and device partitioning can all supply more work. Even with many rows, limited storage can prevent all of that work from being resident simultaneously.
+
+Attention does not stand in for every workload. Indexed accumulation is used separately to study irregular access and collisions in Section~\ref{sec:u004}. A producer--communication--consumer pipeline is used to study events and bounded resources in Sections~\ref{sec:u006}--\ref{sec:u008}. Their control and numerical requirements differ, so an optimization valid for a dense attention tile cannot automatically be transferred to a sparse update or a distributed protocol.
+
+\subsection{Eight questions rather than eight mechanisms}
+
+The questions organize the argument because each exposes a distinct obligation:
+\begin{enumerate}[label=\textbf{U00\arabic*},leftmargin=4.8em]
+ \item Which coordination granularity preserves useful overlap between matrix, vector, and movement stages?
+ \item During which part of a value's lifetime must scarce payload storage actually be occupied?
+ \item Which format, layout, packing, and scale work remains after competent optimization?
+ \item Who handles data-dependent addresses, sparse structure, collisions, and the transition back to regular compute?
+ \item Where does a reduction exchange values and retain state, and what numerical order may it use?
+ \item Which agent advances scalar submission and completion events while compute is busy?
+ \item What state, attribution, visibility, and ordering contracts make asynchronous failures understandable?
+ \item Why can admitted work eventually finish when every queue, buffer, and context is finite?
+\end{enumerate}
+Renaming, partial readiness, late binding, extra scalar contexts, or event offload are possible answers to parts of these questions. They are not premises from which a favorable comparison may be derived. In particular, a scheduling optimization that shortens one wait can lengthen a value's storage lifetime, increase conversion traffic, or obstruct the agent needed to release capacity. The final evaluation must close those loops across the whole core.
+
+\subsection{The conditional thesis}
+
+The working hypothesis is that the gap between \emph{semantic dependencies} and \emph{conservative software coordination} can sometimes be usefully managed by bounded hardware state. If a consumer needs only a defined subset of a producer's output, a correct partial-readiness contract may release it sooner. If a long-latency request need not immediately occupy its final compute storage, separate request identity and physical binding may reduce occupancy. If an independent operation is ready while another waits, resource-aware issue may preserve utilization without an explicit software role split.
+
+Each proposition has a corresponding obligation. Partial readiness requires exact subvalue validity and alias rules. Delayed binding requires a feasible destination or return path. Dynamic issue requires dependency checks, finite queues, and fair selection. Completion requires safe publication and release. Precise recovery may need retained versions or delayed externally visible effects. The design is attractive only where these obligations can be met for less total cost than the coordination or waiting they replace. This is an architectural argument and an evaluation agenda, not a measured claim of improvement.
