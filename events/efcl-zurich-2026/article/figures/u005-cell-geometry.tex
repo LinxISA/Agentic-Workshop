@@ -1,0 +1,21 @@
+\begin{tikzpicture}[x=0.52cm,y=0.26cm,font=\small]
+ \foreach \x/\lab in {0/{RowMajor},8/{M16 FP32},17/{M32 FP32}} {
+  \node[anchor=south] at (\x+2,18) {\lab};
+ }
+ \draw (0,0) rectangle (4,8);
+ \foreach \y in {1,...,7}{\draw[gray] (0,\y)--(4,\y);}
+ \foreach \x in {1,2,3}{\draw[gray] (\x,0)--(\x,8);}
+ \node[align=center] at (2,-2.4) {$8\times4$ valid\\128 logical bytes};
+ \draw (8,0) rectangle (12,16);
+ \fill[gray!18] (8,8) rectangle (12,16);
+ \draw[very thick] (10,0)--(10,16);
+ \draw[dashed] (8,8)--(12,8);
+ \node[align=center] at (10,-2.4) {$16\times4$ envelope\\2 CELLs, 256 bytes};
+ \draw (17,0) rectangle (21,16);
+ \fill[gray!18] (17,4) rectangle (21,16);
+ \foreach \x in {18,19,20}{\draw[very thick] (\x,0)--(\x,16);}
+ \draw[dashed] (17,4)--(21,4);
+ \node[align=center] at (19,-2.4) {$32\times4$ envelope\\4 CELLs, 512 bytes};
+ \node[align=center,fill=gray!18,inner sep=1pt] at (10,10.5) {padding};
+ \node[align=center,fill=gray!18,inner sep=1pt] at (19,10) {padding};
+\end{tikzpicture}

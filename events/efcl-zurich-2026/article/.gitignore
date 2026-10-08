@@ -1,0 +1,7 @@
+.build/
+review/*
+!review/superscalar-npu-eight-problems.pdf
+!review/REVIEW.md
+!review/MAC-IMPORT-CHECKS.md
+*.synctex.gz
+!review/U006-REVISION-REVIEW.md

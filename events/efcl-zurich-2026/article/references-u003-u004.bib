@@ -1,0 +1,409 @@
+% Primary references for U003 and U004. Source and access dates are distinguished.
+
+@misc{u003_mlir_quant,
+  author = {{LLVM Project}},
+  title = {{MLIR Quantization Dialect}},
+  year = {2026},
+  howpublished = {\url{https://mlir.llvm.org/docs/Dialects/QuantDialect/}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_hif4_bench,
+  author = {{PTO-ISA Contributors}},
+  title = {{SuperNPUBench: Level-One HiF4 Matmul Quantization}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/SuperNPUBench/blob/349c98964144dfd9ca6a2665eca5a16ca8f3e045/benchmark/one-level-arch/kernels/basic_op/matmul/matmul_hif4_l1_quantize.hpp}},
+  note = {Pinned revision 349c98964144dfd9ca6a2665eca5a16ca8f3e045; source review 6 October 2026}
+}
+
+@misc{u003_lowp_attention,
+  author = {{PTO-ISA Contributors}},
+  title = {{SuperNPUBench: Low-Precision Attention Kernel}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/SuperNPUBench/blob/349c98964144dfd9ca6a2665eca5a16ca8f3e045/benchmark/one-level-arch/kernels/basic_op/fa/fa_lowp.hpp}},
+  note = {Pinned revision 349c98964144dfd9ca6a2665eca5a16ca8f3e045; source review 6 October 2026}
+}
+
+@misc{u003_triton_layouts,
+  author = {{Triton Contributors}},
+  title = {{Gluon Tutorial: Tensor Layouts}},
+  year = {2026},
+  howpublished = {\url{https://triton-lang.org/main/getting-started/tutorials/gluon/layouts.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_cutlass_gemm,
+  author = {{NVIDIA}},
+  title = {{Efficient GEMM in CUDA}},
+  year = {2026},
+  howpublished = {\url{https://docs.nvidia.com/cutlass/latest/media/docs/cpp/efficient_gemm.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_llvm_vectorizers,
+  author = {{LLVM Project}},
+  title = {{Auto-Vectorization in LLVM}},
+  year = {2026},
+  howpublished = {\url{https://llvm.org/docs/Vectorizers.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_ptx,
+  author = {{NVIDIA}},
+  title = {{Parallel Thread Execution ISA: Conversion and Matrix Instructions}},
+  year = {2026},
+  howpublished = {\url{https://docs.nvidia.com/cuda/parallel-thread-execution/}},
+  note = {Living virtual-ISA documentation; accessed 7 October 2026}
+}
+
+@misc{u003_cutlass_blackwell,
+  author = {{NVIDIA}},
+  title = {{CUTLASS: Blackwell SM100 GEMMs}},
+  year = {2026},
+  howpublished = {\url{https://docs.nvidia.com/cutlass/latest/media/docs/cpp/blackwell_functionality.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_ascend_cast,
+  author = {{Huawei}},
+  title = {{Ascend C Cast API}},
+  year = {2026},
+  howpublished = {\url{https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/API/ascendcopapi/docs/en/api/SIMD-API/basic_api/memory_vector_compute/type_conversion/Cast.md}},
+  note = {CANN 9.1; generation-specific type and rounding tables; accessed 7 October 2026}
+}
+
+@misc{u003_ascend_mmadmx,
+  author = {{Huawei}},
+  title = {{Ascend C MmadMx API}},
+  year = {2026},
+  howpublished = {\url{https://asc.gitcode.com/api/SIMD-API/basic_api/cube_compute_ISASI/mmad_compute/MmadMx.html}},
+  note = {950PR/950DT-specific microscaling matrix interface; accessed 7 October 2026}
+}
+
+@misc{u003_pallas_matmul,
+  author = {{JAX Authors}},
+  title = {{Pallas TPU: Matrix Multiplication}},
+  year = {2026},
+  howpublished = {\url{https://docs.jax.dev/en/latest/pallas/tpu/matmul.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_pallas_details,
+  author = {{JAX Authors}},
+  title = {{Writing TPU Kernels with Pallas: Precision Control}},
+  year = {2026},
+  howpublished = {\url{https://docs.jax.dev/en/latest/pallas/tpu/details.html#precision-control}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_jax_explicit,
+  author = {{JAX Authors}},
+  title = {{Pallas TPU Tests: Explicit MXU Paths}},
+  year = {2026},
+  howpublished = {\url{https://github.com/jax-ml/jax/blob/main/tests/pallas/tpu_pallas_test.py}},
+  note = {Moving source reference recorded in 6 October 2026 review; experimental generation-scoped APIs, not a deployed-kernel guarantee}
+}
+
+@misc{u003_tt_engines,
+  author = {{Tenstorrent}},
+  title = {{Compute Engines and Data Flow within Tensix}},
+  year = {2026},
+  howpublished = {\url{https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/advanced_topics/compute_engines_and_dataflow_within_tensix.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_tt_unpack,
+  author = {{Tenstorrent}},
+  title = {{Wormhole B0 ISA: Unpacker Format Conversion}},
+  year = {2026},
+  howpublished = {\url{https://github.com/tenstorrent/tt-isa-documentation/blob/main/WormholeB0/TensixTile/TensixCoprocessor/Unpackers/FormatConversion.md}},
+  note = {Moving source reference recorded in 6 October 2026 review; Wormhole-specific}
+}
+
+@misc{u003_tt_matrix,
+  author = {{Tenstorrent}},
+  title = {{Wormhole B0 ISA: Matrix Unit}},
+  year = {2026},
+  howpublished = {\url{https://github.com/tenstorrent/tt-isa-documentation/blob/main/WormholeB0/TensixTile/TensixCoprocessor/MatrixUnit.md}},
+  note = {Moving source reference recorded in 6 October 2026 review; Wormhole-specific}
+}
+
+@misc{u003_intel_sdm,
+  author = {{Intel}},
+  title = {{Intel 64 and IA-32 Architectures Software Developer Manuals}},
+  year = {2026},
+  howpublished = {\url{https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html}},
+  note = {Official manual index accessed 7 October 2026; instruction review uses Volume 2}
+}
+
+@misc{u003_intel_permute,
+  author = {{Intel}},
+  title = {{Intel AVX-512: Permuting Data Within and Between AVX Registers}},
+  year = {2022},
+  howpublished = {\url{https://builders.intel.com/docs/networkbuilders/intel-avx-512-permuting-data-within-and-between-avx-registers-technology-guide-1668169807.pdf}},
+  note = {Technology guide; accessed 7 October 2026}
+}
+
+@misc{u003_arm_neon,
+  author = {{Arm}},
+  title = {{Arm Neon Intrinsics Reference}},
+  year = {2026},
+  howpublished = {\url{https://arm-software.github.io/acle/neon_intrinsics/advsimd.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_arm_sve_examples,
+  author = {{Arm}},
+  title = {{SVE Programming Examples}},
+  year = {2024},
+  howpublished = {\url{https://documentation-service.arm.com/static/6659c722876c8d213b7870d3}},
+  note = {ARM-DAI-0548, release 01.2; especially section A5.1; accessed 7 October 2026}
+}
+
+@misc{u003_arm_acle,
+  author = {{Arm}},
+  title = {{Arm C Language Extensions: SVE}},
+  year = {2026},
+  howpublished = {\url{https://arm-software.github.io/acle/main/acle.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u003_linx_geometry,
+  author = {{LinxISA Contributors}},
+  title = {{Linx TileOP API: Tile Geometry and Physical Layout}},
+  year = {2026},
+  howpublished = {\url{https://github.com/LinxISA/Linx-TileOP-API/blob/fac242a95bc70cd1783547555e5bd7335d1969bf/include/common/pto_tile.hpp}},
+  note = {Pinned revision fac242a95bc70cd1783547555e5bd7335d1969bf; source review 6 October 2026}
+}
+
+@misc{u003_linx_emit,
+  author = {{LinxISA Contributors}},
+  title = {{Linx TileOP API: Typed Operation Emitters}},
+  year = {2026},
+  howpublished = {\url{https://github.com/LinxISA/Linx-TileOP-API/blob/fac242a95bc70cd1783547555e5bd7335d1969bf/include/jcore/template_asm.hpp}},
+  note = {Pinned revision fac242a95bc70cd1783547555e5bd7335d1969bf; conversion, row/column reduction, and retirement guards}
+}
+
+@misc{u004_cuda,
+  author = {{NVIDIA}},
+  title = {{CUDA C++ Programming Guide}},
+  year = {2025},
+  howpublished = {\url{https://docs.nvidia.com/cuda/archive/13.0.3/cuda-c-programming-guide/index.html}},
+  note = {Archived CUDA 13.0.3; memory, atomic, and execution-model sections; accessed 7 October 2026}
+}
+
+@misc{u004_cutlass_pipeline,
+  author = {{NVIDIA}},
+  title = {{Efficient GEMM in CUDA: Hopper Warp Specialization}},
+  year = {2026},
+  howpublished = {\url{https://docs.nvidia.com/cutlass/latest/media/docs/cpp/efficient_gemm.html#hopper-warp-specialization}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u004_ptx_sparse,
+  author = {{NVIDIA}},
+  title = {{Parallel Thread Execution ISA 8.7: Sparse Matrix Instructions}},
+  year = {2025},
+  howpublished = {\url{https://docs.nvidia.com/cuda/archive/12.8.0/pdf/ptx_isa_8.7.pdf}},
+  note = {Archived PTX 8.7, section 9.7.14.6; source review 6 October 2026}
+}
+
+@misc{u004_ascend_gather,
+  author = {{Huawei}},
+  title = {{Ascend C Gather API}},
+  year = {2026},
+  howpublished = {\url{https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/API/ascendcopapi/docs/en/api/SIMD-API/basic_api/memory_vector_compute/scatter_gather/Gather.md}},
+  note = {CANN 9.1; accessed 7 October 2026}
+}
+
+@misc{u004_ascend_scatter,
+  author = {{Huawei}},
+  title = {{Ascend C Scatter (ISASI) API}},
+  year = {2026},
+  howpublished = {\url{https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/API/ascendcopapi/docs/en/api/SIMD-API/basic_api/memory_vector_compute/scatter_gather/Scatter_ISASI.md}},
+  note = {CANN 9.1; product and duplicate-offset restrictions; accessed 7 October 2026}
+}
+
+@misc{u004_ascend_dma_atomic,
+  author = {{Huawei}},
+  title = {{Ascend C SetAtomicAdd API}},
+  year = {2026},
+  howpublished = {\url{https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/API/ascendcopapi/docs/en/api/SIMD-API/basic_api/atomic_operations/SetAtomicAdd.md}},
+  note = {CANN 9.1; source review 7 October 2026}
+}
+
+@misc{u004_ascend_scalar_atomic,
+  author = {{Huawei}},
+  title = {{Ascend C AtomicAdd API}},
+  year = {2026},
+  howpublished = {\url{https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/API/ascendcopapi/docs/en/api/SIMD-API/basic_api/atomic_operations/AtomicAdd.md}},
+  note = {CANN 9.1; 950 scalar GM atomic path; accessed 7 October 2026}
+}
+
+@misc{u004_ascend_histograms,
+  author = {{Huawei}},
+  title = {{Ascend C Register-Vector Histograms API}},
+  year = {2026},
+  howpublished = {\url{https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/API/ascendcopapi/docs/en/api/SIMD-API/basic_api/reg_vector_compute/histogram_compute/Histograms.md}},
+  note = {CANN 9.1; source review 7 October 2026}
+}
+
+@misc{u004_pallas_sparse,
+  author = {{JAX Authors}},
+  title = {{Scalar Prefetch and Block-Sparse Computation}},
+  year = {2026},
+  howpublished = {\url{https://docs.jax.dev/en/latest/pallas/tpu/sparse.html#dynamic-block-indexing-with-scalar-prefetch}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u004_pallas_sparsecore,
+  author = {{JAX Authors}},
+  title = {{SparseCore Kernel Writing}},
+  year = {2026},
+  howpublished = {\url{https://docs.jax.dev/en/latest/pallas/tpu/sparsecore.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u004_xla_sparsecore,
+  author = {{OpenXLA Contributors}},
+  title = {{A Deep Dive into SparseCore for Large Embedding Models}},
+  year = {2026},
+  howpublished = {\url{https://openxla.org/xla/sparsecore}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u004_tt_movement,
+  author = {{Tenstorrent}},
+  title = {{Device 2.0 Data Movement API Migration Guide}},
+  year = {2026},
+  howpublished = {\url{https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/kernel_apis/data_movement/device_api_migration_guide.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u004_tt_semaphore,
+  author = {{Tenstorrent}},
+  title = {{Metalium Kernel API: noc\_semaphore\_inc}},
+  year = {2026},
+  howpublished = {\url{https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/kernel_apis/data_movement/noc_semaphore_inc.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u004_intel_conflict,
+  author = {{Intel}},
+  title = {{Improve Vectorization Performance Using Intel AVX-512}},
+  year = {2026},
+  howpublished = {\url{https://www.intel.com/content/www/us/en/developer/articles/technical/improve-vectorization-performance-using-intel-advanced-vector-extensions-512.html}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u004_arm_acle,
+  author = {{Arm}},
+  title = {{Arm C Language Extensions: SVE Addressing Modes}},
+  year = {2026},
+  howpublished = {\url{https://arm-software.github.io/acle/main/acle.html#sve-addressing-modes}},
+  note = {Documentation accessed 7 October 2026}
+}
+
+@misc{u004_spec_address,
+  author = {{PTO-ISA Contributors}},
+  title = {{Indexed Memory Byte-Displacement Addressing Contract}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/e182c9b70d54a3a264bac54af9b915a0e43bb519/asl/tile/model/memory/addressing.asl}},
+  note = {Recorded main revision e182c9b70d54a3a264bac54af9b915a0e43bb519; source review 6--7 October 2026}
+}
+
+@misc{u004_spec_masks,
+  author = {{PTO-ISA Contributors}},
+  title = {{Tile Execution-Mask State}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/e182c9b70d54a3a264bac54af9b915a0e43bb519/asl/tile/model/execution/execution-mask-state.asl}},
+  note = {Recorded main revision e182c9b70d54a3a264bac54af9b915a0e43bb519; source review 6--7 October 2026}
+}
+
+@misc{u004_spec_tlea,
+  author = {{PTO-ISA Contributors}},
+  title = {{TLEA Logical-Index Scaling}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/cab1978fb6056aecd19b475b87ef9c418766d45e/asl/tile/model/execution/lea.asl}},
+  note = {Target revision cab1978fb6056aecd19b475b87ef9c418766d45e; normative and executable evidence distinguished; source review 7 October 2026}
+}
+
+@misc{u004_spec_atomic,
+  author = {{PTO-ISA Contributors}},
+  title = {{Global-Memory Atomic and Reduction Contract}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/cab1978fb6056aecd19b475b87ef9c418766d45e/asl/tile/model/memory/gm-atom-red.asl}},
+  note = {Target revision cab1978fb6056aecd19b475b87ef9c418766d45e; normative and executable evidence distinguished; source review 7 October 2026}
+}
+
+@misc{u004_spec_atomic_execution,
+  author = {{PTO-ISA Contributors}},
+  title = {{Global-Memory Atomic and Reduction Execution: Preflight and Results}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/cab1978fb6056aecd19b475b87ef9c418766d45e/asl/tile/model/memory/gm-atom-red-execution.asl}},
+  note = {Target revision cab1978fb6056aecd19b475b87ef9c418766d45e; normative and executable evidence distinguished; source review 7 October 2026}
+}
+
+@misc{u004_spec_ordering,
+  author = {{PTO-ISA Contributors}},
+  title = {{Architectural Memory Ordering}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/cab1978fb6056aecd19b475b87ef9c418766d45e/asl/arch/memory-model/ordering.asl}},
+  note = {Target revision cab1978fb6056aecd19b475b87ef9c418766d45e; normative and executable evidence distinguished; source review 7 October 2026}
+}
+
+@misc{u004_spec_coherence,
+  author = {{PTO-ISA Contributors}},
+  title = {{Architectural Memory Events and Coherence}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/cab1978fb6056aecd19b475b87ef9c418766d45e/asl/arch/memory-model/memory-events.asl}},
+  note = {Target revision cab1978fb6056aecd19b475b87ef9c418766d45e; normative and executable evidence distinguished; source review 7 October 2026}
+}
+
+@misc{u004_spec_bcatr,
+  author = {{PTO-ISA Contributors}},
+  title = {{B.CATR Block Attributes: Contract and Executable Limitations}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/pto-spec/blob/cab1978fb6056aecd19b475b87ef9c418766d45e/docs/block/attributes/B.CATR.md}},
+  note = {Target revision cab1978fb6056aecd19b475b87ef9c418766d45e; normative and executable evidence distinguished; source review 7 October 2026}
+}
+
+@misc{u004_model_candidate,
+  author = {{LinxISA Contributors}},
+  title = {{SuperScalarModel: Indexed Address and Atomic Candidate Path}},
+  year = {2026},
+  howpublished = {\url{https://github.com/LinxISA/SuperScalarModel/blob/aa91094d3f41fd8aef03c2c96072df32823faf38/TimingSim/group/tlsu/L2/l2_agu.cpp}},
+  note = {Pinned candidate aa91094d3f41fd8aef03c2c96072df32823faf38; bounded development profile, not comprehensive validation}
+}
+
+@misc{u004_compiler_integration,
+  author = {{LinxISA Contributors}},
+  title = {{LLVM Integration: Logical Indices, TLEA, and Elementwise Lowering}},
+  year = {2026},
+  howpublished = {\url{https://github.com/LinxISA/llvm-project/pull/117}},
+  note = {Head 74c93843 recorded 7 October 2026; earlier 05a1e626 recognizer review is historical; new-head execution validation incomplete}
+}
+
+@misc{u004_api_integration,
+  author = {{LinxISA Contributors}},
+  title = {{Linx TileOP API Elementwise Integration}},
+  year = {2026},
+  howpublished = {\url{https://github.com/LinxISA/Linx-TileOP-API/pull/249}},
+  note = {Head a70915a5e18e109d680d82068622a42e3a24138e recorded 7 October 2026, 05:28 UTC; availability separate from ISA scope}
+}
+
+@misc{u004_bench_integration,
+  author = {{PTO-ISA Contributors}},
+  title = {{SuperNPUBench: Tile and Elementwise Irregular Workload Integration}},
+  year = {2026},
+  howpublished = {\url{https://github.com/PTO-ISA/SuperNPUBench/pull/202}},
+  note = {Recorded candidate 8c3268baf24097a0cb9cd53cf720f482dd78f42b; existing source and reported evidence, not tests rerun for this article}
+}
+
+@misc{u003_ascend_3510,
+  author = {{Huawei}},
+  title = {{Ascend C: NPU Architecture Version 3510}},
+  year = {2026},
+  howpublished = {\url{https://asc.gitcode.com/guide/programming_guide/advanced_programming/hardware_implementation/architecture_spec/npu_arch_3510.html}},
+  note = {Public development-preview documentation; generation-scoped SIMD/SIMT, storage, and Fixpipe mechanisms; accessed 7 October 2026}
+}

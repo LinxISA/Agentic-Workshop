@@ -1,0 +1,126 @@
+\section{U006 Scalar and event orchestration}
+\label{sec:u006}
+
+\subsection{A fused workload spans three coordination domains}
+
+Consider a tensor-parallel tile stream: each card produces matrix partials, exchanges them, applies a local vector epilogue or normalization, and publishes data for the next matrix stage. Multiple SoC cores share this work. Fusion brings inter-card communication, local matrix/vector execution, and on-chip multicore synchronization into one dependency graph; removing a launch boundary does not remove their ownership transfers. NVIDIA's NCCL fusion example illustrates reduce-scatter, local RMSNorm, and all-gather. Its current source targets NCCL 2.30 or later and prioritizes teaching clarity rather than maximum performance. It is a concrete protocol example, not an optimized performance ceiling. The surrounding matrix stages here are an illustrative workload, not a claim about that example's implementation.\citep{u006-nccl-fusion}
+
+U001 (Section~\ref{sec:u001}) asks when matrix/vector work becomes ready; U002 (Section~\ref{sec:u002}) owns storage lifetime; U004 (Section~\ref{sec:u004}) owns irregular payload accesses and data atomics; U005 (Section~\ref{sec:u005}) owns reduction execution and numerical contracts. U006 asks who prepares, submits, waits for, and consumes the events connecting those stages. U007 (Section~\ref{sec:u007}) and U008 (Section~\ref{sec:u008}) own precise effects/visibility and bounded-resource progress respectively.
+
+\subsection{Identify the agents before comparing mechanisms}
+
+For each edge, identify five roles: the initiator constructs and submits a request; an executor moves or computes the payload; a waiter checks the relevant completion; a completion consumer updates downstream ownership; and a visibility authority establishes which effects that observation permits. A role may be implemented by the same thread, a different warp/controller, firmware, or hardware. None is determined by the word ``asynchronous.'' A device-side flag is not inherently a host round trip.
+
+For the illustrative tile exchange, compute control prepares a descriptor, a transfer engine or communication role executes it, a receiver observes destination readiness, and a completion service eventually releases the source and returns credit. A multicore handoff may use a different visibility scope from the inter-card transfer. A waiting compute role must not obstruct the executor or the completion consumer that can unblock it. This role ledger is an analytical decomposition, not a prescribed allocation of one hardware thread per role.
+
+\subsection{Four scopes and five milestones}
+
+Within a compute core, scalar control can submit matrix, vector, and copy operations and coordinate local dependencies. Across cores on one chip, communication can use a local NoC, shared global memory, hardware flags, or remote local-memory operations. Across devices, it may use peer loads/stores, remote DMA, NIC queues, or a collective protocol. Host/runtime setup allocates resources, registers memory, constructs communicators, launches work, and tears it down. These scopes have different agents, ordering rules, and failure modes.
+
+For one transfer, at least five milestones should be distinguished:
+\begin{enumerate}
+ \item The command was accepted or issued
+ \item The source is no longer read by the local transfer machinery
+ \item The destination payload is visible within the required recipient scope
+ \item The consumer has observed the readiness event and consumed the value
+ \item The storage and protocol identity can be safely reused
+\end{enumerate}
+A particular API may combine some milestones, but no combination should be inferred from the word ``complete.'' A flush that permits local source reuse is not necessarily a remote-consumption acknowledgement. An event announcing a byte count is not necessarily an acquire for unrelated memory. Safe tag reuse may additionally require that stale events from an earlier generation cannot match the new owner. These distinctions connect directly to U007's ordering and U008's reclamation obligations.
+
+\begin{figure}[tb]
+\centering
+\input{figures/u006-events}
+\caption{A conceptual producer--transfer--consumer protocol. Vertical arrows are required causal edges; horizontal spacing is illustrative and is not a latency measurement. Source reuse, destination readiness, and credit return can require different events and progressing agents.}
+\label{fig:u006-events}
+\end{figure}
+
+An event that travels through device memory is not automatically a host round trip. PCIe is an interconnect, not an execution agent: a supported peer or NIC path can use PCIe without host software submitting every message. Similarly, an accelerator-side service processor is not the host CPU. A claimed weak-scalar or host-event bottleneck must identify the actual processor, path, and trace rather than generalizing to every NPU.
+
+\subsection{NVIDIA distributes control through roles and device communication APIs}
+
+A warp, a CTA, a thread-block cluster, arbitrary blocks across SMs, and multiple devices are distinct scopes. \texttt{\_\_syncwarp} orders participating warp lanes; \texttt{\_\_syncthreads} is a CTA barrier. Applicable asynchronous-barrier/\texttt{mbarrier} and cluster mechanisms have their own arrival, phase, and visibility rules. They do not turn an ordinary grid barrier into a safe cross-SM synchronization point. Cross-device communication needs the supported transport/library contract.\citep{u006-cuda-scopes}
+
+For on-chip pipelines, Hopper TMA allows a thread to initiate bulk asynchronous movement while other work proceeds. Warp-specialized kernels distribute producer, matrix-consumer, and epilogue work across roles, each with barrier and buffer ownership. CUTLASS contains concrete producer/consumer pipeline implementations. Dedicated roles avoid placing every instruction in one thread's immediate sequence, but consume resident state, registers, barrier phases, and issue opportunities. Thread-block clusters add a bounded cross-block shared-memory scope; they do not make every block in an arbitrary grid simultaneously resident.~\citep{u006-hopper,u006-cutlass}
+
+Across devices, NCCL LSA uses supported peer load/store connectivity; multimem uses supported NVLink SHARP multicast; GIN provides network communication where supported. NIC participation and any proxy path depend on transport and configuration. Its archived 2.28.7 documentation covers symmetric memory windows and device communication contexts, including puts, signals, waits, and flushes. These mechanisms require setup and transport support. In particular, local input reuse after a flush must not be conflated with the remote readiness/signaling obligation. The exact facility must be selected from the topology and library version rather than inferred from the GPU's marketing family.~\citep{u006-nccl}
+
+NVSHMEM provides another division of responsibility. Traditional IBRC uses a CPU proxy; IBGDA permits GPU construction of NIC work-queue entries, doorbell updates, and completion handling in GPU memory. CPU-assisted variants place parts of the work differently. Device initiation therefore names a control capability, not one universal data path. The vendor's performance guidance explicitly discusses the cost of GPU WQE construction, contention when issuers share queue pairs, and the resource/fence cost of more queues. Moving submission to the GPU can expose parallel issuing but does not establish a lower single-message latency in every configuration.~\citep{u006-nvshmem-ibgda,u006-nvshmem-performance}
+
+For a fused kernel, account for scheduler and register residency, shared memory, flags and barrier state, atomic and load/store ports, submission/completion queues, interconnect/NIC capacity, staging memory, and any proxy work. A waiting warp need not block another ready warp, but still retains registers and other resident resources. The GPU scheduler can select other eligible warps while one waits, but only resident work with available resources can benefit. Synchronizing persistent or collective kernels must follow the library's launch and progress requirements; NVSHMEM documents collective-launch constraints for applicable synchronization/collective use. Ignoring those requirements would compare a correct bounded protocol against an inadmissible one.~\citep{u006-nvshmem-using}
+
+\subsection{Ascend separates pipeline events from communication service}
+
+Ascend C describes scalar control as responsible for scheduling and instruction transmission and advises reducing unnecessary scalar computation and branching. This supports the possibility of scalar pressure in a specified kernel; it does not prove a universal single-thread bottleneck across every Ascend generation. Intra-core \texttt{SetFlag}/\texttt{WaitFlag} operations use pipeline event state, and the receiving pipeline waits for the corresponding event. They are not inherently host or PCIe events. Event identifiers are finite and pairing is part of the programming contract.~\citep{u006-ascend-architecture,u006-ascend-flags}
+
+For supported separate-mode products, cross-core flags provide AIC/AIV synchronization with product- and mode-specific rules. CANN 8.5 documents modes spanning AIC/AIV groups and warns that high-level Matmul internally owns some synchronization resources. A hand-written fused kernel must therefore avoid conflicting with library-owned event IDs. Correctness is a composition problem involving the compiler, library, runtime, and explicit user synchronization, even though the underlying event operation is hardware controlled.~\citep{u006-ascend-crosscore}
+
+For cross-device work, the CANN 9.0 HCCL kernel interface uses an AI Core client and an AI CPU or CCU server, depending on supported hardware and configuration. A Prepare operation supplies the collective description; Commit authorizes execution when dependencies allow it; completion and finalization have separate roles. Descriptor preparation can be moved before compute so that some setup overlaps, while Commit must still respect data readiness. The AI CPU is accelerator-side, so its participation alone does not imply a host-CPU round trip.~\citep{u006-hccl}
+
+The CANN 9.0 AIV task-orchestration example documents another path: readiness flags are written through local-to-global copies, and waits repeatedly copy a GM flag into local storage for scalar comparison. Payload GM-to-GM movement stages through Vector Core local storage. Its example uses before/after rank synchronization and a stable HCCL buffer. A reduce-enabled copy's atomic write belongs to the payload reduction path, distinct from scalar task-queue atomics.\citep{u006-hccl-aiv}
+
+HCCL Host, AICPU/CCU service, and AIV initiation are separate configurations; SDMA, RDMA, Notify, GM flags, and atomic-write capabilities must be attributed to the supported generation and path. The supplied CANN 8.5 alpha002 communication-path page could not be retrieved in this review, so it is retained as an unverified pointer rather than used to establish an SDMA/RDMA/Notify assignment. Neither that gap nor the AIV example supports a universal weak-scalar or host-round-trip claim.
+
+This organization pays for client scalar instructions, server work, handles, queues, communication workspace, and synchronization. Repeated use must maintain the documented Commit/Wait accounting, and finalization cannot race slower participating cores. The useful question is whether preparation, server execution, and completion service stay ahead of the tile stream, not whether the API name contains ``asynchronous.'' A server queue that fills can return pressure to the client, while a client that waits too early can fail to prepare later independent work. Product-specific traces are needed to determine which case limits an actual kernel.
+
+\subsection{TPU uses asynchronous DMA with explicit completion ownership}
+
+Pallas TPU has scalar control and scalar memory for control operands, distinct from vector and matrix computation. Its documented grid execution and memory movement model differs from GPU warp oversubscription: the compiler arranges local-memory transfers and supported multicore partitioning is explicit. Asynchronous engines can advance while scalar control performs other work, but that fact does not create a second independently executing scalar instruction stream.~\citep{u005-pallas-details}
+
+The distributed Pallas interface exposes device-issued asynchronous push DMA within a TPU pod. A descriptor includes distinct send and receive semaphores. Starting the copy can be followed by independent work; the send completion protects local source reuse, while the receive completion protects destination use. The distributed guide demonstrates buffering and pipelining and warns that mismatched waits or counts can cause hangs, crashes, or corruption. These are explicit device-side communication capabilities, so a model that routes every TPU tile exchange through host software would be an unfair baseline.~\citep{u006-pallas-distributed}
+
+The newer core-specific interface exposes physical core meshes, per-core storage/semaphores, and remote-copy examples between cores. It is a distinct interface from older Megacore guidance; their assumptions should not be silently merged. Multiple cores can split control responsibility, but the partition adds ownership, balance, and communication obligations.~\citep{u006-pallas-coremap}
+
+A custom fused Pallas kernel may also obscure opportunities that XLA's higher-level scheduling could exploit. Its local benefit must be compared with the compiler-managed baseline, including asynchronous collective scheduling and neighboring fusion. The retained-state ledger includes VMEM/SMEM, DMA descriptors, semaphore values, in-flight buffers, and ICI contention. An independently progressing DMA protects progress only for work already submitted with adequate destinations and matching completion behavior. It cannot prepare a future descriptor that the stalled scalar program has not issued.
+
+\subsection{Tenstorrent gives data movement dedicated control roles}
+
+The official RISC-V guide's illustrated five-controller Tensix design assigns BRISC/NCRISC to movement and TRISC unpack/math/pack roles to orchestration of compute engines. The RISC-V controllers are not themselves the matrix/vector datapaths. This is a documented design scope, not a controller-count claim for every generation. Reader, compute, and writer work can therefore be expressed as different roles. Circular buffers provide explicit producer/consumer capacity and readiness operations. This division can reduce competition for the compute role's instruction sequence while preserving dependencies through buffer ownership. The reader sequence is CB reserve, asynchronous NoC read, read-completion barrier, then CB push; the consumer waits, computes, and pops. \texttt{cb\_reserve\_back} is explicitly a blocking polling operation and does not advance a CB pointer. The costs include controller state, L1 circular buffers, staging, queues, semaphores, credits, and backpressure.\citep{u006-tt-riscv,u006-tt-cb,u006-tt-roles}
+
+Within a chip, NoC commands, barriers, and remote semaphore updates move data and coordinate consumers. Ordering is scoped by the chosen NoC, command buffers, and virtual channels. Separate NoCs or VCs do not gain a single total order merely because one controller issued commands in source order. A producer must establish the payload-before-signal edge using the appropriate ordered path or completion operation.~\citep{u006-tt-ordering}
+
+Across chips, the older Wormhole/Blackhole Ethernet guide, now explicitly marked outdated in favor of fabric infrastructure, describes staging through Ethernet-core L1 and asynchronous sends. The low-level send primitive does not itself supply the full receiver-completion and source-reuse protocol. Queue-busy handling, acknowledgements or credits, and teardown must be implemented or supplied by a higher-level fabric/collective facility. The guide recommends fabric infrastructure for managing Ethernet cores; comparing only link bandwidth would omit movement between Tensix and Ethernet storage and the resources consumed by fabric workers.~\citep{u006-tt-ethernet}
+
+This approach makes control agents visible and programmable, which can be advantageous for known streaming graphs and explicit placement. More stages, however, mean more protocol state, fill/drain work, and potential recovery boundaries. A dedicated reader can still block on a full circular buffer; a writer can still need credits returned by another participant. Dedicated controllers make independent progress possible but do not prove it under all backpressure conditions.
+
+\subsection{Current contracts and the proposed command-publication path}
+
+PTO snapshot \texttt{e182c9b} provides useful building blocks, not a completed accelerator protocol. \texttt{HL.BFI}, \texttt{BXU}, \texttt{BXS}, and \texttt{HL.CCAT} manipulate scalar fields; constructing a command word is separate from atomically publishing a whole descriptor. The extracted \texttt{BXU/BXS} mnemonics do not have an \texttt{HL.} prefix in that snapshot. The v0 executable \texttt{BSE/BWE/BWI/BWT} semantics record a nonblocking request, operand, and epoch; they do not demonstrate hardware sleep, wakeup arbitration, or a lost-wake proof.\citep{u006-pto-fields,u006-pto-sys}
+
+GQM \texttt{HL.QMT/QPUSH/QPOP} initialize and atomically manipulate a queue of individual 64-bit entries. Push is release and pop acquire by default; \texttt{.r} removes that ordering, and \texttt{.e} notifies only on success. Full or suspended push reports failure; these contracts supply no implicit sleep or fairness. Publishing one entry or pointer does not itself make a multiword descriptor coherent to a device. The memory-ordering owner must establish the descriptor/payload-before-publication edge.\citep{u006-pto-gqm}
+
+Scalar atomics can claim tasks, update queue indices, allocate slots, and count completions. These are orchestration operations, distinct from U004's data atomics. A wider atomic path may support more independent addresses, but a single hot queue counter or ownership word still serializes. Sharding, batching, and hierarchical aggregation are software/design alternatives, with extra state and ordering costs; no speedup is established here.
+
+The proposed target is an explicit chain: construct fields, materialize a descriptor, publish complete ownership, execute at the accelerator, and return identified completion/status/error. Device ordering, cache visibility, admission credits, lost-wake handling, cancellation, and late completion require separate contracts. Historical Linx HAC/private-bus and MSGB documents at \texttt{c7cb8d93} illustrate an earlier message-interface direction using legacy command encoding. They are historical context, not evidence that this future chain is implemented or that its current ABI is settled.\citep{u006-linx-hac,u006-linx-msgb}
+
+\subsection{Fusion changes the rate at which control must be performed}
+
+A fused pipeline can remove intermediate launches and unnecessary memory boundaries while creating more frequent interactions between its internal stages. For every tile, an implementation may calculate addresses, prepare descriptors, reserve storage, submit work, publish readiness, handle a completion, and return credits. These operations are useful work in the control path. If they cannot keep up, independent compute and communication engines can wait even though their payload bandwidth is not saturated.
+
+Consider a steady stream of tiles. Let $c$ denote the required scalar/control instructions per tile, $\mu_s$ the sustainable control service rate in instructions per unit time, $t_m$ matrix service time per tile, $t_v$ vector service time, and $t_d$ movement/communication service time. Under ideal overlap with independent resources, a necessary lower bound on the steady-state initiation interval is
+\begin{equation}
+ I\ \geq\ \max\left(t_m,t_v,t_d,\frac{c}{\mu_s}\right).
+ \label{eq:u006-control}
+\end{equation}
+If two stages use the same non-overlappable resource, their demand must be combined rather than placed in separate terms of the maximum. A dependency chain or insufficient buffering can raise $I$ further. The equation is an analytical accounting device, not a model calibrated to a particular processor.
+
+Smaller tiles can reduce the delay before a consumer sees useful output, but they generally increase the number of control episodes per useful byte. If a tile carries $b$ bytes and requires $e$ events, the event density is $e/b$. Reducing $b$ while retaining the same protocol can increase this density even when the arithmetic work scales proportionally. The crossover depends on scalar issue capacity, event hardware, message aggregation, buffer size, and the independence available to cover latency. ``Fuse more'' is therefore incomplete guidance unless the control path is included.
+
+\subsection{Provision outstanding work from submission through completion drain}
+
+Core issue queues are only the first admission point. An end-to-end outstanding budget must cover NoC credits, receiver slots, reply capacity, and completion drain, as well as request queues and live descriptors. For rate $\lambda$ and average occupied lifetime $L$, $\lambda L$ is an analytical average occupancy requirement under stable conditions, not a sufficient capacity guarantee under bursts, failures, or delayed peers. Capacity at one stage cannot compensate for a full receiver or stalled reply path. Completion traffic must retain a route and service opportunity when compute or submission is blocked.
+
+The component ledger therefore includes scalar issue/atomic/load-store ports, contexts and register state, descriptor construction, queues and arbiters, local staging/buffers, NoC/NIC credits, receiver/reply state, and completion/status processing. Shared resources combine demand; hot addresses remain serialized. Measure fill, steady state, and drain separately rather than counting only accepted requests as progress.
+
+\subsection{Conditional Superscalar NPU benefits}
+
+Scalar issue width and SMT context count are tunable resource parameters. Wider issue can overlap independent field/address work if dependencies and ports allow it; multiple contexts can separate submission, local compute orchestration, and completion service if arbitration and retained state permit progress. A default of four STIDs or a decode width of two/four/six is not an issue-width result or proof that four contexts suffice. Proposed coroutine scheduling is a software organization for moving to other ready work; it does not create independent hardware progress by itself.
+
+Compiler-planned roles and late waits can combine with hardware-managed local dependencies and a bounded independent completion path. Event/DMA offload can reduce repeated instruction work for already-described operations. These are proposed conditional benefits: enough independent work and end-to-end capacity must exist, ownership/visibility must be correct, and saved waiting must exceed added control/state/interference. Current queue/request semantics, historical interfaces, and analytical occupancy reasoning establish neither a measured SSNPU advantage nor a complete cross-card protocol. U007 and U008 supply the corresponding precision and progress boundaries.
+
+\subsection{What a matched evaluation must observe}
+
+A credible experiment would record the control instructions and events per tile, time spent preparing and issuing work, outstanding descriptors, queue-full stalls, live buffers, and the agent responsible for each wait. It would separately measure fill, steady state, and drain across tile sizes and rank counts. Register or local-memory growth from added roles must be included, as must host/runtime setup when it is not amortized. No fixed orchestration penalty or cross-platform speedup is inferred here.
+
+The decision rule is whether the chosen control organization lets every necessary event arrive soon enough without excessive state or interference. Fusion removes some boundaries and brings others inside a kernel. The architecture succeeds when it makes those internal boundaries inexpensive, precise, and live under the actual resource limits, rather than merely invisible in source code.
+
+Evidence classification in this chapter is explicit: pinned PTO contracts are normative/current; versioned vendor mechanisms are documented within their scope; Linx HAC/MSGB and the outdated low-level Ethernet guide are historical; the command-publication chain and coroutine organization are proposed; occupancy and component-cost reasoning are inferred analytical accounting. Any integration candidate beyond those contracts remains unverified. No measured SSNPU performance or PPA result is supplied.

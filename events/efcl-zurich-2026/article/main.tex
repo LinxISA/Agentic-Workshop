@@ -1,0 +1,62 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=25mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx,booktabs,tabularx,longtable,array}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{placeins}
+\usepackage{xurl}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\usepackage{bookmark}
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{3pt}
+\setlength{\parskip}{0.35em}
+\setlength{\parindent}{1.15em}
+\setlength{\emergencystretch}{2em}
+\setlist{itemsep=0.25em,topsep=0.5em}
+\renewcommand{\arraystretch}{1.16}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Superscalar NPU Architecture}
+\fancyhead[R]{\small Technical Article}
+\fancyfoot[C]{\thepage}
+\lstset{basicstyle=\small\ttfamily,breaklines=true,columns=fullflexible,keepspaces=true,showstringspaces=false,frame=none}
+\newcommand{\ssnpu}{Superscalar NPU}
+\newcommand{\code}[1]{\texttt{#1}}
+\title{Superscalar NPU Architecture\\\large Eight Problems in Coordination, Representation, and Progress}
+\author{Technical article for the EFCL Zurich workshop}
+\date{Research and architecture snapshot: 7 October 2026\\Review draft}
+\begin{document}
+\maketitle
+\begin{abstract}
+A matrix accelerator is useful only when its surrounding system can deliver ready operands, perform non-matrix work, retain the right values, and complete the resulting effects. This article develops eight architectural problems that arise in that surrounding system: matrix--vector coordination; latency hiding and storage lifetime; mixed precision, layout, and scale handling; irregular access and atomic updates; reductions along a tensor's tail axis; scalar and event orchestration; precise state and memory ordering; and forward progress under finite resources. For each problem, we examine the responsibilities assigned to algorithms, instruction sets, compilers, runtime software, and hardware in NVIDIA GPUs, Ascend, TPU, Tenstorrent dataflow machines, and a proposed Superscalar NPU. CPU SIMD and published Groq designs provide additional comparisons where their mechanisms illuminate a particular question. The central claim is conditional: bounded dynamic dependency and resource management can reduce coordination work or exposed waiting when useful independent work exists, but its benefit must cover the added state, arbitration, movement, recovery, and progress machinery. Exact numerical and ownership contracts constrain the admissible schedules. Public specifications, version-scoped implementation observations, and proposed mechanisms are kept distinct. This article supplies no new benchmark, silicon measurement, or physical power, performance, and area result.
+\end{abstract}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\clearpage
+\input{sections/introduction}
+\input{sections/method}
+\input{sections/u001}
+\input{sections/u002}
+\input{sections/u003}
+\input{sections/u004}
+\input{sections/u005}
+\input{sections/u006}
+\input{sections/u007}
+\input{sections/u008}
+\input{sections/synthesis}
+\appendix
+\input{sections/reproducibility}
+\clearpage
+\bibliographystyle{plainnat}
+\bibliography{references,references-u001-u002,references-u003-u004,references-u007-u008}
+\end{document}

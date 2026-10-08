@@ -1,0 +1,268 @@
+% Primary documentation and explicitly scoped supplied inspection records.
+% Mutable documentation was checked on 7 October 2026. No benchmark was run.
+@article{u001-fa3,
+  author = {Shah, Jay and Bikshandi, Ganesh and Zhang, Ying and Thakkar, Vijay and Ramani, Pradeep and Dao, Tri},
+  title = {{FlashAttention-3}: Fast and Accurate Attention with Asynchrony and Low-precision},
+  journal = {arXiv preprint arXiv:2407.08608},
+  year = {2024},
+  note = {Version 2},
+  url = {https://arxiv.org/html/2407.08608v2}
+}
+@misc{u001-hopper,
+  author = {{NVIDIA}},
+  title = {{Hopper Tuning Guide}},
+  year = {2026},
+  note = {Hopper architecture scope. Accessed 7 October 2026},
+  url = {https://docs.nvidia.com/cuda/hopper-tuning-guide/}
+}
+@misc{u001-ptx,
+  author = {{NVIDIA}},
+  title = {{PTX ISA}: Asynchronous Warpgroup-Level Matrix Multiply-Accumulate Instructions},
+  year = {2026},
+  note = {PTX ISA 9.4 documentation, section on wgmma. Accessed 7 October 2026},
+  url = {https://docs.nvidia.com/cuda/parallel-thread-execution/}
+}
+@misc{u001-trt-attention,
+  author = {{NVIDIA}},
+  title = {Multi-Head, Multi-Query, and Group-Query Attention},
+  howpublished = {TensorRT-LLM documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://nvidia.github.io/TensorRT-LLM/features/attention.html}
+}
+@misc{u001-tcgen05,
+  author = {{NVIDIA}},
+  title = {{tcgen05 MMA Programming Guide}},
+  howpublished = {CUTLASS 4.5.2 documentation},
+  year = {2026},
+  note = {Blackwell SM100 scope. Accessed 7 October 2026},
+  url = {https://docs.nvidia.com/cutlass/4.5.2/media/docs/pythonDSL/mma_docs/tcgen05_programming.html}
+}
+@misc{u001-fa4,
+  author = {Zadouri, Ted and Hoehnerbach, Markus and Shah, Jay and Liu, Timmy and Thakkar, Vijay and Dao, Tri},
+  title = {{FlashAttention-4}: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling},
+  howpublished = {arXiv:2603.05451, version 1},
+  year = {2026},
+  url = {https://arxiv.org/html/2603.05451v1}
+}
+@misc{u001-ascend-basic,
+  author = {{Huawei}},
+  title = {Basic Architecture},
+  howpublished = {Ascend C programming guide, CANN Community Edition 9.0.0},
+  year = {2026},
+  note = {The main example is Atlas A2. Accessed 7 October 2026},
+  url = {https://www.hiascend.com/doc_center/source/en/CANNCommunityEdition/900/programug/Ascendcopdevg/atlas_ascendc_10_0008.html}
+}
+@misc{u001-ascend-3510,
+  author = {{Huawei Ascend}},
+  title = {{NPU} Architecture Version 3510},
+  howpublished = {Official Ascend C documentation},
+  year = {2026},
+  note = {Chinese-language architecture specification. Accessed 7 October 2026},
+  url = {https://asc.gitcode.com/guide/programming_guide/advanced_programming/hardware_implementation/architecture_spec/npu_arch_3510.html}
+}
+@misc{u001-ascend-fa-design,
+  author = {{Huawei Ascend}},
+  year = {n.d.},
+  title = {{FA/FAG} Operator Design Introduction},
+  howpublished = {cann-ops-adv source repository},
+  note = {Historical operator design, commit 186db5bf93202bea2bde82795165098fa62ce84a. Chinese source. Accessed 7 October 2026},
+  url = {https://gitee.com/ascend/cann-ops-adv/blob/186db5bf93202bea2bde82795165098fa62ce84a/docs/common/FA-FAG%E7%AE%97%E5%AD%90%E8%AE%BE%E8%AE%A1%E4%BB%8B%E7%BB%8D.md}
+}
+@misc{u001-pallas-pipeline,
+  author = {{The JAX Authors}},
+  title = {{TPU Pipelining}},
+  howpublished = {JAX Pallas documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.jax.dev/en/latest/pallas/tpu/pipelining.html}
+}
+@misc{u001-pallas-details,
+  author = {{The JAX Authors}},
+  title = {Writing {TPU} Kernels with {Pallas}},
+  howpublished = {JAX documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.jax.dev/en/latest/pallas/tpu/details.html}
+}
+@misc{u001-pallas-sparse,
+  author = {{The JAX Authors}},
+  title = {Scalar Prefetch and Block-Sparse Computation},
+  howpublished = {JAX Pallas documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.jax.dev/en/latest/pallas/tpu/sparse.html}
+}
+@misc{u001-metalium,
+  author = {{Tenstorrent}},
+  title = {{Metalium Programming Guide}},
+  howpublished = {tt-metal official repository},
+  year = {2026},
+  note = {API-level lifecycle description; moving documentation read 7 October 2026, not a pinned kernel execution result},
+  url = {https://github.com/tenstorrent/tt-metal/blob/main/METALIUM_GUIDE.md}
+}
+@misc{u001-tensix,
+  author = {{Tenstorrent}},
+  title = {Compute Engines and Data Flow within {Tensix}},
+  howpublished = {TT-Metalium documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/advanced_topics/compute_engines_and_dataflow_within_tensix.html}
+}
+@misc{u001-tt-sdpa-investigation,
+  author = {{Tenstorrent contributors}},
+  title = {{SFPU} exp on the math thread serializes with the matmuls in the fp32\_dest\_acc\_en {SDPA} kernel; the streaming kernel issues the exp from the pack thread},
+  howpublished = {tt-metal issue 55759},
+  year = {2026},
+  note = {Implementation investigation, not a universal hardware result. Accessed 7 October 2026},
+  url = {https://github.com/tenstorrent/tt-metal/issues/55759}
+}
+@inproceedings{u001-groq2020,
+  author = {Abts, Dennis and Ross, Jonathan and Sparling, Jonathan and others},
+  title = {Think Fast: A Tensor Streaming Processor ({TSP}) for Accelerating Deep Learning Workloads},
+  booktitle = {2020 ACM/IEEE 47th Annual International Symposium on Computer Architecture},
+  pages = {145--158},
+  year = {2020},
+  doi = {10.1109/ISCA45697.2020.00023},
+  url = {https://doi.org/10.1109/ISCA45697.2020.00023}
+}
+@inproceedings{u001-groq2022,
+  author = {Abts, Dennis and Kimmell, Garrin and Ling, Andrew and others},
+  title = {A Software-defined Tensor Streaming Multiprocessor for Large-scale Machine Learning},
+  booktitle = {Proceedings of the 49th Annual International Symposium on Computer Architecture},
+  pages = {567--580},
+  year = {2022},
+  doi = {10.1145/3470496.3527405},
+  url = {https://doi.org/10.1145/3470496.3527405}
+}
+@unpublished{u001-ssnpu-audit,
+  author = {{SSNPU project}},
+  title = {Timing-model Implementation Inspection for Coordination and Storage Lifetime},
+  year = {2026},
+  note = {Supplied source-inspection record, 6 October 2026. TimingSim branch feat\_pyc\_model, commit d5419b3e721df47daae02c38ef2a9b82187e5149. Qualitative implementation evidence only; no new execution or physical implementation result}
+}
+@unpublished{u001-benchmark-audit,
+  author = {{SSNPU project}},
+  title = {Tile Granularity and Programming-example Source Inspection},
+  year = {2026},
+  note = {Supplied inspection record, 6 October 2026. SuperNPUBench commit 349c98964144dfd9ca6a2665eca5a16ca8f3e045; separate Tile API commit fac242a95bc70cd1783547555e5bd7335d1969bf. The two checkouts are not established as one executable's build provenance}
+}
+@misc{u002-cutlass,
+  author = {{NVIDIA}},
+  title = {Efficient {GEMM} in {CUDA}: {Hopper} Warp Specialization},
+  howpublished = {CUTLASS documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.nvidia.com/cutlass/latest/media/docs/cpp/efficient_gemm.html#hopper-warp-specialization}
+}
+@misc{u002-cuda-async,
+  author = {{NVIDIA}},
+  title = {Asynchronous Data Copies},
+  howpublished = {CUDA Programming Guide, section 4.12},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/async-copies.html}
+}
+@misc{u002-setmaxnreg,
+  author = {{NVIDIA}},
+  title = {{PTX ISA}: Miscellaneous Instructions---{setmaxnreg}},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.nvidia.com/cuda/parallel-thread-execution/#miscellaneous-instructions-setmaxnreg}
+}
+@misc{u002-fa3-mainloop,
+  author = {{Dao-AILab and FlashAttention contributors}},
+  title = {Hopper Flash Forward Mainloop with {TMA} and {GMMA} Warp Specialization},
+  howpublished = {flash-attention source repository},
+  year = {2026},
+  note = {Commit dc8fd708575a530bf773645efdc36b6bc6c53552, mainloop\_fwd\_sm90\_tma\_gmma\_ws.hpp, producer and intra-warpgroup overlap paths. Pinned source read 7 October 2026},
+  url = {https://github.com/Dao-AILab/flash-attention/blob/dc8fd708575a530bf773645efdc36b6bc6c53552/hopper/mainloop_fwd_sm90_tma_gmma_ws.hpp}
+}
+@misc{u002-ascend-initbuffer,
+  author = {{Huawei}},
+  title = {{InitBuffer}},
+  howpublished = {Ascend C API reference, CANN 8.5.0},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://www.hiascend.com/doc_center/source/en/canncommercial/850/API/ascendcopapi/atlasascendc_api_07_0110.html}
+}
+@misc{u002-ascend-freetensor,
+  author = {{Huawei}},
+  title = {{FreeTensor}},
+  howpublished = {Ascend C API reference, CANN 8.5.0},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://www.hiascend.com/doc_center/source/en/canncommercial/850/API/ascendcopapi/atlasascendc_api_07_0139.html}
+}
+@misc{u002-ascend-tque,
+  author = {{Huawei}},
+  title = {Introduction to {TQue}},
+  howpublished = {Ascend C API reference, CANN 8.5.0},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://www.hiascend.com/doc_center/source/en/canncommercial/850/API/ascendcopapi/atlasascendc_api_07_0137.html}
+}
+@misc{u002-pallas-copy,
+  author = {{The JAX Authors}},
+  title = {{jax.experimental.pallas.tpu.make\_async\_copy}},
+  howpublished = {JAX API documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.jax.dev/en/latest/_autosummary/jax.experimental.pallas.tpu.make_async_copy.html}
+}
+@misc{u002-pallas-distributed,
+  author = {{The JAX Authors}},
+  title = {Distributed Computing in {Pallas} for {TPUs}},
+  howpublished = {JAX documentation},
+  year = {2026},
+  note = {Run-ahead and race conditions. Accessed 7 October 2026},
+  url = {https://docs.jax.dev/en/latest/pallas/tpu/distributed.html#run-ahead-and-race-conditions}
+}
+@misc{u002-xla-msa,
+  author = {{The OpenXLA Authors}},
+  title = {Memory Space Assignment: Values, Use Segments, and Allocation Sequences},
+  howpublished = {OpenXLA source repository},
+  year = {2026},
+  note = {Commit 82e6c3119a9463bfc27add150c8ae8b12c2ca405, memory\_space\_assignment.h. Pinned source read 7 October 2026},
+  url = {https://github.com/openxla/xla/blob/82e6c3119a9463bfc27add150c8ae8b12c2ca405/xla/service/memory_space_assignment/memory_space_assignment.h}
+}
+@misc{u002-tt-cb,
+  author = {{Tenstorrent}},
+  title = {{CircularBuffers}},
+  howpublished = {TT-Metalium host API documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/host_apis/buffers/CircularBuffers.html}
+}
+@misc{u002-tt-reserve,
+  author = {{Tenstorrent}},
+  title = {{cb\_reserve\_back}},
+  howpublished = {TT-Metalium kernel API documentation},
+  year = {2026},
+  note = {Accessed 7 October 2026},
+  url = {https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/apis/kernel_apis/circular_buffers/cb_reserve_back.html}
+}
+@misc{u002-tt-counters,
+  author = {{Tenstorrent}},
+  title = {{Wormhole B0 NoC Counters}},
+  howpublished = {Official tt-isa-documentation repository},
+  year = {2026},
+  note = {Read-request issue, first-hop acceptance, and response-completion semantics. Accessed 7 October 2026},
+  url = {https://github.com/tenstorrent/tt-isa-documentation/blob/main/WormholeB0/NoC/Counters.md}
+}
+@misc{u002-benchmark-fa,
+  author = {{PTO-ISA contributors}},
+  title = {{SuperNPUBench} One-level Attention Kernel},
+  howpublished = {SuperNPUBench source repository},
+  year = {2026},
+  note = {Commit 349c98964144dfd9ca6a2665eca5a16ca8f3e045, fa\_2d\_unroll\_gmma.hpp. Pinned source read 7 October 2026},
+  url = {https://github.com/PTO-ISA/SuperNPUBench/blob/349c98964144dfd9ca6a2665eca5a16ca8f3e045/benchmark/one-level-arch/kernels/basic_op/fa/fa_2d_unroll_gmma.hpp}
+}
+@misc{u002-benchmark-wrapper,
+  author = {{PTO-ISA contributors}},
+  title = {{SuperNPUBench} Multi-thread Result-check Synchronization},
+  howpublished = {SuperNPUBench source repository},
+  year = {2026},
+  note = {Commit 349c98964144dfd9ca6a2665eca5a16ca8f3e045, multi\_thread\_res\_check.h. Verification wrapper only. Pinned source read 7 October 2026},
+  url = {https://github.com/PTO-ISA/SuperNPUBench/blob/349c98964144dfd9ca6a2665eca5a16ca8f3e045/benchmark/one-level-arch/test/common/multi_thread_res_check.h}
+}
