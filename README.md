@@ -13,6 +13,10 @@ Root `assets`, `content`, `decks`, `docs`, `experiments`, `materials` and `publi
 
 Use `npm ci`, `npm run dev:1` or `npm run dev:2` for the archived course. `npm run dev:efcl` opens the English placeholder. `npm run build` includes the activity index and static EFCL placeholder through the existing Pages build.
 
+## Papers
+
+- [Task Superscalar: An Out-of-Order Task Pipeline — Chinese translation](paper/task-superscalar-2010-zh.md) (MICRO 2010), with all 16 figures.
+
 Repository: https://github.com/LinxISA/Agentic-Workshop
 
 Pages: https://linxisa.github.io/Agentic-Workshop/
