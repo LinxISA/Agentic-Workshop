@@ -1,6 +1,0 @@
-interface:
-  display_name: "周若愚技术写作 Style"
-  short_description: "以芯片架构师的工程叙事重写技术文章，讲透机制、瓶颈、PPA 与系统成本"
-  default_prompt: "使用 $zhou-ruoyu-technical-writing 撰写或重写这篇技术文章，保留事实与工程边界，用自然中长句讲清机制和设计取舍。"
-policy:
-  allow_implicit_invocation: true
