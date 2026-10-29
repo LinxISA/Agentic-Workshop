@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#17324D"/></marker></defs>
+<rect x="0" y="0" width="1600" height="900" rx="0" fill="#FFFFFF" stroke="none" stroke-width="0" />
+<rect x="40" y="34" width="12" height="82" rx="6" fill="#168C84" stroke="none" stroke-width="0" />
+<text x="76" y="74" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#17324D" text-anchor="start" >同样 128B 有效数据，可能对应完全不同的存储服务量</text>
+<text x="76" y="108" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="400" fill="#657788" text-anchor="start" >32 个线程各读取一个自然对齐的 4B 元素；下图按 32B Sector 计数</text>
+<rect x="50" y="150" width="730" height="650" rx="20" fill="#F5F8FA" stroke="#D9E2EA" stroke-width="2" />
+<rect x="820" y="150" width="730" height="650" rx="20" fill="#F5F8FA" stroke="#D9E2EA" stroke-width="2" />
+<rect x="82" y="176" width="164" height="42" rx="21" fill="#DDF3F2" stroke="none" stroke-width="0" /><text x="164.0" y="205" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="600" fill="#168C84" text-anchor="middle" >连续访问</text>
+<text x="82" y="254" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="30" font-weight="700" fill="#17324D" text-anchor="start" >32 个线程 → 4 个 Sector</text>
+<text x="158" y="290" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#657788" text-anchor="middle" >S0</text>
+<rect x="82" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="101" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="120" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="139" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="158" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="177" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="196" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="215" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<text x="322" y="290" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#657788" text-anchor="middle" >S1</text>
+<rect x="246" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="265" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="284" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="303" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="322" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="341" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="360" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="379" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<text x="486" y="290" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#657788" text-anchor="middle" >S2</text>
+<rect x="410" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="429" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="448" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="467" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="486" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="505" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="524" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="543" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<text x="650" y="290" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#657788" text-anchor="middle" >S3</text>
+<rect x="574" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="593" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="612" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="631" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="650" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="669" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="688" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<rect x="707" y="308" width="17" height="64" rx="2" fill="#168C84" stroke="white" stroke-width="1" />
+<text x="82" y="424" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="25" font-weight="600" fill="#203040" text-anchor="start" >覆盖 4 × 32B = 128B</text>
+<text x="82" y="462" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="23" font-weight="700" fill="#168C84" text-anchor="start" >有效载荷 128B / 覆盖 128B = 100%</text>
+<rect x="82" y="520" width="650" height="174" rx="14" fill="white" stroke="#BDD6D3" stroke-width="2" />
+<text x="112" y="566" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#168C84" text-anchor="start" >合并机会</text>
+<text x="112" y="605" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="400" fill="#203040" text-anchor="start"><tspan x="112" dy="0">多个线程的地址落在相邻字中，</tspan><tspan x="112" dy="29.700000000000003">硬件可以用少量 Sector 事务覆盖。</tspan></text>
+<rect x="852" y="176" width="210" height="42" rx="21" fill="#FFF2D8" stroke="none" stroke-width="0" /><text x="957.0" y="205" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="600" fill="#9C6500" text-anchor="middle" >每线程独占 Sector</text>
+<text x="852" y="254" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="30" font-weight="700" fill="#17324D" text-anchor="start" >32 个线程 → 32 个 Sector</text>
+<rect x="852" y="298" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="857" y="306" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="934" y="298" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="939" y="306" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1016" y="298" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1021" y="306" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1098" y="298" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1103" y="306" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1180" y="298" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1185" y="306" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1262" y="298" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1267" y="306" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1344" y="298" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1349" y="306" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1426" y="298" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1431" y="306" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="852" y="350" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="857" y="358" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="934" y="350" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="939" y="358" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1016" y="350" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1021" y="358" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1098" y="350" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1103" y="358" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1180" y="350" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1185" y="358" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1262" y="350" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1267" y="358" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1344" y="350" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1349" y="358" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1426" y="350" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1431" y="358" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="852" y="402" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="857" y="410" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="934" y="402" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="939" y="410" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1016" y="402" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1021" y="410" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1098" y="402" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1103" y="410" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1180" y="402" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1185" y="410" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1262" y="402" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1267" y="410" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1344" y="402" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1349" y="410" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1426" y="402" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1431" y="410" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="852" y="454" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="857" y="462" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="934" y="454" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="939" y="462" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1016" y="454" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1021" y="462" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1098" y="454" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1103" y="462" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1180" y="454" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1185" y="462" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1262" y="454" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1267" y="462" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1344" y="454" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1349" y="462" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<rect x="1426" y="454" width="76" height="42" rx="6" fill="#FDE3B5" stroke="#D99B31" stroke-width="1.5" />
+<rect x="1431" y="462" width="9" height="26" rx="2" fill="#F0A640" stroke="none" stroke-width="0" />
+<text x="852" y="550" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="25" font-weight="600" fill="#203040" text-anchor="start" >覆盖 32 × 32B = 1024B</text>
+<text x="852" y="588" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="23" font-weight="700" fill="#9C6500" text-anchor="start" >有效载荷 128B / 覆盖 1024B = 12.5%</text>
+<rect x="852" y="634" width="650" height="108" rx="14" fill="white" stroke="#E6C486" stroke-width="2" />
+<text x="882" y="676" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="21" font-weight="700" fill="#C8554D" text-anchor="start" >8× 是 Sector 覆盖量的放大，不是执行时间的固定倍数。</text>
+<text x="882" y="712" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="400" fill="#203040" text-anchor="start" >Cache 命中、并发请求能力与依赖链仍会改变实际延迟。</text>
+<line x1="50" y1="840" x2="1550" y2="840" stroke="#C7D2DC" stroke-width="1"/>
+<text x="800" y="875" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="400" fill="#657788" text-anchor="middle" >简化示意：起始地址满足 32B 对齐，32 个线程均活跃；实际事务还受缓存层级与架构规则影响。</text>
+</svg>

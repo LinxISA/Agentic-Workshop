@@ -13,6 +13,11 @@ Root `assets`, `content`, `decks`, `docs`, `experiments`, `materials` and `publi
 
 Use `npm ci`, `npm run dev:1` or `npm run dev:2` for the archived course. `npm run dev:efcl` opens the English placeholder. `npm run build` includes the activity index and static EFCL placeholder through the existing Pages build.
 
+## 知乎文章
+
+- [知乎文章目录](知乎/README.md)
+- [为什么 Gather 有时很慢：从访存瓶颈到乱序 TMA](知乎/Gather性能研究/正文.md)
+
 ## Papers
 
 - [Task Superscalar: An Out-of-Order Task Pipeline — Chinese translation](paper/task-superscalar-2010-zh.md) (MICRO 2010), with all 16 figures.
