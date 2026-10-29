@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#17324D"/></marker></defs>
+<rect x="0" y="0" width="1600" height="900" rx="0" fill="#FFFFFF" stroke="none" stroke-width="0" />
+<rect x="40" y="34" width="12" height="82" rx="6" fill="#168C84" stroke="none" stroke-width="0" />
+<text x="76" y="74" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#17324D" text-anchor="start" >乱序 TMA：参数必须绑定操作版本，数据就绪与参数稳定要分别判断</text>
+<text x="76" y="108" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="400" fill="#657788" text-anchor="start" >程序顺序 A → B；在无内存顺序冲突且 B 数据先就绪时，B 可以先发射，A 仍必须使用 V1</text>
+<rect x="50" y="150" width="1500" height="650" rx="20" fill="#F5F8FA" stroke="#D9E2EA" stroke-width="2" />
+<rect x="110" y="180" width="200" height="42" rx="21" fill="#E8F1F8" stroke="none" stroke-width="0" /><text x="210.0" y="209" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="600" fill="#17324D" text-anchor="middle" >参数绑定</text>
+<rect x="390" y="180" width="200" height="42" rx="21" fill="#E8F1F8" stroke="none" stroke-width="0" /><text x="490.0" y="209" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="600" fill="#17324D" text-anchor="middle" >就绪判断</text>
+<rect x="670" y="180" width="200" height="42" rx="21" fill="#DDF3F2" stroke="none" stroke-width="0" /><text x="770.0" y="209" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="600" fill="#168C84" text-anchor="middle" >搬运</text>
+<rect x="930" y="180" width="230" height="42" rx="21" fill="#DDF3F2" stroke="none" stroke-width="0" /><text x="1045.0" y="209" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="600" fill="#17324D" text-anchor="middle" >完成 / 可见性</text>
+<rect x="1250" y="180" width="200" height="42" rx="21" fill="#E8F1F8" stroke="none" stroke-width="0" /><text x="1350.0" y="209" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="600" fill="#17324D" text-anchor="middle" >引用 / 存储回收</text>
+<line x1="350" y1="202" x2="378" y2="202" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="630" y1="202" x2="658" y2="202" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="890" y1="202" x2="918" y2="202" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="1210" y1="202" x2="1238" y2="202" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="88" y="304" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="26" font-weight="700" fill="#17324D" text-anchor="start" >TMA A</text>
+<text x="88" y="536" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="26" font-weight="700" fill="#17324D" text-anchor="start" >TMA B</text>
+<line x1="210" y1="280" x2="1450" y2="280" stroke="#C7D2DC" stroke-width="1"/>
+<line x1="210" y1="512" x2="1450" y2="512" stroke="#C7D2DC" stroke-width="1"/>
+<rect x="110" y="326" width="210" height="92" rx="14" fill="#E8F1F8" stroke="#2F6B9A" stroke-width="2" />
+<text x="215" y="362" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="24" font-weight="700" fill="#17324D" text-anchor="middle" >绑定 V1</text>
+<text x="215" y="394" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="400" fill="#657788" text-anchor="middle" >Base/Shape/Stride…</text>
+<line x1="320" y1="372" x2="402" y2="372" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="416" y="326" width="200" height="92" rx="14" fill="#FFF2D8" stroke="#F0A640" stroke-width="2" />
+<text x="516" y="360" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="23" font-weight="700" fill="#9C6500" text-anchor="middle" >数据未就绪</text>
+<text x="516" y="394" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="500" fill="#657788" text-anchor="middle" >保留 V1</text>
+<line x1="616" y1="372" x2="746" y2="372" stroke="#17324D" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#arrow)"/>
+<rect x="760" y="326" width="180" height="92" rx="14" fill="#DDF3F2" stroke="#168C84" stroke-width="2" />
+<text x="850" y="360" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="23" font-weight="700" fill="#168C84" text-anchor="middle" >后发射 A</text>
+<text x="850" y="394" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#17324D" text-anchor="middle" >仍读取 V1</text>
+<line x1="940" y1="372" x2="1014" y2="372" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1028" y="326" width="190" height="92" rx="14" fill="white" stroke="#168C84" stroke-width="2" />
+<text x="1123" y="360" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#17324D" text-anchor="middle" >按契约完成</text>
+<text x="1123" y="394" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="17" font-weight="400" fill="#657788" text-anchor="middle" >并建立可见性</text>
+<line x1="1218" y1="372" x2="1302" y2="372" stroke="#17324D" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="1316" y="326" width="160" height="92" rx="14" fill="#F5F8FA" stroke="#C7D2DC" stroke-width="2" />
+<text x="1396" y="360" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="19" font-weight="700" fill="#17324D" text-anchor="middle" >示例：释放 V1</text>
+<text x="1396" y="394" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="400" fill="#657788" text-anchor="middle" >引用归零后</text>
+<rect x="110" y="558" width="210" height="92" rx="14" fill="#E8F1F8" stroke="#2F6B9A" stroke-width="2" />
+<text x="215" y="594" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="24" font-weight="700" fill="#17324D" text-anchor="middle" >绑定 V2</text>
+<text x="215" y="626" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="17" font-weight="400" fill="#657788" text-anchor="middle" >独立于 V1</text>
+<line x1="320" y1="604" x2="402" y2="604" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="416" y="558" width="200" height="92" rx="14" fill="#DDF3F2" stroke="#168C84" stroke-width="2" />
+<text x="516" y="592" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="23" font-weight="700" fill="#168C84" text-anchor="middle" >数据已就绪</text>
+<text x="516" y="626" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="17" font-weight="500" fill="#657788" text-anchor="middle" >且无顺序冲突</text>
+<line x1="616" y1="604" x2="746" y2="604" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="760" y="558" width="180" height="92" rx="14" fill="#DDF3F2" stroke="#168C84" stroke-width="2" />
+<text x="850" y="592" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="23" font-weight="700" fill="#168C84" text-anchor="middle" >先发射 B</text>
+<text x="850" y="626" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#17324D" text-anchor="middle" >读取 V2</text>
+<line x1="940" y1="604" x2="1014" y2="604" stroke="#17324D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1028" y="558" width="190" height="92" rx="14" fill="white" stroke="#168C84" stroke-width="2" />
+<text x="1123" y="592" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#17324D" text-anchor="middle" >按契约完成</text>
+<text x="1123" y="626" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="17" font-weight="400" fill="#657788" text-anchor="middle" >并建立可见性</text>
+<line x1="1218" y1="604" x2="1302" y2="604" stroke="#17324D" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="1316" y="558" width="160" height="92" rx="14" fill="#F5F8FA" stroke="#C7D2DC" stroke-width="2" />
+<text x="1396" y="592" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="19" font-weight="700" fill="#17324D" text-anchor="middle" >示例：释放 V2</text>
+<text x="1396" y="626" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="400" fill="#657788" text-anchor="middle" >引用归零后</text>
+<rect x="110" y="684" width="1366" height="112" rx="14" fill="white" stroke="#E2B65D" stroke-width="2" />
+<text x="136" y="718" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="21" font-weight="700" fill="#9C6500" text-anchor="start" >关键：</text>
+<text x="216" y="718" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="600" fill="#203040" text-anchor="start" >参数版本稳定 ≠ 输入数据就绪；版本生命周期取决于参数何时被安全捕获。</text>
+<text x="216" y="750" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="19" font-weight="600" fill="#17324D" text-anchor="start" >本图示例将引用保留到搬运完成；若参数已安全捕获，Descriptor 存储可以更早回收。</text>
+<text x="216" y="780" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="17" font-weight="400" fill="#657788" text-anchor="start" >此图只表达允许的依赖关系，不代表实测周期或某款产品的具体队列实现。</text>
+<line x1="50" y1="840" x2="1550" y2="840" stroke="#C7D2DC" stroke-width="1"/>
+<text x="800" y="875" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="400" fill="#657788" text-anchor="middle" >“B 先于 A”需要同时满足数据依赖、内存顺序、资源与异常语义；版本绑定只解决参数不会被后续配置覆盖的问题。</text>
+</svg>
