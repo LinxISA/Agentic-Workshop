@@ -16,7 +16,7 @@ Use `npm ci`, `npm run dev:1` or `npm run dev:2` for the archived course. `npm r
 ## 知乎文章
 
 - [知乎文章目录](知乎/README.md)
-- [为什么 Gather 有时很慢：从访存瓶颈到乱序 TMA](知乎/Gather性能研究/正文.md)
+- [Gather 为什么有时候这么慢：从访存瓶颈到乱序 TMA](知乎/Gather性能研究/正文.md)
 
 ## Papers
 
